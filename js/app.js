@@ -120,8 +120,8 @@ function renderCart(){
 
 /* ---------- Overlays ---------- */
 const menu = $('#menu'), cartEl = $('#cart'), scrim = $('#scrim'), menuBtn = $('#menuBtn');
-function openMenu(){ closeCart(); menu.setAttribute('aria-hidden','false'); menuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
-function closeMenu(){ menu.setAttribute('aria-hidden','true'); menuBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+function openMenu(){ closeCart(); menu.setAttribute('aria-hidden','false'); menuBtn.setAttribute('aria-expanded','true'); nav.classList.add('menu-open'); document.body.style.overflow='hidden'; }
+function closeMenu(){ menu.setAttribute('aria-hidden','true'); menuBtn.setAttribute('aria-expanded','false'); nav.classList.remove('menu-open'); document.body.style.overflow=''; }
 function openCart(){ closeMenu(); cartEl.setAttribute('aria-hidden','false'); $('#cartBtn').setAttribute('aria-expanded','true'); scrim.hidden=false; requestAnimationFrame(()=>scrim.classList.add('show')); document.body.style.overflow='hidden'; }
 function closeCart(){ cartEl.setAttribute('aria-hidden','true'); $('#cartBtn').setAttribute('aria-expanded','false'); scrim.classList.remove('show'); setTimeout(()=>scrim.hidden=true,300); document.body.style.overflow=''; }
 
