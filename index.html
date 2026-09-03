@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>WRM — With Raw Materials</title>
+<meta name="description" content="WRM is an attempt to make beautiful things in a world that is burning up. Fish leather and algae, made by hand in San Francisco.">
+<meta name="theme-color" content="#E8DFC8">
+<link rel="canonical" href="https://wrm-with-raw-materials.vercel.app/">
+<link rel="icon" href="/img/favicon-64.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WRM — With Raw Materials">
+<meta property="og:title" content="WRM — Ocean season coming soon">
+<meta property="og:description" content="Fish leather and algae. Made by hand in San Francisco.">
+<meta property="og:image" content="https://wrm-with-raw-materials.vercel.app/img/og.jpg">
+<meta property="og:url" content="https://wrm-with-raw-materials.vercel.app/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="/img/wrm-logo-dark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <button class="nav-btn nav-menu" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="/" class="nav-logo" data-link aria-label="WRM home">
+    <img src="/img/wrm-logo-dark.png" alt="WRM">
+  </a>
+  <button class="nav-btn nav-cart" id="cartBtn" aria-label="Open cart" aria-expanded="false" aria-controls="cart">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+      <path d="M6.5 10V8.5a5.5 5.5 0 0 1 11 0V10"/>
+      <rect x="4.5" y="10" width="15" height="11"/>
+      <path d="M8.25 10v11M12 10v11M15.75 10v11"/>
+    </svg>
+    <span class="nav-cart-count" id="cartCount" hidden></span>
+  </button>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu-list" id="menuList" aria-label="Site"></nav>
+</div>
+
+<aside class="cart" id="cart" aria-hidden="true" aria-label="Cart">
+  <div class="cart-head">
+    <span class="cart-title">Cart</span>
+    <button class="cart-close" id="cartClose" aria-label="Close cart">×</button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-foot" id="cartFoot" hidden>
+    <div class="cart-total"><span>Total</span><span id="cartTotal">$0</span></div>
+    <button class="btn btn-fill" id="checkout">Enquire to order <span class="arr">→</span></button>
+    <p class="cart-note">Pieces are made to order. We reply within two days.</p>
+  </div>
+</aside>
+<div class="scrim" id="scrim" hidden></div>
+
+<main id="app"></main>
+<noscript><div style="padding:120px 24px;text-align:center;font-family:Georgia,serif;font-size:18px">WRM needs JavaScript to turn its pages. Please enable it, or write to hello@withrawmaterials.com.</div></noscript>
+<div class="toast" role="status" aria-live="polite"></div>
+
+<footer class="foot" id="foot">
+  <div class="foot-row">
+    <form class="foot-form" id="footForm">
+      <p class="foot-lead">Sign up to stay updated.</p>
+      <label class="foot-field">
+        <input type="email" required placeholder="Email" autocomplete="email" aria-label="Email">
+        <button type="submit" aria-label="Subscribe"><span class="arr">→</span></button>
+      </label>
+    </form>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="/faq" data-link>Info</a>
+      <a href="mailto:hello@withrawmaterials.com">Contact</a>
+      <a href="/faq" data-link>FAQ</a>
+    </nav>
+  </div>
+  <img class="foot-mark" src="/img/wordmark.png" alt="WITH RAW MATERIALS">
+</footer>
+
+<script src="/js/app.js"></script>
+</body>
+</html>
