@@ -8,7 +8,7 @@ SRC = "/Users/andylee/Downloads/drive-download-20260903T012212Z-1-001/"
 OUT = "/Users/andylee/orca/projects/stella-landing-page/img/"
 os.makedirs(OUT, exist_ok=True)
 
-def extract(src, box, out, max_w=1400, q=88):
+def extract(src, box, out, max_w=1564, q=94):
     im = Image.open(SRC + src).convert("RGB").crop(box)
     if im.width > max_w:
         im = im.resize((max_w, int(im.height * max_w / im.width)), Image.LANCZOS)
@@ -75,6 +75,14 @@ print("\n=== OG image ===")
 # The og.jpg needs to represent the brand — crop from moodboard
 extract("mobile_HOME.png", (0, 300, 1563, 2200), "og.jpg")
 trim_edges(OUT + "og.jpg")
+
+print("\n=== Mobile home 'book' plates (mobile_HOME.png, native 1563px width) ===")
+extract("mobile_HOME.png", (0, 254, 1563, 2600), "m-hero.jpg")
+extract("mobile_HOME.png", (0, 2570, 1563, 5228), "m-ocean.jpg")
+extract("mobile_HOME.png", (0, 5386, 1563, 6422), "m-materials.jpg")
+extract("mobile_HOME.png", (0, 7008, 1563, 9158), "m-purse.jpg")
+extract("mobile_HOME.png", (0, 9638, 1563, 11104), "m-bookmark.jpg")
+extract("mobile_HOME.png", (0, 11515, 1563, 12688), "m-tote.jpg")
 
 print("\n=== Texture ===")
 # texture.jpg is the paper grain background — keep full frame, but trim any

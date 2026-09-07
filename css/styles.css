@@ -163,8 +163,8 @@ h1 .soft{font-style:italic;color:var(--muted)}
 .scroll-hint::after{content:"";width:1px;height:38px;background:var(--olive);animation:dropline 2.2s ease-in-out infinite;transform-origin:top}
 @keyframes dropline{0%{transform:scaleY(.3);opacity:.3}50%{transform:scaleY(1);opacity:1}100%{transform:scaleY(.3);opacity:.3}}
 
-.editorial{font-family:var(--editorial);padding:0 max(40px,5vw)}
-.ed-page{max-width:var(--max);margin:0 auto;padding:0 40px;position:relative}
+.editorial{font-family:var(--editorial)}
+.ed-page{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);position:relative}
 .rule{height:1px;background:var(--olive);border:0;margin:0}
 .row{display:grid;grid-template-columns:minmax(160px,1fr) 2fr;gap:40px;padding:28px 0 0}
 .label{font-style:italic;font-weight:500;font-size:20px;letter-spacing:.04em;text-transform:uppercase;line-height:1.25}
@@ -252,7 +252,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
 .card .btn{margin-top:14px}
 
 /* Season landing */
-.season-hero{position:relative;margin:0 calc(-1 * var(--gutter));aspect-ratio:16/9;max-height:70vh;overflow:hidden;background:#111}
+.season-hero{position:relative;margin:0 calc(-1 * var(--gutter));height:min(70vh,780px);overflow:hidden;background:#111}
 .season-hero img{width:100%;height:100%;object-fit:cover}
 .season-hero .cap{position:absolute;left:var(--gutter);bottom:28px;color:#fff;font-family:var(--editorial)}
 .season-hero .cap small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.8;margin-bottom:8px}
@@ -375,8 +375,6 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .notify input{padding:14px 6px}
   .notify button{padding:0 16px;font-size:10.5px;letter-spacing:.14em}
   .scroll-hint{display:none}
-  .editorial{padding:0 20px}
-  .ed-page{padding:0}
   .row{grid-template-columns:1fr;gap:10px;padding-top:20px}
   .label{font-size:16px}
   .body-copy{font-size:16px;line-height:1.45;max-width:none}
