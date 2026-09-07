@@ -327,8 +327,7 @@ const pages = {
       <p class="pg-sub">Ocean-caught Alaskan Sockeye salmon. Crust finish.</p>
       <div class="grid">${card(PRODUCTS['salmon-purse'])}${card(PRODUCTS['salmon-bookmark'])}
         <div class="card observe"><div class="card-img natural"><img src="/img/algae-tote.jpg" alt="Algae Tote — Natural — Coming soon" loading="lazy"></div>
-          <div class="card-txt"><div><div class="card-name">Algae Tote</div><div class="card-var">Natural</div></div></div>
-          <button class="btn" data-notify>Notify me <span class="arr">→</span></button></div>
+          <div class="card-txt"><button class="btn" data-notify>Notify me <span class="arr">→</span></button></div></div>
       </div>
     </div></section>`;
   },

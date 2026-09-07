@@ -257,7 +257,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
 .season-hero .cap{position:absolute;left:var(--gutter);bottom:28px;color:#fff;font-family:var(--editorial)}
 .season-hero .cap small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.8;margin-bottom:8px}
 .season-hero .cap b{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(40px,6vw,80px);line-height:1}
-.cats{display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:56px 0 0}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;padding:56px 0 0;max-width:720px}
 .cat{text-decoration:none;font-family:var(--editorial)}
 .cat-img{aspect-ratio:3/2;overflow:hidden;background:#111}
 .cat-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
