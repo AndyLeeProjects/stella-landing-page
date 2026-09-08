@@ -303,9 +303,12 @@ h1 .soft{font-style:italic;color:var(--muted)}
    ABOUT MATERIALS
    ============================================================ */
 .mat-hero{position:relative;margin:0 calc(-1 * var(--gutter));overflow:hidden;background:#222;text-decoration:none;display:block}
-.mat-hero img{width:100%;height:auto;transition:transform 1.4s var(--ease)}
-.mat-hero:hover img{transform:scale(1.02)}
+.mat-hero img.tex{width:100%;height:auto;transition:transform 1.4s var(--ease)}
+.mat-hero:hover img.tex{transform:scale(1.02)}
 .mat-hero + .mat-hero{margin-top:8px}
+.mat-hero .mat-cap{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:16px;color:#fff;text-align:center}
+.mat-hero .mat-cap img.sil{width:64px;height:auto;filter:brightness(0) invert(1)}
+.mat-hero .mat-cap span{font-family:var(--display);font-style:italic;font-size:22px}
 .mat-detail{max-width:860px;padding:48px 0 96px}
 .mat-head{margin-bottom:28px}
 .mat-head .sil{height:34px;width:auto;margin-bottom:14px}

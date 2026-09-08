@@ -366,8 +366,14 @@ const pages = {
     document.title = 'About the Materials — WRM';
     return `<section class="pg editorial"><div class="ed-page">
       ${crumbs([['Home','/'],['About The Materials']])}
-      <a class="mat-hero observe" href="/about-materials/fish-leather" data-link aria-label="Fish Leather"><img src="/img/fish-leather-hero.jpg" alt="Fish Leather"></a>
-      <a class="mat-hero observe" href="/about-materials/algae" data-link aria-label="Algae"><img src="/img/algae-hero.jpg" alt="Algae"></a>
+      <a class="mat-hero observe" href="/about-materials/fish-leather" data-link aria-label="Fish Leather">
+        <img class="tex" src="/img/fish-leather-hero.jpg" alt="Fish Leather">
+        <div class="mat-cap"><img class="sil" src="/img/sil-fish.png" alt=""><span>Fish Leather</span></div>
+      </a>
+      <a class="mat-hero observe" href="/about-materials/algae" data-link aria-label="Algae">
+        <img class="tex" src="/img/algae-hero.jpg" alt="Algae">
+        <div class="mat-cap"><img class="sil" src="/img/sil-seaweed.png" alt=""><span>Algae</span></div>
+      </a>
     </div></section>`;
   },
 
