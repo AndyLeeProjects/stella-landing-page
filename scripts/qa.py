@@ -24,11 +24,12 @@ def ev(expr):
     return send('Runtime.evaluate', expression=expr, returnByValue=True, awaitPromise=True).get('result',{}).get('value')
 send('Runtime.enable'); send('Log.enable'); send('Page.enable')
 AUDIT = """(()=>{const nav=document.getElementById('nav').getBoundingClientRect().bottom;
+ const narrowHero=[...document.querySelectorAll('.season-hero,.world-hero,.mat-hero')].filter(el=>{const r=el.getBoundingClientRect(); return Math.abs(r.width-innerWidth)>3 && r.width < innerWidth}).map(el=>el.className.slice(0,30)+' w='+Math.round(el.getBoundingClientRect().width));
  const leaves=[...document.querySelectorAll('#app *')].filter(e=>e.children.length===0||e.tagName==='IMG').map(e=>e.getBoundingClientRect()).filter(b=>b.height>0).sort((a,b)=>a.top-b.top);
  const small=[...document.querySelectorAll('a,button')].filter(e=>{let r=e.getBoundingClientRect(); if(e.matches('.link')){r={width:r.width+16,height:r.height+20}}return r.width>0&&r.height>0&&(r.height<40||(r.width<40&&!e.matches('.crumbs a')))&&!e.closest('[aria-hidden=true]')}).map(e=>(e.className||e.tagName).toString().slice(0,24)+' '+Math.round(e.getBoundingClientRect().width)+'x'+Math.round(e.getBoundingClientRect().height));
  return {broken:[...document.images].filter(i=>!(i.complete&&i.naturalWidth>0)).map(i=>i.getAttribute('src')),
   overflow:document.documentElement.scrollWidth>innerWidth, clipped:leaves.length&&leaves[0].top<nav&&!document.querySelector('.mh') /* mobile home hero sits under transparent nav by design */,
-  small:[...new Set(small)], title:document.title, h1:!!document.querySelector('h1,h2'), cartVisible:!document.getElementById('cartBtn').hidden}})()"""
+  narrowHero, small:[...new Set(small)], title:document.title, h1:!!document.querySelector('h1,h2'), cartVisible:!document.getElementById('cartBtn').hidden}})()"""
 issues = 0
 for w,h,mob in [(390,844,True),(1280,900,False)]:
     send('Emulation.setDeviceMetricsOverride', width=w, height=h, deviceScaleFactor=1, mobile=mob)
@@ -43,6 +44,7 @@ for w,h,mob in [(390,844,True),(1280,900,False)]:
         if a.get('broken'): flags.append(f"broken={a['broken']}")
         if a.get('overflow'): flags.append("OVERFLOW")
         if a.get('clipped'): flags.append("CLIPPED")
+        if a.get('narrowHero') and w <= 760: flags.append(f"NARROW_HERO={a['narrowHero']}")
         if a.get('small'): flags.append(f"small={a['small']}")
         if not a.get('cartVisible'): flags.append("cart hidden")
         issues += len(flags)

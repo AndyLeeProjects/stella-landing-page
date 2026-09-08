@@ -197,6 +197,7 @@ const pages = {
 <section class="mh">
   <a class="mh-plate mh-hero" href="/wrm-world" data-link aria-label="WRM is an attempt to make beautiful things in a world that is burning up. Explore WRM World">
     <img src="/img/m-hero.jpg" alt="" fetchpriority="high">
+    <div class="mh-hero-txt">WRM <em>is an</em> attempt to make beautiful things<span class="mh-hero-link">Explore WRM World →</span></div>
   </a>
   <a class="mh-plate" href="/shop/ocean-season" data-link aria-label="Chapter I — Ocean">
     <img src="/img/m-ocean.jpg" alt="Chapter I — Ocean" loading="lazy">

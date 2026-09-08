@@ -202,6 +202,11 @@ h1 .soft{font-style:italic;color:var(--muted)}
 /* ---------- Mobile home (mobile_HOME.png) ---------- */
 .mh{display:flex;flex-direction:column;background:#0f0f0f}
 .mh-plate{display:block;line-height:0;background:#111}
+.mh-hero{position:relative}
+.mh-hero .mh-hero-txt{position:absolute;left:0;right:0;bottom:8%;padding:0 6%;text-align:center;color:#fff;
+  font-family:var(--display);font-size:clamp(22px,7vw,34px);line-height:1.15;text-shadow:0 2px 18px rgba(0,0,0,.5)}
+.mh-hero .mh-hero-txt em{font-style:italic}
+.mh-hero .mh-hero-link{display:block;margin-top:14px;font-family:var(--body);font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
 .mh-plate img{width:100%;height:auto}
 .mh-concept{background:#111;color:#f2ede3;padding:44px 34px;text-align:center}
 .mh-concept p{position:relative;margin:0;padding:34px 0;font-family:var(--body);font-weight:300;font-size:19px;line-height:1.35;letter-spacing:.005em}
@@ -395,7 +400,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .foot-row-live{grid-template-columns:1fr;justify-items:center;gap:18px;padding:64px 0 48px}
   .foot-link,.foot-link.right{justify-self:center;font-size:15px}
   .cats{grid-template-columns:1fr}
-  .season-hero{aspect-ratio:4/5}
+  .season-hero{height:65vh}
   .menu-item{font-size:22px}
   .foot{padding:40px 20px 20px}
   .foot-row{grid-template-columns:1fr auto;gap:24px}
