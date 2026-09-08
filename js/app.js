@@ -208,9 +208,19 @@ const pages = {
   <div class="mh-concept observe">
     <p>The products at WRM come as a proof of concept, bringing these materials to everyday life.</p>
   </div>
-  <a class="mh-plate" href="/product/salmon-purse" data-link aria-label="Salmon Purse, Crust"><img src="/img/m-purse.jpg" alt="Salmon Purse — Crust" loading="lazy"></a>
-  <a class="mh-plate" href="/product/salmon-bookmark" data-link aria-label="Salmon Bookmark, Crust"><img src="/img/m-bookmark.jpg" alt="Salmon Bookmark — Crust" loading="lazy"></a>
-  <div class="mh-plate" aria-label="Algae Tote, Natural, coming soon"><img src="/img/m-tote.jpg" alt="Algae Tote — Natural — Coming soon" loading="lazy"></div>
+  <a class="mh-plate" href="/product/salmon-purse" data-link aria-label="Salmon Purse, Crust">
+    <img src="/img/m-purse.jpg" alt="Salmon Purse — Crust" loading="lazy">
+    <div class="mh-cap"><span class="name">Salmon Purse</span><span class="sub">Crust</span></div>
+  </a>
+  <a class="mh-plate" href="/product/salmon-bookmark" data-link aria-label="Salmon Bookmark, Crust">
+    <img src="/img/m-bookmark.jpg" alt="Salmon Bookmark — Crust" loading="lazy">
+    <div class="mh-cap"><span class="name">Salmon Bookmark</span><span class="sub">Crust</span></div>
+  </a>
+  <div class="mh-plate" aria-label="Algae Tote, Natural, coming soon">
+    <img src="/img/m-tote.jpg" alt="Algae Tote — Natural — Coming soon" loading="lazy">
+    <div class="mh-cap"><span class="name">Algae Tote</span><span class="sub">Natural</span></div>
+    <div class="mh-cap-soon">Coming Soon</div>
+  </div>
 </section>`;
   },
 
@@ -260,8 +270,12 @@ const pages = {
   <div class="hdr observe">The Pieces<br>Proof of Concept</div>
   ${plate(PRODUCTS['salmon-purse'],'/img/purse-dark.jpg','An evening purse that fits your essentials. Ocean-caught fish leather, up to nine times stronger than cow hide, with the hand of soft suede.')}
   ${plate(PRODUCTS['salmon-bookmark'],'/img/bookmark-blue.jpg','A small piece of fish leather for everyday reading, cut from what was left after the purses. Lined in horsehair.')}
-  <figure class="plate-full observe"><img src="/img/algae-tote.jpg" alt="Algae Tote — Natural — Coming soon">
-    <div class="pf-cap"><small>Algae · Coming Soon</small><b>Algae Tote</b></div>
+  <figure class="plate-full observe">
+    <div class="pf-media">
+      <img src="/img/algae-tote.jpg" alt="Algae Tote — Natural — Coming soon">
+      <div class="pf-cap"><span class="name">Algae Tote</span><span class="sub">Natural</span></div>
+      <div class="pf-soon">Coming Soon</div>
+    </div>
     <figcaption><button class="btn" data-notify>Notify me <span class="arr">→</span></button></figcaption>
   </figure>
 </div></section>
