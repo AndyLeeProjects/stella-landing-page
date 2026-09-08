@@ -260,7 +260,10 @@ const pages = {
   <div class="hdr observe">The Pieces<br>Proof of Concept</div>
   ${plate(PRODUCTS['salmon-purse'],'/img/purse-dark.jpg','An evening purse that fits your essentials. Ocean-caught fish leather, up to nine times stronger than cow hide, with the hand of soft suede.')}
   ${plate(PRODUCTS['salmon-bookmark'],'/img/bookmark-blue.jpg','A small piece of fish leather for everyday reading, cut from what was left after the purses. Lined in horsehair.')}
-  <figure class="plate-full observe"><img src="/img/algae-tote.jpg" alt="Algae Tote — Natural — Coming soon" loading="lazy"><figcaption><button class="btn" data-notify>Notify me <span class="arr">→</span></button></figcaption></figure>
+  <figure class="plate-full observe"><img src="/img/algae-tote.jpg" alt="Algae Tote — Natural — Coming soon">
+    <div class="pf-cap"><small>Algae · Coming Soon</small><b>Algae Tote</b></div>
+    <figcaption><button class="btn" data-notify>Notify me <span class="arr">→</span></button></figcaption>
+  </figure>
 </div></section>
 
 <section class="editorial" style="margin-top:60px"><div class="ed-page about-page">
