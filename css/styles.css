@@ -180,7 +180,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
 .material-card.salmon .illus-bg{width:110%;max-width:440px;opacity:.75}
 .material-card.algae .illus-bg{width:90%;max-width:260px}
 .mat-table{position:relative;z-index:1}
-.mat-table .line{display:grid;grid-template-columns:1fr 1.4fr;gap:16px;padding:14px 10px;margin:0 -10px;border-bottom:1px solid var(--olive);align-items:baseline;background:var(--paper)}
+.mat-table .line{display:grid;grid-template-columns:1fr 1.4fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--olive);align-items:baseline}
 .mat-table .line:first-child{border-top:1px solid var(--olive)}
 .mat-table .k,.mat-table .v{font-size:17px}
 .mat-table .v{letter-spacing:.1em;text-transform:uppercase}
@@ -404,7 +404,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .material-card .illus-bg{width:80%;max-width:240px;opacity:.85}
   .material-card.salmon .illus-bg{width:90%;max-width:320px}
   .material-card.algae .illus-bg{width:70%;max-width:200px}
-  .mat-table .line{grid-template-columns:.9fr 1.3fr;gap:12px;padding:10px 10px;margin:0 -10px}
+  .mat-table .line{grid-template-columns:.9fr 1.3fr;gap:12px;padding:10px 0}
   .mat-table .k,.mat-table .v,.mat-table .v .sub{font-size:14px}
   .mat-desc{font-size:15px;padding-top:18px}
   .about-row{grid-template-columns:1fr;gap:10px;padding:24px 0 48px}
