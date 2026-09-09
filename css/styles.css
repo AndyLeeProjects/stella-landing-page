@@ -177,7 +177,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
 .material-card{position:relative;margin-bottom:80px}
 .material-card .mat-col{position:relative;width:62%;margin-left:auto;min-height:300px}
 .material-card .illus-bg{position:absolute;z-index:0;pointer-events:none;left:50%;top:50%;transform:translate(-50%,-50%);width:140%;max-width:360px;opacity:.95}
-.material-card.salmon .illus-bg{width:110%;max-width:440px;opacity:.75}
+.material-card.salmon .illus-bg{width:110%;max-width:440px;opacity:.75;top:68%}
 .material-card.algae .illus-bg{width:90%;max-width:260px}
 .mat-table{position:relative;z-index:1}
 .mat-table .line{display:grid;grid-template-columns:1fr 1.4fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--olive);align-items:baseline}
