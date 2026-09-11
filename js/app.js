@@ -387,9 +387,34 @@ const pages = {
     </div></section>`;
   },
 
+  /* Mobile product detail — mobile_Purse.png / mobile_Bookmark.png */
+  mProduct(p){
+    const crumb = [['Ocean','/shop/ocean-season'],['Fish Leather','/shop/ocean-season/fish-leather']]
+      .map(c=>`<a href="${c[1]}" data-link>${esc(c[0])}</a> &gt; `).join('');
+    return `<section class="mpd">
+      <nav class="mpd-crumbs" aria-label="Breadcrumb">${crumb}<span class="cur">${esc(p.name)}</span></nav>
+      <div class="mpd-gallery" id="pdStrip">
+        ${p.images.map((src,i)=>`<img src="${src}" alt="${esc(p.name)}${i?' — detail':''}"${i?' loading="lazy"':''}>`).join('')}
+      </div>
+      <div class="mpd-body">
+        <div class="mpd-head"><h1 class="mpd-name">${esc(p.name)}</h1><span class="mpd-n" id="pdN">1 / ${p.images.length}</span></div>
+        <p class="mpd-line">${esc(p.variant)}, ${p.year}</p>
+        <p class="mpd-line">${money(p.price)}</p>
+        <p class="mpd-p">${esc(p.desc)}</p>
+        <p class="mpd-p">${esc(p.note)}</p>
+        <p class="mpd-p">${esc(p.origin)}</p>
+        <div class="mpd-p"><div>Dimensions</div>${p.dims.map(([k,v])=>`<div>${esc(k)}: ${esc(v)}</div>`).join('')}</div>
+        <div class="mpd-p"><div>Materials</div>${p.materials.map(([k,v])=>`<div>${esc(k)}: ${esc(v)}</div>`).join('')}</div>
+        <div class="mpd-p"><div>Care</div><div>${esc(p.care)}</div></div>
+        <button class="btn btn-fill mpd-add" data-add="${p.id}">Add to cart <span class="arr">→</span></button>
+      </div>
+    </section>`;
+  },
+
   product(id){
     const p = PRODUCTS[id]; if(!p || p.soon) return pages.notFound();
     document.title = `${p.name} — WRM`;
+    if(isMobile()) return pages.mProduct(p);
     return `<section class="pg editorial"><div class="ed-page">
       ${crumbs([['Ocean','/shop/ocean-season'],['Fish Leather','/shop/ocean-season/fish-leather'],[p.name]])}
       <div class="pd">
@@ -510,6 +535,16 @@ function render(path, y=0){
   io?.disconnect();
   io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.12});
   app.querySelectorAll('.observe').forEach(el=>io.observe(el));
+  const strip = $('#pdStrip');
+  if(strip){
+    const first = strip.children[0];
+    const fit = () => { if(first.naturalWidth) strip.style.aspectRatio = first.naturalWidth + '/' + first.naturalHeight; };
+    first.complete ? fit() : first.addEventListener('load', fit);
+  }
+  if(strip) strip.addEventListener('scroll', ()=>{
+    const i = Math.round(strip.scrollLeft / strip.clientWidth);
+    $('#pdN').textContent = `${i+1} / ${strip.children.length}`;
+  }, {passive:true});
   window.scrollTo({top:y, behavior:'instant'});
   onScroll();
 }
