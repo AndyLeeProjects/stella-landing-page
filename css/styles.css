@@ -215,14 +215,14 @@ h1 .soft{font-style:italic;color:var(--muted)}
 .mh-hero img{aspect-ratio:1568/2268}
 .mh-ocean img{aspect-ratio:1563/2658}
 .mh-materials img{aspect-ratio:1563/1036}
-.mh-purse img{aspect-ratio:1600/1429;object-fit:cover;object-position:50% 82.5%}
+.mh-purse img{aspect-ratio:1600/1600;object-fit:cover;object-position:50% 78%}
 .mh-bookmark img{aspect-ratio:1600/1850}
 .mh-tote img{aspect-ratio:1600/1200}
 /* hero */
 .mh-hero{position:relative}
 .mh-hero .mh-hero-content{position:absolute;left:0;right:0;top:38%;margin:0 auto;display:flex;flex-direction:column;align-items:center}
 .mh-hero .mh-hero-txt{max-width:230px;text-align:center;color:#fff;
-  font-family:var(--display);font-weight:400;font-size:18px;line-height:23px;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+  font-family:var(--display);font-weight:400;font-size:32px;line-height:1.15;text-shadow:0 2px 18px rgba(0,0,0,.45)}
 .mh-hero .mh-hero-txt .wrm{font-style:normal;letter-spacing:.06em}
 .mh-hero .mh-hero-txt em{font-style:italic}
 .mh-hero .mh-hero-link{margin-top:70px;width:max-content;
