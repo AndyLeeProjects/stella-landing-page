@@ -197,26 +197,27 @@ const pages = {
 <section class="mh">
   <a class="mh-plate mh-hero" href="/wrm-world" data-link aria-label="WRM is an attempt to make beautiful things in a world that is burning up. Explore WRM World">
     <img src="/img/m-hero.jpg" alt="" fetchpriority="high">
-    <div class="mh-hero-txt">WRM <em>is an</em> attempt to make beautiful things<span class="mh-hero-link">Explore WRM World →</span></div>
+    <div class="mh-hero-txt"><span class="wrm">WRM</span> <em>is an attempt to make beautiful things in a world that is burning up</em></div>
+    <span class="mh-hero-link">Explore WRM World</span>
   </a>
   <a class="mh-plate" href="/shop/ocean-season" data-link aria-label="Chapter I — Ocean">
     <img src="/img/m-ocean.jpg" alt="Chapter I — Ocean" loading="lazy">
   </a>
-  <a class="mh-plate" href="/about-materials" data-link aria-label="About the materials">
-    <img src="/img/m-materials.jpg" alt="Fish leather and algae" loading="lazy">
+  <a class="mh-plate gap-lg" href="/about-materials" data-link aria-label="About the materials">
+    <img src="/img/m-materials.jpg" alt="For Ocean Collection, WRM explores two materials: fish leather and algae film" loading="lazy">
   </a>
   <div class="mh-concept observe">
     <p>The products at WRM come as a proof of concept, bringing these materials to everyday life.</p>
   </div>
-  <a class="mh-plate" href="/product/salmon-purse" data-link aria-label="Salmon Purse, Crust">
-    <img src="/img/m-purse.jpg" alt="Salmon Purse — Crust" loading="lazy">
+  <a class="mh-plate mh-purse" href="/product/salmon-purse" data-link aria-label="Salmon Purse, Crust">
+    <img src="/img/purse-dark.jpg" alt="Salmon Purse — Crust" loading="lazy">
     <div class="mh-cap"><span class="name">Salmon Purse</span><span class="sub">Crust</span></div>
   </a>
-  <a class="mh-plate" href="/product/salmon-bookmark" data-link aria-label="Salmon Bookmark, Crust">
+  <a class="mh-plate mh-bookmark gap-md" href="/product/salmon-bookmark" data-link aria-label="Salmon Bookmark, Crust">
     <img src="/img/m-bookmark.jpg" alt="Salmon Bookmark — Crust" loading="lazy">
     <div class="mh-cap"><span class="name">Salmon Bookmark</span><span class="sub">Crust</span></div>
   </a>
-  <div class="mh-plate" aria-label="Algae Tote, Natural, coming soon">
+  <div class="mh-plate mh-tote gap-sm" aria-label="Algae Tote, Natural, coming soon">
     <img src="/img/m-tote.jpg" alt="Algae Tote — Natural — Coming soon" loading="lazy">
     <div class="mh-cap"><span class="name">Algae Tote</span><span class="sub">Natural</span></div>
     <div class="mh-cap-soon">Coming Soon</div>
