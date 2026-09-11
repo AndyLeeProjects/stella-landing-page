@@ -203,10 +203,10 @@ const pages = {
       <span class="mh-hero-link">Explore WRM World</span>
     </div>
   </a>
-  <a class="mh-plate" href="/shop/ocean-season" data-link aria-label="Chapter I — Ocean">
+  <a class="mh-plate mh-ocean" href="/shop/ocean-season" data-link aria-label="Chapter I — Ocean">
     <img src="/img/m-ocean.jpg" alt="Chapter I — Ocean" loading="lazy">
   </a>
-  <a class="mh-plate gap-lg" href="/about-materials" data-link aria-label="About the materials">
+  <a class="mh-plate mh-materials gap-lg" href="/about-materials" data-link aria-label="About the materials">
     <img src="/img/m-materials.jpg" alt="For Ocean Collection, WRM explores two materials: fish leather and algae film" loading="lazy">
   </a>
   <div class="mh-concept observe">

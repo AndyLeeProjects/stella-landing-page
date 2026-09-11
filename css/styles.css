@@ -209,6 +209,15 @@ h1 .soft{font-style:italic;color:var(--muted)}
 .mh-plate.gap-md{margin-top:33px}
 .mh-plate.gap-sm{margin-top:30px}
 .mh .mh-tote{margin-bottom:0}
+/* Reserve each plate's exact aspect ratio so lazy-loaded images don't collapse the
+   box to 0 height before they load — was causing captions (e.g. Salmon Purse) to
+   render pinned to a phantom empty container while the real photo popped in late. */
+.mh-hero img{aspect-ratio:1568/2268}
+.mh-ocean img{aspect-ratio:1563/2658}
+.mh-materials img{aspect-ratio:1563/1036}
+.mh-purse img{aspect-ratio:1600/2951}
+.mh-bookmark img{aspect-ratio:1600/1850}
+.mh-tote img{aspect-ratio:1600/1200}
 /* hero */
 .mh-hero{position:relative}
 .mh-hero .mh-hero-content{position:absolute;left:0;right:0;top:26.5%;margin:0 auto;display:flex;flex-direction:column;align-items:center}
