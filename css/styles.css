@@ -234,9 +234,9 @@ h1 .soft{font-style:italic;color:var(--muted)}
 .mh-cap .sub{display:block;font-family:var(--body);font-weight:400;font-size:13px;line-height:1.2;margin-top:3px}
 .mh-cap-soon{position:absolute;right:14px;color:#fff;font-family:var(--body);font-weight:400;font-size:13px;line-height:1.15;
   text-shadow:0 1px 10px rgba(0,0,0,.45)}
-.mh-purse .mh-cap{top:26.5%}
-.mh-bookmark .mh-cap{top:32%}
-.mh-tote .mh-cap,.mh-tote .mh-cap-soon{top:8%}
+.mh-purse .mh-cap{top:32%}
+.mh-bookmark .mh-cap{top:53%}
+.mh-tote .mh-cap,.mh-tote .mh-cap-soon{top:49%}
 .mshop-img .mh-cap,.mshop-img .mh-cap-soon{top:50.5%}
 /* concept plate */
 .mh-concept{background:#111;color:#f2ede3;padding:30px 77px 92px;text-align:center;margin-top:23px}
