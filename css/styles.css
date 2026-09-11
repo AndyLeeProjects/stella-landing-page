@@ -222,7 +222,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
 .mh-hero{position:relative}
 .mh-hero .mh-hero-content{position:absolute;left:0;right:0;top:38%;margin:0 auto;display:flex;flex-direction:column;align-items:center}
 .mh-hero .mh-hero-txt{max-width:230px;text-align:center;color:#fff;
-  font-family:var(--display);font-weight:400;font-size:33px;line-height:33px;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+  font-family:var(--display);font-weight:400;font-size:18px;line-height:23px;text-shadow:0 2px 18px rgba(0,0,0,.45)}
 .mh-hero .mh-hero-txt .wrm{font-style:normal;letter-spacing:.06em}
 .mh-hero .mh-hero-txt em{font-style:italic}
 .mh-hero .mh-hero-link{margin-top:29px;width:max-content;
@@ -234,12 +234,12 @@ h1 .soft{font-style:italic;color:var(--muted)}
 .mh-cap .sub{display:block;font-family:var(--body);font-weight:400;font-size:13px;line-height:1.2;margin-top:3px}
 .mh-cap-soon{position:absolute;right:14px;color:#fff;font-family:var(--body);font-weight:400;font-size:13px;line-height:1.15;
   text-shadow:0 1px 10px rgba(0,0,0,.45)}
-.mh-purse .mh-cap{top:32%}
+.mh-purse .mh-cap{top:39%}
 .mh-bookmark .mh-cap{top:53%}
 .mh-tote .mh-cap,.mh-tote .mh-cap-soon{top:49%}
 .mshop-img .mh-cap,.mshop-img .mh-cap-soon{top:50.5%}
 /* concept plate */
-.mh-concept{background:#111;color:#f2ede3;padding:30px 77px 92px;text-align:center;margin-top:23px}
+.mh-concept{background:#151515;color:#f2ede3;padding:30px 77px 92px;text-align:center;margin-top:23px}
 .mh-concept p{position:relative;margin:0;padding:27px 0 29px;font-family:var(--body);font-weight:300;font-size:15.5px;line-height:15.7px;letter-spacing:0}
 .mh-concept p::before,.mh-concept p::after{content:"";position:absolute;left:0;right:0;height:1px;background:rgba(242,237,227,.75)}
 .mh-concept p::before{top:0}.mh-concept p::after{bottom:0}
