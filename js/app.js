@@ -67,6 +67,7 @@ const $ = (s, r=document) => r.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money = n => '$' + n.toLocaleString('en-US');
 const app = $('#app'), nav = $('#nav'), foot = $('#foot');
+const isMobile = () => window.matchMedia('(max-width:760px)').matches;
 
 function toast(msg){
   const t = $('.toast');
@@ -187,7 +188,7 @@ const plate = (p, img, blurb) => `
 
 const pages = {
   home(){
-    return window.matchMedia('(max-width:760px)').matches ? pages.homeMobile() : pages.homeDesktop();
+    return isMobile() ? pages.homeMobile() : pages.homeDesktop();
   },
 
   /* Mobile home — the editorial book from mobile_HOME.png */
@@ -300,8 +301,41 @@ const pages = {
 </div></section>`;
   },
 
+  /* Mobile shop / season — full-bleed plate list from mobile_SHOP.png */
+  mShopList(){
+    const item = (href, img, name, sub, price) => `
+      <a class="mshop-item" href="${href}" data-link>
+        <div class="mshop-img"><img src="${img}" alt="${esc(name)}" loading="lazy"></div>
+        <div class="mshop-cap"><div class="mshop-id"><span class="name">${esc(name)}</span><span class="sub">${esc(sub)}</span></div><span class="price">${price}</span></div>
+      </a>`;
+    return `<section class="mshop">
+      ${item('/product/salmon-purse','/img/purse-dark.jpg','Salmon Purse','Crust',money(PRODUCTS['salmon-purse'].price))}
+      ${item('/product/salmon-bookmark','/img/bookmark-blue.jpg','Salmon Bookmark','Crust',money(PRODUCTS['salmon-bookmark'].price))}
+      <div class="mshop-item">
+        <div class="mshop-img"><img src="/img/algae-tote.jpg" alt="Algae Tote — Natural — Coming soon" loading="lazy">
+          <div class="mh-cap"><span class="name">Algae Tote</span><span class="sub">Natural</span></div>
+          <div class="mh-cap-soon">Coming Soon</div>
+        </div>
+      </div>
+    </section>`;
+  },
+
+  /* Mobile fish-leather list — inset plates from mobile_Product_List_Page.png */
+  mProductList(){
+    const card = (href, img, name) => `
+      <a class="mpl-card" href="${href}" data-link>
+        <div class="mpl-img"><img src="${img}" alt="${esc(name)}" loading="lazy"></div>
+        <div class="mpl-cap"><span class="name">${esc(name)}</span><span class="sub"><em>The</em> Ocean Collection</span></div>
+      </a>`;
+    return `<section class="mpl">
+      ${card('/product/salmon-purse','/img/purse-dark.jpg','Salmon Purse')}
+      ${card('/product/salmon-bookmark','/img/m-bookmark.jpg','Salmon Bookmark')}
+    </section>`;
+  },
+
   shop(){
     document.title = 'Shop — WRM';
+    if(isMobile()) return pages.mShopList();
     return `<section class="pg editorial"><div class="ed-page">
       ${crumbs([['Home','/'],['Shop']])}
       <h1 class="pg-title">Shop</h1>
@@ -318,6 +352,7 @@ const pages = {
 
   season(){
     document.title = 'Ocean Season — WRM';
+    if(isMobile()) return pages.mShopList();
     return `<section class="pg editorial"><div class="ed-page">
       ${crumbs([['Shop','/shop'],['Ocean Season']])}
       <div class="season-hero observe"><img src="/img/ocean-scales.jpg" alt="Chapter I — Ocean"></div>
@@ -336,6 +371,7 @@ const pages = {
 
   fishLeather(){
     document.title = 'Fish Leather — WRM';
+    if(isMobile()) return pages.mProductList();
     const card = p => `<a class="card observe" href="/product/${p.id}" data-link>
       <div class="card-img"><img src="${p.images[0]}" alt="${esc(p.name)}" loading="lazy"></div>
       <div class="card-txt"><div><div class="card-name">${esc(p.name)}</div><div class="card-var">${esc(p.variant)}</div></div>
@@ -468,8 +504,8 @@ function render(path, y=0){
   for(const [re,fn] of routes){ const m = path.match(re); if(m){ html = fn(m); break; } }
   app.innerHTML = `<div class="page">${html ?? pages.notFound()}</div>`;
   const isHome = path === '/';
-  foot.classList.toggle('hide', isHome && !window.matchMedia('(max-width:760px)').matches); /* desktop home keeps the live site's own footer */
-  nav.classList.toggle('on-dark', isHome && window.matchMedia('(max-width:760px)').matches);
+  foot.classList.toggle('hide', isHome && !isMobile()); /* desktop home keeps the live site's own footer */
+  nav.classList.toggle('on-dark', isMobile() && (isHome || path==='/shop' || path==='/shop/' || path.replace(/\/$/,'')==='/shop/ocean-season'));
   renderCart();
   io?.disconnect();
   io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.12});
@@ -504,10 +540,10 @@ $('#cartClose').addEventListener('click', closeCart);
 scrim.addEventListener('click', closeCart);
 document.addEventListener('keydown', e => { if(e.key==='Escape'){ closeMenu(); closeCart(); } });
 
-function onScroll(){ const mobHome = location.pathname==='/' && window.matchMedia('(max-width:760px)').matches; nav.classList.toggle('solid', !mobHome && (window.scrollY > 24 || location.pathname !== '/')); }
+function onScroll(){ const mobHome = isMobile() && nav.classList.contains('on-dark'); nav.classList.toggle('solid', !mobHome && (window.scrollY > 24 || location.pathname !== '/')); }
 window.addEventListener('scroll', onScroll, {passive:true});
 
-window.matchMedia('(max-width:760px)').addEventListener('change', ()=>{ if(location.pathname==='/') render('/', scrollY); });
+window.matchMedia('(max-width:760px)').addEventListener('change', ()=> render(location.pathname, scrollY));
 
 /* ---------- Init ---------- */
 buildMenu();
