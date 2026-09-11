@@ -225,7 +225,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
   font-family:var(--display);font-weight:400;font-size:18px;line-height:23px;text-shadow:0 2px 18px rgba(0,0,0,.45)}
 .mh-hero .mh-hero-txt .wrm{font-style:normal;letter-spacing:.06em}
 .mh-hero .mh-hero-txt em{font-style:italic}
-.mh-hero .mh-hero-link{margin-top:29px;width:max-content;
+.mh-hero .mh-hero-link{margin-top:70px;width:max-content;
   font-family:var(--body);font-weight:400;font-size:13px;line-height:1.2;color:#fff;
   border-bottom:1px solid rgba(255,255,255,.85);padding-bottom:3px;text-shadow:0 2px 14px rgba(0,0,0,.45)}
 /* plate captions */
