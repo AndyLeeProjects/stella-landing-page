@@ -38,12 +38,9 @@ const PRODUCTS = {
 /* Menu tree — mirrors the requested hierarchy exactly */
 const MENU = [
   { label:'Shop', to:'/shop', children:[
-    { label:'Ocean Season', to:'/shop/ocean-season', children:[
-      { label:'Fish Leather', to:'/shop/ocean-season/fish-leather', children:[
-        { label:'Salmon Purse', to:'/product/salmon-purse' },
-        { label:'Salmon Bookmark', to:'/product/salmon-bookmark' }
-      ]},
-      { label:'Algae', soon:true }
+    { label:'Ocean', to:'/shop/ocean-season', children:[
+      { label:'Fish Leather', to:'/shop/ocean-season/fish-leather' },
+      { label:'Algae', to:'/about-materials/algae' }
     ]}
   ]},
   { label:'About Materials', to:'/about-materials' },
@@ -131,13 +128,12 @@ function buildMenu(){
     if(n.soon) return `<span class="menu-item soon">${esc(n.label)}<span class="tag">coming soon</span></span>`;
     if(n.children){
       return `<div class="menu-group">
-        <button class="menu-item" aria-expanded="false" data-toggle>${esc(n.label)}<span class="chev">›</span></button>
+        <button class="menu-item" aria-expanded="false" data-toggle>${esc(n.label)}<span class="chev">&gt;</span></button>
         <div class="menu-sub">
-          <a class="menu-item" href="${n.to}" data-link>All ${esc(n.label)}<span class="chev">→</span></a>
           ${n.children.map(item).join('')}
         </div></div>`;
     }
-    return `<a class="menu-item" href="${n.to}" data-link>${esc(n.label)}<span class="chev">→</span></a>`;
+    return `<a class="menu-item" href="${n.to}" data-link>${esc(n.label)}<span class="chev">&gt;</span></a>`;
   };
   $('#menuList').innerHTML = MENU.map(item).join('') + `
     <div class="menu-foot">
@@ -330,7 +326,7 @@ const pages = {
         <div class="mpl-cap"><span class="name">${esc(name)}</span><span class="sub"><em>The</em> Ocean Collection</span></div>
       </a>`;
     return `<section class="mpl">
-      ${card('/product/salmon-purse','/img/purse-dark.jpg','Salmon Purse')}
+      ${card('/product/salmon-purse','/img/purse-dark.jpg','Salmon Bag')}
       ${card('/product/salmon-bookmark','/img/m-bookmark.jpg','Salmon Bookmark')}
     </section>`;
   },
@@ -408,7 +404,6 @@ const pages = {
         <div class="mpd-p"><div>Dimensions</div>${p.dims.map(([k,v])=>`<div>${esc(k)}: ${esc(v)}</div>`).join('')}</div>
         <div class="mpd-p"><div>Materials</div>${p.materials.map(([k,v])=>`<div>${esc(k)}: ${esc(v)}</div>`).join('')}</div>
         <div class="mpd-p"><div>Care</div><div>${esc(p.care)}</div></div>
-        <button class="btn btn-fill mpd-add" data-add="${p.id}">Add to cart <span class="arr">→</span></button>
       </div>
     </section>`;
   },
