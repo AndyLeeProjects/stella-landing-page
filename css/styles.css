@@ -445,6 +445,34 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .mshop-img .mh-cap .sub{font-size:10.5px;margin-top:2px}
   .mshop-img .mh-cap-soon{right:13px;font-size:11px}
 
+  /* ---- Page frame + breadcrumb (all mobile inner pages) ---- */
+  .pg{padding-top:calc(var(--nav-h) + 9px)!important}
+  .crumbs{font-family:var(--body);font-size:11px;line-height:15.7px;gap:4px;padding:0 0 4px;color:var(--ink)}
+  .crumbs a{padding:10px 4px;margin:-10px -4px}
+
+  /* ---- About the materials, landing (mobile_About_Material-08.png) ---- */
+  .mat-hero + .mat-hero{margin-top:0}
+  .mat-hero .mat-cap{gap:38px}
+  .mat-hero .mat-cap img.sil{width:187px;height:auto;transform:rotate(-90deg);margin:67px -67px}
+  .mat-hero + .mat-hero .mat-cap img.sil{width:auto;height:204px;transform:none;margin:0}
+  .mat-hero .mat-cap span{font-size:20px}
+
+  /* ---- About the materials, detail (mobile_About_Material-09/10.png) ---- */
+  .mat-detail{padding:67px 0 0}
+  .mat-head{margin-bottom:0}
+  .mat-head .sil{height:auto;width:68px;margin-bottom:8px}
+  .mat-head h2{font-size:46px;line-height:44px}
+  .mat-detail.algae .mat-head{gap:18px;align-items:start}
+  .mat-detail.algae .mat-head .sil{height:139px;width:auto;margin:6px 0 0}
+  .mat-fig{width:204px;margin:22px 0 0 7px}
+  .mat-fig figcaption{position:absolute;left:calc(100% + 19px);bottom:0;display:block;text-align:left;margin:0;font-size:11px}
+  .mat-body{padding-left:11px;max-width:none}
+  .mat-detail.algae .mat-body{margin-top:176px}
+  .mat-body .sub{font-family:var(--editorial);font-style:italic;font-weight:500;font-size:16.5px;line-height:1.1;margin:12px 0 0}
+  .mat-body p{font-size:13.5px;line-height:15.6px;margin:20px 0 0}
+  .mat-cta{padding:200px 0 0;text-align:center}
+  .mat-cta .link{font-family:var(--body);font-size:11px;border-bottom-width:1px;padding-bottom:2px}
+
   /* ---- Mobile product detail (mobile_Purse.png / mobile_Bookmark.png) ---- */
   .mpd{display:block;padding-top:73px}
   .mpd-crumbs{font-family:var(--body);font-size:11px;line-height:15.7px;padding:0 19px;color:var(--ink)}

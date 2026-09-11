@@ -161,7 +161,7 @@ async function subscribe(form, source){
 
 /* ---------- Pages ---------- */
 const crumbs = (list) => `<nav class="crumbs" aria-label="Breadcrumb">${list.map((c,i)=> i===list.length-1
-  ? `<span class="cur">${esc(c[0])}</span>` : `<a href="${c[1]}" data-link>${esc(c[0])}</a><span>›</span>`).join('')}</nav>`;
+  ? `<span class="cur">${esc(c[0])}</span>` : `<a href="${c[1]}" data-link>${esc(c[0])}</a><span>${isMobile()?'&gt;':'›'}</span>`).join('')}</nav>`;
 
 const materialCard = (cls, k1, v1, sup, loc, img, desc) => `
   <div class="material-card ${cls} observe"><div class="mat-col">
@@ -444,7 +444,7 @@ const pages = {
   materials(){
     document.title = 'About the Materials — WRM';
     return `<section class="pg editorial"><div class="ed-page">
-      ${crumbs([['Home','/'],['About The Materials']])}
+      ${crumbs(isMobile() ? [['About The Materials']] : [['Home','/'],['About The Materials']])}
       <a class="mat-hero observe" href="/about-materials/fish-leather" data-link aria-label="Fish Leather">
         <img class="tex" src="/img/fish-leather-hero.jpg" alt="Fish Leather">
         <div class="mat-cap"><img class="sil" src="/img/sil-fish.png" alt=""><span>Fish Leather</span></div>
