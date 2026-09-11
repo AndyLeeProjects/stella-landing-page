@@ -234,7 +234,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
 .mh-cap .sub{display:block;font-family:var(--body);font-weight:400;font-size:13px;line-height:1.2;margin-top:3px}
 .mh-cap-soon{position:absolute;right:14px;color:#fff;font-family:var(--body);font-weight:400;font-size:13px;line-height:1.15;
   text-shadow:0 1px 10px rgba(0,0,0,.45)}
-.mh-purse .mh-cap{top:39%}
+.mh-purse .mh-cap{top:70%}
 .mh-bookmark .mh-cap{top:53%}
 .mh-tote .mh-cap,.mh-tote .mh-cap-soon{top:49%}
 .mshop-img .mh-cap,.mshop-img .mh-cap-soon{top:50.5%}
