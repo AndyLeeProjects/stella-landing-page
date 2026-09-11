@@ -199,7 +199,7 @@ const pages = {
   <a class="mh-plate mh-hero" href="/wrm-world" data-link aria-label="WRM is an attempt to make beautiful things in a world that is burning up. Explore WRM World">
     <img src="/img/m-hero.jpg" alt="" fetchpriority="high">
     <div class="mh-hero-content">
-      <div class="mh-hero-txt"><span class="wrm">WRM</span> <em>is an attempt to make beautiful things in a world that is burning up</em></div>
+      <div class="mh-hero-txt"><span class="wrm">WRM</span> <em>is an<br>attempt to make<br>beautiful things<br>in a world that is<br>burning up</em></div>
       <span class="mh-hero-link">Explore WRM World</span>
     </div>
   </a>
