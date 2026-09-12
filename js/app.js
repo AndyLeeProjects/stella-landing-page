@@ -568,7 +568,12 @@ document.addEventListener('submit', e => {
   if(f.id==='footForm'){ e.preventDefault(); subscribe(f,'footer'); f.querySelector('input').value=''; }
 });
 menuBtn.addEventListener('click', ()=> menu.getAttribute('aria-hidden')==='false' ? closeMenu() : openMenu());
-$('#cartBtn').addEventListener('click', openCart);
+/* Mobile menu mockup (mobile_MENU-05/06/07.png): hamburger icon stays put on the left while
+   open; the cart icon on the right morphs into a close "X" instead, and closes the menu. */
+$('#cartBtn').addEventListener('click', ()=>{
+  if(isMobile() && menu.getAttribute('aria-hidden')==='false'){ closeMenu(); return; }
+  openCart();
+});
 $('#cartClose').addEventListener('click', closeCart);
 scrim.addEventListener('click', closeCart);
 document.addEventListener('keydown', e => { if(e.key==='Escape'){ closeMenu(); closeCart(); } });

@@ -445,6 +445,16 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .season-hero{height:65vh}
   .menu-item{font-size:22px}
 
+  /* ---- Menu overlay open state (mobile_MENU-05/06/07.png): cart icon on the right
+     morphs into a close "X" while the menu is open; hamburger on the left is unchanged. ---- */
+  .nav.menu-open .nav-cart svg{display:none}
+  .nav.menu-open .nav-cart::before,.nav.menu-open .nav-cart::after{
+    content:"";position:absolute;left:50%;top:50%;width:22px;height:1.4px;background:var(--ink);
+  }
+  .nav.menu-open .nav-cart::before{transform:translate(-50%,-50%) rotate(45deg)}
+  .nav.menu-open .nav-cart::after{transform:translate(-50%,-50%) rotate(-45deg)}
+  .nav.menu-open .nav-cart-count{display:none}
+
   /* ---- Mobile shop plate list (mobile_SHOP.png) ---- */
   .mshop{display:block;background:#fff}
   .mshop-item{display:block;text-decoration:none;color:inherit}
