@@ -549,8 +549,10 @@ function render(path, y=0){
   for(const [re,fn] of routes){ const m = path.match(re); if(m){ html = fn(m); break; } }
   app.innerHTML = `<div class="page">${html ?? pages.notFound()}</div>`;
   const isHome = path === '/';
+  const isProductDetail = /^\/product\//.test(path);
   foot.classList.toggle('hide', isHome && !isMobile()); /* desktop home keeps the live site's own footer */
   foot.classList.toggle('foot-home', isHome); /* mobile_HOME.png shows a distinct footer style (sans-serif lead, wider link spacing) vs mobile_SHOP/_Purse/etc */
+  foot.classList.toggle('foot-neutral', isProductDetail); /* mobile_Purse.png / mobile_Bookmark.png: footer continues the page's own neutral off-white/textured tone, not the warm --paper beige */
   nav.classList.toggle('on-dark', isMobile() && (isHome || path==='/shop' || path==='/shop/' || path.replace(/\/$/,'')==='/shop/ocean-season'));
   renderCart();
   io?.disconnect();

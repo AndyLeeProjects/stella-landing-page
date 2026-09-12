@@ -536,7 +536,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .mpd-line{margin:8px 0 0}
   .mpd-line + .mpd-line{margin-top:0}
   .mpd-p{margin:15.5px 0 0 0;padding-bottom:0}
-  .mpd-body > .mpd-p:last-child{margin-bottom:66px}
+  .mpd-body{padding-bottom:66px}
 
   /* ---- Mobile fish-leather list (mobile_Product_List_Page.png) ---- */
   .mpl{display:block;padding:88px 0 0}
@@ -580,4 +580,9 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .foot-home .foot-mark{width:188px;margin-top:23px}
   .foot-home .arr{font-size:0}
   .foot-home .arr::before{content:">";font-size:12px}
+
+  /* ---- Product detail footer variant (mobile_Purse.png / mobile_Bookmark.png): continues the
+     page's own neutral off-white/textured tone (#e9e8e6-ish), not the warm --paper beige used on
+     Shop/Home/About Materials. Lead + links keep the default editorial italic styling. ---- */
+  .foot-neutral{background:#e9e8e6 url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply}
 }
