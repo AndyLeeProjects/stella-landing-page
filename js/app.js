@@ -552,9 +552,10 @@ function render(path, y=0){
   const isProductDetail = /^\/product\//.test(path);
   const isAboutMaterials = /^\/about-materials/.test(path); /* mobile_About_Material-08/09/10.png: same neutral off-white treatment as product detail pages, not the warm --paper beige */
   const isProductList = isMobile() && path.replace(/\/$/,'') === '/shop/ocean-season/fish-leather'; /* mobile_Product_List_Page.png: nav/body/footer are the same seamless neutral off-white as product detail pages, not the warm --paper beige — measured live rgba(232,223,200,.86) nav vs mockup rgb(~234,233,231) */
+  const isShop = isMobile() && (path==='/shop' || path==='/shop/'); /* mobile_SHOP.png: footer is the same neutral off-white (~rgb 235,234,232) as product detail/list pages, not the warm --paper beige — measured live rgb(226,217,195) footer vs mockup rgb(~235,234,232) */
   foot.classList.toggle('hide', isHome && !isMobile()); /* desktop home keeps the live site's own footer */
   foot.classList.toggle('foot-home', isHome); /* mobile_HOME.png shows a distinct footer style (sans-serif lead, wider link spacing) vs mobile_SHOP/_Purse/etc */
-  foot.classList.toggle('foot-neutral', isProductDetail || (isMobile() && (isAboutMaterials || isProductList))); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png: footer continues the page's own neutral off-white/textured tone, not the warm --paper beige */
+  foot.classList.toggle('foot-neutral', isProductDetail || (isMobile() && (isAboutMaterials || isProductList || isShop))); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png / mobile_SHOP.png: footer continues the neutral off-white/textured tone, not the warm --paper beige */
   nav.classList.toggle('nav-neutral', isMobile() && (isProductDetail || isAboutMaterials || isProductList)); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png: header bar is the SAME seamless neutral off-white paper texture as the page body below it — no beige blur bar, no dividing line */
   nav.classList.toggle('on-dark', isMobile() && (isHome || path==='/shop' || path==='/shop/' || path.replace(/\/$/,'')==='/shop/ocean-season'));
   renderCart();
