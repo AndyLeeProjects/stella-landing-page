@@ -472,9 +472,11 @@ h1 .soft{font-style:italic;color:var(--muted)}
      token (--menu:#8f9a6b, measured mockup rgb(198,195,161)) — override color for mobile only. */
   .menu{background:#c6c3a1 url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply}
   .menu-list{padding-bottom:0}
+  /* mockup_MENU-05/06/07.png measured footer rgb(228,227,225) — same neutral off-white as the
+     product-detail/about-materials footer treatment, NOT the warm --paper beige. */
   .menu-embedded-wrap{margin-top:56px;margin-left:calc(-1 * var(--gutter));margin-right:calc(-1 * var(--gutter));
     flex:1;display:flex;flex-direction:column;
-    background:var(--paper) url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply}
+    background:#e9e8e6 url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply}
   .menu-embedded-foot{padding:40px var(--gutter) 0;display:grid;grid-template-columns:1fr;gap:18px}
   .menu-embedded-foot .foot-links{flex-direction:column;text-align:right;gap:6px;font-size:15px;align-self:flex-end}
   .menu-embedded-mark{margin:28px auto 0;padding:0 var(--gutter) calc(28px + env(safe-area-inset-bottom))}
@@ -544,7 +546,8 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .mpd-body{padding-bottom:66px}
 
   /* ---- Mobile fish-leather list (mobile_Product_List_Page.png) ---- */
-  .mpl{display:block;padding:88px 0 0}
+  /* mobile_Product_List_Page.png: seamless neutral off-white body, same tone as nav-neutral/foot-neutral above and below it, not the page's default warm --paper beige. */
+  .mpl{display:block;padding:88px 0 0;background:#e9e8e6}
   .mpl-card{display:block;text-decoration:none;color:inherit;margin:0 12px}
   .mpl-card + .mpl-card{margin-top:121px}
   .mpl-card + .mpl-card .mpl-img{margin:0 20px}
