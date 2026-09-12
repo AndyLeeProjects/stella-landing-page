@@ -553,6 +553,7 @@ function render(path, y=0){
   foot.classList.toggle('hide', isHome && !isMobile()); /* desktop home keeps the live site's own footer */
   foot.classList.toggle('foot-home', isHome); /* mobile_HOME.png shows a distinct footer style (sans-serif lead, wider link spacing) vs mobile_SHOP/_Purse/etc */
   foot.classList.toggle('foot-neutral', isProductDetail); /* mobile_Purse.png / mobile_Bookmark.png: footer continues the page's own neutral off-white/textured tone, not the warm --paper beige */
+  nav.classList.toggle('nav-neutral', isMobile() && isProductDetail); /* mobile_Purse.png / mobile_Bookmark.png: header bar is the SAME seamless neutral off-white paper texture as the page body/breadcrumb below it — no beige blur bar, no dividing line */
   nav.classList.toggle('on-dark', isMobile() && (isHome || path==='/shop' || path==='/shop/' || path.replace(/\/$/,'')==='/shop/ocean-season'));
   renderCart();
   io?.disconnect();
