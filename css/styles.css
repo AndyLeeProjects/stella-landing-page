@@ -454,6 +454,30 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .nav.menu-open .nav-cart::before{transform:translate(-50%,-50%) rotate(45deg)}
   .nav.menu-open .nav-cart::after{transform:translate(-50%,-50%) rotate(-45deg)}
   .nav.menu-open .nav-cart-count{display:none}
+  /* Menu overlay must always show the dark-ink WRM wordmark & hamburger, even when opened
+     over a page whose nav carries .on-dark (e.g. mobile Home) — mockup_MENU-05/06/07.png
+     show a consistent dark wordmark/hamburger regardless of the page underneath. */
+  .nav.menu-open.on-dark .nav-logo img{filter:none!important}
+  .nav.menu-open.on-dark .nav-menu span{background:var(--ink)!important}
+  /* mockup_MENU-05/06/07.png: the LEFT hamburger stays a static 3-line icon in every menu
+     state (it does not morph into an X) — only the right cart icon becomes the close X. */
+  .nav-menu[aria-expanded="true"] span:nth-child(1){transform:translateY(-7px)!important;rotate:0deg!important}
+  .nav-menu[aria-expanded="true"] span:nth-child(2){opacity:1!important}
+  .nav-menu[aria-expanded="true"] span:nth-child(3){transform:translateY(7px)!important;rotate:0deg!important}
+
+  /* ---- Menu overlay embedded footer (mobile_MENU-05/06/07.png): the olive nav-item panel
+     transitions straight into the site's paper-texture footer at the bottom of the overlay,
+     not a plain two-link row. The paper block fills the rest of the panel to the bottom edge. ---- */
+  /* mockup_MENU-05/06/07.png show a lighter khaki-olive panel (~#C6C3A1) than the desktop
+     token (--menu:#8f9a6b, measured mockup rgb(198,195,161)) — override color for mobile only. */
+  .menu{background:#c6c3a1 url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply}
+  .menu-list{padding-bottom:0}
+  .menu-embedded-wrap{margin-top:56px;margin-left:calc(-1 * var(--gutter));margin-right:calc(-1 * var(--gutter));
+    flex:1;display:flex;flex-direction:column;
+    background:var(--paper) url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply}
+  .menu-embedded-foot{padding:40px var(--gutter) 0;display:grid;grid-template-columns:1fr;gap:18px}
+  .menu-embedded-foot .foot-links{flex-direction:column;text-align:right;gap:6px;font-size:15px;align-self:flex-end}
+  .menu-embedded-mark{margin:28px auto 0;padding:0 var(--gutter) calc(28px + env(safe-area-inset-bottom))}
 
   /* ---- Mobile shop plate list (mobile_SHOP.png) ---- */
   .mshop{display:block;background:#fff}

@@ -135,11 +135,34 @@ function buildMenu(){
     }
     return `<a class="menu-item" href="${n.to}" data-link>${esc(n.label)}<span class="chev">&gt;</span></a>`;
   };
-  $('#menuList').innerHTML = MENU.map(item).join('') + `
-    <div class="menu-foot">
+  /* Mobile menu overlay (mobile_MENU-05/06/07.png): below the nav items, the panel transitions
+     to the site's own paper-texture footer — signup form, Info/Contact/FAQ links, and the big
+     WITH RAW MATERIALS wordmark — not a plain Instagram/email line. Desktop keeps the simple
+     two-link menu-foot untouched. */
+  const embeddedFoot = `
+    <div class="menu-embedded-wrap">
+      <div class="menu-embedded-foot foot-row">
+        <form class="foot-form" id="menuFootForm">
+          <p class="foot-lead">Sign up to stay updated.</p>
+          <label class="foot-field">
+            <input type="email" required placeholder="Email" autocomplete="email" aria-label="Email">
+            <button type="submit" aria-label="Subscribe"><span class="arr">&gt;</span></button>
+          </label>
+        </form>
+        <nav class="foot-links" aria-label="Footer">
+          <a href="/faq" data-link>Info</a>
+          <a href="mailto:hello@withrawmaterials.com">Contact</a>
+          <a href="/faq" data-link>FAQ</a>
+        </nav>
+      </div>
+      <img class="foot-mark menu-embedded-mark" src="/img/wordmark.png" alt="WITH RAW MATERIALS">
+    </div>`;
+  $('#menuList').innerHTML = MENU.map(item).join('') + (isMobile()
+    ? embeddedFoot
+    : `<div class="menu-foot">
       <a href="https://www.instagram.com/withrawmaterials_" target="_blank" rel="noopener">@withrawmaterials</a>
       <a href="mailto:hello@withrawmaterials.com">hello@withrawmaterials.com</a>
-    </div>`;
+    </div>`);
 }
 
 /* ---------- Newsletter ---------- */
@@ -565,7 +588,7 @@ document.addEventListener('click', e => {
 document.addEventListener('submit', e => {
   const f = e.target;
   if(f.matches('[data-newsletter]')){ e.preventDefault(); subscribe(f, f.dataset.newsletter); }
-  if(f.id==='footForm'){ e.preventDefault(); subscribe(f,'footer'); f.querySelector('input').value=''; }
+  if(f.id==='footForm' || f.id==='menuFootForm'){ e.preventDefault(); subscribe(f, f.id==='menuFootForm'?'menu':'footer'); f.querySelector('input').value=''; }
 });
 menuBtn.addEventListener('click', ()=> menu.getAttribute('aria-hidden')==='false' ? closeMenu() : openMenu());
 /* Mobile menu mockup (mobile_MENU-05/06/07.png): hamburger icon stays put on the left while
