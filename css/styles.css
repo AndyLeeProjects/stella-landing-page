@@ -451,7 +451,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .mshop-img{position:relative;line-height:0;background:#111}
   .mshop-img img{width:100%;height:auto;display:block}
   .mshop-cap{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:15px 13px 145px 14px}
-  .mshop-cap .name{display:block;font-family:var(--editorial);font-weight:500;font-size:15px;line-height:1.15}
+  .mshop-cap .name{display:block;font-family:var(--editorial);font-weight:700;font-size:15px;line-height:1.15}
   .mshop-cap .sub{display:block;font-family:var(--body);font-size:10.5px;line-height:1.2;margin-top:4px}
   .mshop-cap .price{font-family:var(--body);font-size:10.5px;line-height:1.15;white-space:nowrap}
   .mshop-img .mh-cap{left:15px}
