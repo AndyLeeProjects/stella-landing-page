@@ -505,6 +505,11 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .mat-hero + .mat-hero .mat-cap img.sil{width:auto;height:204px;transform:none;margin:0}
   .mat-hero .mat-cap span{font-size:20px}
 
+  /* ---- About the materials, landing + detail (mobile_About_Material-08/09/10.png): the whole
+     page is the neutral off-white/textured tone (same as product detail pages), not the warm
+     --paper beige — the .pg wrapper itself needs the override since .ed-page has no own bg. ---- */
+  .pg.mat-page{background:#e9e8e6 url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply}
+
   /* ---- About the materials, detail (mobile_About_Material-09/10.png) ---- */
   .mat-detail{padding:67px 0 0}
   .mat-head{margin-bottom:0}

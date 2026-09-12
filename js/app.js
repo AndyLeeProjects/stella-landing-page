@@ -463,7 +463,7 @@ const pages = {
 
   materials(){
     document.title = 'About the Materials — WRM';
-    return `<section class="pg editorial"><div class="ed-page">
+    return `<section class="pg editorial mat-page"><div class="ed-page">
       ${crumbs(isMobile() ? [['About The Materials']] : [['Home','/'],['About The Materials']])}
       <a class="mat-hero observe" href="/about-materials/fish-leather" data-link aria-label="Fish Leather">
         <img class="tex" src="/img/fish-leather-hero.jpg" alt="Fish Leather">
@@ -479,7 +479,7 @@ const pages = {
   materialDetail(which){
     const fish = which==='fish-leather';
     document.title = (fish?'Fish Leather':'Algae') + ' — WRM';
-    return `<section class="pg editorial"><div class="ed-page">
+    return `<section class="pg editorial mat-page"><div class="ed-page">
       ${crumbs([['About The Materials','/about-materials'],[fish?'Fish Leather':'Algae']])}
       <div class="mat-detail ${fish?'fish':'algae'}">
         <div class="mat-head observe">
@@ -550,10 +550,11 @@ function render(path, y=0){
   app.innerHTML = `<div class="page">${html ?? pages.notFound()}</div>`;
   const isHome = path === '/';
   const isProductDetail = /^\/product\//.test(path);
+  const isAboutMaterials = /^\/about-materials/.test(path); /* mobile_About_Material-08/09/10.png: same neutral off-white treatment as product detail pages, not the warm --paper beige */
   foot.classList.toggle('hide', isHome && !isMobile()); /* desktop home keeps the live site's own footer */
   foot.classList.toggle('foot-home', isHome); /* mobile_HOME.png shows a distinct footer style (sans-serif lead, wider link spacing) vs mobile_SHOP/_Purse/etc */
-  foot.classList.toggle('foot-neutral', isProductDetail); /* mobile_Purse.png / mobile_Bookmark.png: footer continues the page's own neutral off-white/textured tone, not the warm --paper beige */
-  nav.classList.toggle('nav-neutral', isMobile() && isProductDetail); /* mobile_Purse.png / mobile_Bookmark.png: header bar is the SAME seamless neutral off-white paper texture as the page body/breadcrumb below it — no beige blur bar, no dividing line */
+  foot.classList.toggle('foot-neutral', isProductDetail || (isMobile() && isAboutMaterials)); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png: footer continues the page's own neutral off-white/textured tone, not the warm --paper beige */
+  nav.classList.toggle('nav-neutral', isMobile() && (isProductDetail || isAboutMaterials)); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png: header bar is the SAME seamless neutral off-white paper texture as the page body/breadcrumb below it — no beige blur bar, no dividing line */
   nav.classList.toggle('on-dark', isMobile() && (isHome || path==='/shop' || path==='/shop/' || path.replace(/\/$/,'')==='/shop/ocean-season'));
   renderCart();
   io?.disconnect();
