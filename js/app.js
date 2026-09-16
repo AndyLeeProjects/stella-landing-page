@@ -127,6 +127,27 @@ function openCart(){ closeMenu(); cartEl.setAttribute('aria-hidden','false'); $(
 function closeCart(){ cartEl.setAttribute('aria-hidden','true'); $('#cartBtn').setAttribute('aria-expanded','false'); scrim.classList.remove('show'); setTimeout(()=>scrim.hidden=true,300); document.body.style.overflow=''; }
 
 function buildMenu(){
+  $('#mobileMenuClose')?.remove();
+  menu.querySelector('.menu-footer')?.remove();
+  if(isMobile()){
+    const group = (label, to, id, children) => `<div class="menu-group"><div class="menu-row"><a class="menu-item" href="${to}" data-link>${label}</a><button class="menu-expand" data-menu-toggle aria-label="Expand ${label}" aria-expanded="false" aria-controls="${id}"><span class="chev">&gt;</span></button></div><div class="menu-sub" id="${id}">${children}</div></div>`;
+    const leaf = (label, to) => `<a class="menu-item" href="${to}" data-link>${label}<span class="chev" aria-hidden="true">&gt;</span></a>`;
+    $('#menuList').innerHTML = group('Shop','/shop','mobileShop',group('Ocean','/shop/ocean-season','mobileOcean',
+      leaf('Fish Leather','/shop/ocean-season/fish-leather') + `<span class="menu-item" aria-disabled="true" aria-label="Algae — coming soon">Algae<span class="chev">&gt;</span></span>`)) +
+      MENU.slice(1).map(n=>leaf(esc(n.label),n.to)).join('');
+    const menuFooter = foot.cloneNode(true);
+    menuFooter.removeAttribute('id');
+    menuFooter.className = 'foot menu-footer';
+    menuFooter.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
+    menuFooter.querySelector('form').dataset.newsletter = 'menu';
+    menuFooter.querySelector('.foot-lead').textContent = 'Sign up to stay updated.';
+    menu.append(menuFooter);
+    const close = document.createElement('button');
+    close.id = 'mobileMenuClose'; close.className = 'mobile-menu-close';
+    close.setAttribute('aria-label','Close menu'); close.innerHTML = '<span></span><span></span>';
+    close.addEventListener('click',closeMenu); nav.append(close);
+    return;
+  }
   const item = (n) => {
     if(n.soon) return `<span class="menu-item soon">${esc(n.label)}<span class="tag">coming soon</span></span>`;
     if(n.children){
@@ -198,7 +219,7 @@ const pages = {
 <section class="mh">
   <a class="mh-plate mh-hero" href="/wrm-world" data-link aria-label="WRM is an attempt to make beautiful things in a world that is burning up. Explore WRM World">
     <img src="/img/m-hero.jpg" alt="" fetchpriority="high">
-    <div class="mh-hero-txt"><span class="wrm">WRM</span> <em>is an attempt to make beautiful things in a world that is burning up</em></div>
+    <div class="mh-hero-txt"><span class="hero-line"><span class="wrm">WRM</span> <em>is an</em></span><em class="hero-line">attempt to make</em><em class="hero-line">beautiful things</em><em class="hero-line">in a world that is</em><em class="hero-line">burning up</em></div>
     <span class="mh-hero-link">Explore WRM World</span>
   </a>
   <a class="mh-plate" href="/shop/ocean-season" data-link aria-label="Chapter I — Ocean">
@@ -391,10 +412,10 @@ const pages = {
   mProduct(p){
     const crumb = [['Ocean','/shop/ocean-season'],['Fish Leather','/shop/ocean-season/fish-leather']]
       .map(c=>`<a href="${c[1]}" data-link>${esc(c[0])}</a> &gt; `).join('');
-    return `<section class="mpd">
+    return `<section class="mpd mpd-${p.id}">
       <nav class="mpd-crumbs" aria-label="Breadcrumb">${crumb}<span class="cur">${esc(p.name)}</span></nav>
       <div class="mpd-gallery" id="pdStrip">
-        ${p.images.map((src,i)=>`<img src="${src}" alt="${esc(p.name)}${i?' — detail':''}"${i?' loading="lazy"':''}>`).join('')}
+        ${p.images.map((src,i)=>`<div class="mpd-slide"><img src="${src}" alt="${esc(p.name)}${i?' — detail':''}"${i?' loading="lazy"':''}></div>`).join('')}
       </div>
       <div class="mpd-body">
         <div class="mpd-head"><h1 class="mpd-name">${esc(p.name)}</h1><span class="mpd-n" id="pdN">1 / ${p.images.length}</span></div>
@@ -403,9 +424,9 @@ const pages = {
         <p class="mpd-p">${esc(p.desc)}</p>
         <p class="mpd-p">${esc(p.note)}</p>
         <p class="mpd-p">${esc(p.origin)}</p>
-        <div class="mpd-p"><div>Dimensions</div>${p.dims.map(([k,v])=>`<div>${esc(k)}: ${esc(v)}</div>`).join('')}</div>
+        <div class="mpd-p"><div>Dimensions</div><div>${p.dims.slice(0,3).map(([k,v])=>`${esc(k)}: ${esc(v)}`).join(' × ')}</div>${p.dims.slice(3).map(([k,v])=>`<div>${esc(k)}: ${esc(v)}</div>`).join('')}</div>
         <div class="mpd-p"><div>Materials</div>${p.materials.map(([k,v])=>`<div>${esc(k)}: ${esc(v)}</div>`).join('')}</div>
-        <div class="mpd-p"><div>Care</div><div>${esc(p.care)}</div></div>
+        <div class="mpd-p"><div>Care</div><div>${esc(p.care).replace('. ','.<br>')}</div></div>
         <button class="btn btn-fill mpd-add" data-add="${p.id}">Add to cart <span class="arr">→</span></button>
       </div>
     </section>`;
@@ -529,6 +550,7 @@ function render(path, y=0){
   for(const [re,fn] of routes){ const m = path.match(re); if(m){ html = fn(m); break; } }
   app.innerHTML = `<div class="page">${html ?? pages.notFound()}</div>`;
   const isHome = path === '/';
+  if(isMobile()) foot.querySelector('.foot-lead').textContent = isHome ? "Sign up to stay updated with WRM's journey" : 'Sign up to stay updated.';
   foot.classList.toggle('hide', isHome && !isMobile()); /* desktop home keeps the live site's own footer */
   nav.classList.toggle('on-dark', isMobile() && (isHome || path==='/shop' || path==='/shop/' || path.replace(/\/$/,'')==='/shop/ocean-season'));
   renderCart();
@@ -536,11 +558,7 @@ function render(path, y=0){
   io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.12});
   app.querySelectorAll('.observe').forEach(el=>io.observe(el));
   const strip = $('#pdStrip');
-  if(strip){
-    const first = strip.children[0];
-    const fit = () => { if(first.naturalWidth) strip.style.aspectRatio = first.naturalWidth + '/' + first.naturalHeight; };
-    first.complete ? fit() : first.addEventListener('load', fit);
-  }
+
   if(strip) strip.addEventListener('scroll', ()=>{
     const i = Math.round(strip.scrollLeft / strip.clientWidth);
     $('#pdN').textContent = `${i+1} / ${strip.children.length}`;
@@ -554,6 +572,7 @@ window.addEventListener('popstate', e => render(e.state?.path || location.pathna
 
 /* ---------- Events ---------- */
 document.addEventListener('click', e => {
+  const mt = e.target.closest('[data-menu-toggle]'); if(mt){ const open = mt.getAttribute('aria-expanded')==='true'; mt.setAttribute('aria-expanded',String(!open)); mt.parentElement.nextElementSibling.classList.toggle('open',!open); return; }
   const a = e.target.closest('a[data-link]'); if(a){ e.preventDefault(); go(a.getAttribute('href')); return; }
   const tg = e.target.closest('[data-toggle]'); if(tg){ const open = tg.getAttribute('aria-expanded')==='true'; tg.setAttribute('aria-expanded',String(!open)); tg.nextElementSibling.classList.toggle('open',!open); return; }
   const ad = e.target.closest('[data-add]'); if(ad){ add(ad.dataset.add); openCart(); return; }
@@ -578,7 +597,10 @@ document.addEventListener('keydown', e => { if(e.key==='Escape'){ closeMenu(); c
 function onScroll(){ const mobHome = isMobile() && nav.classList.contains('on-dark'); nav.classList.toggle('solid', !mobHome && (window.scrollY > 24 || location.pathname !== '/')); }
 window.addEventListener('scroll', onScroll, {passive:true});
 
-window.matchMedia('(max-width:760px)').addEventListener('change', ()=> render(location.pathname, scrollY));
+window.matchMedia('(max-width:760px)').addEventListener('change', ()=>{
+  foot.querySelector('.foot-lead').textContent = "Sign up to stay updated with WRM's journey";
+  buildMenu(); render(location.pathname, scrollY);
+});
 
 /* ---------- Init ---------- */
 buildMenu();
