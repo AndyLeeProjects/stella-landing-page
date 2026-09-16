@@ -38,12 +38,9 @@ const PRODUCTS = {
 /* Menu tree — mirrors the requested hierarchy exactly */
 const MENU = [
   { label:'Shop', to:'/shop', children:[
-    { label:'Ocean Season', to:'/shop/ocean-season', children:[
-      { label:'Fish Leather', to:'/shop/ocean-season/fish-leather', children:[
-        { label:'Salmon Purse', to:'/product/salmon-purse' },
-        { label:'Salmon Bookmark', to:'/product/salmon-bookmark' }
-      ]},
-      { label:'Algae', soon:true }
+    { label:'Ocean', to:'/shop/ocean-season', children:[
+      { label:'Fish Leather', to:'/shop/ocean-season/fish-leather' },
+      { label:'Algae', to:'/about-materials/algae' }
     ]}
   ]},
   { label:'About Materials', to:'/about-materials' },
@@ -133,7 +130,7 @@ function buildMenu(){
     const group = (label, to, id, children) => `<div class="menu-group"><div class="menu-row"><a class="menu-item" href="${to}" data-link>${label}</a><button class="menu-expand" data-menu-toggle aria-label="Expand ${label}" aria-expanded="false" aria-controls="${id}"><span class="chev">&gt;</span></button></div><div class="menu-sub" id="${id}">${children}</div></div>`;
     const leaf = (label, to) => `<a class="menu-item" href="${to}" data-link>${label}<span class="chev" aria-hidden="true">&gt;</span></a>`;
     $('#menuList').innerHTML = group('Shop','/shop','mobileShop',group('Ocean','/shop/ocean-season','mobileOcean',
-      leaf('Fish Leather','/shop/ocean-season/fish-leather') + `<span class="menu-item" aria-disabled="true" aria-label="Algae — coming soon">Algae<span class="chev">&gt;</span></span>`)) +
+      leaf('Fish Leather','/shop/ocean-season/fish-leather') + leaf('Algae','/about-materials/algae'))) +
       MENU.slice(1).map(n=>leaf(esc(n.label),n.to)).join('');
     const menuFooter = foot.cloneNode(true);
     menuFooter.removeAttribute('id');
@@ -152,13 +149,13 @@ function buildMenu(){
     if(n.soon) return `<span class="menu-item soon">${esc(n.label)}<span class="tag">coming soon</span></span>`;
     if(n.children){
       return `<div class="menu-group">
-        <button class="menu-item" aria-expanded="false" data-toggle>${esc(n.label)}<span class="chev">›</span></button>
+        <button class="menu-item" aria-expanded="false" data-toggle>${esc(n.label)}<span class="chev">&gt;</span></button>
         <div class="menu-sub">
-          <a class="menu-item" href="${n.to}" data-link>All ${esc(n.label)}<span class="chev">→</span></a>
+
           ${n.children.map(item).join('')}
         </div></div>`;
     }
-    return `<a class="menu-item" href="${n.to}" data-link>${esc(n.label)}<span class="chev">→</span></a>`;
+    return `<a class="menu-item" href="${n.to}" data-link>${esc(n.label)}<span class="chev">&gt;</span></a>`;
   };
   $('#menuList').innerHTML = MENU.map(item).join('') + `
     <div class="menu-foot">
@@ -598,7 +595,7 @@ function onScroll(){ const mobHome = isMobile() && nav.classList.contains('on-da
 window.addEventListener('scroll', onScroll, {passive:true});
 
 window.matchMedia('(max-width:760px)').addEventListener('change', ()=>{
-  foot.querySelector('.foot-lead').textContent = "Sign up to stay updated with WRM's journey";
+  foot.querySelector('.foot-lead').textContent = 'Sign up to stay updated.';
   buildMenu(); render(location.pathname, scrollY);
 });
 
