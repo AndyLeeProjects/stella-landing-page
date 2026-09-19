@@ -721,7 +721,11 @@ h1 .soft{font-style:italic;color:var(--muted)}
      ~30.9% — matching the reference while keeping the bag and floor complete. */
   .mh2-purse{padding-top:0}
   .mh2-purse img{aspect-ratio:206/358;object-fit:cover;object-position:50% 100%}
-  .mh2-purse .mh2-cap{position:absolute;left:0;right:0;top:20.4%;z-index:2;padding:0 20px}
+  /* Caption sits a touch BELOW the top of the strap arc. Measured on the live plate
+     (390x678, nav + caption hidden): the strap's highest point is y 209 = 30.83% of
+     the plate. Starting the caption at 33% clears the peak by ~15px so both lines
+     read against the dark backdrop inside the arc rather than colliding with it. */
+  .mh2-purse .mh2-cap{position:absolute;left:0;right:0;top:33%;z-index:2;padding:0 20px}
   .mh2-purse .mh2-cap .t2{margin-top:14px}
 
   /* 2 — Salmon Bookmark: dark panel inset inside a white field, caption over the panel */
