@@ -644,12 +644,11 @@ h1 .soft{font-style:italic;color:var(--muted)}
      reference are preserved. */
   .foot{display:block;padding:26px 20px 24px;max-width:none}
   .foot-form{display:block}
-  /* Lead copy removed on mobile — the Email field moves up into its slot. */
-  .foot-lead{display:none}
+  .foot-lead{font-family:var(--body);font-style:normal;font-size:16px;line-height:1.25;margin:0}
   /* full-bleed underline: stretch edge to edge, cancelling the footer's 20px padding.
      The ">" submit is pushed to the right and shares the Info/Contact/FAQ gutter
      (measured right gap 20.7 css px) so the two right edges line up. */
-  .foot-field{width:auto;margin:0 -20px;padding:0 20px;justify-content:space-between}
+  .foot-field{width:auto;margin:7px -20px 0;padding:0 20px;justify-content:space-between}
   .foot-field input{flex:0 0 auto;width:96px;padding:0 0 4px 4px;font-size:11px;line-height:13px;height:17px}
   .foot-field button{min-width:0;min-height:26px;margin:-7px -1px 0 0;padding:0;font-size:12px}
   /* Reference shows a plain chevron, not the site's default arrow glyph. */

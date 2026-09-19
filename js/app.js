@@ -137,7 +137,7 @@ function buildMenu(){
     menuFooter.className = 'foot menu-footer';
     menuFooter.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
     menuFooter.querySelector('form').dataset.newsletter = 'menu';
-    menuFooter.querySelector('.foot-lead').textContent = 'Sign up to stay updated.';
+    menuFooter.querySelector('.foot-lead').textContent = 'Sign up to stay updated with WRM’s journey';
     menu.append(menuFooter);
     const close = document.createElement('button');
     close.id = 'mobileMenuClose'; close.className = 'mobile-menu-close';
@@ -559,8 +559,8 @@ function render(path, y=0){
   const isAboutMaterials = /^\/about-materials/.test(path); /* mobile_About_Material-08/09/10.png: same neutral off-white treatment as product detail pages, not the warm --paper beige */
   const isProductList = isMobile() && path.replace(/\/$/,'') === '/shop/ocean-season/fish-leather'; /* mobile_Product_List_Page.png: nav/body/footer are the same seamless neutral off-white as product detail pages, not the warm --paper beige — measured live rgba(232,223,200,.86) nav vs mockup rgb(~234,233,231) */
   const isShop = isMobile() && (path==='/shop' || path==='/shop/'); /* mobile_SHOP.png: footer is the same neutral off-white (~rgb 235,234,232) as product detail/list pages, not the warm --paper beige — measured live rgb(226,217,195) footer vs mockup rgb(~235,234,232) */
-  /* The new mobile home (Stella's reference layout) reuses the standard short signup line. */
-  if(isMobile()) foot.querySelector('.foot-lead').textContent = 'Sign up to stay updated.';
+  /* The new mobile home (Stella's reference layout) reuses the standard signup line. */
+  if(isMobile()) foot.querySelector('.foot-lead').textContent = 'Sign up to stay updated with WRM’s journey';
   foot.classList.toggle('hide', isHome && !isMobile()); /* desktop home keeps the live site's own footer */
   foot.classList.toggle('foot-home', isHome); /* mobile_HOME.png shows a distinct footer style (sans-serif lead, wider link spacing) vs mobile_SHOP/_Purse/etc */
   foot.classList.toggle('foot-neutral', isProductDetail || (isMobile() && (isAboutMaterials || isProductList || isShop))); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png / mobile_SHOP.png: footer continues the neutral off-white/textured tone, not the warm --paper beige */
@@ -611,7 +611,7 @@ function onScroll(){ const mobHome = isMobile() && nav.classList.contains('on-da
 window.addEventListener('scroll', onScroll, {passive:true});
 
 window.matchMedia('(max-width:760px)').addEventListener('change', ()=>{
-  foot.querySelector('.foot-lead').textContent = 'Sign up to stay updated.';
+  foot.querySelector('.foot-lead').textContent = 'Sign up to stay updated with WRM’s journey';
   buildMenu(); render(location.pathname, scrollY);
 });
 
