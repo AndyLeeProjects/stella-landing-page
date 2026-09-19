@@ -370,8 +370,13 @@ h1 .soft{font-style:italic;color:var(--muted)}
 /* ============================================================
    FOOTER (mockup: signup left, links right, wordmark bottom)
    ============================================================ */
-.foot{padding:56px var(--gutter) calc(24px + env(safe-area-inset-bottom));max-width:var(--max);margin:0 auto}
-.foot-row{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+/* Desktop keeps the signup form and the links side by side. The mobile markup moves
+   the form out of .foot-row (so it can stack above the links), so re-create the two
+   column layout here by spanning the footer itself. */
+.foot{padding:56px var(--gutter) calc(24px + env(safe-area-inset-bottom));max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+.foot-mark{grid-column:1/-1}
+.foot-row{display:contents}
 .foot-lead{font-family:var(--editorial);font-style:italic;font-size:17px;margin:0 0 10px}
 .foot-field{display:flex;border-bottom:1px solid var(--ink);width:min(300px,100%)}
 .foot-field input{flex:1;background:transparent;border:0;outline:none;padding:8px 0;font-size:16px;min-width:0;border-radius:0}
@@ -637,7 +642,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
      reference vs 3.0 live, so the field gets margin-top:7px for breathing room.
      Link rhythm (54.2px apart) and wordmark (184.6px, centred) from the earlier
      reference are preserved. */
-  .foot{padding:26px 20px 24px;max-width:none}
+  .foot{display:block;padding:26px 20px 24px;max-width:none}
   .foot-form{display:block}
   .foot-lead{font-family:var(--body);font-style:normal;font-size:16px;line-height:1;margin:0}
   /* full-bleed underline: stretch edge to edge, cancelling the footer's 20px padding.
