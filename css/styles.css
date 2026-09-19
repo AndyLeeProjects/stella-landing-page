@@ -14,6 +14,9 @@
   --body:"DM Sans",ui-sans-serif,system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,monospace;
   --nav-h:64px; --gutter:clamp(20px,5vw,40px); --max:1400px;
+  /* Hamburger rules drawn as an SVG stroke so they rasterise at the same device-pixel
+     weight as the cart icon's stroke (both stroke-width .9 on a 24-unit viewBox). */
+  --ham:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 19.43" fill="none" stroke="black" stroke-width="1.6" stroke-linecap="square"><path d="M1.5 3.6h21M1.5 9.9h21M1.5 16.1h21"/></svg>');
   --ease:cubic-bezier(.22,1,.36,1);
 }
 
@@ -594,14 +597,33 @@ h1 .soft{font-style:italic;color:var(--muted)}
 
   /* ---- Header (all mobile mockups) ---- */
   .nav{padding:0 8px}
-  .nav-logo img{width:58px;height:58px;filter:brightness(0)}
+  /* The wordmark PNG's alpha peaks at 224, so brightness(0) alone renders it thin and
+     slightly washed (measured stroke median 4 device px @DPR3, dark fraction .151).
+     Two chained drop-shadows dilate the script and solidify the semi-transparent edges,
+     taking it to stroke median 7 / dark fraction .233 so it carries the same visual
+     presence as the hamburger and cart strokes either side of it. NOTE: CSS filters
+     chain — each drop-shadow dilates the previous result — so offsets stay small. */
+  .nav-logo img{width:58px;height:58px;
+    filter:brightness(0) drop-shadow(0 0 .5px #000) drop-shadow(0 0 .35px #000)}
   .nav.solid{background:var(--paper) url('/img/texture.jpg') repeat;background-size:100% 844px;background-blend-mode:multiply;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
   .nav.on-dark{background:transparent}
-  .nav.on-dark .nav-logo img{filter:brightness(0) invert(1)}
-  .nav.on-dark.menu-open .nav-logo img{filter:brightness(0)}
-  .nav-menu span{left:9px;width:21px;height:1px;margin-top:-.5px}
-  .nav-menu span:nth-child(1){transform:translateY(-8px)}
-  .nav-menu span:nth-child(3){transform:translateY(8px)}
+  .nav.on-dark .nav-logo img{filter:brightness(0) invert(1)
+      drop-shadow(0 0 .5px #fff) drop-shadow(0 0 .35px #fff)}
+  .nav.on-dark.menu-open .nav-logo img{filter:brightness(0)
+      drop-shadow(0 0 .5px #000) drop-shadow(0 0 .35px #000)}
+  /* Hamburger rules must read at the cart icon's stroke weight. Measured on a DPR3
+     screenshot (dark-pixel run lengths): the cart's vertical bars render 4 device px.
+     A CSS height on the plain <span> can't hit that — it snaps to 3px at 1px and
+     jumps straight to 6px at 1.275px. Rendering the rules as an inline SVG stroke,
+     exactly like the cart's, makes them rasterise identically at 4px. */
+  .nav-menu span{display:none}
+  .nav-menu::before{content:"";width:21px;height:17px;
+    background:currentColor;
+    -webkit-mask:var(--ham) center/21px 17px no-repeat;
+    mask:var(--ham) center/21px 17px no-repeat}
+  .nav.on-dark .nav-menu::before{background:#fff}
+  .nav.menu-open .nav-menu::before,
+  .nav.on-dark.menu-open .nav-menu::before{background:var(--ink)}
   .nav-cart{margin-right:-5px}
   .nav-cart svg{width:34px;height:40px}
   body:has(.faq) .nav-cart svg,body:has(.world-hero) .nav-cart svg{display:none}
@@ -689,8 +711,14 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .mh2-tote .mh2-cap.over{top:34%}
   .mh2-tote img{aspect-ratio:1600/1200;object-fit:cover}
 
-  /* 4 — Chapter I Ocean: headline art is baked into m-ocean.jpg; body copy + link overlay */
-  .mh2-ocean img{aspect-ratio:1563/2658;object-fit:cover}
+  /* 4 — Chapter I Ocean: headline art is baked into m-ocean.jpg; body copy + link overlay.
+     m-ocean.jpg carries a flat grey strip in its top 40px (mean luma ~72, low row SD)
+     followed by a white hairline at row 41 — that strip was rendering as a grey filler
+     band between the Algae Tote photo above and the fish-scale photo. Bottom-anchored
+     cover crop to 1563/2615 trims exactly those top 43px so the scales start clean, and
+     the plate carries a white gap above the photo instead of the dark plate colour. */
+  .mh2-ocean{background:#fff;padding-top:10px}
+  .mh2-ocean img{aspect-ratio:1563/2615;object-fit:cover;object-position:50% 100%}
   .mh2-ocean-txt{position:absolute;left:0;right:0;top:57%;z-index:2;display:flex;
     flex-direction:column;align-items:center;padding:0 22px;text-align:center}
   .mh2-ocean-txt .body{display:block;font-family:var(--body);font-weight:400;font-size:11.5px;
