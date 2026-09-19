@@ -631,24 +631,25 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body:has(.faq) .nav-logo img,body:has(.world-hero) .nav-logo img{width:40px;height:40px}
 
   /* ---- Footer (mobile_SHOP / _Purse / _Bookmark / _Product_List / _About_Material) ----
-     Measured from Stella's footer reference (1160x766 @DPR3 -> 386.7x255.3 css px):
-       footer height        255.3   (live was 176.0)
-       "Sign up..." text    top 28.3, left 20.7, cap height 12.3 -> ~16.5px type
-       Email placeholder    baseline band 45.0-51.3, left 23.7
-       input underline      y 55.7, spans x 20.0-138.7 (118.7 wide)
-       Info / Contact / FAQ centres at y 51.6 / 105.8 / 160.3 -> 54.2px apart
-                            right-aligned with a 14.3px gutter
-       wordmark             top 222.3, x 102.7-287.3 -> 184.6 wide, centred
-     Live was compressed: links only 20px apart and the wordmark 321px wide. */
+     Per Stella's revised reference: the signup block sits ABOVE the Info/Contact/FAQ
+     stack (not beside it), left-aligned, with the email underline running the full
+     screen width. Gap between the lead line and "Email" measured at 6.6 css px in the
+     reference vs 3.0 live, so the field gets margin-top:7px for breathing room.
+     Link rhythm (54.2px apart) and wordmark (184.6px, centred) from the earlier
+     reference are preserved. */
   .foot{padding:26px 20px 24px;max-width:none}
-  .foot-row{grid-template-columns:1fr auto;gap:16px;align-items:start;margin-bottom:27px}
+  .foot-form{display:block}
   .foot-lead{font-family:var(--body);font-style:normal;font-size:16px;line-height:1;margin:0}
-  .foot-field{width:118.7px;margin-top:2px}
-  .foot-field input{padding:0 0 4px 4px;font-size:11px;line-height:13px;height:17px}
+  /* full-bleed underline: stretch edge to edge, cancelling the footer's 20px padding.
+     The input keeps its natural width so the ">" submit sits just after the "Email"
+     placeholder (as in the reference) rather than being pushed to the far right. */
+  .foot-field{width:auto;margin:7px -20px 0;padding:0 20px}
+  .foot-field input{flex:0 0 auto;width:96px;padding:0 0 4px 4px;font-size:11px;line-height:13px;height:17px}
   .foot-field button{min-width:26px;min-height:26px;margin:-7px 0 0;padding:0;font-size:12px}
   /* Reference shows a plain chevron, not the site's default arrow glyph. */
   .foot-field .arr{font-size:0}
   .foot-field .arr::before{content:">";font-size:13px}
+  .foot-row{display:block;margin:0 0 27px}
   /* Link rhythm comes from a fixed row height, so the three links sit 54.2px apart
      centre-to-centre exactly as measured, instead of hugging each other. */
   .foot-links{font-family:var(--body);font-size:13px;gap:0;line-height:1;margin-top:4px}
