@@ -216,11 +216,11 @@ const pages = {
     return `
 <section class="mh2">
   <a class="mh2-plate mh2-purse" href="/product/salmon-purse" data-link aria-label="Salmon Purse — Ocean Collection">
+    <img src="/img/purse-dark.jpg" alt="Salmon Purse" fetchpriority="high">
     <div class="mh2-cap">
       <span class="t1">Salmon Purse</span>
       <span class="t2">Ocean Collection</span>
     </div>
-    <img src="/img/purse-dark.jpg" alt="Salmon Purse" fetchpriority="high">
   </a>
 
   <a class="mh2-plate mh2-bookmark" href="/product/salmon-bookmark" data-link aria-label="Salmon Bookmark — Ocean Collection">

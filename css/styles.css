@@ -664,12 +664,21 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .mh2-cap .t2.soon{margin-top:4px}
   .mh2-cap.over{position:absolute;left:0;right:0;z-index:2}
 
-  /* 1 — Salmon Purse: caption sits above the photo on the same black field.
-     Top padding clears the fixed nav bar; the photo keeps its full height so the
-     bag is never cropped. */
-  .mh2-purse{padding-top:calc(var(--nav-h) + 26px)}
-  .mh2-purse .mh2-cap{padding:0 20px 30px}
-  .mh2-purse img{aspect-ratio:auto}
+  /* 1 — Salmon Purse: the photo is FULL-BLEED from the very top of the page (it runs
+     up behind the transparent nav) and the caption is overlaid directly on the
+     photograph's own dark upper area — there is no separate black band above the photo.
+     Reference measurements (206x1280 screenshot, purse plate = 0..358px):
+       plate aspect        358/206  -> 1.738
+       "SALMON PURSE"      centre y  79.5 -> 22.2% of plate height
+       "OCEAN COLLECTION"  centre y  96.5 -> 27.0% of plate height
+       strap first appears y 109     -> 30.4% of plate height
+     purse-dark.jpg is 1600x2951 (aspect 1.844) with the strap starting at 34.9%, so a
+     bottom-anchored cover crop to 1.738 trims ~5.7% off the top and lands the strap at
+     ~30.9% — matching the reference while keeping the bag and floor complete. */
+  .mh2-purse{padding-top:0}
+  .mh2-purse img{aspect-ratio:206/358;object-fit:cover;object-position:50% 100%}
+  .mh2-purse .mh2-cap{position:absolute;left:0;right:0;top:20.4%;z-index:2;padding:0 20px}
+  .mh2-purse .mh2-cap .t2{margin-top:14px}
 
   /* 2 — Salmon Bookmark: dark panel inset inside a white field, caption over the panel */
   .mh2-bookmark{background:#fff;padding:26px 20px 30px}
