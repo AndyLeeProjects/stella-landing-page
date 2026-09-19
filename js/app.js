@@ -124,45 +124,44 @@ function openCart(){ closeMenu(); cartEl.setAttribute('aria-hidden','false'); $(
 function closeCart(){ cartEl.setAttribute('aria-hidden','true'); $('#cartBtn').setAttribute('aria-expanded','false'); scrim.classList.remove('show'); setTimeout(()=>scrim.hidden=true,300); document.body.style.overflow=''; }
 
 function buildMenu(){
+  $('#mobileMenuClose')?.remove();
+  menu.querySelector('.menu-footer')?.remove();
+  if(isMobile()){
+    const group = (label, to, id, children) => `<div class="menu-group"><div class="menu-row"><a class="menu-item" href="${to}" data-link>${label}</a><button class="menu-expand" data-menu-toggle aria-label="Expand ${label}" aria-expanded="false" aria-controls="${id}"><span class="chev">&gt;</span></button></div><div class="menu-sub" id="${id}">${children}</div></div>`;
+    const leaf = (label, to) => `<a class="menu-item" href="${to}" data-link>${label}<span class="chev" aria-hidden="true">&gt;</span></a>`;
+    $('#menuList').innerHTML = group('Shop','/shop','mobileShop',group('Ocean','/shop/ocean-season','mobileOcean',
+      leaf('Fish Leather','/shop/ocean-season/fish-leather') + leaf('Algae','/about-materials/algae'))) +
+      MENU.slice(1).map(n=>leaf(esc(n.label),n.to)).join('');
+    const menuFooter = foot.cloneNode(true);
+    menuFooter.removeAttribute('id');
+    menuFooter.className = 'foot menu-footer';
+    menuFooter.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
+    menuFooter.querySelector('form').dataset.newsletter = 'menu';
+    menuFooter.querySelector('.foot-lead').textContent = 'Sign up to stay updated.';
+    menu.append(menuFooter);
+    const close = document.createElement('button');
+    close.id = 'mobileMenuClose'; close.className = 'mobile-menu-close';
+    close.setAttribute('aria-label','Close menu'); close.innerHTML = '<span></span><span></span>';
+    close.addEventListener('click',closeMenu); nav.append(close);
+    return;
+  }
   const item = (n) => {
     if(n.soon) return `<span class="menu-item soon">${esc(n.label)}<span class="tag">coming soon</span></span>`;
     if(n.children){
       return `<div class="menu-group">
         <button class="menu-item" aria-expanded="false" data-toggle>${esc(n.label)}<span class="chev">&gt;</span></button>
         <div class="menu-sub">
+
           ${n.children.map(item).join('')}
         </div></div>`;
     }
     return `<a class="menu-item" href="${n.to}" data-link>${esc(n.label)}<span class="chev">&gt;</span></a>`;
   };
-  /* Mobile menu overlay (mobile_MENU-05/06/07.png): below the nav items, the panel transitions
-     to the site's own paper-texture footer — signup form, Info/Contact/FAQ links, and the big
-     WITH RAW MATERIALS wordmark — not a plain Instagram/email line. Desktop keeps the simple
-     two-link menu-foot untouched. */
-  const embeddedFoot = `
-    <div class="menu-embedded-wrap">
-      <div class="menu-embedded-foot foot-row">
-        <form class="foot-form" id="menuFootForm">
-          <p class="foot-lead">Sign up to stay updated.</p>
-          <label class="foot-field">
-            <input type="email" required placeholder="Email" autocomplete="email" aria-label="Email">
-            <button type="submit" aria-label="Subscribe"><span class="arr">&gt;</span></button>
-          </label>
-        </form>
-        <nav class="foot-links" aria-label="Footer">
-          <a href="/faq" data-link>Info</a>
-          <a href="mailto:hello@withrawmaterials.com">Contact</a>
-          <a href="/faq" data-link>FAQ</a>
-        </nav>
-      </div>
-      <img class="foot-mark menu-embedded-mark" src="/img/wordmark.png" alt="WITH RAW MATERIALS">
-    </div>`;
-  $('#menuList').innerHTML = MENU.map(item).join('') + (isMobile()
-    ? embeddedFoot
-    : `<div class="menu-foot">
+  $('#menuList').innerHTML = MENU.map(item).join('') + `
+    <div class="menu-foot">
       <a href="https://www.instagram.com/withrawmaterials_" target="_blank" rel="noopener">@withrawmaterials</a>
       <a href="mailto:hello@withrawmaterials.com">hello@withrawmaterials.com</a>
-    </div>`);
+    </div>`;
 }
 
 /* ---------- Newsletter ---------- */
@@ -355,7 +354,7 @@ const pages = {
         <div class="mpl-cap"><span class="name">${esc(name)}</span><span class="sub"><em>The</em> Ocean Collection</span></div>
       </a>`;
     return `<section class="mpl">
-      ${card('/product/salmon-purse','/img/purse-dark.jpg','Salmon Bag')}
+      ${card('/product/salmon-purse','/img/purse-dark.jpg','Salmon Purse')}
       ${card('/product/salmon-bookmark','/img/m-bookmark.jpg','Salmon Bookmark')}
     </section>`;
   },
@@ -418,10 +417,10 @@ const pages = {
   mProduct(p){
     const crumb = [['Ocean','/shop/ocean-season'],['Fish Leather','/shop/ocean-season/fish-leather']]
       .map(c=>`<a href="${c[1]}" data-link>${esc(c[0])}</a> &gt; `).join('');
-    return `<section class="mpd">
+    return `<section class="mpd mpd-${p.id}">
       <nav class="mpd-crumbs" aria-label="Breadcrumb">${crumb}<span class="cur">${esc(p.name)}</span></nav>
       <div class="mpd-gallery" id="pdStrip">
-        ${p.images.map((src,i)=>`<img src="${src}" alt="${esc(p.name)}${i?' — detail':''}"${i?' loading="lazy"':''}>`).join('')}
+        ${p.images.map((src,i)=>`<div class="mpd-slide"><img src="${src}" alt="${esc(p.name)}${i?' — detail':''}"${i?' loading="lazy"':''}></div>`).join('')}
       </div>
       <div class="mpd-body">
         <div class="mpd-head"><h1 class="mpd-name">${esc(p.name)}</h1><span class="mpd-n" id="pdN">1 / ${p.images.length}</span></div>
@@ -430,9 +429,10 @@ const pages = {
         <p class="mpd-p">${esc(p.desc)}</p>
         <p class="mpd-p">${esc(p.note)}</p>
         <p class="mpd-p">${esc(p.origin)}</p>
-        <div class="mpd-p"><div>Dimensions</div>${p.dims.map(([k,v])=>`<div>${esc(k)}: ${esc(v)}</div>`).join('')}</div>
+        <div class="mpd-p"><div>Dimensions</div><div>${p.dims.slice(0,3).map(([k,v])=>`${esc(k)}: ${esc(v)}`).join(' × ')}</div>${p.dims.slice(3).map(([k,v])=>`<div>${esc(k)}: ${esc(v)}</div>`).join('')}</div>
         <div class="mpd-p"><div>Materials</div>${p.materials.map(([k,v])=>`<div>${esc(k)}: ${esc(v)}</div>`).join('')}</div>
-        <div class="mpd-p"><div>Care</div><div>${esc(p.care)}</div></div>
+        <div class="mpd-p"><div>Care</div><div>${esc(p.care).replace('. ','.<br>')}</div></div>
+        <button class="btn btn-fill mpd-add" data-add="${p.id}">Add to cart <span class="arr">→</span></button>
       </div>
     </section>`;
   },
@@ -559,6 +559,8 @@ function render(path, y=0){
   const isAboutMaterials = /^\/about-materials/.test(path); /* mobile_About_Material-08/09/10.png: same neutral off-white treatment as product detail pages, not the warm --paper beige */
   const isProductList = isMobile() && path.replace(/\/$/,'') === '/shop/ocean-season/fish-leather'; /* mobile_Product_List_Page.png: nav/body/footer are the same seamless neutral off-white as product detail pages, not the warm --paper beige — measured live rgba(232,223,200,.86) nav vs mockup rgb(~234,233,231) */
   const isShop = isMobile() && (path==='/shop' || path==='/shop/'); /* mobile_SHOP.png: footer is the same neutral off-white (~rgb 235,234,232) as product detail/list pages, not the warm --paper beige — measured live rgb(226,217,195) footer vs mockup rgb(~235,234,232) */
+  /* The new mobile home (Stella's reference layout) reuses the standard short signup line. */
+  if(isMobile()) foot.querySelector('.foot-lead').textContent = 'Sign up to stay updated.';
   foot.classList.toggle('hide', isHome && !isMobile()); /* desktop home keeps the live site's own footer */
   foot.classList.toggle('foot-home', isHome); /* mobile_HOME.png shows a distinct footer style (sans-serif lead, wider link spacing) vs mobile_SHOP/_Purse/etc */
   foot.classList.toggle('foot-neutral', isProductDetail || (isMobile() && (isAboutMaterials || isProductList || isShop))); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png / mobile_SHOP.png: footer continues the neutral off-white/textured tone, not the warm --paper beige */
@@ -569,11 +571,7 @@ function render(path, y=0){
   io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.12});
   app.querySelectorAll('.observe').forEach(el=>io.observe(el));
   const strip = $('#pdStrip');
-  if(strip){
-    const first = strip.children[0];
-    const fit = () => { if(first.naturalWidth) strip.style.aspectRatio = first.naturalWidth + '/' + first.naturalHeight; };
-    first.complete ? fit() : first.addEventListener('load', fit);
-  }
+
   if(strip) strip.addEventListener('scroll', ()=>{
     const i = Math.round(strip.scrollLeft / strip.clientWidth);
     $('#pdN').textContent = `${i+1} / ${strip.children.length}`;
@@ -587,6 +585,7 @@ window.addEventListener('popstate', e => render(e.state?.path || location.pathna
 
 /* ---------- Events ---------- */
 document.addEventListener('click', e => {
+  const mt = e.target.closest('[data-menu-toggle]'); if(mt){ const open = mt.getAttribute('aria-expanded')==='true'; mt.setAttribute('aria-expanded',String(!open)); mt.parentElement.nextElementSibling.classList.toggle('open',!open); return; }
   const a = e.target.closest('a[data-link]'); if(a){ e.preventDefault(); go(a.getAttribute('href')); return; }
   const tg = e.target.closest('[data-toggle]'); if(tg){ const open = tg.getAttribute('aria-expanded')==='true'; tg.setAttribute('aria-expanded',String(!open)); tg.nextElementSibling.classList.toggle('open',!open); return; }
   const ad = e.target.closest('[data-add]'); if(ad){ add(ad.dataset.add); openCart(); return; }
@@ -600,15 +599,10 @@ document.addEventListener('click', e => {
 document.addEventListener('submit', e => {
   const f = e.target;
   if(f.matches('[data-newsletter]')){ e.preventDefault(); subscribe(f, f.dataset.newsletter); }
-  if(f.id==='footForm' || f.id==='menuFootForm'){ e.preventDefault(); subscribe(f, f.id==='menuFootForm'?'menu':'footer'); f.querySelector('input').value=''; }
+  if(f.id==='footForm'){ e.preventDefault(); subscribe(f,'footer'); f.querySelector('input').value=''; }
 });
 menuBtn.addEventListener('click', ()=> menu.getAttribute('aria-hidden')==='false' ? closeMenu() : openMenu());
-/* Mobile menu mockup (mobile_MENU-05/06/07.png): hamburger icon stays put on the left while
-   open; the cart icon on the right morphs into a close "X" instead, and closes the menu. */
-$('#cartBtn').addEventListener('click', ()=>{
-  if(isMobile() && menu.getAttribute('aria-hidden')==='false'){ closeMenu(); return; }
-  openCart();
-});
+$('#cartBtn').addEventListener('click', openCart);
 $('#cartClose').addEventListener('click', closeCart);
 scrim.addEventListener('click', closeCart);
 document.addEventListener('keydown', e => { if(e.key==='Escape'){ closeMenu(); closeCart(); } });
@@ -616,7 +610,10 @@ document.addEventListener('keydown', e => { if(e.key==='Escape'){ closeMenu(); c
 function onScroll(){ const mobHome = isMobile() && nav.classList.contains('on-dark'); nav.classList.toggle('solid', !mobHome && (window.scrollY > 24 || location.pathname !== '/')); }
 window.addEventListener('scroll', onScroll, {passive:true});
 
-window.matchMedia('(max-width:760px)').addEventListener('change', ()=> render(location.pathname, scrollY));
+window.matchMedia('(max-width:760px)').addEventListener('change', ()=>{
+  foot.querySelector('.foot-lead').textContent = 'Sign up to stay updated.';
+  buildMenu(); render(location.pathname, scrollY);
+});
 
 /* ---------- Init ---------- */
 buildMenu();

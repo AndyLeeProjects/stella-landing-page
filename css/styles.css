@@ -209,26 +209,13 @@ h1 .soft{font-style:italic;color:var(--muted)}
 .mh-plate.gap-md{margin-top:33px}
 .mh-plate.gap-sm{margin-top:30px}
 .mh .mh-tote{margin-bottom:0}
-/* Reserve each plate's exact aspect ratio so lazy-loaded images don't collapse the
-   box to 0 height before they load — was causing captions (e.g. Salmon Purse) to
-   render pinned to a phantom empty container while the real photo popped in late. */
-.mh-hero img{aspect-ratio:1568/2268}
-.mh-ocean img{aspect-ratio:1563/2658}
-.mh-materials img{aspect-ratio:1563/1036}
-/* The mockup starts purse-dark.jpg behind the concept panel. Because the existing
-   DOM stacks the concept panel before the image, crop the duplicated photo headroom
-   from the top while preserving the complete strap, bag, and floor. */
-.mh-purse img{aspect-ratio:1600/2039;object-fit:cover;object-position:50% 100%}
-.mh-bookmark img{aspect-ratio:1600/1850}
-.mh-tote img{aspect-ratio:1600/1200}
 /* hero */
 .mh-hero{position:relative}
-.mh-hero .mh-hero-content{position:absolute;left:0;right:0;top:38%;margin:0 auto;display:flex;flex-direction:column;align-items:center}
-.mh-hero .mh-hero-txt{max-width:230px;text-align:center;color:#fff;
-  font-family:var(--display);font-weight:400;font-size:32px;line-height:1.15;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.mh-hero .mh-hero-txt{position:absolute;left:0;right:0;top:37.9%;margin:0 auto;max-width:192px;text-align:center;color:#fff;
+  font-family:var(--display);font-weight:400;font-size:30px;line-height:26px;text-shadow:0 2px 18px rgba(0,0,0,.45)}
 .mh-hero .mh-hero-txt .wrm{font-style:normal;letter-spacing:.06em}
 .mh-hero .mh-hero-txt em{font-style:italic}
-.mh-hero .mh-hero-link{margin-top:70px;width:max-content;
+.mh-hero .mh-hero-link{position:absolute;left:0;right:0;top:72.4%;margin:0 auto;width:max-content;
   font-family:var(--body);font-weight:400;font-size:13px;line-height:1.2;color:#fff;
   border-bottom:1px solid rgba(255,255,255,.85);padding-bottom:3px;text-shadow:0 2px 14px rgba(0,0,0,.45)}
 /* plate captions */
@@ -237,12 +224,11 @@ h1 .soft{font-style:italic;color:var(--muted)}
 .mh-cap .sub{display:block;font-family:var(--body);font-weight:400;font-size:13px;line-height:1.2;margin-top:3px}
 .mh-cap-soon{position:absolute;right:14px;color:#fff;font-family:var(--body);font-weight:400;font-size:13px;line-height:1.15;
   text-shadow:0 1px 10px rgba(0,0,0,.45)}
-.mh-purse .mh-cap{top:22.4%}
-.mh-bookmark .mh-cap{top:53%}
-.mh-tote .mh-cap,.mh-tote .mh-cap-soon{top:49%}
-.mshop-img .mh-cap,.mshop-img .mh-cap-soon{top:50.5%}
+.mh-purse .mh-cap{top:20%}
+.mh-bookmark .mh-cap{top:54%}
+.mh-tote .mh-cap,.mh-tote .mh-cap-soon,.mshop-img .mh-cap,.mshop-img .mh-cap-soon{top:50.5%}
 /* concept plate */
-.mh-concept{background:#151515;color:#f2ede3;padding:30px 77px 92px;text-align:center;margin-top:23px}
+.mh-concept{background:#111;color:#f2ede3;padding:30px 77px 92px;text-align:center;margin-top:23px}
 .mh-concept p{position:relative;margin:0;padding:27px 0 29px;font-family:var(--body);font-weight:300;font-size:15.5px;line-height:15.7px;letter-spacing:0}
 .mh-concept p::before,.mh-concept p::after{content:"";position:absolute;left:0;right:0;height:1px;background:rgba(242,237,227,.75)}
 .mh-concept p::before{top:0}.mh-concept p::after{bottom:0}
@@ -412,7 +398,37 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .plate:nth-child(even) .plate-img{order:0}
 }
 @media (max-width:760px){
-  :root{--nav-h:64px}
+  :root{--nav-h:64px;--paper:#f5f4f2;--menu:#c6c3a1}
+  html{background:var(--paper)}
+  body{background-image:linear-gradient(rgba(232,231,229,.6),rgba(232,231,229,.6)),url('/img/texture.jpg');background-size:auto,844px 844px;background-blend-mode:normal}
+  body::before,body::after{display:none}
+  /* Reference plates are sized by the artboard, not each source photo's ratio. */
+  .mh{background:var(--paper) url('/img/texture.jpg') repeat;background-size:100% 844px;background-blend-mode:multiply;padding-bottom:66px}
+  .mh-hero{height:166.923vw;border-bottom:3.846vw solid #555;overflow:hidden}
+  .mh-hero>img{position:absolute;width:153.846%;max-width:none;height:auto;left:-7.692%;top:-33.333vw}
+  .mh-hero .mh-hero-txt{top:37.9%;max-width:none;width:76%;font-family:var(--editorial);font-weight:500;font-size:7.44vw;line-height:6.5vw;text-shadow:none}
+  .mh-hero .hero-line{display:block;white-space:nowrap}
+  .mh-hero .mh-hero-link{font-size:2.7vw;padding-bottom:1px;text-shadow:none}
+  .mh-hero + .mh-plate{height:167.436vw;overflow:hidden}
+  .mh-hero + .mh-plate img{height:100%;object-fit:cover}
+  .mh-concept{margin-top:23px;padding:30px 17.44% 18px;background:#111}
+  .mh-concept p{padding:26px 0 29px;font-size:15px;line-height:15.7px;font-weight:400}
+  .mh-purse{height:146.667vw;overflow:hidden}
+  .mh-purse img{height:100%;object-fit:cover;object-position:center bottom}
+  .mh-purse .mh-cap{top:32%}
+  .mh-bookmark .mh-cap{top:54%}
+  .mh .mh-tote{margin-top:30px}
+  .mh .mh-tote::before{content:'';position:absolute;bottom:100%;height:30px;left:0;right:0;background:#000}
+  .mh:has(.mh-tote){box-shadow:inset 0 -66px #000}
+  .mh-cap .name{font-size:16px}
+  .mh-cap .sub{font-size:12px;margin-top:0}
+  .mh-tote .mh-cap,.mh-tote .mh-cap-soon{top:50.5%}
+  body:has(.mh) #foot{padding:27px 19px 13px}
+  body:has(.mh) #foot .foot-row{display:flex;flex-direction:column;gap:30px}
+  body:has(.mh) #foot .foot-form,body:has(.mh) #foot .foot-field{width:100%}
+  body:has(.mh) #foot .foot-lead{font-family:var(--body);font-style:normal;font-size:10px;margin-bottom:14px}
+  body:has(.mh) #foot .foot-links{align-self:flex-end;gap:20px;font-family:var(--body);font-size:10px}
+  body:has(.mh) #foot .foot-mark{width:190px;margin-top:31px}
   .nav-logo img{height:28px}
   .hero{padding:20px 16px 24px;display:flex;flex-direction:column;justify-content:center}
   .hero-card{gap:22px}
@@ -444,50 +460,54 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .cats{grid-template-columns:1fr}
   .season-hero{height:65vh}
   .menu-item{font-size:22px}
-
-  /* ---- Menu overlay open state (mobile_MENU-05/06/07.png): cart icon on the right
-     morphs into a close "X" while the menu is open; hamburger on the left is unchanged. ---- */
-  .nav.menu-open .nav-cart svg{display:none}
-  .nav.menu-open .nav-cart::before,.nav.menu-open .nav-cart::after{
-    content:"";position:absolute;left:50%;top:50%;width:22px;height:1.4px;background:var(--ink);
-  }
-  .nav.menu-open .nav-cart::before{transform:translate(-50%,-50%) rotate(45deg)}
-  .nav.menu-open .nav-cart::after{transform:translate(-50%,-50%) rotate(-45deg)}
-  .nav.menu-open .nav-cart-count{display:none}
-  /* Menu overlay must always show the dark-ink WRM wordmark & hamburger, even when opened
-     over a page whose nav carries .on-dark (e.g. mobile Home) — mockup_MENU-05/06/07.png
-     show a consistent dark wordmark/hamburger regardless of the page underneath. */
-  .nav.menu-open.on-dark .nav-logo img{filter:none!important}
-  .nav.menu-open.on-dark .nav-menu span{background:var(--ink)!important}
-  /* mockup_MENU-05/06/07.png: the LEFT hamburger stays a static 3-line icon in every menu
-     state (it does not morph into an X) — only the right cart icon becomes the close X. */
-  .nav-menu[aria-expanded="true"] span:nth-child(1){transform:translateY(-7px)!important;rotate:0deg!important}
-  .nav-menu[aria-expanded="true"] span:nth-child(2){opacity:1!important}
-  .nav-menu[aria-expanded="true"] span:nth-child(3){transform:translateY(7px)!important;rotate:0deg!important}
-
-  /* ---- Menu overlay embedded footer (mobile_MENU-05/06/07.png): the olive nav-item panel
-     transitions straight into the site's paper-texture footer at the bottom of the overlay,
-     not a plain two-link row. The paper block fills the rest of the panel to the bottom edge. ---- */
+  /* Mobile menu sheets: fixed header, olive navigation, paper footer. */
   /* mockup_MENU-05/06/07.png show a lighter khaki-olive panel (~#C6C3A1) than the desktop
      token (--menu:#8f9a6b, measured mockup rgb(198,195,161)) — override color for mobile only. */
   .menu{background:#c6c3a1 url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply}
-  .menu-list{padding-bottom:0}
-  /* mockup_MENU-05/06/07.png measured footer rgb(228,227,225) — same neutral off-white as the
-     product-detail/about-materials footer treatment, NOT the warm --paper beige. */
-  .menu-embedded-wrap{margin-top:56px;margin-left:calc(-1 * var(--gutter));margin-right:calc(-1 * var(--gutter));
-    flex:1;display:flex;flex-direction:column;
-    background:#e9e8e6 url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply}
-  .menu-embedded-foot{padding:40px var(--gutter) 0;display:grid;grid-template-columns:1fr;gap:18px}
-  .menu-embedded-foot .foot-links{flex-direction:column;text-align:right;gap:6px;font-size:15px;align-self:flex-end}
-  .menu-embedded-mark{margin:28px auto 0;padding:0 var(--gutter) calc(28px + env(safe-area-inset-bottom))}
+  .cart[aria-hidden="true"]{visibility:hidden}
+  .menu-list{padding:76px 21px 30px;min-height:max(659px,calc(100dvh - 185px));max-width:none}
+  .menu-item,.menu-sub .menu-item,.menu-sub .menu-sub .menu-item{font-family:var(--editorial);font-size:17px;line-height:20px;font-weight:400;border:0;padding:0;height:69px;color:var(--ink)}
+  .menu-item:hover{padding-left:0}
+  .menu-item .chev,.menu-expand .chev{font-family:var(--body);font-size:13px;font-weight:400}
+  .menu-row{display:flex;align-items:center}
+  .menu-row .menu-item{flex:1;width:auto}
+  .menu-expand{height:44px;width:44px;flex:none;display:flex;align-items:center;justify-content:flex-end}
+  .menu-expand .chev{transition:transform .2s}
+  .menu-expand[aria-expanded="true"] .chev{transform:rotate(90deg)}
+  .menu-sub{padding-left:26px;margin-top:-9px;padding-bottom:16px}
+  .menu-sub .menu-item{height:50px}
+  .menu-sub .menu-sub{padding-left:21px;margin-top:0;padding-bottom:0}
+  .menu-sub .menu-sub .menu-item{height:48px}
+  .menu-sub:has(.menu-sub.open){padding-bottom:4px}
+  .menu .menu-footer{padding-top:47px;min-height:185px}
+  .mobile-menu-close{display:none;position:absolute;right:6px;top:10px;width:44px;height:44px}
+  .mobile-menu-close span{position:absolute;left:11px;top:21px;width:22px;height:1px;background:var(--ink);transform:rotate(45deg)}
+  .mobile-menu-close span+span{transform:rotate(-45deg)}
+  .nav.menu-open .mobile-menu-close{display:block}
+  .nav.menu-open .nav-cart{visibility:hidden}
+  .nav.menu-open .nav-logo img{filter:brightness(0)}
+  .nav.menu-open .nav-menu span{background:var(--ink)}
+  .nav.menu-open .nav-menu span:nth-child(1){transform:translateY(-8px)}
+  .nav.menu-open .nav-menu span:nth-child(2){opacity:1}
+  .nav.menu-open .nav-menu span:nth-child(3){transform:translateY(8px)}
+  /* Menu overlay must always show the dark-ink WRM wordmark & hamburger, even when opened
+     over a page whose nav carries .on-dark (e.g. mobile Home). */
+  .nav.menu-open.on-dark .nav-logo img{filter:brightness(0)!important}
+  .nav.menu-open.on-dark .nav-menu span{background:var(--ink)!important}
 
   /* ---- Mobile shop plate list (mobile_SHOP.png) ---- */
-  .mshop{display:block;background:#fff}
+  .mshop{display:block;background:#000;padding-bottom:63.846vw}
   .mshop-item{display:block;text-decoration:none;color:inherit}
   .mshop-img{position:relative;line-height:0;background:#111}
   .mshop-img img{width:100%;height:auto;display:block}
-  .mshop-cap{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:15px 13px 145px 14px}
-  .mshop-cap .name{display:block;font-family:var(--editorial);font-weight:700;font-size:15px;line-height:1.15}
+  .mshop-cap{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .mshop-item:first-child{margin-bottom:46.923vw}
+  .mshop-item:first-child .mshop-img{height:183.59vw;overflow:hidden}
+  .mshop-item:first-child .mshop-img img{height:100%;object-fit:cover;object-position:center bottom}
+  .mshop-item:nth-child(2){margin-bottom:48.974vw}
+  .mshop-item:nth-child(2) .mshop-img{height:125.641vw;overflow:hidden}
+  .mshop-item:nth-child(2) .mshop-img img{position:absolute;left:27.44%;top:50%;width:125.641vw;max-width:none;transform:translate(-50%,-50%) rotate(-90deg)}
+  .mshop-cap .name{display:block;font-family:var(--editorial);font-weight:500;font-size:15px;line-height:1.15}
   .mshop-cap .sub{display:block;font-family:var(--body);font-size:10.5px;line-height:1.2;margin-top:4px}
   .mshop-cap .price{font-family:var(--body);font-size:10.5px;line-height:1.15;white-space:nowrap}
   .mshop-img .mh-cap{left:15px}
@@ -501,11 +521,15 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .crumbs a{padding:10px 4px;margin:-10px -4px}
 
   /* ---- About the materials, landing (mobile_About_Material-08.png) ---- */
+  .pg:has(.mat-hero){padding-bottom:330px}
+  .mat-hero{height:135.641vw}
+  .mat-hero img.tex{height:100%;object-fit:cover}
   .mat-hero + .mat-hero{margin-top:0}
   .mat-hero .mat-cap{gap:38px}
-  .mat-hero .mat-cap img.sil{width:187px;height:auto;transform:rotate(-90deg);margin:67px -67px}
+  .mat-hero .mat-cap img.sil{width:196px;height:auto;transform:rotate(-90deg);margin:70px -70px}
   .mat-hero + .mat-hero .mat-cap img.sil{width:auto;height:204px;transform:none;margin:0}
-  .mat-hero .mat-cap span{font-size:20px}
+  .mat-hero + .mat-hero .mat-cap{top:56%;gap:28px}
+  .mat-hero .mat-cap span{font-family:var(--editorial);font-size:18px;font-weight:500}
 
   /* ---- About the materials, landing + detail (mobile_About_Material-08/09/10.png): the whole
      page is the neutral off-white/textured tone (same as product detail pages), not the warm
@@ -513,72 +537,90 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .pg.mat-page{background:#e9e8e6 url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply}
 
   /* ---- About the materials, detail (mobile_About_Material-09/10.png) ---- */
-  .mat-detail{padding:67px 0 0}
+  .pg:has(.mat-detail){padding-bottom:106px}
+  .mat-detail{padding:67px 0 0;min-height:967px;display:flex;flex-direction:column}
   .mat-head{margin-bottom:0}
   .mat-head .sil{height:auto;width:68px;margin-bottom:8px}
-  .mat-head h2{font-size:46px;line-height:44px}
+  .mat-head h2{font-family:var(--editorial);font-size:39px;line-height:37px;letter-spacing:0}
+  .mat-detail.algae{padding-top:88px}
   .mat-detail.algae .mat-head{gap:18px;align-items:start}
   .mat-detail.algae .mat-head .sil{height:139px;width:auto;margin:6px 0 0}
-  .mat-fig{width:204px;margin:22px 0 0 7px}
+  .mat-fig{width:204px;margin:36px 0 0 7px}
   .mat-fig figcaption{position:absolute;left:calc(100% + 19px);bottom:0;display:block;text-align:left;margin:0;font-size:11px}
   .mat-body{padding-left:11px;max-width:none}
-  .mat-detail.algae .mat-body{margin-top:176px}
+  .mat-detail.algae .mat-body{margin-top:166px}
   .mat-body .sub{font-family:var(--editorial);font-style:italic;font-weight:500;font-size:16.5px;line-height:1.1;margin:12px 0 0}
   .mat-body p{font-size:13.5px;line-height:15.6px;margin:20px 0 0}
-  .mat-cta{padding:200px 0 0;text-align:center}
+  .mat-cta{padding:0;text-align:center;margin-top:auto}
   .mat-cta .link{font-family:var(--body);font-size:11px;border-bottom-width:1px;padding-bottom:2px}
 
   /* ---- Mobile product detail (mobile_Purse.png / mobile_Bookmark.png) ---- */
-  /* Mockups use a neutral off-white (#e9e8e6) for this page, not the warm --paper beige. */
-  .mpd{display:block;padding-top:73px;background:#e9e8e6}
+  .mpd{display:block;padding-top:73px}
   .mpd-crumbs{font-family:var(--body);font-size:11px;line-height:15.7px;padding:0 19px;color:var(--ink)}
   .mpd-crumbs a{text-decoration:none}
-  .mpd-gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-top:6px;background:#e9e8e6;line-height:0}
+  .mpd-gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-top:4px;background:#f1efe9;line-height:0;height:133.077vw}
   .mpd-gallery::-webkit-scrollbar{display:none}
-  .mpd-gallery img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start}
+  .mpd-slide{flex:0 0 100%;width:100%;height:100%;overflow:hidden;scroll-snap-align:start}
+  .mpd-gallery img{width:100%;height:100%;object-fit:cover}
+  .mpd-salmon-purse .mpd-slide:first-child img{transform:scale(1.18)}
+  .mpd-salmon-bookmark .mpd-gallery{margin-top:41.3px;height:115.897vw}
   .mpd-body{padding:0 38px;font-family:var(--body);font-size:10.5px;line-height:15.7px}
-  .mpd-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:26px}
+  .mpd-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:35px}
+  .mpd-salmon-bookmark .mpd-head{padding-top:41px}
   .mpd-name{font-family:var(--editorial);font-weight:500;font-size:15px;line-height:17px;margin:0}
   .mpd-n{font-size:10.5px;line-height:15.7px;white-space:nowrap}
   .mpd-line{margin:8px 0 0}
   .mpd-line + .mpd-line{margin-top:0}
-  .mpd-p{margin:15.5px 0 0 0;padding-bottom:0}
-  .mpd-body{padding-bottom:66px}
+  .mpd-p{margin:15.5px 0 0}
+  .mpd-add{margin:12px 0 0;width:auto;min-height:44px;font-family:var(--body);font-size:11px;letter-spacing:0;text-transform:none;padding:0;border:0;background:transparent;color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+  .mpd-add:hover{background:transparent;color:var(--olive)}
 
   /* ---- Mobile fish-leather list (mobile_Product_List_Page.png) ---- */
   /* mobile_Product_List_Page.png: seamless neutral off-white body, same tone as nav-neutral/foot-neutral above and below it, not the page's default warm --paper beige. */
-  .mpl{display:block;padding:88px 0 0;background:#e9e8e6}
-  .mpl-card{display:block;text-decoration:none;color:inherit;margin:0 12px}
-  .mpl-card + .mpl-card{margin-top:121px}
-  .mpl-card + .mpl-card .mpl-img{margin:0 20px}
+  .mpl{display:block;padding:88px 0 145px;position:relative;isolation:isolate;background:#e9e8e6}
+  .mpl::before{content:'';position:absolute;inset:180px 0 0;z-index:-1;background:url('/img/illustration-ocean.png') center bottom/175% auto repeat-y;filter:grayscale(1);opacity:.4;pointer-events:none}
+  .mpl-card{display:block;text-decoration:none;color:inherit;margin:0 19px 0 14px}
+  .mpl-card:first-child{padding-bottom:40px}
+  .mpl-card:first-child .mpl-img{height:137.949vw;overflow:hidden}
+  .mpl-card:first-child .mpl-img img{height:100%;object-fit:cover;object-position:center bottom}
+  .mpl-card + .mpl-card{margin:0 4px 0 0;padding:75px 30px 68px 31px;background:#fff}
+  .mpl-card + .mpl-card .mpl-cap{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;padding:0}
   .mpl-img{line-height:0;background:#111}
   .mpl-img img{width:100%;height:auto;display:block}
-  .mpl-cap{padding:18px 0 0 14px}
-  .mpl-cap .name{display:block;font-family:var(--editorial);font-style:italic;font-weight:500;font-size:14px;line-height:1.2}
-  .mpl-cap .sub{display:block;font-family:var(--editorial);font-size:13px;line-height:1.2;margin-top:4px}
+  .mpl-cap{padding:17px 0 0 11px}
+  .mpl-cap .name{display:block;font-family:var(--editorial);font-style:italic;font-weight:500;font-size:19px;line-height:20px}
+  .mpl-cap .sub{display:block;font-family:var(--editorial);font-size:14px;line-height:17px;margin-top:2px}
   .mpl-cap .sub em{font-style:italic}
 
   /* ---- Header (all mobile mockups) ---- */
   .nav{padding:0 8px}
-  .nav-logo img{height:41px}
-  .nav-menu span{left:9px;width:21px;height:1.2px;margin-top:-.6px}
+  .nav-logo img{width:58px;height:58px;filter:brightness(0)}
+  .nav.solid{background:var(--paper) url('/img/texture.jpg') repeat;background-size:100% 844px;background-blend-mode:multiply;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
+  .nav.on-dark{background:transparent}
+  .nav.on-dark .nav-logo img{filter:brightness(0) invert(1)}
+  .nav.on-dark.menu-open .nav-logo img{filter:brightness(0)}
+  .nav-menu span{left:9px;width:21px;height:1px;margin-top:-.5px}
   .nav-menu span:nth-child(1){transform:translateY(-8px)}
   .nav-menu span:nth-child(3){transform:translateY(8px)}
   .nav-cart{margin-right:-5px}
-  .nav-cart svg{width:22px;height:24px}
+  .nav-cart svg{width:34px;height:40px}
+  body:has(.faq) .nav-cart svg,body:has(.world-hero) .nav-cart svg{display:none}
+  body:has(.faq) .nav-cart::after,body:has(.world-hero) .nav-cart::after{content:'Cart';font-family:var(--editorial);font-size:17px}
+  body:has(.faq) .nav-logo img,body:has(.world-hero) .nav-logo img{width:40px;height:40px}
 
   /* ---- Footer (mobile_SHOP / _Purse / _Bookmark / _Product_List / _About_Material) ---- */
   .foot{padding:44px 14px 13px;max-width:none}
   .foot-row{grid-template-columns:1fr auto;gap:16px;align-items:start}
-  .foot-lead{font-size:11.5px;line-height:1.1;margin:0}
+  .foot-lead{font-size:10.5px;line-height:11px;margin:0}
   .foot-field{width:119px}
-  .foot-field input{padding:1px 0 4px 6px;font-size:10.5px;line-height:13px}
+  .foot-field input{padding:0 3px;font-size:9px;line-height:12px;height:14px}
   .foot-field button{min-width:26px;min-height:26px;margin:-7px 0;padding:0;font-size:12px}
-  .foot-field .arr{font-size:0}
-  .foot-field .arr::before{content:">";font-size:14px}
   .foot-links{font-size:10.5px;gap:0;line-height:1}
-  .foot-links a{padding:6px 0;margin:0;line-height:7.2px}
-  .foot-mark{width:327px;margin:34px auto 0;display:block}
+  .foot-links a{padding:0;margin:0;line-height:12px;min-height:20px}
+  .foot-mark{width:327px;margin:25px auto 0;display:block}
+  .foot,.nav.solid{background-image:linear-gradient(rgba(232,231,229,.6),rgba(232,231,229,.6)),url('/img/texture.jpg');background-size:auto,844px 844px;background-blend-mode:normal}
+  .nav.on-dark,.nav.menu-open{background:transparent}
+  body:has(.mshop) #foot,body:has(.mpl) #foot{padding-top:10px}
 
   /* ---- Home footer variant (mobile_HOME.png): separate neutral paper treatment ---- */
   /* was border-top:50px solid #fff — an opaque white rectangle painted over the textured
