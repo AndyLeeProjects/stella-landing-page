@@ -210,40 +210,46 @@ const pages = {
     return isMobile() ? pages.homeMobile() : pages.homeDesktop();
   },
 
-  /* Mobile home — the editorial book from mobile_HOME.png */
+  /* Mobile home — layout per Stella's reference screenshot (Sept): four full-bleed
+     product/collection plates, every one of them a link, then the shared footer. */
   homeMobile(){
     document.title = 'WRM — With Raw Materials';
     return `
-<section class="mh">
-  <a class="mh-plate mh-hero" href="/wrm-world" data-link aria-label="WRM is an attempt to make beautiful things in a world that is burning up. Explore WRM World">
-    <img src="/img/m-hero.jpg" alt="" fetchpriority="high">
-    <div class="mh-hero-content">
-      <div class="mh-hero-txt"><span class="wrm">WRM</span> <em>is an<br>attempt to make<br>beautiful things<br>in a world that is<br>burning up</em></div>
-      <span class="mh-hero-link">Explore WRM World</span>
+<section class="mh2">
+  <a class="mh2-plate mh2-purse" href="/product/salmon-purse" data-link aria-label="Salmon Purse — Ocean Collection">
+    <div class="mh2-cap">
+      <span class="t1">Salmon Purse</span>
+      <span class="t2">Ocean Collection</span>
     </div>
+    <img src="/img/purse-dark.jpg" alt="Salmon Purse" fetchpriority="high">
   </a>
-  <a class="mh-plate mh-ocean" href="/shop/ocean-season" data-link aria-label="Chapter I — Ocean">
+
+  <a class="mh2-plate mh2-bookmark" href="/product/salmon-bookmark" data-link aria-label="Salmon Bookmark — Ocean Collection">
+    <span class="mh2-frame">
+      <img src="/img/m-bookmark.jpg" alt="Salmon Bookmark" loading="lazy">
+      <span class="mh2-cap over">
+        <span class="t1">Salmon Bookmark</span>
+        <span class="t2">Ocean Collection</span>
+      </span>
+    </span>
+  </a>
+
+  <a class="mh2-plate mh2-tote" href="/about-materials/algae" data-link aria-label="Algae Tote — Ocean Collection — Coming soon">
+    <img src="/img/m-tote.jpg" alt="Algae Tote" loading="lazy">
+    <span class="mh2-cap over center">
+      <span class="t1">Algae Tote</span>
+      <span class="t2">Ocean Collection</span>
+      <span class="t2 soon">Coming Soon</span>
+    </span>
+  </a>
+
+  <a class="mh2-plate mh2-ocean" href="/wrm-world" data-link aria-label="Chapter I — Ocean. Explore WRM World">
     <img src="/img/m-ocean.jpg" alt="Chapter I — Ocean" loading="lazy">
+    <span class="mh2-ocean-txt">
+      <span class="body">For the brand's very first collection,<br>WRM explores two materials from the Ocean:<br>fish leather and algae film</span>
+      <span class="mh2-link">Explore WRM World</span>
+    </span>
   </a>
-  <a class="mh-plate mh-materials gap-lg" href="/about-materials" data-link aria-label="About the materials">
-    <img src="/img/m-materials.jpg" alt="For Ocean Collection, WRM explores two materials: fish leather and algae film" loading="lazy">
-  </a>
-  <div class="mh-concept observe">
-    <p>The products at WRM come as a proof of concept, bringing these materials to everyday life.</p>
-  </div>
-  <a class="mh-plate mh-purse" href="/product/salmon-purse" data-link aria-label="Salmon Purse, Crust">
-    <img src="/img/purse-dark.jpg" alt="Salmon Purse — Crust" loading="lazy">
-    <div class="mh-cap"><span class="name">Salmon Purse</span><span class="sub">Crust</span></div>
-  </a>
-  <a class="mh-plate mh-bookmark gap-md" href="/product/salmon-bookmark" data-link aria-label="Salmon Bookmark, Crust">
-    <img src="/img/m-bookmark.jpg" alt="Salmon Bookmark — Crust" loading="lazy">
-    <div class="mh-cap"><span class="name">Salmon Bookmark</span><span class="sub">Crust</span></div>
-  </a>
-  <div class="mh-plate mh-tote gap-sm" aria-label="Algae Tote, Natural, coming soon">
-    <img src="/img/m-tote.jpg" alt="Algae Tote — Natural — Coming soon" loading="lazy">
-    <div class="mh-cap"><span class="name">Algae Tote</span><span class="sub">Natural</span></div>
-    <div class="mh-cap-soon">Coming Soon</div>
-  </div>
 </section>`;
   },
 

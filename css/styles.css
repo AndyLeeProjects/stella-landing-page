@@ -604,4 +604,48 @@ h1 .soft{font-style:italic;color:var(--muted)}
      warm-beige blurred bar, no dividing shadow line, matches the mockup exactly. ---- */
   .nav.nav-neutral{background:#e9e8e6 url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply;
     backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
+
+  /* ============================================================
+     MOBILE HOME v2 — per Stella's reference screenshot.
+     Four full-bleed plates (Purse / Bookmark / Tote / Chapter I Ocean), each one
+     a link in its entirety (image + caption), then the shared site footer.
+     ============================================================ */
+  .mh2{display:flex;flex-direction:column;background:#0f0f0f}
+  .mh2-plate{display:block;position:relative;line-height:0;text-decoration:none;color:#fff;background:#0f0f0f}
+  .mh2-plate img{width:100%;height:auto;display:block}
+  /* caption type — shared */
+  .mh2-cap{display:block;text-align:center;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+  .mh2-cap .t1{display:block;font-family:var(--display);font-style:italic;font-weight:400;
+    font-size:19px;line-height:1.2;letter-spacing:.06em;text-transform:uppercase}
+  .mh2-cap .t2{display:block;font-family:var(--body);font-weight:400;font-size:10.5px;
+    line-height:1.3;letter-spacing:.18em;text-transform:uppercase;margin-top:9px}
+  .mh2-cap .t2.soon{margin-top:4px}
+  .mh2-cap.over{position:absolute;left:0;right:0;z-index:2}
+
+  /* 1 — Salmon Purse: caption sits above the photo on the same black field.
+     Top padding clears the fixed nav bar; the photo keeps its full height so the
+     bag is never cropped. */
+  .mh2-purse{padding-top:calc(var(--nav-h) + 26px)}
+  .mh2-purse .mh2-cap{padding:0 20px 30px}
+  .mh2-purse img{aspect-ratio:auto}
+
+  /* 2 — Salmon Bookmark: dark panel inset inside a white field, caption over the panel */
+  .mh2-bookmark{background:#fff;padding:26px 20px 30px}
+  .mh2-frame{display:block;position:relative;line-height:0}
+  .mh2-bookmark .mh2-cap.over{top:11%}
+
+  /* 3 — Algae Tote: caption centred over the photo */
+  .mh2-tote .mh2-cap.over{top:34%}
+  .mh2-tote img{aspect-ratio:1600/1200;object-fit:cover}
+
+  /* 4 — Chapter I Ocean: headline art is baked into m-ocean.jpg; body copy + link overlay */
+  .mh2-ocean img{aspect-ratio:1563/2658;object-fit:cover}
+  .mh2-ocean-txt{position:absolute;left:0;right:0;top:57%;z-index:2;display:flex;
+    flex-direction:column;align-items:center;padding:0 22px;text-align:center}
+  .mh2-ocean-txt .body{display:block;font-family:var(--body);font-weight:400;font-size:11.5px;
+    line-height:1.55;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.55)}
+  .mh2-ocean-txt .mh2-link{display:inline-block;margin-top:22px;font-family:var(--body);
+    font-weight:400;font-size:10.5px;line-height:1.2;color:#fff;
+    border-bottom:1px solid rgba(255,255,255,.85);padding-bottom:3px;
+    text-shadow:0 1px 12px rgba(0,0,0,.55)}
 }
