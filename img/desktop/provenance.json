@@ -1,0 +1,390 @@
+[
+  {
+    "asset": "fish-workshop.webp",
+    "source": "IMG_4585.heic",
+    "reference_box_1400": null,
+    "size": [
+      2400,
+      3200
+    ]
+  },
+  {
+    "asset": "algae-sheets.webp",
+    "source": "IMG_0611.jpg",
+    "reference_box_1400": null,
+    "size": [
+      2400,
+      3200
+    ]
+  },
+  {
+    "asset": "purse-worn.webp",
+    "source": "IMG_9859.HEIC",
+    "reference_box_1400": null,
+    "size": [
+      2400,
+      3200
+    ]
+  },
+  {
+    "asset": "loom.webp",
+    "source": "IMG_8245.HEIC",
+    "reference_box_1400": null,
+    "size": [
+      2400,
+      3200
+    ]
+  },
+  {
+    "asset": "leather-stack.webp",
+    "source": "IMG_8111.HEIC",
+    "reference_box_1400": null,
+    "size": [
+      2400,
+      3200
+    ]
+  },
+  {
+    "asset": "ocean-scales.webp",
+    "source": "IMG_3794.jpg",
+    "reference_box_1400": null,
+    "size": [
+      2400,
+      3200
+    ]
+  },
+  {
+    "asset": "hero.webp",
+    "source": "desktop_Home.png; typography removed using 2560dpi.png",
+    "reference_box_1400": [
+      0,
+      0,
+      1400,
+      2007
+    ],
+    "size": [
+      1400,
+      2007
+    ]
+  },
+  {
+    "asset": "hero.webp",
+    "source": "2560dpi.png + reference photo extension",
+    "reference_box_1400": null,
+    "size": [
+      1400,
+      2007
+    ]
+  },
+  {
+    "asset": "purse-editorial.webp",
+    "source": "desktop_Home.png",
+    "reference_box_1400": [
+      28,
+      2043,
+      686,
+      2918
+    ],
+    "size": [
+      2400,
+      3192
+    ]
+  },
+  {
+    "asset": "bookmark.webp",
+    "source": "desktop_Bookmark.png",
+    "reference_box_1400": [
+      64,
+      75,
+      645,
+      747
+    ],
+    "size": [
+      2400,
+      2776
+    ]
+  },
+  {
+    "asset": "bookmark-book.webp",
+    "source": "desktop_Home.png; typography removed using local photo texture",
+    "reference_box_1400": [
+      0,
+      3015,
+      1400,
+      3978
+    ],
+    "size": [
+      1400,
+      963
+    ]
+  },
+  {
+    "asset": "tote.webp",
+    "source": "desktop_Home.png; typography removed using local photo texture",
+    "reference_box_1400": [
+      0,
+      4058,
+      1400,
+      4915
+    ],
+    "size": [
+      1400,
+      857
+    ]
+  },
+  {
+    "asset": "purse-front.webp",
+    "source": "desktop_Salmon Purse.png; typography removed using Ecomm.jpg",
+    "reference_box_1400": [
+      0,
+      0,
+      703,
+      907
+    ],
+    "size": [
+      703,
+      907
+    ]
+  },
+  {
+    "asset": "purse-strap.webp",
+    "source": "desktop_Salmon Purse.png",
+    "reference_box_1400": [
+      0,
+      907,
+      703,
+      1845
+    ],
+    "size": [
+      2400,
+      3202
+    ]
+  },
+  {
+    "asset": "purse-grain.webp",
+    "source": "desktop_Salmon Purse.png",
+    "reference_box_1400": [
+      4,
+      1882,
+      703,
+      2406
+    ],
+    "size": [
+      2400,
+      1799
+    ]
+  },
+  {
+    "asset": "purse-corner.webp",
+    "source": "desktop_Salmon Purse.png",
+    "reference_box_1400": [
+      0,
+      2446,
+      703,
+      3383
+    ],
+    "size": [
+      2400,
+      3199
+    ]
+  },
+  {
+    "asset": "purse-hanging.webp",
+    "source": "desktop_Salmon Purse.png",
+    "reference_box_1400": [
+      0,
+      3383,
+      695,
+      4327
+    ],
+    "size": [
+      2400,
+      3260
+    ]
+  },
+  {
+    "asset": "kanten.webp",
+    "source": "desktop_Mateiral Story copy 2.png",
+    "reference_box_1400": [
+      70,
+      1218,
+      242,
+      1340
+    ],
+    "size": [
+      737,
+      523
+    ]
+  },
+  {
+    "asset": "sway.webp",
+    "source": "desktop_Mateiral Story copy 2.png",
+    "reference_box_1400": [
+      304,
+      1194,
+      492,
+      1380
+    ],
+    "size": [
+      806,
+      797
+    ]
+  },
+  {
+    "asset": "paper.webp",
+    "source": "desktop_Mateiral Story.png",
+    "reference_box_1400": [
+      0,
+      1100,
+      1400,
+      1460
+    ],
+    "size": [
+      2400,
+      617
+    ]
+  },
+  {
+    "asset": "fish-grain.webp",
+    "source": "desktop_Salmon Purse.png",
+    "reference_box_1400": [
+      4,
+      1882,
+      703,
+      2406
+    ],
+    "size": [
+      2400,
+      1799
+    ]
+  },
+  {
+    "asset": "algae-stitch.webp",
+    "source": "WRM3266-Edit.jpg",
+    "reference_box_1400": null,
+    "size": [
+      2400,
+      3200
+    ]
+  },
+  {
+    "asset": "fish-grain.webp",
+    "source": "purse-grain.webp; reference-matched crop",
+    "reference_box_1400": null,
+    "size": [
+      700,
+      876
+    ]
+  },
+  {
+    "asset": "algae-stitch.webp",
+    "source": "WRM3266-Edit.jpg.jpg; reference-matched crop",
+    "reference_box_1400": null,
+    "size": [
+      700,
+      876
+    ]
+  },
+  {
+    "asset": "ocean-scales.webp",
+    "source": "IMG_3794.jpg.jpg; reference-matched crop",
+    "reference_box_1400": null,
+    "size": [
+      1400,
+      890
+    ]
+  },
+  {
+    "asset": "algae-story.webp",
+    "source": "IMG_0611.jpg.jpg; reference-matched crop",
+    "reference_box_1400": null,
+    "size": [
+      695,
+      871
+    ]
+  },
+  {
+    "asset": "world-clear-bag.webp",
+    "source": "desktop_WRM WORLD.png; typography removed using local photo texture",
+    "reference_box_1400": [
+      0,
+      0,
+      703,
+      898
+    ],
+    "size": [
+      703,
+      898
+    ]
+  },
+  {
+    "asset": "world-samples.webp",
+    "source": "desktop_WRM WORLD.png; typography removed using local photo texture",
+    "reference_box_1400": [
+      703,
+      0,
+      1400,
+      898
+    ],
+    "size": [
+      697,
+      898
+    ]
+  },
+  {
+    "asset": "world-dye.webp",
+    "source": "desktop_WRM WORLD.png",
+    "reference_box_1400": [
+      0,
+      898,
+      703,
+      1769
+    ],
+    "size": [
+      2400,
+      2974
+    ]
+  },
+  {
+    "asset": "world-dyed-bag.webp",
+    "source": "desktop_WRM WORLD.png",
+    "reference_box_1400": [
+      703,
+      898,
+      1400,
+      1769
+    ],
+    "size": [
+      2400,
+      2999
+    ]
+  },
+  {
+    "asset": "world-history.webp",
+    "source": "desktop_WRM WORLD.png",
+    "reference_box_1400": [
+      40,
+      1867,
+      1320,
+      2878
+    ],
+    "size": [
+      2400,
+      1895
+    ]
+  },
+  {
+    "asset": "world-wire.webp",
+    "source": "desktop_WRM WORLD.png",
+    "reference_box_1400": [
+      0,
+      2940,
+      1400,
+      3805
+    ],
+    "size": [
+      2400,
+      1483
+    ]
+  }
+]

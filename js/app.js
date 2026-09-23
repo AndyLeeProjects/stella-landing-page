@@ -543,13 +543,13 @@ const routes = [
 let io;
 function render(path, y=0){
   closeMenu(); closeCart();
-  let html = null;
-  for(const [re,fn] of routes){ const m = path.match(re); if(m){ html = fn(m); break; } }
+  let html = isMobile() ? null : window.WRMDesktop.render(path.replace(/\/$/,'') || '/');
+  if(html === null) for(const [re,fn] of routes){ const m = path.match(re); if(m){ html = fn(m); break; } }
   app.innerHTML = `<div class="page">${html ?? pages.notFound()}</div>`;
   const isHome = path === '/';
-  if(isMobile()) foot.querySelector('.foot-lead').textContent = isHome ? "Sign up to stay updated with WRM's journey" : 'Sign up to stay updated.';
-  foot.classList.toggle('hide', isHome && !isMobile()); /* desktop home keeps the live site's own footer */
-  nav.classList.toggle('on-dark', isMobile() && (isHome || path==='/shop' || path==='/shop/' || path.replace(/\/$/,'')==='/shop/ocean-season'));
+  foot.querySelector('.foot-lead').textContent = isMobile() ? (isHome ? "Sign up to stay updated with WRM's journey" : 'Sign up to stay updated.') : "Sign up to stay updated with WRM’s material explorations.";
+  foot.classList.toggle('hide', !isMobile() && !!app.querySelector('.d-world'));
+  nav.classList.toggle('on-dark', isHome || (isMobile() && (path==='/shop' || path==='/shop/' || path.replace(/\/$/,'')==='/shop/ocean-season')));
   renderCart();
   io?.disconnect();
   io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.12});
