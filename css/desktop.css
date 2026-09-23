@@ -118,5 +118,7 @@
   .foot-field:focus-within button,.foot-field:hover button{opacity:1}
   .foot-links{font:400 .786vw/1.4 var(--desktop-body);gap:1.57vw;padding-top:1vw;text-align:right}
   .foot-links a{padding:0;margin:0;text-decoration:none}
-  .foot-mark{position:absolute;width:91.2vw;max-width:none;height:auto;left:4.79vw;bottom:3.3vw;margin:0;mix-blend-mode:multiply}
+  /* An explicit grid area offsets absolute positioning by the footer padding.
+     Anchor the wordmark to the whole footer, not its padded content grid. */
+  .foot-mark{position:absolute;grid-column:auto;grid-row:auto;width:91.2%;max-width:none;height:auto;left:50%;right:auto;transform:translateX(-50%);bottom:3.3vw;margin:0;mix-blend-mode:multiply}
 }
