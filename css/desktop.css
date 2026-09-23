@@ -7,7 +7,9 @@
   html,body{background:#fff;color:#000}
   body::before,body::after{display:none}
   body{--desktop-serif:"Times New Roman",Times,"Liberation Serif",serif;--desktop-body:WRMDesktopSans,"DM Sans",sans-serif}
-  .nav,.nav.solid,.nav.on-dark{position:absolute;height:6.43vw;padding:0 4.64vw;align-items:start;background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;color:#000}
+  /* Header stays locked to the top of the viewport while the page scrolls.
+     (Was position:absolute, which let the whole bar scroll away with the page.) */
+  .nav,.nav.solid,.nav.on-dark{position:fixed;top:0;left:0;right:0;height:6.43vw;padding:0 4.64vw;align-items:start;background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;color:#000}
   .nav-menu{display:none}
   .desktop-links{display:flex;gap:2.14vw;align-items:center;padding-top:2.13vw;font:400 .786vw/1.4 var(--desktop-body)}
   .desktop-links a{text-decoration:none;padding:0;white-space:nowrap}
@@ -16,7 +18,13 @@
   .nav-cart{margin-top:1.4vw;width:auto;height:2.5vw;min-height:25px;font:400 .786vw/1.4 var(--desktop-body)}
   .nav-cart svg{display:none}.desktop-cart-label{display:block}
   .nav-cart-count{right:-18px;top:0}
-  .nav.on-dark{color:#fff}.nav.on-dark .nav-logo img{filter:brightness(0) invert(1)}
+  /* The fixed header keeps white ink only while it sits over the dark hero
+     (.over-dark-hero, set on scroll). Once the hero has scrolled past, revert to dark
+     ink so the logo/links/Cart stay legible over the light content below. */
+  .nav.on-dark{color:#000}
+  .nav.on-dark .nav-logo img{filter:brightness(0)}
+  .nav.on-dark.over-dark-hero{color:#fff}
+  .nav.on-dark.over-dark-hero .nav-logo img{filter:brightness(0) invert(1)}
   .page{animation:none}
   .d-home{background:#fff}
   .d-home section{position:relative}

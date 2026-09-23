@@ -608,7 +608,18 @@ $('#cartClose').addEventListener('click', closeCart);
 scrim.addEventListener('click', closeCart);
 document.addEventListener('keydown', e => { if(e.key==='Escape'){ closeMenu(); closeCart(); } });
 
-function onScroll(){ const mobHome = isMobile() && nav.classList.contains('on-dark'); nav.classList.toggle('solid', !mobHome && (window.scrollY > 24 || location.pathname !== '/')); }
+function onScroll(){
+  const mobHome = isMobile() && nav.classList.contains('on-dark');
+  nav.classList.toggle('solid', !mobHome && (window.scrollY > 24 || location.pathname !== '/'));
+  /* Desktop: the header is fixed, so its white "on-dark" treatment must only stay while
+     it actually overlaps the dark hero at the top of the page. Past the hero the content
+     is light and white text/logo would be invisible, so drop back to dark ink. */
+  if(!isMobile()){
+    const hero = document.querySelector('.d-home-hero, .mh2-purse, .season-hero, .mat-hero');
+    const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
+    nav.classList.toggle('over-dark-hero', heroBottom > nav.getBoundingClientRect().height);
+  }
+}
 window.addEventListener('scroll', onScroll, {passive:true});
 
 window.matchMedia('(max-width:760px)').addEventListener('change', ()=>{
