@@ -24,7 +24,7 @@ class DesktopContract(unittest.TestCase):
   self.assertTrue(p.url.endswith('/wrm-world'))
   p.set_viewport_size({'width':390,'height':844});p.goto(os.environ.get('WRM_TEST_URL','http://127.0.0.1:8768'))
   self.assertTrue(p.locator('#menuBtn').is_visible())
-  self.assertTrue(p.locator('.mh-hero').is_visible())
+  self.assertTrue(p.locator('.mh2-purse').is_visible())
 
  def test_product_reference_has_full_vertical_photo_story(self):
   p=self.page;p.set_viewport_size({'width':1400,'height':900})

@@ -108,7 +108,8 @@
   .d-world-materials span{position:absolute;left:0;right:0;top:33.29vw;text-align:center;font:400 1.36vw/1.4 var(--desktop-body);text-decoration:underline;text-underline-offset:5px}
   .foot{position:relative;max-width:none;margin:0;height:29.64vw;padding:7.1vw 4.79vw 0;background:#eee url('/img/desktop/paper.webp') center/100% 100%;color:#000}
   .foot.hide{display:none}
-  .foot-row{display:grid;grid-template-columns:1fr auto;align-items:start;gap:0;padding:0}
+  .foot{display:grid;grid-template-columns:1fr auto;align-items:start;gap:0}
+  .foot-row{display:contents}
   .foot-lead{font:italic 400 1.857vw/1.2 var(--desktop-serif);margin:0 0 1.7vw;letter-spacing:.035vw}
   .foot-field{width:23.64vw;height:1.64vw;border-bottom:1px solid #aaa}
   .foot-field input{font:400 .786vw/1.4 var(--desktop-body);padding:0;min-width:0;height:100%}

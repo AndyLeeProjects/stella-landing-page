@@ -14,6 +14,9 @@
   --body:"DM Sans",ui-sans-serif,system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,monospace;
   --nav-h:64px; --gutter:clamp(20px,5vw,40px); --max:1400px;
+  /* Hamburger rules drawn as an SVG stroke so they rasterise at the same device-pixel
+     weight as the cart icon's stroke (both stroke-width .9 on a 24-unit viewBox). */
+  --ham:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 19.43" fill="none" stroke="black" stroke-width="1.6" stroke-linecap="square"><path d="M1.5 3.6h21M1.5 9.9h21M1.5 16.1h21"/></svg>');
   --ease:cubic-bezier(.22,1,.36,1);
 }
 
@@ -367,8 +370,13 @@ h1 .soft{font-style:italic;color:var(--muted)}
 /* ============================================================
    FOOTER (mockup: signup left, links right, wordmark bottom)
    ============================================================ */
-.foot{padding:56px var(--gutter) calc(24px + env(safe-area-inset-bottom));max-width:var(--max);margin:0 auto}
-.foot-row{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+/* Desktop keeps the signup form and the links side by side. The mobile markup moves
+   the form out of .foot-row (so it can stack above the links), so re-create the two
+   column layout here by spanning the footer itself. */
+.foot{padding:56px var(--gutter) calc(24px + env(safe-area-inset-bottom));max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+.foot-mark{grid-column:1/-1}
+.foot-row{display:contents}
 .foot-lead{font-family:var(--editorial);font-style:italic;font-size:17px;margin:0 0 10px}
 .foot-field{display:flex;border-bottom:1px solid var(--ink);width:min(300px,100%)}
 .foot-field input{flex:1;background:transparent;border:0;outline:none;padding:8px 0;font-size:16px;min-width:0;border-radius:0}
@@ -461,7 +469,9 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .season-hero{height:65vh}
   .menu-item{font-size:22px}
   /* Mobile menu sheets: fixed header, olive navigation, paper footer. */
-  .menu{background:var(--menu)}
+  /* mockup_MENU-05/06/07.png show a lighter khaki-olive panel (~#C6C3A1) than the desktop
+     token (--menu:#8f9a6b, measured mockup rgb(198,195,161)) — override color for mobile only. */
+  .menu{background:#c6c3a1 url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply}
   .cart[aria-hidden="true"]{visibility:hidden}
   .menu-list{padding:76px 21px 30px;min-height:max(659px,calc(100dvh - 185px));max-width:none}
   .menu-item,.menu-sub .menu-item,.menu-sub .menu-sub .menu-item{font-family:var(--editorial);font-size:17px;line-height:20px;font-weight:400;border:0;padding:0;height:69px;color:var(--ink)}
@@ -488,6 +498,10 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .nav.menu-open .nav-menu span:nth-child(1){transform:translateY(-8px)}
   .nav.menu-open .nav-menu span:nth-child(2){opacity:1}
   .nav.menu-open .nav-menu span:nth-child(3){transform:translateY(8px)}
+  /* Menu overlay must always show the dark-ink WRM wordmark & hamburger, even when opened
+     over a page whose nav carries .on-dark (e.g. mobile Home). */
+  .nav.menu-open.on-dark .nav-logo img{filter:brightness(0)!important}
+  .nav.menu-open.on-dark .nav-menu span{background:var(--ink)!important}
 
   /* ---- Mobile shop plate list (mobile_SHOP.png) ---- */
   .mshop{display:block;background:#000;padding-bottom:63.846vw}
@@ -524,6 +538,11 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .mat-hero + .mat-hero .mat-cap img.sil{width:auto;height:204px;transform:none;margin:0}
   .mat-hero + .mat-hero .mat-cap{top:56%;gap:28px}
   .mat-hero .mat-cap span{font-family:var(--editorial);font-size:18px;font-weight:500}
+
+  /* ---- About the materials, landing + detail (mobile_About_Material-08/09/10.png): the whole
+     page is the neutral off-white/textured tone (same as product detail pages), not the warm
+     --paper beige — the .pg wrapper itself needs the override since .ed-page has no own bg. ---- */
+  .pg.mat-page{background:#e9e8e6 url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply}
 
   /* ---- About the materials, detail (mobile_About_Material-09/10.png) ---- */
   .pg:has(.mat-detail){padding-bottom:106px}
@@ -565,7 +584,8 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .mpd-add:hover{background:transparent;color:var(--olive)}
 
   /* ---- Mobile fish-leather list (mobile_Product_List_Page.png) ---- */
-  .mpl{display:block;padding:88px 0 145px;position:relative;isolation:isolate}
+  /* mobile_Product_List_Page.png: seamless neutral off-white body, same tone as nav-neutral/foot-neutral above and below it, not the page's default warm --paper beige. */
+  .mpl{display:block;padding:88px 0 145px;position:relative;isolation:isolate;background:#e9e8e6}
   .mpl::before{content:'';position:absolute;inset:180px 0 0;z-index:-1;background:url('/img/illustration-ocean.png') center bottom/175% auto repeat-y;filter:grayscale(1);opacity:.4;pointer-events:none}
   .mpl-card{display:block;text-decoration:none;color:inherit;margin:0 19px 0 14px}
   .mpl-card:first-child{padding-bottom:40px}
@@ -582,31 +602,154 @@ h1 .soft{font-style:italic;color:var(--muted)}
 
   /* ---- Header (all mobile mockups) ---- */
   .nav{padding:0 8px}
-  .nav-logo img{width:58px;height:58px;filter:brightness(0)}
+  /* The wordmark PNG's alpha peaks at 224, so brightness(0) alone renders it thin and
+     slightly washed (measured stroke median 4 device px @DPR3, dark fraction .151).
+     Two chained drop-shadows dilate the script and solidify the semi-transparent edges,
+     taking it to stroke median 7 / dark fraction .233 so it carries the same visual
+     presence as the hamburger and cart strokes either side of it. NOTE: CSS filters
+     chain — each drop-shadow dilates the previous result — so offsets stay small. */
+  .nav-logo img{width:58px;height:58px;
+    filter:brightness(0) drop-shadow(0 0 .5px #000) drop-shadow(0 0 .35px #000)}
   .nav.solid{background:var(--paper) url('/img/texture.jpg') repeat;background-size:100% 844px;background-blend-mode:multiply;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
   .nav.on-dark{background:transparent}
-  .nav.on-dark .nav-logo img{filter:brightness(0) invert(1)}
-  .nav.on-dark.menu-open .nav-logo img{filter:brightness(0)}
-  .nav-menu span{left:9px;width:21px;height:1px;margin-top:-.5px}
-  .nav-menu span:nth-child(1){transform:translateY(-8px)}
-  .nav-menu span:nth-child(3){transform:translateY(8px)}
+  .nav.on-dark .nav-logo img{filter:brightness(0) invert(1)
+      drop-shadow(0 0 .5px #fff) drop-shadow(0 0 .35px #fff)}
+  .nav.on-dark.menu-open .nav-logo img{filter:brightness(0)
+      drop-shadow(0 0 .5px #000) drop-shadow(0 0 .35px #000)}
+  /* Hamburger rules must read at the cart icon's stroke weight. Measured on a DPR3
+     screenshot (dark-pixel run lengths): the cart's vertical bars render 4 device px.
+     A CSS height on the plain <span> can't hit that — it snaps to 3px at 1px and
+     jumps straight to 6px at 1.275px. Rendering the rules as an inline SVG stroke,
+     exactly like the cart's, makes them rasterise identically at 4px. */
+  .nav-menu span{display:none}
+  .nav-menu::before{content:"";width:21px;height:17px;
+    background:currentColor;
+    -webkit-mask:var(--ham) center/21px 17px no-repeat;
+    mask:var(--ham) center/21px 17px no-repeat}
+  .nav.on-dark .nav-menu::before{background:#fff}
+  .nav.menu-open .nav-menu::before,
+  .nav.on-dark.menu-open .nav-menu::before{background:var(--ink)}
   .nav-cart{margin-right:-5px}
   .nav-cart svg{width:34px;height:40px}
   body:has(.faq) .nav-cart svg,body:has(.world-hero) .nav-cart svg{display:none}
   body:has(.faq) .nav-cart::after,body:has(.world-hero) .nav-cart::after{content:'Cart';font-family:var(--editorial);font-size:17px}
   body:has(.faq) .nav-logo img,body:has(.world-hero) .nav-logo img{width:40px;height:40px}
 
-  /* ---- Footer (mobile_SHOP / _Purse / _Bookmark / _Product_List / _About_Material) ---- */
-  .foot{padding:44px 14px 13px;max-width:none}
-  .foot-row{grid-template-columns:1fr auto;gap:16px;align-items:start}
-  .foot-lead{font-size:10.5px;line-height:11px;margin:0}
-  .foot-field{width:119px}
-  .foot-field input{padding:0 3px;font-size:9px;line-height:12px;height:14px}
-  .foot-field button{min-width:26px;min-height:26px;margin:-7px 0;padding:0;font-size:12px}
-  .foot-links{font-size:10.5px;gap:0;line-height:1}
-  .foot-links a{padding:0;margin:0;line-height:12px;min-height:20px}
-  .foot-mark{width:327px;margin:25px auto 0;display:block}
+  /* ---- Footer (mobile_SHOP / _Purse / _Bookmark / _Product_List / _About_Material) ----
+     Per Stella's revised reference: the signup block sits ABOVE the Info/Contact/FAQ
+     stack (not beside it), left-aligned, with the email underline running the full
+     screen width. Gap between the lead line and "Email" measured at 6.6 css px in the
+     reference vs 3.0 live, so the field gets margin-top:7px for breathing room.
+     Link rhythm (54.2px apart) and wordmark (184.6px, centred) from the earlier
+     reference are preserved. */
+  .foot{display:block;padding:26px 20px 24px;max-width:none}
+  .foot-form{display:block}
+  .foot-lead{font-family:var(--body);font-style:normal;font-size:16px;line-height:1.25;margin:0}
+  /* full-bleed underline: stretch edge to edge, cancelling the footer's 20px padding.
+     The ">" submit is pushed to the right and shares the Info/Contact/FAQ gutter
+     (measured right gap 20.7 css px) so the two right edges line up. */
+  .foot-field{width:auto;margin:7px -20px 0;padding:0 20px;justify-content:space-between}
+  .foot-field input{flex:0 0 auto;width:96px;padding:0 0 4px 4px;font-size:11px;line-height:13px;height:17px}
+  .foot-field button{min-width:0;min-height:26px;margin:-7px -1px 0 0;padding:0;font-size:12px}
+  /* Reference shows a plain chevron, not the site's default arrow glyph. */
+  .foot-field .arr{font-size:0}
+  .foot-field .arr::before{content:">";font-size:13px}
+  .foot-row{display:block;margin:0 0 27px}
+  /* Link rhythm comes from a fixed row height, so the three links sit 54.2px apart
+     centre-to-centre exactly as measured, instead of hugging each other. */
+  .foot-links{font-family:var(--body);font-size:13px;gap:0;line-height:1;margin-top:4px}
+  .foot-links a{padding:0;margin:0;height:54.2px;line-height:54.2px;min-height:0;display:block}
+  .foot-links a:first-child{height:47px;line-height:47px}
+  .foot-mark{width:184.6px;margin:0 auto;display:block}
   .foot,.nav.solid{background-image:linear-gradient(rgba(232,231,229,.6),rgba(232,231,229,.6)),url('/img/texture.jpg');background-size:auto,844px 844px;background-blend-mode:normal}
   .nav.on-dark,.nav.menu-open{background:transparent}
   body:has(.mshop) #foot,body:has(.mpl) #foot{padding-top:10px}
+
+  /* ---- Home footer variant (mobile_HOME.png): separate neutral paper treatment ---- */
+  /* was border-top:50px solid #fff — an opaque white rectangle painted over the textured
+     background, exposing a bright white stripe between the dark Algae Tote plate and the
+     footer that mobile_HOME.png does not show (the footer's own texture runs seamlessly up
+     to the dark plate above it). Use padding instead of a border so the textured background
+     paints all the way through the gap. */
+  .foot-home{padding:77px 20px 13px;background:#F2F2F0 url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply}
+  .foot-home .foot-lead{font-family:var(--body);font-style:normal;font-size:13px;line-height:1.3}
+  .foot-home .foot-links{font-family:var(--body);font-size:10.5px;gap:0;line-height:1.3}
+  .foot-home .foot-links a{padding:20px 0;line-height:1.3}
+  .foot-home .foot-mark{width:188px;margin-top:23px}
+  .foot-home .arr{font-size:0}
+  .foot-home .arr::before{content:">";font-size:12px}
+
+  /* ---- Product detail footer variant (mobile_Purse.png / mobile_Bookmark.png): continues the
+     page's own neutral off-white/textured tone (#e9e8e6-ish), not the warm --paper beige used on
+     Shop/Home/About Materials. Lead + links keep the default editorial italic styling. ---- */
+  .foot-neutral{background:#e9e8e6 url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply}
+
+  /* ---- Product detail header variant (mobile_Purse.png / mobile_Bookmark.png): the nav bar is
+     the SAME seamless neutral off-white paper texture as the breadcrumb row/body below it — no
+     warm-beige blurred bar, no dividing shadow line, matches the mockup exactly. ---- */
+  .nav.nav-neutral{background:#e9e8e6 url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply;
+    backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
+
+  /* ============================================================
+     MOBILE HOME v2 — per Stella's reference screenshot.
+     Four full-bleed plates (Purse / Bookmark / Tote / Chapter I Ocean), each one
+     a link in its entirety (image + caption), then the shared site footer.
+     ============================================================ */
+  .mh2{display:flex;flex-direction:column;background:#0f0f0f}
+  .mh2-plate{display:block;position:relative;line-height:0;text-decoration:none;color:#fff;background:#0f0f0f}
+  .mh2-plate img{width:100%;height:auto;display:block}
+  /* caption type — shared */
+  .mh2-cap{display:block;text-align:center;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+  .mh2-cap .t1{display:block;font-family:var(--display);font-style:italic;font-weight:400;
+    font-size:19px;line-height:1.2;letter-spacing:.06em;text-transform:uppercase}
+  .mh2-cap .t2{display:block;font-family:var(--body);font-weight:400;font-size:10.5px;
+    line-height:1.3;letter-spacing:.18em;text-transform:uppercase;margin-top:9px}
+  .mh2-cap .t2.soon{margin-top:4px}
+  .mh2-cap.over{position:absolute;left:0;right:0;z-index:2}
+
+  /* 1 — Salmon Purse: the photo is FULL-BLEED from the very top of the page (it runs
+     up behind the transparent nav) and the caption is overlaid directly on the
+     photograph's own dark upper area — there is no separate black band above the photo.
+     Reference measurements (206x1280 screenshot, purse plate = 0..358px):
+       plate aspect        358/206  -> 1.738
+       "SALMON PURSE"      centre y  79.5 -> 22.2% of plate height
+       "OCEAN COLLECTION"  centre y  96.5 -> 27.0% of plate height
+       strap first appears y 109     -> 30.4% of plate height
+     purse-dark.jpg is 1600x2951 (aspect 1.844) with the strap starting at 34.9%, so a
+     bottom-anchored cover crop to 1.738 trims ~5.7% off the top and lands the strap at
+     ~30.9% — matching the reference while keeping the bag and floor complete. */
+  .mh2-purse{padding-top:0}
+  .mh2-purse img{aspect-ratio:206/358;object-fit:cover;object-position:50% 100%}
+  /* Caption sits a touch BELOW the top of the strap arc. Measured on the live plate
+     (390x678, nav + caption hidden): the strap's highest point is y 209 = 30.83% of
+     the plate. Starting the caption at 33% clears the peak by ~15px so both lines
+     read against the dark backdrop inside the arc rather than colliding with it. */
+  .mh2-purse .mh2-cap{position:absolute;left:0;right:0;top:33%;z-index:2;padding:0 20px}
+  .mh2-purse .mh2-cap .t2{margin-top:14px}
+
+  /* 2 — Salmon Bookmark: dark panel inset inside a white field, caption over the panel */
+  .mh2-bookmark{background:#fff;padding:26px 20px 30px}
+  .mh2-frame{display:block;position:relative;line-height:0}
+  .mh2-bookmark .mh2-cap.over{top:11%}
+
+  /* 3 — Algae Tote: caption centred over the photo */
+  .mh2-tote .mh2-cap.over{top:34%}
+  .mh2-tote img{aspect-ratio:1600/1200;object-fit:cover}
+
+  /* 4 — Chapter I Ocean: headline art is baked into m-ocean.jpg; body copy + link overlay.
+     m-ocean.jpg carries a flat grey strip in its top 40px (mean luma ~72, low row SD)
+     followed by a white hairline at row 41 — that strip was rendering as a grey filler
+     band between the Algae Tote photo above and the fish-scale photo. Bottom-anchored
+     cover crop to 1563/2615 trims exactly those top 43px so the scales start clean, and
+     the plate carries a white gap above the photo instead of the dark plate colour. */
+  .mh2-ocean{background:#fff;padding-top:10px}
+  .mh2-ocean img{aspect-ratio:1563/2615;object-fit:cover;object-position:50% 100%}
+  .mh2-ocean-txt{position:absolute;left:0;right:0;top:57%;z-index:2;display:flex;
+    flex-direction:column;align-items:center;padding:0 22px;text-align:center}
+  .mh2-ocean-txt .body{display:block;font-family:var(--body);font-weight:400;font-size:11.5px;
+    line-height:1.55;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.55)}
+  .mh2-ocean-txt .mh2-link{display:inline-block;margin-top:22px;font-family:var(--body);
+    font-weight:400;font-size:10.5px;line-height:1.2;color:#fff;
+    border-bottom:1px solid rgba(255,255,255,.85);padding-bottom:3px;
+    text-shadow:0 1px 12px rgba(0,0,0,.55)}
 }

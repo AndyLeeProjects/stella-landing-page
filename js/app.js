@@ -137,7 +137,7 @@ function buildMenu(){
     menuFooter.className = 'foot menu-footer';
     menuFooter.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
     menuFooter.querySelector('form').dataset.newsletter = 'menu';
-    menuFooter.querySelector('.foot-lead').textContent = 'Sign up to stay updated.';
+    menuFooter.querySelector('.foot-lead').textContent = 'Sign up to stay updated with WRM’s journey';
     menu.append(menuFooter);
     const close = document.createElement('button');
     close.id = 'mobileMenuClose'; close.className = 'mobile-menu-close';
@@ -209,38 +209,46 @@ const pages = {
     return isMobile() ? pages.homeMobile() : pages.homeDesktop();
   },
 
-  /* Mobile home — the editorial book from mobile_HOME.png */
+  /* Mobile home — layout per Stella's reference screenshot (Sept): four full-bleed
+     product/collection plates, every one of them a link, then the shared footer. */
   homeMobile(){
     document.title = 'WRM — With Raw Materials';
     return `
-<section class="mh">
-  <a class="mh-plate mh-hero" href="/wrm-world" data-link aria-label="WRM is an attempt to make beautiful things in a world that is burning up. Explore WRM World">
-    <img src="/img/m-hero.jpg" alt="" fetchpriority="high">
-    <div class="mh-hero-txt"><span class="hero-line"><span class="wrm">WRM</span> <em>is an</em></span><em class="hero-line">attempt to make</em><em class="hero-line">beautiful things</em><em class="hero-line">in a world that is</em><em class="hero-line">burning up</em></div>
-    <span class="mh-hero-link">Explore WRM World</span>
+<section class="mh2">
+  <a class="mh2-plate mh2-purse" href="/product/salmon-purse" data-link aria-label="Salmon Purse — Ocean Collection">
+    <img src="/img/purse-dark.jpg" alt="Salmon Purse" fetchpriority="high">
+    <div class="mh2-cap">
+      <span class="t1">Salmon Purse</span>
+      <span class="t2">Ocean Collection</span>
+    </div>
   </a>
-  <a class="mh-plate" href="/shop/ocean-season" data-link aria-label="Chapter I — Ocean">
+
+  <a class="mh2-plate mh2-bookmark" href="/product/salmon-bookmark" data-link aria-label="Salmon Bookmark — Ocean Collection">
+    <span class="mh2-frame">
+      <img src="/img/m-bookmark.jpg" alt="Salmon Bookmark" loading="lazy">
+      <span class="mh2-cap over">
+        <span class="t1">Salmon Bookmark</span>
+        <span class="t2">Ocean Collection</span>
+      </span>
+    </span>
+  </a>
+
+  <a class="mh2-plate mh2-tote" href="/about-materials/algae" data-link aria-label="Algae Tote — Ocean Collection — Coming soon">
+    <img src="/img/m-tote.jpg" alt="Algae Tote" loading="lazy">
+    <span class="mh2-cap over center">
+      <span class="t1">Algae Tote</span>
+      <span class="t2">Ocean Collection</span>
+      <span class="t2 soon">Coming Soon</span>
+    </span>
+  </a>
+
+  <a class="mh2-plate mh2-ocean" href="/wrm-world" data-link aria-label="Chapter I — Ocean. Explore WRM World">
     <img src="/img/m-ocean.jpg" alt="Chapter I — Ocean" loading="lazy">
+    <span class="mh2-ocean-txt">
+      <span class="body">For the brand's very first collection,<br>WRM explores two materials from the Ocean:<br>fish leather and algae film</span>
+      <span class="mh2-link">Explore WRM World</span>
+    </span>
   </a>
-  <a class="mh-plate gap-lg" href="/about-materials" data-link aria-label="About the materials">
-    <img src="/img/m-materials.jpg" alt="For Ocean Collection, WRM explores two materials: fish leather and algae film" loading="lazy">
-  </a>
-  <div class="mh-concept observe">
-    <p>The products at WRM come as a proof of concept, bringing these materials to everyday life.</p>
-  </div>
-  <a class="mh-plate mh-purse" href="/product/salmon-purse" data-link aria-label="Salmon Purse, Crust">
-    <img src="/img/purse-dark.jpg" alt="Salmon Purse — Crust" loading="lazy">
-    <div class="mh-cap"><span class="name">Salmon Purse</span><span class="sub">Crust</span></div>
-  </a>
-  <a class="mh-plate mh-bookmark gap-md" href="/product/salmon-bookmark" data-link aria-label="Salmon Bookmark, Crust">
-    <img src="/img/m-bookmark.jpg" alt="Salmon Bookmark — Crust" loading="lazy">
-    <div class="mh-cap"><span class="name">Salmon Bookmark</span><span class="sub">Crust</span></div>
-  </a>
-  <div class="mh-plate mh-tote gap-sm" aria-label="Algae Tote, Natural, coming soon">
-    <img src="/img/m-tote.jpg" alt="Algae Tote — Natural — Coming soon" loading="lazy">
-    <div class="mh-cap"><span class="name">Algae Tote</span><span class="sub">Natural</span></div>
-    <div class="mh-cap-soon">Coming Soon</div>
-  </div>
 </section>`;
   },
 
@@ -461,7 +469,7 @@ const pages = {
 
   materials(){
     document.title = 'About the Materials — WRM';
-    return `<section class="pg editorial"><div class="ed-page">
+    return `<section class="pg editorial mat-page"><div class="ed-page">
       ${crumbs(isMobile() ? [['About The Materials']] : [['Home','/'],['About The Materials']])}
       <a class="mat-hero observe" href="/about-materials/fish-leather" data-link aria-label="Fish Leather">
         <img class="tex" src="/img/fish-leather-hero.jpg" alt="Fish Leather">
@@ -477,7 +485,7 @@ const pages = {
   materialDetail(which){
     const fish = which==='fish-leather';
     document.title = (fish?'Fish Leather':'Algae') + ' — WRM';
-    return `<section class="pg editorial"><div class="ed-page">
+    return `<section class="pg editorial mat-page"><div class="ed-page">
       ${crumbs([['About The Materials','/about-materials'],[fish?'Fish Leather':'Algae']])}
       <div class="mat-detail ${fish?'fish':'algae'}">
         <div class="mat-head observe">
@@ -547,8 +555,17 @@ function render(path, y=0){
   if(html === null) for(const [re,fn] of routes){ const m = path.match(re); if(m){ html = fn(m); break; } }
   app.innerHTML = `<div class="page">${html ?? pages.notFound()}</div>`;
   const isHome = path === '/';
-  foot.querySelector('.foot-lead').textContent = isMobile() ? (isHome ? "Sign up to stay updated with WRM's journey" : 'Sign up to stay updated.') : "Sign up to stay updated with WRM’s material explorations.";
+
+  const isProductDetail = /^\/product\//.test(path);
+  const isAboutMaterials = /^\/about-materials/.test(path); /* mobile_About_Material-08/09/10.png: same neutral off-white treatment as product detail pages, not the warm --paper beige */
+  const isProductList = isMobile() && path.replace(/\/$/,'') === '/shop/ocean-season/fish-leather'; /* mobile_Product_List_Page.png: nav/body/footer are the same seamless neutral off-white as product detail pages, not the warm --paper beige — measured live rgba(232,223,200,.86) nav vs mockup rgb(~234,233,231) */
+  const isShop = isMobile() && (path==='/shop' || path==='/shop/'); /* mobile_SHOP.png: footer is the same neutral off-white (~rgb 235,234,232) as product detail/list pages, not the warm --paper beige — measured live rgb(226,217,195) footer vs mockup rgb(~235,234,232) */
+  /* The new mobile home (Stella's reference layout) reuses the standard signup line. */
+  foot.querySelector('.foot-lead').textContent = isMobile() ? 'Sign up to stay updated with WRM’s journey' : 'Sign up to stay updated with WRM’s material explorations.';
   foot.classList.toggle('hide', !isMobile() && !!app.querySelector('.d-world'));
+  foot.classList.toggle('foot-home', isHome); /* mobile_HOME.png shows a distinct footer style (sans-serif lead, wider link spacing) vs mobile_SHOP/_Purse/etc */
+  foot.classList.toggle('foot-neutral', isProductDetail || (isMobile() && (isAboutMaterials || isProductList || isShop))); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png / mobile_SHOP.png: footer continues the neutral off-white/textured tone, not the warm --paper beige */
+  nav.classList.toggle('nav-neutral', isMobile() && (isProductDetail || isAboutMaterials || isProductList)); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png: header bar is the SAME seamless neutral off-white paper texture as the page body below it — no beige blur bar, no dividing line */
   nav.classList.toggle('on-dark', isHome || (isMobile() && (path==='/shop' || path==='/shop/' || path.replace(/\/$/,'')==='/shop/ocean-season')));
   renderCart();
   io?.disconnect();
@@ -595,7 +612,7 @@ function onScroll(){ const mobHome = isMobile() && nav.classList.contains('on-da
 window.addEventListener('scroll', onScroll, {passive:true});
 
 window.matchMedia('(max-width:760px)').addEventListener('change', ()=>{
-  foot.querySelector('.foot-lead').textContent = 'Sign up to stay updated.';
+  foot.querySelector('.foot-lead').textContent = 'Sign up to stay updated with WRM’s journey';
   buildMenu(); render(location.pathname, scrollY);
 });
 
