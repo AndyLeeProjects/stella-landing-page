@@ -5,6 +5,9 @@
 @font-face{font-family:WRMDesktopSans;src:url('/fonts/desktop/dm-sans-400.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
 @media (min-width:761px){
   html,body{background:#fff;color:#000}
+  /* overflow-x:hidden turns body into a scroll container and kills
+     position:sticky. clip constrains the axis without that side effect. */
+  html,body{overflow-x:clip}
   body::before,body::after{display:none}
   body{--desktop-serif:"Times New Roman",Times,"Liberation Serif",serif;--desktop-body:WRMDesktopSans,"DM Sans",sans-serif}
   /* Header stays locked to the top of the viewport while the page scrolls.
@@ -52,24 +55,27 @@
   .d-ocean-art span{position:absolute;left:32%;top:29%;color:#fff;font:italic 2.57vw var(--desktop-serif)}
   .d-ocean-copy{position:absolute;left:0;right:0;top:40.2vw;color:#fff;text-align:center;font:400 1.07vw var(--desktop-body)}
   .d-ocean-copy p{margin:0}.d-ocean-copy a{margin-top:1.1vw}
-  .d-product{position:relative;background:#fff}
-  .d-product-gallery{width:50.21vw}
-  .d-product-gallery img{width:100%;height:auto;object-fit:cover}
+  /* Gallery scrolls, product copy stays pinned. Images run edge to edge with
+     no seams: identical width, block display, zero margin/padding. */
+  .d-product{display:flex;align-items:flex-start;background:#fff}
+  .d-product-gallery{flex:0 0 50.21vw;width:50.21vw;font-size:0}
+  .d-product-gallery img{display:block;width:100%;height:auto;object-fit:cover;margin:0;padding:0;vertical-align:top}
   .d-purse .d-product-gallery img:nth-child(1){height:64.786vw}
   .d-purse .d-product-gallery img:nth-child(2){height:67vw}
-  .d-purse .d-product-gallery img:nth-child(3){height:37.429vw;margin-top:2.643vw;padding-left:.286vw}
-  .d-purse .d-product-gallery img:nth-child(4){height:66.929vw;margin-top:2.857vw}
-  .d-purse .d-product-gallery img:nth-child(5){height:67.429vw;width:49.64vw}
-  .d-purse .d-product-gallery img:nth-child(6){height:62.07vw;width:49.64vw}
-  .d-product-info{position:absolute;top:16.07vw;left:57.21vw;width:32.14vw;font:300 1.0714vw/1.1 var(--desktop-body)}
+  .d-purse .d-product-gallery img:nth-child(3){height:37.429vw}
+  .d-purse .d-product-gallery img:nth-child(4){height:66.929vw}
+  .d-purse .d-product-gallery img:nth-child(5){height:67.429vw}
+  .d-purse .d-product-gallery img:nth-child(6){height:62.07vw}
+  .d-product-info{position:sticky;top:16.07vw;align-self:flex-start;margin-left:7vw;width:32.14vw;font:300 1.0714vw/1.1 var(--desktop-body)}
   .d-product-heading{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:2.71vw}
   .d-product-heading h1{font:700 1.857vw/1.2 var(--desktop-serif);letter-spacing:.035vw;margin:0}
   .d-product-heading>span{font-size:.643vw}
   .d-product-info p{margin:0 0 1.18vw}
   .d-product-add{font:400 .786vw/1.4 var(--desktop-body);text-decoration:underline;text-underline-offset:4px;min-height:32px;margin-top:.3vw}
   .d-bookmark{height:60.64vw}
-  .d-bookmark .d-product-gallery{padding:5.357vw 0 0 4.57vw;width:46.071vw}
+  .d-bookmark .d-product-gallery{padding:5.357vw 0 0 4.57vw;flex-basis:46.071vw;width:46.071vw}
   .d-bookmark .d-product-gallery img{width:41.5vw;height:48vw}
+  .d-bookmark .d-product-info{margin-left:11.14vw}
   .d-materials{padding-top:12.36vw;background:#eee url('/img/desktop/paper.webp') center/100% auto}
   .d-materials>h1{font:400 1.071vw/1.2 var(--desktop-body);margin:0;padding:0 4.64vw 1.79vw}
   .d-material-grid{display:grid;grid-template-columns:1fr 1fr}
