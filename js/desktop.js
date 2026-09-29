@@ -2,12 +2,13 @@
 window.WRMDesktop = (() => {
   'use strict';
   const image = (name, alt, eager=false) => `<img src="/img/desktop/${name}.webp" alt="${alt}" ${eager?'fetchpriority="high"':'loading="lazy"'}>`;
-  const caption = (title, href, cls='') => `<div class="d-caption ${cls}"><h2>${title}</h2><a href="${href}" data-link>OCEAN COLLECTION</a></div>`;
+  /* Every OCEAN COLLECTION label on the home page opens the Shop page. */
+  const caption = (title, href, cls='') => `<div class="d-caption ${cls}"><h2>${title}</h2><a href="/shop" data-link>OCEAN COLLECTION</a></div>`;
   function home(){
     document.title = 'WRM — With Raw Materials';
     return `<div class="d-home">
       <section class="d-home-hero">${image('hero','Salmon purse in fish leather',true)}
-        <div class="d-caption"><h1>SALMON PURSE</h1><a href="/product/salmon-purse" data-link>OCEAN COLLECTION</a></div>
+        <div class="d-caption"><h1>SALMON PURSE</h1><a href="/shop" data-link>OCEAN COLLECTION</a></div>
         <p class="d-credit">Photos by Sahra Jajarmikhayat</p>
       </section>
       <section class="d-home-pair">
@@ -78,8 +79,37 @@ window.WRMDesktop = (() => {
       <a class="d-world-materials" href="/about-materials" data-link><div>${image('algae-sheets','Seaweed film')}${image('fish-workshop','Preparing fish skins')}${image('loom','Hand weaving')}${image('leather-stack','Stacked salmon leather')}</div><span>Explore Materials</span></a>
     </section>`;
   }
+  /* Shop — built from Stella's Shop design, section for section. Every photo and
+     every line of text links somewhere, except the Algae Tote (no page yet). */
+  function shop(){
+    document.title='Shop — WRM';
+    const card=(href,img,name,sub,price,cls='')=>`<a class="d-shop-card ${cls}" href="${href}" data-link>${img}<span class="d-shop-cap"><span class="d-shop-name">${name}</span><span class="d-shop-price">${price}</span><span class="d-shop-sub">${sub}</span></span></a>`;
+    return `<section class="d-shop">
+      <div class="d-shop-top">
+        <div class="d-shop-top-left">
+          <a class="d-shop-ocean" href="/shop" data-link aria-label="Ocean"><img src="/img/illustration-ocean.png" alt="Ocean"></a>
+          ${card('/product/salmon-purse',image('shop-purse-flat','Salmon purse lying on a white surface',true),'Salmon Purse','Natural Crust','$0','d-shop-purse')}
+        </div>
+        <a class="d-shop-big" href="/product/salmon-purse" data-link>${image('world-dyed-bag','Salmon purse in its WRM wrapping',true)}</a>
+      </div>
+      <div class="d-shop-mid">
+        <a class="d-shop-pair" href="/product/salmon-bookmark" data-link>${image('bookmark','Salmon leather bookmark, front and lining')}</a>
+        <div class="d-shop-mid-right">${card('/product/salmon-bookmark',image('shop-bookmark-book','Salmon bookmark on a small book'),'Salmon Bookmark','Natural Crust','$0','d-shop-bm')}</div>
+      </div>
+      <div class="d-shop-collection">
+        <h2><a href="/shop" data-link>OCEAN COLLECTION 2026</a></h2>
+        <div class="d-shop-grid">
+          ${card('/product/salmon-purse',image('purse-front','Salmon purse'),'Salmon Purse','Natural Crust','$0')}
+          ${card('/product/salmon-bookmark',image('bookmark','Salmon bookmark, front and lining'),'Salmon Bookmark','Natural Crust','$0')}
+          <div class="d-shop-card d-shop-tote"><img src="/img/algae-tote.jpg" alt="Algae tote" loading="lazy"><span class="d-shop-cap"><span class="d-shop-name">Algae Tote</span><span class="d-shop-price">$0</span><span class="d-shop-sub">Natural</span></span></div>
+        </div>
+        <a class="d-shop-learn" href="/about-materials" data-link>LEARN MORE ABOUT THE MATERIALS</a>
+      </div>
+    </section>`;
+  }
   function render(path){
     if(path==='/') return home();
+    if(path==='/shop') return shop();
     if(path==='/product/salmon-purse') return product('salmon-purse');
     if(path==='/product/salmon-bookmark') return product('salmon-bookmark');
     if(path==='/about-materials') return materials();

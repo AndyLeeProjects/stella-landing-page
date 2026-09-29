@@ -219,7 +219,7 @@ const pages = {
     <img src="/img/purse-dark.jpg" alt="Salmon Purse" fetchpriority="high">
     <div class="mh2-cap">
       <span class="t1">Salmon Purse</span>
-      <span class="t2">Ocean Collection</span>
+      <span class="t2" data-shop-link role="link" tabindex="0">Ocean Collection</span>
     </div>
   </a>
 
@@ -228,7 +228,7 @@ const pages = {
       <img src="/img/m-bookmark.jpg" alt="Salmon Bookmark" loading="lazy">
       <span class="mh2-cap over">
         <span class="t1">Salmon Bookmark</span>
-        <span class="t2">Ocean Collection</span>
+        <span class="t2" data-shop-link role="link" tabindex="0">Ocean Collection</span>
       </span>
     </span>
   </a>
@@ -237,7 +237,7 @@ const pages = {
     <img src="/img/m-tote.jpg" alt="Algae Tote" loading="lazy">
     <span class="mh2-cap over center">
       <span class="t1">Algae Tote</span>
-      <span class="t2">Ocean Collection</span>
+      <span class="t2" data-shop-link role="link" tabindex="0">Ocean Collection</span>
       <span class="t2 soon">Coming Soon</span>
     </span>
   </a>
@@ -586,6 +586,7 @@ window.addEventListener('popstate', e => render(e.state?.path || location.pathna
 
 /* ---------- Events ---------- */
 document.addEventListener('click', e => {
+  const shop = e.target.closest('[data-shop-link]'); if(shop){ e.preventDefault(); e.stopPropagation(); go('/shop'); return; }
   const mt = e.target.closest('[data-menu-toggle]'); if(mt){ const open = mt.getAttribute('aria-expanded')==='true'; mt.setAttribute('aria-expanded',String(!open)); mt.parentElement.nextElementSibling.classList.toggle('open',!open); return; }
   const a = e.target.closest('a[data-link]'); if(a){ e.preventDefault(); go(a.getAttribute('href')); return; }
   const tg = e.target.closest('[data-toggle]'); if(tg){ const open = tg.getAttribute('aria-expanded')==='true'; tg.setAttribute('aria-expanded',String(!open)); tg.nextElementSibling.classList.toggle('open',!open); return; }
@@ -596,6 +597,11 @@ document.addEventListener('click', e => {
   const fq = e.target.closest('.faq-q'); if(fq){ const it=fq.parentElement, open=it.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(x=>{x.classList.remove('open'); x.querySelector('.faq-q').setAttribute('aria-expanded','false');}); if(!open){ it.classList.add('open'); fq.setAttribute('aria-expanded','true'); } return; }
   const nt = e.target.closest('[data-notify]'); if(nt){ toast('Sign up below and we\'ll tell you when it\'s ready.'); foot.querySelector('input')?.focus(); return; }
   if(e.target.closest('#checkout')){ location.href = 'mailto:hello@withrawmaterials.com?subject=' + encodeURIComponent('Order enquiry — WRM') + '&body=' + encodeURIComponent(cart.map(i=>`${i.qty} × ${PRODUCTS[i.id].name} (${PRODUCTS[i.id].variant})`).join('\n') + `\n\nTotal ${money(total())}`); return; }
+});
+document.addEventListener('keydown', e => {
+  if((e.key==='Enter'||e.key===' ') && e.target.matches('[data-shop-link]')){
+    e.preventDefault(); go('/shop');
+  }
 });
 document.addEventListener('submit', e => {
   const f = e.target;
