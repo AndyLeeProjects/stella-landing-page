@@ -135,7 +135,10 @@
   .d-shop-pair{display:block;overflow:hidden}
   /* The supplied upright asset is still pending. Rotate the same two-bookmark
      photograph for now so its orientation matches the design exactly. */
-  .d-shop-pair img{position:relative;left:50%;top:50%;width:61.73vw;height:49.1vw;max-width:none;object-fit:cover;transform:translate(-50%,-50%) rotate(-90deg)}
+  /* Reference alignment: bottom-anchor the pre-rotation cover crop. This moves
+     the bookmark silhouettes from x=113/213 to x=52/151 (target x=53/153)
+     without moving or clipping the continuous dark-blue photo field. */
+  .d-shop-pair img{position:relative;left:50%;top:50%;width:61.73vw;height:49.1vw;max-width:none;object-fit:cover;object-position:50% 100%;transform:translate(-50%,-50%) rotate(-90deg)}
   .d-shop-mid-right{position:relative}
   .d-shop-bm{position:absolute;left:12.82vw;top:15.7vw;width:24.37vw}
   .d-shop-bm img{height:30.51vw}
@@ -144,7 +147,8 @@
   .d-shop-grid{display:grid;grid-template-columns:24.55vw 25.81vw 42.96vw;gap:.9vw}
   .d-shop-grid .d-shop-card img{height:32.13vw}
   .d-shop-grid .d-shop-card:nth-child(2){overflow:hidden}
-  .d-shop-grid .d-shop-card:nth-child(2) img{position:relative;left:50%;top:50%;width:32.13vw;height:25.81vw;max-width:none;object-fit:cover;transform:translate(-50%,-50%) rotate(-90deg)}
+  /* Independent collection-card measurement: x=187/238 vs target x=185/238. */
+  .d-shop-grid .d-shop-card:nth-child(2) img{position:relative;left:50%;top:50%;width:32.13vw;height:25.81vw;max-width:none;object-fit:cover;object-position:50% 100%;transform:translate(-50%,-50%) rotate(-90deg)}
   .d-shop-cap{display:grid;grid-template-columns:1fr auto;margin-top:1.1vw;font:400 .72vw/1.35 var(--desktop-body)}
   .d-shop-name{font:700 .9vw/1.3 var(--desktop-serif)}
   .d-shop-price{grid-row:1;grid-column:2;align-self:start}
