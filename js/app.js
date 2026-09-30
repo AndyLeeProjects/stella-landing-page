@@ -7,7 +7,7 @@
 /* ---------- Data ---------- */
 const PRODUCTS = {
   'salmon-purse': {
-    id:'salmon-purse', name:'Salmon Purse', variant:'Crust', price:700, year:2026,
+    id:'salmon-purse', name:'Salmon Purse', variant:'Crust', price:0, year:2026,
     category:'Fish Leather', season:'Ocean Season',
     images:['/img/purse-light.jpg','/img/purse-dark.jpg'],
     desc:'An evening purse that fits your essentials. Classy with a slight flirt. Made with ocean-caught fish leather that is up to 9 times stronger than a cow hide. Leather has a feel of a soft suede.',
@@ -18,7 +18,7 @@ const PRODUCTS = {
     care:'Treat like any other leather products. Avoid direct sunlight.'
   },
   'salmon-bookmark': {
-    id:'salmon-bookmark', name:'Salmon Bookmark', variant:'Crust', price:32, year:2026,
+    id:'salmon-bookmark', name:'Salmon Bookmark', variant:'Crust', price:0, year:2026,
     category:'Fish Leather', season:'Ocean Season',
     images:['/img/bookmark-blue.jpg','/img/bookmark-detail.jpg'],
     desc:'A small piece of fish leather for your everyday reading. Made with leftover pieces from making the purses. The lining is horse hair, classically used for suiting.',
@@ -62,7 +62,7 @@ const NEWSLETTER = 'https://script.google.com/macros/s/AKfycbxktzrSNaAXo-I6Hqab5
 /* ---------- Helpers ---------- */
 const $ = (s, r=document) => r.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const money = n => '$' + n.toLocaleString('en-US');
+const money = n => '$' + Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
 const app = $('#app'), nav = $('#nav'), foot = $('#foot');
 const isMobile = () => window.matchMedia('(max-width:760px)').matches;
 
@@ -562,7 +562,7 @@ function render(path, y=0){
   const isShop = isMobile() && (path==='/shop' || path==='/shop/'); /* mobile_SHOP.png: footer is the same neutral off-white (~rgb 235,234,232) as product detail/list pages, not the warm --paper beige — measured live rgb(226,217,195) footer vs mockup rgb(~235,234,232) */
   /* The new mobile home (Stella's reference layout) reuses the standard signup line. */
   foot.querySelector('.foot-lead').textContent = isMobile() ? 'Sign up to stay updated with WRM’s journey' : 'Sign up to stay updated with WRM’s material explorations.';
-  foot.classList.toggle('hide', !isMobile() && !!app.querySelector('.d-world'));
+  foot.classList.toggle('hide', false);
   foot.classList.toggle('foot-home', isHome); /* mobile_HOME.png shows a distinct footer style (sans-serif lead, wider link spacing) vs mobile_SHOP/_Purse/etc */
   foot.classList.toggle('foot-neutral', isProductDetail || (isMobile() && (isAboutMaterials || isProductList || isShop))); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png / mobile_SHOP.png: footer continues the neutral off-white/textured tone, not the warm --paper beige */
   nav.classList.toggle('nav-neutral', isMobile() && (isProductDetail || isAboutMaterials || isProductList)); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png: header bar is the SAME seamless neutral off-white paper texture as the page body below it — no beige blur bar, no dividing line */
