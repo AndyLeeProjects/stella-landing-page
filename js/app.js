@@ -211,45 +211,24 @@ const pages = {
 
   /* Mobile home — layout per Stella's reference screenshot (Sept): four full-bleed
      product/collection plates, every one of them a link, then the shared footer. */
+  /* Mobile landing uses Stella's supplied 1563 × 10428, 300-DPI PNG unchanged.
+     Original artwork owns ALL visual geometry; transparent controls add functionality. */
   homeMobile(){
     document.title = 'WRM — With Raw Materials';
-    return `
-<section class="mh2">
-  <a class="mh2-plate mh2-purse" href="/product/salmon-purse" data-link aria-label="Salmon Purse — Ocean Collection">
-    <img src="/img/purse-dark.jpg" alt="Salmon Purse" fetchpriority="high">
-    <div class="mh2-cap">
-      <span class="t1">Salmon Purse</span>
-      <span class="t2" data-shop-link role="link" tabindex="0">Ocean Collection</span>
-    </div>
-  </a>
-
-  <a class="mh2-plate mh2-bookmark" href="/product/salmon-bookmark" data-link aria-label="Salmon Bookmark — Ocean Collection">
-    <span class="mh2-frame">
-      <img src="/img/m-bookmark.jpg" alt="Salmon Bookmark" loading="lazy">
-      <span class="mh2-cap over">
-        <span class="t1">Salmon Bookmark</span>
-        <span class="t2" data-shop-link role="link" tabindex="0">Ocean Collection</span>
-      </span>
-    </span>
-  </a>
-
-  <a class="mh2-plate mh2-tote" href="/about-materials/algae" data-link aria-label="Algae Tote — Ocean Collection — Coming soon">
-    <img src="/img/m-tote.jpg" alt="Algae Tote" loading="lazy">
-    <span class="mh2-cap over center">
-      <span class="t1">Algae Tote</span>
-      <span class="t2" data-shop-link role="link" tabindex="0">Ocean Collection</span>
-      <span class="t2 soon">Coming Soon</span>
-    </span>
-  </a>
-
-  <a class="mh2-plate mh2-ocean" href="/wrm-world" data-link aria-label="Chapter I — Ocean. Explore WRM World">
-    <img src="/img/m-ocean.jpg" alt="Chapter I — Ocean" loading="lazy">
-    <span class="mh2-ocean-txt">
-      <span class="body">For the brand's very first collection,<br>WRM explores two materials from the Ocean:<br>fish leather and algae film</span>
-      <span class="mh2-link">Explore WRM World</span>
-    </span>
-  </a>
-</section>`;
+    return `<section class="mh-original" aria-label="Ocean — a world mapped by where its materials begin">
+      <img class="mh-original-art" src="/img/mobile-home-original.png" width="1563" height="10428" alt="Chapter I: Ocean. A world mapped by where its materials begin. Ocean Collection 2026: Salmon Purse, Salmon Bookmark and Algae Tote. For the brand’s first collection, WRM turned to the ocean for fish leather and algae. Fish leather carries centuries of craft; algae points to what materials can become. Together, they begin a new story for the objects we live with. Photos by Sahra Jajarmikhayat, Michelle Min and Zoe Kao." fetchpriority="high">
+      <button class="mh-original-hit" data-home-menu aria-label="Open menu" aria-controls="menu" style="left:2.239283%;top:0.383583%;width:9.596929%;height:1.630226%"></button>
+<a class="mh-original-hit" href="/" data-link aria-label="WRM home" style="left:43.186180%;top:0.383583%;width:14.075496%;height:1.630226%"></a>
+<button class="mh-original-hit" data-home-cart aria-label="Open cart" aria-controls="cart" style="left:87.651951%;top:0.383583%;width:9.596929%;height:1.630226%"></button>
+<a class="mh-original-hit" href="/shop" data-link aria-label="Ocean Collection 2026 — Shop" style="left:0.000000%;top:29.363253%;width:100.000000%;height:3.404296%"></a>
+<a class="mh-original-hit" href="/product/salmon-purse" data-link aria-label="Salmon Purse" style="left:0.000000%;top:32.767549%;width:46.193218%;height:9.416954%"></a>
+<a class="mh-original-hit" href="/product/salmon-bookmark" data-link aria-label="Salmon Bookmark" style="left:46.193218%;top:32.767549%;width:53.806782%;height:9.416954%"></a>
+<a class="mh-original-hit" href="/about-materials/algae" data-link aria-label="Algae Tote — About Algae" style="left:0.000000%;top:42.184503%;width:100.000000%;height:9.138857%"></a>
+<a class="mh-original-hit" href="/wrm-world" data-link aria-label="Explore WRM World" style="left:25.783749%;top:81.204450%;width:50.799744%;height:11.382815%"></a>
+<a class="mh-original-hit" href="/faq" data-link aria-label="Frequently asked questions" style="left:82.533589%;top:96.614883%;width:12.795905%;height:1.006904%"></a>
+<a class="mh-original-hit" href="mailto:hello@withrawmaterials.com" aria-label="Contact WRM" style="left:82.533589%;top:95.607979%;width:12.795905%;height:0.958957%"></a>
+<form class="mh-original-email" data-newsletter="mobile-home" style="left:5.502239%;top:96.758727%;width:58.477287%;height:0.911009%"><input type="email" placeholder=" " required autocomplete="email" aria-label="Email — stay updated with WRM’s material explorations"><button type="submit" aria-label="Subscribe"><span aria-hidden="true">→</span></button></form>
+    </section>`;
   },
 
   homeDesktop(){
@@ -562,7 +541,8 @@ function render(path, y=0){
   const isShop = isMobile() && (path==='/shop' || path==='/shop/'); /* mobile_SHOP.png: footer is the same neutral off-white (~rgb 235,234,232) as product detail/list pages, not the warm --paper beige — measured live rgb(226,217,195) footer vs mockup rgb(~235,234,232) */
   /* The new mobile home (Stella's reference layout) reuses the standard signup line. */
   foot.querySelector('.foot-lead').textContent = isMobile() ? 'Sign up to stay updated with WRM’s journey' : 'Sign up to stay updated with WRM’s material explorations.';
-  foot.classList.toggle('hide', false);
+  document.body.classList.toggle('mobile-home-original', isMobile() && isHome);
+  foot.classList.toggle('hide', isMobile() && isHome);
   foot.classList.toggle('foot-home', isHome); /* mobile_HOME.png shows a distinct footer style (sans-serif lead, wider link spacing) vs mobile_SHOP/_Purse/etc */
   foot.classList.toggle('foot-neutral', isProductDetail || (isMobile() && (isAboutMaterials || isProductList || isShop))); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png / mobile_SHOP.png: footer continues the neutral off-white/textured tone, not the warm --paper beige */
   nav.classList.toggle('nav-neutral', isMobile() && (isProductDetail || isAboutMaterials || isProductList)); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png: header bar is the SAME seamless neutral off-white paper texture as the page body below it — no beige blur bar, no dividing line */
@@ -586,6 +566,8 @@ window.addEventListener('popstate', e => render(e.state?.path || location.pathna
 
 /* ---------- Events ---------- */
 document.addEventListener('click', e => {
+  if(e.target.closest('[data-home-menu]')){ openMenu(); return; }
+  if(e.target.closest('[data-home-cart]')){ openCart(); return; }
   const shop = e.target.closest('[data-shop-link]'); if(shop){ e.preventDefault(); e.stopPropagation(); go('/shop'); return; }
   const mt = e.target.closest('[data-menu-toggle]'); if(mt){ const open = mt.getAttribute('aria-expanded')==='true'; mt.setAttribute('aria-expanded',String(!open)); mt.parentElement.nextElementSibling.classList.toggle('open',!open); return; }
   const a = e.target.closest('a[data-link]'); if(a){ e.preventDefault(); go(a.getAttribute('href')); return; }
