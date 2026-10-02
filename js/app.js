@@ -481,17 +481,17 @@ const pages = {
     </div></section>`;
   },
 
+  /* Mobile WRM World — supplied 275 × 1280 JPEG unchanged, resolution accepted by Stella. */
   world(){
     document.title = 'WRM World';
-    return `<section class="pg editorial" style="padding-top:var(--nav-h)!important"><div class="ed-page">
-      <div class="world-hero observe"><img src="/img/moodboard.jpg" alt="WRM is an attempt to make beautiful things in a world that is burning up."></div>
-      <div class="prose observe">
-        <p>It began with a love of the materials that things are made of, and an uncontrollable desire for beautiful things. Then an understanding of their cost to the planet. Then the slower work of unlearning the system in order to rebuild it.</p>
-        <p>Handbags are how we enter the world and move through the current system. They are not the end. The end is a new ecosystem of materials for the things we consume — grown, rescued, returned.</p>
-        <p>Everything here is a proof of concept, made by hand in San Francisco, a few pieces at a time.</p>
-        <p><a class="link" href="/about-materials" data-link>Read about the materials</a></p>
-      </div>
-    </div></section>`;
+    return `<section class="mh-original mw-original" aria-label="WRM World — material explorations">
+      <img class="mh-original-art" src="/img/mobile-world-original.jpg" width="275" height="1280" alt="WRM World: Ocean illustration and crochet samples, black material experiments, fish-relief ceramic vase, historical Wiener Werkstätte collage and handbag studies. Learn more about the materials or shop the collection." fetchpriority="high">
+      <button class="mh-original-hit" data-home-menu aria-label="Open menu" aria-controls="menu" style="left:0.727273%;top:0.156250%;width:13.090909%;height:2.968750%"></button>
+      <a class="mh-original-hit" href="/" data-link aria-label="WRM home" style="left:40.000000%;top:0.156250%;width:18.909091%;height:2.968750%"></a>
+      <button class="mh-original-hit" data-home-cart aria-label="Open cart" aria-controls="cart" style="left:85.818182%;top:0.156250%;width:13.090909%;height:2.968750%"></button>
+      <a class="mh-original-hit" href="/about-materials" data-link aria-label="Learn more about the materials" style="left:0.000000%;top:95.156250%;width:50.000000%;height:4.843750%"></a>
+      <a class="mh-original-hit" href="/shop" data-link aria-label="Shop the collection" style="left:50.000000%;top:95.156250%;width:50.000000%;height:4.843750%"></a>
+    </section>`;
   },
 
   faq(){
@@ -540,7 +540,9 @@ function render(path, y=0){
   /* The new mobile home (Stella's reference layout) reuses the standard signup line. */
   foot.querySelector('.foot-lead').textContent = isMobile() ? 'Sign up to stay updated with WRM’s journey' : 'Sign up to stay updated with WRM’s material explorations.';
   document.body.classList.toggle('mobile-home-original', isMobile() && isHome);
-  foot.classList.toggle('hide', isMobile() && isHome);
+  const isMobileWorld = isMobile() && path.replace(/\/$/,'') === '/wrm-world';
+  document.body.classList.toggle('mobile-world-original', isMobileWorld);
+  foot.classList.toggle('hide', (isMobile() && isHome) || isMobileWorld);
   foot.classList.toggle('foot-home', isHome); /* mobile_HOME.png shows a distinct footer style (sans-serif lead, wider link spacing) vs mobile_SHOP/_Purse/etc */
   foot.classList.toggle('foot-neutral', isProductDetail || (isMobile() && (isAboutMaterials || isProductList || isShop))); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png / mobile_SHOP.png: footer continues the neutral off-white/textured tone, not the warm --paper beige */
   nav.classList.toggle('nav-neutral', isMobile() && (isProductDetail || isAboutMaterials || isProductList)); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png: header bar is the SAME seamless neutral off-white paper texture as the page body below it — no beige blur bar, no dividing line */

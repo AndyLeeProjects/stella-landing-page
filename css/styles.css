@@ -774,3 +774,11 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .mh-original-email button{position:absolute;right:0;top:0;height:100%;width:12%;padding:0;min-width:0;min-height:0;background:transparent;opacity:0;font-size:3vw}
   .mh-original-email:focus-within button{opacity:1}
 }
+
+/* Mobile World shares intact-artwork controls; desktop World is deliberately untouched. */
+@media(max-width:760px){
+  body.mobile-world-original{background:#fff}
+  body.mobile-world-original .page{animation:none;opacity:1;transform:none}
+  body.mobile-world-original::before,body.mobile-world-original::after{display:none}
+  body.mobile-world-original #nav:not(.menu-open),body.mobile-world-original #foot{display:none}
+}
