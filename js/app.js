@@ -118,10 +118,12 @@ function renderCart(){
 
 /* ---------- Overlays ---------- */
 const menu = $('#menu'), cartEl = $('#cart'), scrim = $('#scrim'), menuBtn = $('#menuBtn');
-function openMenu(){ closeCart(); menu.setAttribute('aria-hidden','false'); menuBtn.setAttribute('aria-expanded','true'); nav.classList.add('menu-open'); document.body.style.overflow='hidden'; }
-function closeMenu(){ menu.setAttribute('aria-hidden','true'); menuBtn.setAttribute('aria-expanded','false'); nav.classList.remove('menu-open'); document.body.style.overflow=''; }
-function openCart(){ closeMenu(); cartEl.setAttribute('aria-hidden','false'); $('#cartBtn').setAttribute('aria-expanded','true'); scrim.hidden=false; requestAnimationFrame(()=>scrim.classList.add('show')); document.body.style.overflow='hidden'; }
-function closeCart(){ cartEl.setAttribute('aria-hidden','true'); $('#cartBtn').setAttribute('aria-expanded','false'); scrim.classList.remove('show'); setTimeout(()=>scrim.hidden=true,300); document.body.style.overflow=''; }
+/* <html> is the scrolling element, so locking <body> alone lets the page scroll behind open overlays. */
+function lockScroll(on){ const v=on?'hidden':''; document.documentElement.style.overflow=v; document.body.style.overflow=v; }
+function openMenu(){ closeCart(); menu.setAttribute('aria-hidden','false'); menuBtn.setAttribute('aria-expanded','true'); nav.classList.add('menu-open'); lockScroll(true); }
+function closeMenu(){ menu.setAttribute('aria-hidden','true'); menuBtn.setAttribute('aria-expanded','false'); nav.classList.remove('menu-open'); lockScroll(false); }
+function openCart(){ closeMenu(); cartEl.setAttribute('aria-hidden','false'); $('#cartBtn').setAttribute('aria-expanded','true'); scrim.hidden=false; requestAnimationFrame(()=>scrim.classList.add('show')); lockScroll(true); }
+function closeCart(){ cartEl.setAttribute('aria-hidden','true'); $('#cartBtn').setAttribute('aria-expanded','false'); scrim.classList.remove('show'); setTimeout(()=>scrim.hidden=true,300); lockScroll(false); }
 
 function buildMenu(){
   $('#mobileMenuClose')?.remove();
@@ -225,10 +227,10 @@ const pages = {
 <a class="mh-original-hit" href="/product/salmon-purse" data-link aria-label="Salmon Purse" style="left:0.000000%;top:32.767549%;width:46.193218%;height:9.416954%"></a>
 <a class="mh-original-hit" href="/product/salmon-bookmark" data-link aria-label="Salmon Bookmark" style="left:46.193218%;top:32.767549%;width:53.806782%;height:9.416954%"></a>
 <a class="mh-original-hit" href="/about-materials/algae" data-link aria-label="Algae Tote — About Algae" style="left:0.000000%;top:42.184503%;width:100.000000%;height:9.138857%"></a>
-<a class="mh-original-hit" href="/wrm-world" data-link aria-label="Explore WRM World" style="left:25.783749%;top:81.204450%;width:50.799744%;height:11.382815%"></a>
-<a class="mh-original-hit" href="/faq" data-link aria-label="Frequently asked questions" style="left:82.533589%;top:96.614883%;width:12.795905%;height:1.006904%"></a>
-<a class="mh-original-hit" href="mailto:hello@withrawmaterials.com" aria-label="Contact WRM" style="left:82.533589%;top:95.607979%;width:12.795905%;height:0.958957%"></a>
-<form class="mh-original-email" data-newsletter="mobile-home" style="left:5.502239%;top:96.758727%;width:58.477287%;height:0.911009%"><input type="email" placeholder=" " required autocomplete="email" aria-label="Email — stay updated with WRM’s material explorations"><button type="submit" aria-label="Subscribe"><span aria-hidden="true">→</span></button></form>
+<a class="mh-original-hit" href="/wrm-world" data-link aria-label="Explore WRM World" style="left:25.783749%;top:81.204450%;width:50.799744%;height:11.430763%"></a>
+<a class="mh-original-hit" href="/faq" data-link aria-label="Frequently asked questions" style="left:82.533589%;top:97.094361%;width:12.795905%;height:1.006904%"></a>
+<a class="mh-original-hit" href="mailto:hello@withrawmaterials.com" aria-label="Contact WRM" style="left:82.533589%;top:96.087457%;width:12.795905%;height:0.958957%"></a>
+<form class="mh-original-email" data-newsletter="mobile-home" style="left:5.502239%;top:97.094361%;width:58.477287%;height:0.911009%"><input type="email" placeholder=" " required autocomplete="email" aria-label="Email — stay updated with WRM’s material explorations"><button type="submit" aria-label="Subscribe"><span aria-hidden="true">→</span></button></form>
     </section>`;
   },
 
