@@ -448,15 +448,15 @@ const pages = {
   materials(){
     document.title = 'About the Materials — WRM';
     if(isMobile()) return `<section class="mh-original ma-original" aria-label="About the Materials">
-      <img class="mh-original-art" src="/img/mobile-materials-original.png" width="1564" height="5352" alt="About the Materials. Fish Leather: fish silhouette over salmon leather. Algae: seaweed silhouette over algae film. Stay updated with WRM’s material explorations." fetchpriority="high">
-      <button class="mh-original-hit" data-home-menu aria-label="Open menu" aria-controls="menu" style="left:2.237852%;top:0.747384%;width:10.869565%;height:3.550075%"></button>
-<a class="mh-original-hit" href="/" data-link aria-label="WRM home" style="left:43.158568%;top:0.747384%;width:14.066496%;height:3.550075%"></a>
-<button class="mh-original-hit" data-home-cart aria-label="Open cart" aria-controls="cart" style="left:86.956522%;top:0.747384%;width:10.869565%;height:3.550075%"></button>
-<a class="mh-original-hit" href="/about-materials/fish-leather" data-link aria-label="Fish Leather — read the material story" style="left:0.000000%;top:6.801196%;width:100.000000%;height:39.816891%"></a>
-<a class="mh-original-hit" href="/about-materials/algae" data-link aria-label="Algae — read the material story" style="left:0.000000%;top:46.674141%;width:100.000000%;height:39.517937%"></a>
-<a class="mh-original-hit" href="/faq" data-link aria-label="Frequently asked questions" style="left:82.480818%;top:94.917788%;width:12.787724%;height:1.494768%"></a>
-<a class="mh-original-hit" href="mailto:hello@withrawmaterials.com" aria-label="Contact WRM" style="left:82.480818%;top:93.049327%;width:12.787724%;height:1.494768%"></a>
-<form class="mh-original-email" data-newsletter="mobile-materials" style="left:5.498721%;top:94.917788%;width:58.439898%;height:1.270553%"><input type="email" placeholder=" " required autocomplete="email" aria-label="Email — stay updated with WRM’s material explorations"><button type="submit" aria-label="Subscribe"><span aria-hidden="true">→</span></button></form>
+      <img class="mh-original-art" src="/img/mobile-materials-original.png" width="1564" height="4718" alt="About the Materials: Fish Leather and Algae. Stay updated with WRM’s material explorations." fetchpriority="high">
+      <button class="mh-original-hit" data-home-menu aria-label="Open menu" aria-controls="menu" style="left:2.237852%;top:0.847817%;width:10.869565%;height:4.027130%"></button>
+<a class="mh-original-hit" href="/" data-link aria-label="WRM home" style="left:43.158568%;top:0.847817%;width:14.066496%;height:4.027130%"></a>
+<button class="mh-original-hit" data-home-cart aria-label="Open cart" aria-controls="cart" style="left:86.956522%;top:0.847817%;width:10.869565%;height:4.027130%"></button>
+<a class="mh-original-hit" href="/about-materials/fish-leather" data-link aria-label="Fish Leather — read the material story" style="left:0.000000%;top:5.086901%;width:100.000000%;height:39.720220%"></a>
+<a class="mh-original-hit" href="/about-materials/algae" data-link aria-label="Algae — read the material story" style="left:0.000000%;top:44.807122%;width:100.000000%;height:44.340822%"></a>
+<a class="mh-original-hit" href="/faq" data-link aria-label="Frequently asked questions" style="left:82.480818%;top:93.789741%;width:12.787724%;height:1.907588%"></a>
+<a class="mh-original-hit" href="mailto:hello@withrawmaterials.com" aria-label="Contact WRM" style="left:82.480818%;top:91.564222%;width:12.787724%;height:1.907588%"></a>
+<form class="mh-original-email" data-newsletter="mobile-materials" style="left:5.498721%;top:93.683764%;width:58.439898%;height:1.526070%"><input type="email" placeholder=" " required autocomplete="email" aria-label="Email — stay updated with WRM’s material explorations"><button type="submit" aria-label="Subscribe"><span aria-hidden="true">→</span></button></form>
     </section>`;
     return `<section class="pg editorial mat-page"><div class="ed-page">
       ${crumbs(isMobile() ? [['About The Materials']] : [['Home','/'],['About The Materials']])}
@@ -493,16 +493,19 @@ const pages = {
     </div></section>`;
   },
 
-  /* Mobile WRM World — supplied 275 × 1280 JPEG unchanged, resolution accepted by Stella. */
+  /* Mobile WRM World — revised full-resolution PNG preserved unchanged. */
   world(){
     document.title = 'WRM World';
     return `<section class="mh-original mw-original" aria-label="WRM World — material explorations">
-      <img class="mh-original-art" src="/img/mobile-world-original.jpg" width="275" height="1280" alt="WRM World: Ocean illustration and crochet samples, black material experiments, fish-relief ceramic vase, historical Wiener Werkstätte collage and handbag studies. Learn more about the materials or shop the collection." fetchpriority="high">
-      <button class="mh-original-hit" data-home-menu aria-label="Open menu" aria-controls="menu" style="left:0.727273%;top:0.156250%;width:13.090909%;height:2.968750%"></button>
-      <a class="mh-original-hit" href="/" data-link aria-label="WRM home" style="left:40.000000%;top:0.156250%;width:18.909091%;height:2.968750%"></a>
-      <button class="mh-original-hit" data-home-cart aria-label="Open cart" aria-controls="cart" style="left:85.818182%;top:0.156250%;width:13.090909%;height:2.968750%"></button>
-      <a class="mh-original-hit" href="/about-materials" data-link aria-label="Learn more about the materials" style="left:0.000000%;top:95.156250%;width:50.000000%;height:4.843750%"></a>
-      <a class="mh-original-hit" href="/shop" data-link aria-label="Shop the collection" style="left:50.000000%;top:95.156250%;width:50.000000%;height:4.843750%"></a>
+      <img class="mh-original-art" src="/img/mobile-world-original.png" width="1564" height="8088" alt="WRM World: crochet samples, material experiments, ceramic vase, Wiener Werkstätte collage and handbag studies. Learn more about the materials or shop Ocean Collection." fetchpriority="high">
+      <button class="mh-original-hit" data-home-menu aria-label="Open menu" aria-controls="menu" style="left:2.237852%;top:0.494560%;width:10.869565%;height:2.349159%"></button>
+<a class="mh-original-hit" href="/" data-link aria-label="WRM home" style="left:43.158568%;top:0.494560%;width:14.066496%;height:2.349159%"></a>
+<button class="mh-original-hit" data-home-cart aria-label="Open cart" aria-controls="cart" style="left:86.956522%;top:0.494560%;width:10.869565%;height:2.349159%"></button>
+<a class="mh-original-hit" href="/about-materials" data-link aria-label="Learn more about the materials" style="left:0.000000%;top:85.497033%;width:51.150895%;height:8.246785%"></a>
+<a class="mh-original-hit" href="/shop" data-link aria-label="Shop the collection" style="left:51.470588%;top:85.497033%;width:48.529412%;height:8.246785%"></a>
+<a class="mh-original-hit" href="/faq" data-link aria-label="Frequently asked questions" style="left:82.480818%;top:96.525717%;width:12.787724%;height:1.112760%"></a>
+<a class="mh-original-hit" href="mailto:hello@withrawmaterials.com" aria-label="Contact WRM" style="left:82.480818%;top:95.227498%;width:12.787724%;height:1.112760%"></a>
+<form class="mh-original-email" data-newsletter="mobile-world" style="left:5.498721%;top:96.463897%;width:58.439898%;height:0.890208%"><input type="email" placeholder=" " required autocomplete="email" aria-label="Email — stay updated with WRM’s material explorations"><button type="submit" aria-label="Subscribe"><span aria-hidden="true">→</span></button></form>
     </section>`;
   },
 
