@@ -210,23 +210,25 @@ const pages = {
     return isMobile() ? pages.homeMobile() : pages.homeDesktop();
   },
 
-  /* Mobile landing: Stella's new 1563 × 13200, 300-DPI PNG, kept byte-for-byte.
-     Artwork owns the visual proportions; transparent controls track measured source bounds. */
+  /* Mobile home — layout per Stella's reference screenshot (Sept): four full-bleed
+     product/collection plates, every one of them a link, then the shared footer. */
+  /* Mobile landing uses Stella's supplied 1563 × 10428, 300-DPI PNG unchanged.
+     Original artwork owns ALL visual geometry; transparent controls add functionality. */
   homeMobile(){
     document.title = 'WRM — With Raw Materials';
     return `<section class="mh-original" aria-label="Ocean — a world mapped by where its materials begin">
-      <img class="mh-original-art" src="/img/mobile-home-original.png?v=2" width="1563" height="13200" alt="Chapter I: Ocean. With fish leather and algae, WRM begins a new story for the objects we live with. Salmon Purse, Salmon Bookmark and Algae Tote. WRM is a world mapped by where its materials begin. For the brand’s first collection, we turned to the ocean for two materials: fish leather and algae. Fish leather carries centuries of craft; algae points to what materials can become. Explore WRM World. Photos by Michelle Min and Zoe Kao." fetchpriority="high">
-      <button class="mh-original-hit" data-home-menu aria-label="Open menu" aria-controls="menu" style="left:2.239283%;top:0.303030%;width:9.596929%;height:1.287879%"></button>
-<a class="mh-original-hit" href="/" data-link aria-label="WRM home" style="left:43.186180%;top:0.303030%;width:14.075496%;height:1.287879%"></a>
-<button class="mh-original-hit" data-home-cart aria-label="Open cart" aria-controls="cart" style="left:87.651951%;top:0.303030%;width:9.596929%;height:1.287879%"></button>
-<a class="mh-original-hit" href="/product/salmon-purse" data-link aria-label="Salmon Purse — hero" style="left:0.000000%;top:11.742424%;width:100.000000%;height:16.159091%"></a>
-<a class="mh-original-hit" href="/product/salmon-purse" data-link aria-label="Salmon Purse" style="left:6.909789%;top:28.848485%;width:87.715931%;height:13.856061%"></a>
-<a class="mh-original-hit" href="/product/salmon-bookmark" data-link aria-label="Salmon Bookmark" style="left:7.357646%;top:43.545455%;width:86.628279%;height:11.924242%"></a>
-<a class="mh-original-hit" href="/about-materials/algae" data-link aria-label="Algae Tote — About Algae" style="left:5.950096%;top:56.303030%;width:87.779910%;height:7.651515%"></a>
-<a class="mh-original-hit" href="/wrm-world" data-link aria-label="Explore WRM World" style="left:30.070377%;top:85.704545%;width:42.226488%;height:7.507576%"></a>
-<a class="mh-original-hit" href="/faq" data-link aria-label="Frequently asked questions" style="left:82.533589%;top:97.765152%;width:12.795905%;height:0.681818%"></a>
-<a class="mh-original-hit" href="mailto:hello@withrawmaterials.com" aria-label="Contact WRM" style="left:82.533589%;top:96.969697%;width:12.795905%;height:0.681818%"></a>
-<form class="mh-original-email" data-newsletter="mobile-home" style="left:5.502239%;top:97.803030%;width:58.477287%;height:0.530303%"><input type="email" placeholder=" " required autocomplete="email" aria-label="Email — stay updated with WRM’s material explorations"><button type="submit" aria-label="Subscribe"><span aria-hidden="true">→</span></button></form>
+      <img class="mh-original-art" src="/img/mobile-home-original.png?v=3" width="1563" height="10428" alt="Chapter I: Ocean. A world mapped by where its materials begin. Ocean Collection 2026: Salmon Purse, Salmon Bookmark and Algae Tote. For the brand’s first collection, WRM turned to the ocean for fish leather and algae. Fish leather carries centuries of craft; algae points to what materials can become. Together, they begin a new story for the objects we live with. Photos by Sahra Jajarmikhayat, Michelle Min and Zoe Kao." fetchpriority="high">
+      <button class="mh-original-hit" data-home-menu aria-label="Open menu" aria-controls="menu" style="left:2.239283%;top:0.383583%;width:9.596929%;height:1.630226%"></button>
+<a class="mh-original-hit" href="/" data-link aria-label="WRM home" style="left:43.186180%;top:0.383583%;width:14.075496%;height:1.630226%"></a>
+<button class="mh-original-hit" data-home-cart aria-label="Open cart" aria-controls="cart" style="left:87.651951%;top:0.383583%;width:9.596929%;height:1.630226%"></button>
+<a class="mh-original-hit" href="/shop" data-link aria-label="Ocean Collection 2026 — Shop" style="left:0.000000%;top:29.363253%;width:100.000000%;height:3.404296%"></a>
+<a class="mh-original-hit" href="/product/salmon-purse" data-link aria-label="Salmon Purse" style="left:0.000000%;top:32.767549%;width:46.193218%;height:9.416954%"></a>
+<a class="mh-original-hit" href="/product/salmon-bookmark" data-link aria-label="Salmon Bookmark" style="left:46.193218%;top:32.767549%;width:53.806782%;height:9.416954%"></a>
+<a class="mh-original-hit" href="/about-materials/algae" data-link aria-label="Algae Tote — About Algae" style="left:0.000000%;top:42.184503%;width:100.000000%;height:9.138857%"></a>
+<a class="mh-original-hit" href="/wrm-world" data-link aria-label="Explore WRM World" style="left:25.783749%;top:81.204450%;width:50.799744%;height:11.382815%"></a>
+<a class="mh-original-hit" href="/faq" data-link aria-label="Frequently asked questions" style="left:82.533589%;top:96.614883%;width:12.795905%;height:1.006904%"></a>
+<a class="mh-original-hit" href="mailto:hello@withrawmaterials.com" aria-label="Contact WRM" style="left:82.533589%;top:95.607979%;width:12.795905%;height:0.958957%"></a>
+<form class="mh-original-email" data-newsletter="mobile-home" style="left:5.502239%;top:96.758727%;width:58.477287%;height:0.911009%"><input type="email" placeholder=" " required autocomplete="email" aria-label="Email — stay updated with WRM’s material explorations"><button type="submit" aria-label="Subscribe"><span aria-hidden="true">→</span></button></form>
     </section>`;
   },
 
