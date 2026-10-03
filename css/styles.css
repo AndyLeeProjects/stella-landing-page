@@ -790,3 +790,43 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body.mobile-materials-original::before,body.mobile-materials-original::after{display:none}
   body.mobile-materials-original #nav:not(.menu-open),body.mobile-materials-original #foot{display:none}
 }
+
+/* Menu footer only — unchanged menu rows/header, measured from 759 × 1280 design. */
+@media(max-width:760px){
+  #menu .menu-footer{
+    position:fixed;left:0;right:0;bottom:0;z-index:2;
+    width:100%;height:32.02vw;min-height:0;max-width:none;
+    margin:0;padding:0;display:block;
+    background:#eadcbf url('/img/texture.jpg') center/100% auto;
+    background-blend-mode:multiply;color:#111;
+  }
+  #menu .menu-footer .foot-form{margin:0;padding:0}
+  #menu .menu-footer .foot-lead{
+    position:absolute;left:5.53vw;top:8.05vw;margin:0;
+    font:700 2.65vw/1.2 var(--body);white-space:nowrap;letter-spacing:0;
+  }
+  #menu .menu-footer .foot-field{
+    position:absolute;left:5.53vw;top:14.2vw;width:58.5vw;height:4.2vw;
+    border-bottom:1px solid rgba(17,17,17,.5);margin:0;padding:0;
+  }
+  #menu .menu-footer .foot-field input{
+    font:italic 3.3vw/1.2 var(--editorial);padding:0 .5vw;
+    width:100%;height:100%;min-height:0;color:#111;
+  }
+  #menu .menu-footer .foot-field button{
+    position:absolute;right:0;top:0;width:8vw;height:100%;
+    min-width:0;min-height:0;opacity:0;padding:0;
+  }
+  #menu .menu-footer .foot-field:focus-within button{opacity:1}
+  #menu .menu-footer .foot-row{display:contents}
+  #menu .menu-footer .foot-links{
+    position:absolute;right:6.45vw;top:8.05vw;
+    display:flex;flex-direction:column;gap:3.8vw;margin:0;padding:0;
+    font:600 2.65vw/1.2 var(--body);text-align:right;
+  }
+  #menu .menu-footer .foot-links a{margin:0;padding:0;border:0}
+  #menu .menu-footer .foot-mark{
+    position:absolute;left:50%;bottom:4.35vw;transform:translateX(-50%);
+    width:50.8vw;max-width:none;height:auto;margin:0;mix-blend-mode:multiply;
+  }
+}

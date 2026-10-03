@@ -137,7 +137,8 @@ function buildMenu(){
     menuFooter.className = 'foot menu-footer';
     menuFooter.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
     menuFooter.querySelector('form').dataset.newsletter = 'menu';
-    menuFooter.querySelector('.foot-lead').textContent = 'Sign up to stay updated with WRM’s journey';
+    menuFooter.querySelector('.foot-lead').textContent = 'Stay updated with WRM’s material explorations.';
+    menuFooter.querySelector('.foot-links a')?.remove(); /* Menu footer has Contact and FAQ only. */
     menu.append(menuFooter);
     const close = document.createElement('button');
     close.id = 'mobileMenuClose'; close.className = 'mobile-menu-close';
