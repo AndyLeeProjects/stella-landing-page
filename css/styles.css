@@ -766,6 +766,8 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .mh-original{position:relative;width:100%;margin:0;padding:0;line-height:0;background:#fff}
   .mh-original .mh-original-art{display:block;width:100%;height:auto;max-width:none;margin:0;padding:0;border:0;filter:none;opacity:1}
   .mh-original-hit{position:absolute;display:block;padding:0!important;margin:0!important;border:0;background:transparent;color:transparent;min-width:0;min-height:0;cursor:pointer}
+  /* clip-path makes Chrome hit-test the exact fractional rect, so taps on a tile edge don't go to its neighbour. */
+  .mh-original-hit{clip-path:inset(0)}
   .mh-original-hit:focus-visible{outline:2px solid #9b9b79;outline-offset:-2px}
   .mh-original-email{position:absolute;display:flex;margin:0;padding:0;line-height:1}
   .mh-original-email input{width:100%;min-width:0;border:0;background:transparent;padding:0 8%;font:italic 3.1vw Georgia,serif;color:#111}
