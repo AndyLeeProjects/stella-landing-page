@@ -446,6 +446,17 @@ const pages = {
 
   materials(){
     document.title = 'About the Materials — WRM';
+    if(isMobile()) return `<section class="mh-original ma-original" aria-label="About the Materials">
+      <img class="mh-original-art" src="/img/mobile-materials-original.png" width="1564" height="5352" alt="About the Materials. Fish Leather: fish silhouette over salmon leather. Algae: seaweed silhouette over algae film. Stay updated with WRM’s material explorations." fetchpriority="high">
+      <button class="mh-original-hit" data-home-menu aria-label="Open menu" aria-controls="menu" style="left:2.237852%;top:0.747384%;width:10.869565%;height:3.550075%"></button>
+<a class="mh-original-hit" href="/" data-link aria-label="WRM home" style="left:43.158568%;top:0.747384%;width:14.066496%;height:3.550075%"></a>
+<button class="mh-original-hit" data-home-cart aria-label="Open cart" aria-controls="cart" style="left:86.956522%;top:0.747384%;width:10.869565%;height:3.550075%"></button>
+<a class="mh-original-hit" href="/about-materials/fish-leather" data-link aria-label="Fish Leather — read the material story" style="left:0.000000%;top:6.801196%;width:100.000000%;height:39.816891%"></a>
+<a class="mh-original-hit" href="/about-materials/algae" data-link aria-label="Algae — read the material story" style="left:0.000000%;top:46.674141%;width:100.000000%;height:39.517937%"></a>
+<a class="mh-original-hit" href="/faq" data-link aria-label="Frequently asked questions" style="left:82.480818%;top:94.917788%;width:12.787724%;height:1.494768%"></a>
+<a class="mh-original-hit" href="mailto:hello@withrawmaterials.com" aria-label="Contact WRM" style="left:82.480818%;top:93.049327%;width:12.787724%;height:1.494768%"></a>
+<form class="mh-original-email" data-newsletter="mobile-materials" style="left:5.498721%;top:94.917788%;width:58.439898%;height:1.270553%"><input type="email" placeholder=" " required autocomplete="email" aria-label="Email — stay updated with WRM’s material explorations"><button type="submit" aria-label="Subscribe"><span aria-hidden="true">→</span></button></form>
+    </section>`;
     return `<section class="pg editorial mat-page"><div class="ed-page">
       ${crumbs(isMobile() ? [['About The Materials']] : [['Home','/'],['About The Materials']])}
       <a class="mat-hero observe" href="/about-materials/fish-leather" data-link aria-label="Fish Leather">
@@ -542,7 +553,9 @@ function render(path, y=0){
   document.body.classList.toggle('mobile-home-original', isMobile() && isHome);
   const isMobileWorld = isMobile() && path.replace(/\/$/,'') === '/wrm-world';
   document.body.classList.toggle('mobile-world-original', isMobileWorld);
-  foot.classList.toggle('hide', (isMobile() && isHome) || isMobileWorld);
+  const isMobileMaterials = isMobile() && path.replace(/\/$/,'') === '/about-materials';
+  document.body.classList.toggle('mobile-materials-original', isMobileMaterials);
+  foot.classList.toggle('hide', (isMobile() && isHome) || isMobileWorld || isMobileMaterials);
   foot.classList.toggle('foot-home', isHome); /* mobile_HOME.png shows a distinct footer style (sans-serif lead, wider link spacing) vs mobile_SHOP/_Purse/etc */
   foot.classList.toggle('foot-neutral', isProductDetail || (isMobile() && (isAboutMaterials || isProductList || isShop))); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png / mobile_SHOP.png: footer continues the neutral off-white/textured tone, not the warm --paper beige */
   nav.classList.toggle('nav-neutral', isMobile() && (isProductDetail || isAboutMaterials || isProductList)); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png: header bar is the SAME seamless neutral off-white paper texture as the page body below it — no beige blur bar, no dividing line */

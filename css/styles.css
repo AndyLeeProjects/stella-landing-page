@@ -782,3 +782,11 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body.mobile-world-original::before,body.mobile-world-original::after{display:none}
   body.mobile-world-original #nav:not(.menu-open),body.mobile-world-original #foot{display:none}
 }
+
+/* About Materials mobile: supplied artwork unchanged, only transparent controls. */
+@media(max-width:760px){
+  body.mobile-materials-original{background:#fff}
+  body.mobile-materials-original .page{animation:none;opacity:1;transform:none}
+  body.mobile-materials-original::before,body.mobile-materials-original::after{display:none}
+  body.mobile-materials-original #nav:not(.menu-open),body.mobile-materials-original #foot{display:none}
+}
