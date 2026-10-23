@@ -57,7 +57,87 @@ const FAQ = [
   ['Shipping and returns','Pieces ship within 3–5 business days. Unused items may be returned within 14 days of delivery. Write to hello@withrawmaterials.com.']
 ];
 
-const NEWSLETTER = 'https://script.google.com/macros/s/AKfycbxktzrSNaAXo-I6Hqab5Im9P1R_oXAiIH9d4dtLao1d7F4XntBG1BKKa_5cwD5_leshcg/exec';
+/* Mobile v2 (Drive redesign) copy, verbatim from Purse@2x / Bookmark@2x / Algae_Tote@2x.png. */
+const M2_PRODUCT = {
+  'salmon-purse': { variant:'Natural Crust', price:'$', images:['/img/m2-pd-purse.jpg','/img/purse-dark.jpg'],
+    alt:'Salmon Purse in natural crust salmon leather',
+    blocks:[
+      ['Your classic evening purse made with ocean-caught salmon leather. Fits your essentials. Pleated sides, lined with Korean hemp, finished with invisible magnet closure.'],
+      ['Please note the textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical.'],
+      ['Product Detail','Made in San Francisco'],
+      ['Dimensions','H: 6” x W: 7” D: 1.5”','Strap Drop: 5.25”'],
+      ['Material','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric'],
+      ['Care','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight']
+    ]},
+  'salmon-bookmark': { variant:'Natural Crust', price:'$', images:['/img/m2-pd-bookmark.jpg','/img/bookmark-detail.jpg'],
+    alt:'Salmon Bookmark, salmon leather front and horsehair lining',
+    blocks:[
+      ['A small piece of fish leather for your everyday reading. Made with leftover pieces from making the purses. Lined with horse hair classically used for suiting.'],
+      ['Please note the textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical.'],
+      ['Product Detail','Made in San Francisco'],
+      ['Dimensions','H: 6.7” x W: 2”'],
+      ['Material','Leather: Ocean-caught Alaskan Sockeye Salmon','Lining: Horsehair'],
+      ['Care','Treat like any other leather products.','Avoid direct sunlight.']
+    ]},
+  'algae-tote': { variant:'Natural', price:'$', images:['/img/m2-pd-tote.jpg'],
+    alt:'Algae Tote, translucent seaweed-based sheet',
+    blocks:[
+      ['Your classic everyday tote made with algae. The seaweed is dehydrated and processed into a powder form, which then formulated and turned into sheets by Sway (learn more about Sway in our <a href="/about-materials/algae" data-link>materials page</a>).'],
+      ['You can expect a waxed canvas-like hand feel. The waxiness will disappear with wear. Please note the textures and colors of the bags vary piece to piece.'],
+      ['Product Detail','Manufactured in San Francisco'],
+      ['Dimensions','H: 6” x W: 7” D: 1.5”','Strap Drop: 5.25”'],
+      ['Material','Exterior Body: 100% compostable algae-based sheet'],
+      ['Care','Avoid moisture and direct sunlight','Please see <a href="/faq" data-link>FAQ page</a> for detailed instructions on how to care for this material.']
+    ]}
+};
+
+/* Edit Notes (9/7): material FAQs, shown as drop-downs on the About Materials stories. */
+const M2_MATERIAL_FAQ = {
+  fish: [
+    ['Material & Performance', [
+      ['How strong is it?','Salmon leather is stronger than cowhide of the same weight. Its fibers cross rather than run in a single direction, a structure shaped by the fish’s need to move through water.'],
+      ['Is it waterproof?','Not by nature. We recommend keeping it dry and away from prolonged moisture.'],
+      ['How does it wear over time?','The leather softens with use, and patinas into a natural darker shade over time. A natural patina rather than wear.'],
+      ['Does the texture vary piece to piece?','Yes. Please understand that each skin is unique, and no two pieces are identical!'],
+      ['Does the color fade in sunlight?','As with any natural leather, prolonged direct sunlight will expedite the darkening of the tone over time. We recommend storing it out of direct light.']]],
+    ['Living With It', [
+      ['What does it smell like?','Properly tanned leather carries zero to barely any scent of fish.'],
+      ['Will my pet eat it?','It is leather, and should be treated with the same care as any fine leather good around pets.'],
+      ['How do I clean it?','Wipe with a soft, dry cloth. Avoid water and household cleaning products. You may use wax to buff the area afterwards.'],
+      ['Can it get wet?','If you get caught in the rain, this is not the bag to use as cover. We recommend against getting wet. If it happens, allow it to air dry away from direct heat.'],
+      ['How should I store it?','In a cool, dry place, away from direct sunlight — ideally in its dust bag.'],
+      ['Does it need conditioning?','No regular conditioning is required.']]],
+    ['Origin & Sourcing', [
+      ['Where does the salmon skin come from?','The tannery works closely with a sushi restaurant group to collect the skins. The restaurant uses ocean-caught Alaskan salmon; the tannery takes what would otherwise be discarded.'],
+      ['Is this a byproduct, or is the fish farmed for the leather?','A byproduct of the restaurant industry. No fish is farmed for the leather.'],
+      ['Is the fish also used for food?','Yes. The fillet is served at the restaurant the tannery works with.'],
+      ['Is it vegan?','No. This is an animal material.']]],
+    ['Circularity & End of Life', [
+      ['What happens to it, eventually?','The leather is tanned without chromium, so it can return to soil at the end of its life. Thread selection and full compostability testing for the finished object are ongoing.']]],
+    ['Value & Ownership', [
+      ['How long will it last?','The material is built for use over years.'],
+      ['Is each piece one of one?','Each bag is one of one. no two are identical due to the nature of the skin'],
+      ['Can it be repaired if damaged?','Contact us directly to discuss repair.']]]
+  ],
+  algae: [
+    ['Material & Performance', [
+      ['How strong is it?','It’s a seaweed-derived sheet material, structurally different from a woven textile or hide. In practice, it holds up well to regular handling, however similarly to plastic film it will stretch with force.'],
+      ['Is it waterproof?','It’s moisture-resistant rather than fully waterproof. We’d treat it the way you’d treat any considered object — dry it if it gets wet.'],
+      ['How does it wear over time?','This is a newer material category than leather, without the same century of reference. What we’ve seen so far points to a material that holds its shape and resists moisture well under regular use. We’ll continue to share what we learn as pieces move through the world. It’s similar to waxed canvas.'],
+      ['What does it smell like?','It does not smell like seaweed. The material is designed and processed to be completely scent-free so it does not transfer any ocean or plant odors to the packaged goods inside.']]],
+    ['Origin & Sourcing', [
+      ['Where does the algae material come from?','The material begins as seaweed. Under the right conditions, kelp can grow as much as two feet in a single day — making it one of the fastest-growing plants on earth — and it’s cultivated without the water, land, or fertilizer inputs most raw materials require. It’s grown on ocean farms, then processed by a California-based material studio into a flexible sheet form, which we cut and sew into finished objects in San Francisco.']]],
+    ['Circularity & End of Life', [
+      ['What happens to it, eventually?','The material is designed to compost. We’re still testing how the finished object performs in home versus industrial composting environments. We’ll share results as that testing completes.']]],
+    ['Value & Ownership', [
+      ['Can it be repaired if damaged?','Contact us directly to discuss repair.']]]
+  ]
+};
+
+/* Edit Notes (9/7): FAQ keeps shipping only. */
+const M2_FAQ = [['Shipping and returns','Pieces ship within 3–5 business days. Unused items may be returned within 14 days of delivery. Write to hello@withrawmaterials.com.']];
+
+const NEWSLETTER ='https://script.google.com/macros/s/AKfycbxktzrSNaAXo-I6Hqab5Im9P1R_oXAiIH9d4dtLao1d7F4XntBG1BKKa_5cwD5_leshcg/exec';
 
 /* ---------- Helpers ---------- */
 const $ = (s, r=document) => r.querySelector(s);
@@ -129,11 +209,23 @@ function buildMenu(){
   $('#mobileMenuClose')?.remove();
   menu.querySelector('.menu-footer')?.remove();
   if(isMobile()){
-    const group = (label, to, id, children) => `<div class="menu-group"><div class="menu-row"><a class="menu-item" href="${to}" data-link>${label}</a><button class="menu-expand" data-menu-toggle aria-label="Expand ${label}" aria-expanded="false" aria-controls="${id}"><span class="chev">&gt;</span></button></div><div class="menu-sub" id="${id}">${children}</div></div>`;
-    const leaf = (label, to) => `<a class="menu-item" href="${to}" data-link>${label}<span class="chev" aria-hidden="true">&gt;</span></a>`;
-    $('#menuList').innerHTML = group('Shop','/shop','mobileShop',group('Ocean','/shop/ocean-season','mobileOcean',
-      leaf('Fish Leather','/shop/ocean-season/fish-leather') + leaf('Algae','/about-materials/algae'))) +
-      MENU.slice(1).map(n=>leaf(esc(n.label),n.to)).join('');
+    /* MENU@2x.png / MENU_1@2x.png rows: all 4 parent categories (Shop, About Materials,
+       WRM World, FAQ), with Shop expanding to reveal Ocean/Fish Leather/Algae, per Andy. */
+    const row = (label, to, aria) => `<a class="menu-item m2-menu-row" href="${to}" data-link${aria?` aria-label="${aria}"`:''}><span class="m2-menu-label">${label}</span><span class="chev" aria-hidden="true">&gt;</span></a>`;
+    $('#menuList').innerHTML =
+      `<div class="m2-menu-shop">
+        <button class="menu-item m2-menu-row" data-acc aria-expanded="false" aria-controls="m2menu-shop-sub">
+          <span class="m2-menu-label">Shop <img class="m2-menu-ocean" src="/img/illustration-ocean.png" alt=""></span>
+          <span class="chev" aria-hidden="true">&gt;</span>
+        </button>
+        <div class="m2-menu-sub" id="m2menu-shop-sub" hidden>
+          <a class="menu-item m2-menu-row m2-menu-sub-row" href="/shop/ocean-season/fish-leather" data-link><span class="m2-menu-label">Fish Leather</span><span class="chev" aria-hidden="true">&gt;</span></a>
+          <a class="menu-item m2-menu-row m2-menu-sub-row" href="/about-materials/algae" data-link><span class="m2-menu-label">Algae</span><span class="chev" aria-hidden="true">&gt;</span></a>
+        </div>
+      </div>` +
+      row('About Materials','/about-materials') +
+      row('WRM World','/wrm-world') +
+      row('FAQ','/faq');
     const menuFooter = foot.cloneNode(true);
     menuFooter.removeAttribute('id');
     menuFooter.className = 'foot menu-footer';
@@ -212,25 +304,34 @@ const pages = {
     return isMobile() ? pages.homeMobile() : pages.homeDesktop();
   },
 
-  /* Mobile home — layout per Stella's reference screenshot (Sept): four full-bleed
-     product/collection plates, every one of them a link, then the shared footer. */
-  /* Mobile landing uses Stella's supplied 1563 × 10428, 300-DPI PNG unchanged.
-     Original artwork owns ALL visual geometry; transparent controls add functionality. */
+  /* Mobile home — HOME@2x.png (751 × 5762). Real photos and HTML copy, every plate a link. */
   homeMobile(){
     document.title = 'WRM — With Raw Materials';
-    return `<section class="mh-original" aria-label="Ocean — a world mapped by where its materials begin">
-      <img class="mh-original-art" src="/img/mobile-home-original.png?v=3" width="1563" height="10428" alt="Chapter I: Ocean. A world mapped by where its materials begin. Ocean Collection 2026: Salmon Purse, Salmon Bookmark and Algae Tote. For the brand’s first collection, WRM turned to the ocean for fish leather and algae. Fish leather carries centuries of craft; algae points to what materials can become. Together, they begin a new story for the objects we live with. Photos by Sahra Jajarmikhayat, Michelle Min and Zoe Kao." fetchpriority="high">
-      <button class="mh-original-hit" data-home-menu aria-label="Open menu" aria-controls="menu" style="left:2.239283%;top:0.383583%;width:9.596929%;height:1.630226%"></button>
-<a class="mh-original-hit" href="/" data-link aria-label="WRM home" style="left:43.186180%;top:0.383583%;width:14.075496%;height:1.630226%"></a>
-<button class="mh-original-hit" data-home-cart aria-label="Open cart" aria-controls="cart" style="left:87.651951%;top:0.383583%;width:9.596929%;height:1.630226%"></button>
-<a class="mh-original-hit" href="/shop" data-link aria-label="Ocean Collection 2026 — Shop" style="left:0.000000%;top:29.363253%;width:100.000000%;height:3.404296%"></a>
-<a class="mh-original-hit" href="/product/salmon-purse" data-link aria-label="Salmon Purse" style="left:0.000000%;top:32.767549%;width:46.193218%;height:9.416954%"></a>
-<a class="mh-original-hit" href="/product/salmon-bookmark" data-link aria-label="Salmon Bookmark" style="left:46.193218%;top:32.767549%;width:53.806782%;height:9.416954%"></a>
-<a class="mh-original-hit" href="/about-materials/algae" data-link aria-label="Algae Tote — About Algae" style="left:0.000000%;top:42.184503%;width:100.000000%;height:9.138857%"></a>
-<a class="mh-original-hit" href="/wrm-world" data-link aria-label="Explore WRM World" style="left:25.783749%;top:81.204450%;width:50.799744%;height:11.430763%"></a>
-<a class="mh-original-hit" href="/faq" data-link aria-label="Frequently asked questions" style="left:82.533589%;top:97.094361%;width:12.795905%;height:1.006904%"></a>
-<a class="mh-original-hit" href="mailto:hello@withrawmaterials.com" aria-label="Contact WRM" style="left:82.533589%;top:96.087457%;width:12.795905%;height:0.958957%"></a>
-<form class="mh-original-email" data-newsletter="mobile-home" style="left:5.502239%;top:97.094361%;width:58.477287%;height:0.911009%"><input type="email" placeholder=" " required autocomplete="email" aria-label="Email — stay updated with WRM’s material explorations"><button type="submit" aria-label="Subscribe"><span aria-hidden="true">→</span></button></form>
+    const plate = (cls, href, img, alt, cap) => `<a class="m2h-plate ${cls}" href="${href}" data-link><img src="${img}" alt="${alt}" loading="lazy"><span class="m2h-cap">${cap}</span></a>`;
+    return `<section class="m2h" aria-label="Chapter I: Ocean">
+      <div class="m2h-hero">
+        <img class="m2h-hero-img" src="/img/m2-home-hero.jpg" alt="Salmon Purse in natural crust salmon leather" fetchpriority="high">
+        <img class="m2h-ocean" src="/img/illustration-ocean.png" alt="">
+        <h1 class="m2h-chapter"><span>Chapter I</span><span class="m2-sr">Ocean</span></h1>
+        <p class="m2h-lede">With fish leather and algae, WRM begins<br>a new story for the objects we live with.</p>
+        <p class="m2h-credit">Photos by Sahra Jajarmikhayat</p>
+      </div>
+      ${plate('m2h-purse','/product/salmon-purse','/img/m2-home-purse.jpg','Salmon Purse on a curved blue backdrop','Salmon Purse')}
+      ${plate('m2h-bookmark','/product/salmon-bookmark','/img/m2-home-bookmark.jpg','Salmon Bookmark, salmon leather front and lining','Salmon Bookmark')}
+      ${plate('m2h-tote','/product/algae-tote','/img/m2-home-tote.jpg','Algae Tote','Algae Tote')}
+      <div class="m2h-gallery">
+        <img src="/img/m2-home-gallery.jpg" alt="The Salmon Purse on display at the WRM launch" loading="lazy">
+        <div class="m2h-gallery-txt">
+          <p>WRM is a world mapped by where its materials begin</p>
+          <p>For the brand’s first collection, we turned to the ocean for<br>two materials: fish leather and algae.</p>
+          <p>Fish leather carries centuries of craft,<br>algae points to what materials can become.</p>
+        </div>
+        <p class="m2h-credit">Photo by Michelle Min</p>
+      </div>
+      <div class="m2h-world">
+        <img src="/img/m2-home-mood.jpg" alt="WRM World mood board: sketches, samples and handbag studies" loading="lazy">
+        <a class="m2-box-btn m2h-world-btn" href="/wrm-world" data-link>Explore WRM World</a>
+      </div>
     </section>`;
   },
 
@@ -309,35 +410,19 @@ const pages = {
 </div></section>`;
   },
 
-  /* Mobile shop / season — full-bleed plate list from mobile_SHOP.png */
+  /* Mobile shop — SHOP@2x.png: every product in Ocean Collection, as one list. */
   mShopList(){
-    const item = (href, img, name, sub, price) => `
-      <a class="mshop-item" href="${href}" data-link>
-        <div class="mshop-img"><img src="${img}" alt="${esc(name)}" loading="lazy"></div>
-        <div class="mshop-cap"><div class="mshop-id"><span class="name">${esc(name)}</span><span class="sub">${esc(sub)}</span></div><span class="price">${price}</span></div>
+    const item = (cls, href, img, name, sub, price) => `
+      <a class="m2s-item ${cls}" href="${href}" data-link>
+        <span class="m2s-img"><img src="${img}" alt="${esc(name)}" loading="lazy"></span>
+        <span class="m2s-cap"><span class="m2s-name">${esc(name)}</span><span class="m2s-price">${price}</span><span class="m2s-sub">${esc(sub)}</span></span>
       </a>`;
-    return `<section class="mshop">
-      ${item('/product/salmon-purse','/img/purse-dark.jpg','Salmon Purse','Crust',money(PRODUCTS['salmon-purse'].price))}
-      ${item('/product/salmon-bookmark','/img/bookmark-blue.jpg','Salmon Bookmark','Crust',money(PRODUCTS['salmon-bookmark'].price))}
-      <div class="mshop-item">
-        <div class="mshop-img"><img src="/img/algae-tote.jpg" alt="Algae Tote — Natural — Coming soon" loading="lazy">
-          <div class="mh-cap"><span class="name">Algae Tote</span><span class="sub">Natural</span></div>
-          <div class="mh-cap-soon">Coming Soon</div>
-        </div>
-      </div>
-    </section>`;
-  },
-
-  /* Mobile fish-leather list — inset plates from mobile_Product_List_Page.png */
-  mProductList(){
-    const card = (href, img, name) => `
-      <a class="mpl-card" href="${href}" data-link>
-        <div class="mpl-img"><img src="${img}" alt="${esc(name)}" loading="lazy"></div>
-        <div class="mpl-cap"><span class="name">${esc(name)}</span><span class="sub"><em>The</em> Ocean Collection</span></div>
-      </a>`;
-    return `<section class="mpl">
-      ${card('/product/salmon-purse','/img/purse-dark.jpg','Salmon Purse')}
-      ${card('/product/salmon-bookmark','/img/m-bookmark.jpg','Salmon Bookmark')}
+    return `<section class="m2s" aria-label="Ocean Collection">
+      <h1 class="m2-sr">Ocean Collection</h1>
+      <img class="m2s-ocean" src="/img/illustration-ocean.png" alt="">
+      ${item('m2s-purse','/product/salmon-purse','/img/m2-shop-purse.jpg','Salmon Purse','Natural Crust','$0')}
+      ${item('m2s-bookmark','/product/salmon-bookmark','/img/m2-shop-bookmark.jpg','Salmon Bookmark','Natural Crust','$0')}
+      ${item('m2s-tote','/product/algae-tote','/img/m2-shop-tote.jpg','Algae Tote','Natural','$0')}
     </section>`;
   },
 
@@ -379,7 +464,7 @@ const pages = {
 
   fishLeather(){
     document.title = 'Fish Leather — WRM';
-    if(isMobile()) return pages.mProductList();
+    if(isMobile()) return pages.mShopList();
     const card = p => `<a class="card observe" href="/product/${p.id}" data-link>
       <div class="card-img"><img src="${p.images[0]}" alt="${esc(p.name)}" loading="lazy"></div>
       <div class="card-txt"><div><div class="card-name">${esc(p.name)}</div><div class="card-var">${esc(p.variant)}</div></div>
@@ -395,34 +480,27 @@ const pages = {
     </div></section>`;
   },
 
-  /* Mobile product detail — mobile_Purse.png / mobile_Bookmark.png */
+  /* Mobile product detail — Purse@2x / Bookmark@2x / Algae_Tote@2x.png */
   mProduct(p){
-    const crumb = [['Ocean','/shop/ocean-season'],['Fish Leather','/shop/ocean-season/fish-leather']]
-      .map(c=>`<a href="${c[1]}" data-link>${esc(c[0])}</a> &gt; `).join('');
-    return `<section class="mpd mpd-${p.id}">
-      <nav class="mpd-crumbs" aria-label="Breadcrumb">${crumb}<span class="cur">${esc(p.name)}</span></nav>
-      <div class="mpd-gallery" id="pdStrip">
-        ${p.images.map((src,i)=>`<div class="mpd-slide"><img src="${src}" alt="${esc(p.name)}${i?' — detail':''}"${i?' loading="lazy"':''}></div>`).join('')}
+    const m = M2_PRODUCT[p.id];
+    return `<section class="m2p m2p-${p.id}">
+      <div class="m2p-gallery" id="pdStrip" aria-label="${esc(p.name)} photos">
+        ${m.images.map((src,i)=>`<div class="m2p-slide"><img src="${src}" alt="${esc(i?p.name+' — detail':m.alt)}"${i?' loading="lazy"':' fetchpriority="high"'}></div>`).join('')}
       </div>
-      <div class="mpd-body">
-        <div class="mpd-head"><h1 class="mpd-name">${esc(p.name)}</h1><span class="mpd-n" id="pdN">1 / ${p.images.length}</span></div>
-        <p class="mpd-line">${esc(p.variant)}, ${p.year}</p>
-        <p class="mpd-line">${money(p.price)}</p>
-        <p class="mpd-p">${esc(p.desc)}</p>
-        <p class="mpd-p">${esc(p.note)}</p>
-        <p class="mpd-p">${esc(p.origin)}</p>
-        <div class="mpd-p"><div>Dimensions</div><div>${p.dims.slice(0,3).map(([k,v])=>`${esc(k)}: ${esc(v)}`).join(' × ')}</div>${p.dims.slice(3).map(([k,v])=>`<div>${esc(k)}: ${esc(v)}</div>`).join('')}</div>
-        <div class="mpd-p"><div>Materials</div>${p.materials.map(([k,v])=>`<div>${esc(k)}: ${esc(v)}</div>`).join('')}</div>
-        <div class="mpd-p"><div>Care</div><div>${esc(p.care).replace('. ','.<br>')}</div></div>
-        <button class="btn btn-fill mpd-add" data-add="${p.id}">Add to cart <span class="arr">→</span></button>
+      <div class="m2p-body">
+        <div class="m2p-head"><h1 class="m2p-name">${esc(p.name)}</h1><span class="m2p-price">${m.price}</span></div>
+        <p class="m2p-variant">${esc(m.variant)}</p>
+        ${m.blocks.map(b=>`<p>${b.join('<br>')}</p>`).join('')}
+        ${p.soon ? '' : `<button class="m2p-add" data-add="${p.id}">Add to cart</button>`}
       </div>
     </section>`;
   },
 
   product(id){
-    const p = PRODUCTS[id]; if(!p || p.soon) return pages.notFound();
+    const p = PRODUCTS[id];
+    if(p && isMobile() && M2_PRODUCT[id]){ document.title = `${p.name} — WRM`; return pages.mProduct(p); }
+    if(!p || p.soon) return pages.notFound();
     document.title = `${p.name} — WRM`;
-    if(isMobile()) return pages.mProduct(p);
     return `<section class="pg editorial"><div class="ed-page">
       ${crumbs([['Ocean','/shop/ocean-season'],['Fish Leather','/shop/ocean-season/fish-leather'],[p.name]])}
       <div class="pd">
@@ -475,9 +553,48 @@ const pages = {
     </div></section>`;
   },
 
+  /* Edit Notes accordion: one drop-down per topic, its questions and answers inside. */
+  m2Accordion(groups, label, open=false){
+    return `<section class="m2-acc" aria-label="${esc(label)}">${groups.map(([topic, qa], i)=>`<div class="m2-acc-item">
+      <button class="m2-acc-q" data-acc aria-expanded="${open}" aria-controls="m2acc-${label.replace(/\W+/g,'')}-${i}"><span>${esc(topic)}</span><span class="chev" aria-hidden="true">&gt;</span></button>
+      <div class="m2-acc-a" id="m2acc-${label.replace(/\W+/g,'')}-${i}"${open?'':' hidden'}>${qa.map(([q,a])=>`<p class="m2-acc-qq">${esc(q)}</p><p>${esc(a)}</p>`).join('')}</div>
+    </div>`).join('')}</section>`;
+  },
+
+  /* Mobile material stories — Salmon_About_Material@2x / Algae_About_Material@2x.png */
+  mMaterialDetail(fish){
+    const tile = (cls, href, img, label) => `<a class="m2-tile ${cls}" href="${href}" data-link><img src="${img}" alt="" loading="lazy"><span class="m2-box-btn">${label}</span></a>`;
+    const body = fish ? `
+        <p>Fish leather used to be part of many cultures around the world.<br>While WRM focuses on the advancement of materials, it is important to highlight that much of the newness is based on old ideas. The research and development of this collection would not have been possible without those who came before us, as well as those who are choosing the path to better the material ecosystem today.</p>
+        <p>The craft of turning fish skin into leather has long been practiced by coastal and riverine Indigenous communities. Today, the leading figures in restoring this craft in North America are Janey Chang and Tracy Williams from British Columbia, Canada. Below is a section from an article written about them back in 2020.</p>
+        <blockquote>"The revival of fish skin leather is more than the rediscovery of a craft. Working with our hands in traditional ways is one of the few avenues we have to connect with our ancestors," Chang says. In Japan, the Ainu crafted salmon skin into boots, which they strapped to their feet with rope. Along the Amur River in northeastern China and Siberia, Hezhen and Nivkh peoples turned the material into coats and thread. In northern Canada, the Inuit made clothing, and in Alaska, several peoples including the Alutiiq, Athabascan, and Yup'ik used fish skins to fashion boots, mittens, containers, and parkas. In the winter, Yup'ik men never left home without qasperrluk, loose-fitting, hooded fish skin parkas that could double as shelter in an emergency ... The men would prop up the hood with an ice pick and pin down the edges to make a tent-like structure. As practical and pervasive as the material was, the practice of making fish skin leather faded in the 20th century. Its loss is intertwined with colonialism and assimilation (Chloe Williams, "The Art of Turning Fish into Leather," Hakai Magazine, April 28, 2020).</blockquote>
+        <p>Today, every tonne of filleted fish leaves behind roughly 40 kilograms of skin, waste unless someone chooses otherwise. Humans consumed an estimated 174 million tonnes of fish in 2024, according to the FAO's State of World Fisheries and Aquaculture report, which puts the skins left behind at somewhere around 7 million tonnes a year. WRM's ocean-caught Alaskan sockeye salmon is an industry byproduct, processed and tanned by 7 Leagues, a local tannery in Vancouver, Canada. Tasha, the founder of 7 Leagues, has taken on a mission to scale this craft and bring it to a wider audience and into new industries. We have worked together to achieve a natural finish. This is known as the "crust," the material's naked state before dyeing. Grain, scale placement, and shade shift from skin to skin, and these are intentionally preserved to highlight the material's natural differences. Our tannery distinguishes itself by using no chromium during the tanning process, which is crucial, as it leads to the compostability of the material, allowing it to safely return to soil and break down when discarded.</p>` : `
+        <p class="m2m-indent">The earliest seaweed-derived creation story starts in Japan with agar, a property derived specifically from red algae. According to the FAO, "The forerunner of today's commercial product was discovered quite accidentally in about 1660 when, according to legend, a Japanese innkeeper one winter night threw some surplus seaweed jelly outdoors. After several nights and days of alternately freezing and thawing, the jelly turned into a papery, translucent substance which the innkeeper found could be reboiled in water and cooled to yield a gel equal to the original. This was the beginning of a cottage industry, a winter occupation for fishing families, and the development of the manufacture and marketing of agar in the form of sheets, bars, sticks and other shapes, known in Japan as 'Kanten (img 1).'"</p>
+        <figure class="m2m-fig m2m-kanten"><img src="/img/desktop/kanten.webp" alt="Kanten jelly on a lacquer plate" loading="lazy"><figcaption>Img 1. Photo from Wikipedia</figcaption></figure>
+        <p class="m2m-indent m2m-alginate">Alginate, on the other hand, is a property derived from brown algae and also the main ingredient for WRM's Algae Tote. It has no folk-discovery legend; rather, it is a modern industrial chemistry story. The discovery by Stanford in the early 1880s led to renewed and vastly increased industrial use of brown seaweed. Industrial alginate extraction began in 1929 in California, then 1939 in Europe and Japan, and the 1980s in China. Since then, seaweed has been used as a binding agent and emulsifier across cosmetics, food, and fertilizers. The idea of converting it into a plastic-replacing film or fiber is a relatively recent innovation, with early experiments beginning in the early 2000s.</p>
+        <p class="m2m-sway-p">Today, Sway's innovation applies that same raw material from brown algae (alginate) to tackle a new problem: replacing petroleum plastic products, starting with plastic packaging (img.2). New science is proving that seaweed farming sequesters carbon at rates comparable to ecosystems like mangroves and seagrasses. Sway's materials use the principles of circular economy, uplifting the blue economy, green manufacturing, and healthy communities. Seaweed aquaculture offers climate-resilient economic opportunities in coastal communities threatened by climate change and overfishing, from Alaska to Indonesia and all around the world. Regenerative seaweed farming requires no fresh water, feed, or fertilizer, fueled simply by sun and ocean nutrients. While traditional plastics pollute for centuries, Sway materials are designed to return to the earth.</p>
+        <figure class="m2m-fig m2m-sway"><img src="/img/desktop/sway.webp" alt="Sway the Future poly bag sample" loading="lazy"><figcaption>Img.2 Poly bag sample from Sway</figcaption></figure>`;
+    return `<article class="m2m ${fish?'m2m-fish':'m2m-algae'}">
+      <header class="m2m-hero">
+        <img class="m2m-hero-img" src="/img/${fish?'m2-mat-fish-hero.jpg':'m2-mat-algae-hero.jpg'}" alt="${fish?'Salmon skins laid out at the tannery':'Stacked sheets of seaweed-based film'}" fetchpriority="high">
+        <img class="m2m-sil" src="${fish?'/img/sil-fish.png':'/img/sil-seaweed.png'}" alt="">
+        <h1 class="m2m-title">${fish?'From industry<br>byproduct to<br>hand bags':'Algae as a<br>future<br>replacement<br>to plastic'}</h1>
+      </header>
+      <div class="m2m-body">${body}</div>
+      ${pages.m2Accordion(M2_MATERIAL_FAQ[fish?'fish':'algae'], fish?'Salmon leather questions':'Algae questions')}
+      ${fish?'<p class="m2m-more">More questions?<br>Visit the <a href="/faq" data-link>FAQ page</a>.</p>':''}
+      <div class="m2-tiles">
+        ${tile('m2-tile-purse','/shop','/img/m2-tile-purse.jpg','View collection')}
+        ${fish ? tile('m2-tile-algae','/about-materials/algae','/img/m2-tile-algae.jpg','Explore algae')
+               : tile('m2-tile-fish','/about-materials/fish-leather','/img/m2-tile-fish.jpg','Explore<br>fish leather')}
+      </div>
+    </article>`;
+  },
+
   materialDetail(which){
     const fish = which==='fish-leather';
     document.title = (fish?'Fish Leather':'Algae') + ' — WRM';
+    if(isMobile()) return pages.mMaterialDetail(fish);
     return `<section class="pg editorial mat-page"><div class="ed-page">
       ${crumbs([['About The Materials','/about-materials'],[fish?'Fish Leather':'Algae']])}
       <div class="mat-detail ${fish?'fish':'algae'}">
@@ -497,24 +614,37 @@ const pages = {
     </div></section>`;
   },
 
-  /* Mobile WRM World — revised full-resolution PNG preserved unchanged. */
+  /* Mobile WRM World — WRM_WORLD@2x.png collage: original photos placed on the measured
+     artboard grid, numbered captions as real text. */
   world(){
     document.title = 'WRM World';
-    return `<section class="mh-original mw-original" aria-label="WRM World — material explorations">
-      <img class="mh-original-art" src="/img/mobile-world-original.png" width="1564" height="8088" alt="WRM World: crochet samples, material experiments, ceramic vase, Wiener Werkstätte collage and handbag studies. Learn more about the materials or shop Ocean Collection." fetchpriority="high">
-      <button class="mh-original-hit" data-home-menu aria-label="Open menu" aria-controls="menu" style="left:2.237852%;top:0.494560%;width:10.869565%;height:2.349159%"></button>
-<a class="mh-original-hit" href="/" data-link aria-label="WRM home" style="left:43.158568%;top:0.494560%;width:14.066496%;height:2.349159%"></a>
-<button class="mh-original-hit" data-home-cart aria-label="Open cart" aria-controls="cart" style="left:86.956522%;top:0.494560%;width:10.869565%;height:2.349159%"></button>
-<a class="mh-original-hit" href="/about-materials" data-link aria-label="Learn more about the materials" style="left:0.000000%;top:85.497033%;width:51.150895%;height:8.246785%"></a>
-<a class="mh-original-hit" href="/shop" data-link aria-label="Shop the collection" style="left:51.470588%;top:85.497033%;width:48.529412%;height:8.246785%"></a>
-<a class="mh-original-hit" href="/faq" data-link aria-label="Frequently asked questions" style="left:82.480818%;top:96.525717%;width:12.787724%;height:1.112760%"></a>
-<a class="mh-original-hit" href="mailto:hello@withrawmaterials.com" aria-label="Contact WRM" style="left:82.480818%;top:95.227498%;width:12.787724%;height:1.112760%"></a>
-<form class="mh-original-email" data-newsletter="mobile-world" style="left:5.498721%;top:96.463897%;width:58.439898%;height:0.890208%"><input type="email" placeholder=" " required autocomplete="email" aria-label="Email — stay updated with WRM’s material explorations"><button type="submit" aria-label="Subscribe"><span aria-hidden="true">→</span></button></form>
+    const pic = (cls, src, alt) => `<img class="m2w-pc ${cls}" src="/img/${src}" alt="${alt}" loading="lazy">`;
+    const cap = (cls, html) => `<p class="m2w-cap ${cls}">${html}</p>`;
+    return `<section class="m2w" aria-label="WRM World — material explorations">
+      <h1 class="m2-sr">WRM World</h1>
+      <img class="m2w-pc m2w-top" src="/img/m2-world-top.jpg" alt="Ocean drawing and twelve algae yarn crochet samples" fetchpriority="high">
+      ${cap('m2w-c1','01. Algae yarn crochet samples')}
+      ${pic('m2w-yarn','m2-world-yarn.jpg','A coil of charcoal dyed algae yarn')}
+      ${cap('m2w-c2','02. Charcoal dyed algae yarn')}
+      ${pic('m2w-dyedbag','m2-world-dyedbag.jpg','A purse wrapped in dyed cloth with the WRM mark')}
+      ${pic('m2w-note','m2-world-note.jpg','Handwritten research notes')}
+      ${pic('m2w-vase','m2-world-vase.jpg','Glass vase with relief fish')}
+      ${pic('m2w-wall','m2-world-wallpaper.jpg','Wallpaper with a Wiener Werkstätte fabric display photograph, a design note and an algae yarn weaving')}
+      ${cap('m2w-c3','03. Algae yarn weaving')}
+      ${cap('m2w-c4','04. Stella’s childhood<br>bedroom wallpaper')}
+      ${pic('m2w-purse','m2-world-purse.jpg','Crochet algae yarn purse')}
+      ${pic('m2w-calder','m2-world-calder.jpg','Alexander Calder wire fishbowl sculpture')}
+      ${pic('m2w-red','m2-world-red.jpg','Shoe study with a pink note')}
+      ${pic('m2w-sticky','m2-world-sticky.jpg','Sticky note with a handbag sketch')}
+      ${cap('m2w-c5 m2w-light','05. Crochet algae yarn purse')}
+      ${cap('m2w-c6 m2w-light','06. Alexander Calder')}
+      <a class="m2w-learn" href="/about-materials" data-link><img src="/img/m2-world-tex-fish.jpg" alt=""><img src="/img/m2-world-tex-algae.jpg" alt=""><span class="m2-box-btn">Learn more about the materials</span></a>
     </section>`;
   },
 
   faq(){
     document.title = 'FAQ — WRM';
+    if(isMobile()) return `<section class="m2f"><h1 class="m2f-title">FAQ</h1>${pages.m2Accordion([['Shipping', M2_FAQ]], 'Frequently asked questions', true)}</section>`;
     return `<section class="pg editorial"><div class="ed-page">
       ${crumbs([['Home','/'],['FAQ']])}
       <h1 class="pg-title">Questions</h1>
@@ -557,13 +687,14 @@ function render(path, y=0){
   const isProductList = isMobile() && path.replace(/\/$/,'') === '/shop/ocean-season/fish-leather'; /* mobile_Product_List_Page.png: nav/body/footer are the same seamless neutral off-white as product detail pages, not the warm --paper beige — measured live rgba(232,223,200,.86) nav vs mockup rgb(~234,233,231) */
   const isShop = isMobile() && (path==='/shop' || path==='/shop/'); /* mobile_SHOP.png: footer is the same neutral off-white (~rgb 235,234,232) as product detail/list pages, not the warm --paper beige — measured live rgb(226,217,195) footer vs mockup rgb(~235,234,232) */
   /* The new mobile home (Stella's reference layout) reuses the standard signup line. */
-  foot.querySelector('.foot-lead').textContent = isMobile() ? 'Sign up to stay updated with WRM’s journey' : 'Sign up to stay updated with WRM’s material explorations.';
-  document.body.classList.toggle('mobile-home-original', isMobile() && isHome);
-  const isMobileWorld = isMobile() && path.replace(/\/$/,'') === '/wrm-world';
-  document.body.classList.toggle('mobile-world-original', isMobileWorld);
+  foot.querySelector('.foot-lead').textContent = isMobile() ? 'Stay updated with WRM’s material explorations.' : 'Sign up to stay updated with WRM’s material explorations.';
+  /* Mobile v2 (Drive redesign): every mobile page is real HTML except About Materials,
+     whose new mockup is unchanged from the supplied full-resolution artwork. */
+  document.body.classList.toggle('m2', isMobile());
+  document.body.classList.toggle('m2-light', isMobile() && (isHome || /^\/about-materials\/(fish-leather|algae)\/?$/.test(path)));
   const isMobileMaterials = isMobile() && path.replace(/\/$/,'') === '/about-materials';
   document.body.classList.toggle('mobile-materials-original', isMobileMaterials);
-  foot.classList.toggle('hide', (isMobile() && isHome) || isMobileWorld || isMobileMaterials);
+  foot.classList.toggle('hide', isMobileMaterials);
   foot.classList.toggle('foot-home', isHome); /* mobile_HOME.png shows a distinct footer style (sans-serif lead, wider link spacing) vs mobile_SHOP/_Purse/etc */
   foot.classList.toggle('foot-neutral', isProductDetail || (isMobile() && (isAboutMaterials || isProductList || isShop))); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png / mobile_SHOP.png: footer continues the neutral off-white/textured tone, not the warm --paper beige */
   nav.classList.toggle('nav-neutral', isMobile() && (isProductDetail || isAboutMaterials || isProductList)); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png: header bar is the SAME seamless neutral off-white paper texture as the page body below it — no beige blur bar, no dividing line */
@@ -574,7 +705,7 @@ function render(path, y=0){
   app.querySelectorAll('.observe').forEach(el=>io.observe(el));
   const strip = $('#pdStrip');
 
-  if(strip) strip.addEventListener('scroll', ()=>{
+  if(strip && $('#pdN')) strip.addEventListener('scroll', ()=>{
     const i = Math.round(strip.scrollLeft / strip.clientWidth);
     $('#pdN').textContent = `${i+1} / ${strip.children.length}`;
   }, {passive:true});
@@ -590,13 +721,13 @@ document.addEventListener('click', e => {
   if(e.target.closest('[data-home-menu]')){ openMenu(); return; }
   if(e.target.closest('[data-home-cart]')){ openCart(); return; }
   const shop = e.target.closest('[data-shop-link]'); if(shop){ e.preventDefault(); e.stopPropagation(); go('/shop'); return; }
-  const mt = e.target.closest('[data-menu-toggle]'); if(mt){ const open = mt.getAttribute('aria-expanded')==='true'; mt.setAttribute('aria-expanded',String(!open)); mt.parentElement.nextElementSibling.classList.toggle('open',!open); return; }
   const a = e.target.closest('a[data-link]'); if(a){ e.preventDefault(); go(a.getAttribute('href')); return; }
   const tg = e.target.closest('[data-toggle]'); if(tg){ const open = tg.getAttribute('aria-expanded')==='true'; tg.setAttribute('aria-expanded',String(!open)); tg.nextElementSibling.classList.toggle('open',!open); return; }
   const ad = e.target.closest('[data-add]'); if(ad){ add(ad.dataset.add); openCart(); return; }
   const q = e.target.closest('[data-qty]'); if(q){ setQty(q.dataset.qty, +q.dataset.d); return; }
   const rm = e.target.closest('[data-remove]'); if(rm){ remove(rm.dataset.remove); return; }
   const th = e.target.closest('[data-thumb]'); if(th){ const i=+th.dataset.thumb, p=PRODUCTS[location.pathname.split('/')[2]]; $('#pdImg').src=p.images[i]; $('#pdN').textContent=`${i+1} / ${p.images.length}`; document.querySelectorAll('[data-thumb]').forEach(b=>b.setAttribute('aria-current',String(b===th))); return; }
+  const ac = e.target.closest('[data-acc]'); if(ac){ const open = ac.getAttribute('aria-expanded')==='true'; ac.setAttribute('aria-expanded',String(!open)); ac.nextElementSibling.hidden = open; return; }
   const fq = e.target.closest('.faq-q'); if(fq){ const it=fq.parentElement, open=it.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(x=>{x.classList.remove('open'); x.querySelector('.faq-q').setAttribute('aria-expanded','false');}); if(!open){ it.classList.add('open'); fq.setAttribute('aria-expanded','true'); } return; }
   const nt = e.target.closest('[data-notify]'); if(nt){ toast('Sign up below and we\'ll tell you when it\'s ready.'); foot.querySelector('input')?.focus(); return; }
   if(e.target.closest('#checkout')){ location.href = 'mailto:hello@withrawmaterials.com?subject=' + encodeURIComponent('Order enquiry — WRM') + '&body=' + encodeURIComponent(cart.map(i=>`${i.qty} × ${PRODUCTS[i.id].name} (${PRODUCTS[i.id].variant})`).join('\n') + `\n\nTotal ${money(total())}`); return; }

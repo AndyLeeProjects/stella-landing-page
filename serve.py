@@ -13,6 +13,11 @@ class H(SimpleHTTPRequestHandler):
         if not os.path.exists(os.path.join(ROOT, p.lstrip('/'))) or p == '/':
             if not os.path.splitext(p)[1]: self.path = '/index.html'
         return super().do_GET()
+    def end_headers(self):
+        # Dev preview server: never let the browser cache JS/CSS/HTML across restarts —
+        # a stale cached bundle after a server restart can show an old page state.
+        self.send_header('Cache-Control', 'no-store, no-cache, must-revalidate')
+        super().end_headers()
     def log_message(self, *a): pass
 
 ThreadingHTTPServer(('', PORT), H).serve_forever()

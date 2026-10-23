@@ -202,39 +202,6 @@ h1 .soft{font-style:italic;color:var(--muted)}
 .foot-logo{justify-self:center}
 .foot-logo img{width:60px;filter:contrast(1.6) brightness(.7)}
 
-/* ---------- Mobile home (mobile_HOME.png) ---------- */
-/* Every rule in this block is mobile-only: `.mh*` markup is emitted solely by
-   pages.homeMobile(), which only runs behind matchMedia('(max-width:760px)'). */
-.mh{display:flex;flex-direction:column;background:var(--paper)}
-.mh-plate{display:block;line-height:0;position:relative;background:#111}
-.mh-plate img{width:100%;height:auto;display:block}
-.mh-plate.gap-lg{margin-top:38px}
-.mh-plate.gap-md{margin-top:33px}
-.mh-plate.gap-sm{margin-top:30px}
-.mh .mh-tote{margin-bottom:0}
-/* hero */
-.mh-hero{position:relative}
-.mh-hero .mh-hero-txt{position:absolute;left:0;right:0;top:37.9%;margin:0 auto;max-width:192px;text-align:center;color:#fff;
-  font-family:var(--display);font-weight:400;font-size:30px;line-height:26px;text-shadow:0 2px 18px rgba(0,0,0,.45)}
-.mh-hero .mh-hero-txt .wrm{font-style:normal;letter-spacing:.06em}
-.mh-hero .mh-hero-txt em{font-style:italic}
-.mh-hero .mh-hero-link{position:absolute;left:0;right:0;top:72.4%;margin:0 auto;width:max-content;
-  font-family:var(--body);font-weight:400;font-size:13px;line-height:1.2;color:#fff;
-  border-bottom:1px solid rgba(255,255,255,.85);padding-bottom:3px;text-shadow:0 2px 14px rgba(0,0,0,.45)}
-/* plate captions */
-.mh-cap{position:absolute;left:20px;color:#fff;line-height:1.15;text-shadow:0 1px 10px rgba(0,0,0,.45)}
-.mh-cap .name{display:block;font-family:var(--editorial);font-weight:500;font-size:18px;line-height:1.15}
-.mh-cap .sub{display:block;font-family:var(--body);font-weight:400;font-size:13px;line-height:1.2;margin-top:3px}
-.mh-cap-soon{position:absolute;right:14px;color:#fff;font-family:var(--body);font-weight:400;font-size:13px;line-height:1.15;
-  text-shadow:0 1px 10px rgba(0,0,0,.45)}
-.mh-purse .mh-cap{top:20%}
-.mh-bookmark .mh-cap{top:54%}
-.mh-tote .mh-cap,.mh-tote .mh-cap-soon,.mshop-img .mh-cap,.mshop-img .mh-cap-soon{top:50.5%}
-/* concept plate */
-.mh-concept{background:#111;color:#f2ede3;padding:30px 77px 92px;text-align:center;margin-top:23px}
-.mh-concept p{position:relative;margin:0;padding:27px 0 29px;font-family:var(--body);font-weight:300;font-size:15.5px;line-height:15.7px;letter-spacing:0}
-.mh-concept p::before,.mh-concept p::after{content:"";position:absolute;left:0;right:0;height:1px;background:rgba(242,237,227,.75)}
-.mh-concept p::before{top:0}.mh-concept p::after{bottom:0}
 .foot.on-dark{background:transparent}
 
 /* Section added on top of the replica: products, editorial-paced */
@@ -410,33 +377,6 @@ h1 .soft{font-style:italic;color:var(--muted)}
   html{background:var(--paper)}
   body{background-image:linear-gradient(rgba(232,231,229,.6),rgba(232,231,229,.6)),url('/img/texture.jpg');background-size:auto,844px 844px;background-blend-mode:normal}
   body::before,body::after{display:none}
-  /* Reference plates are sized by the artboard, not each source photo's ratio. */
-  .mh{background:var(--paper) url('/img/texture.jpg') repeat;background-size:100% 844px;background-blend-mode:multiply;padding-bottom:66px}
-  .mh-hero{height:166.923vw;border-bottom:3.846vw solid #555;overflow:hidden}
-  .mh-hero>img{position:absolute;width:153.846%;max-width:none;height:auto;left:-7.692%;top:-33.333vw}
-  .mh-hero .mh-hero-txt{top:37.9%;max-width:none;width:76%;font-family:var(--editorial);font-weight:500;font-size:7.44vw;line-height:6.5vw;text-shadow:none}
-  .mh-hero .hero-line{display:block;white-space:nowrap}
-  .mh-hero .mh-hero-link{font-size:2.7vw;padding-bottom:1px;text-shadow:none}
-  .mh-hero + .mh-plate{height:167.436vw;overflow:hidden}
-  .mh-hero + .mh-plate img{height:100%;object-fit:cover}
-  .mh-concept{margin-top:23px;padding:30px 17.44% 18px;background:#111}
-  .mh-concept p{padding:26px 0 29px;font-size:15px;line-height:15.7px;font-weight:400}
-  .mh-purse{height:146.667vw;overflow:hidden}
-  .mh-purse img{height:100%;object-fit:cover;object-position:center bottom}
-  .mh-purse .mh-cap{top:32%}
-  .mh-bookmark .mh-cap{top:54%}
-  .mh .mh-tote{margin-top:30px}
-  .mh .mh-tote::before{content:'';position:absolute;bottom:100%;height:30px;left:0;right:0;background:#000}
-  .mh:has(.mh-tote){box-shadow:inset 0 -66px #000}
-  .mh-cap .name{font-size:16px}
-  .mh-cap .sub{font-size:12px;margin-top:0}
-  .mh-tote .mh-cap,.mh-tote .mh-cap-soon{top:50.5%}
-  body:has(.mh) #foot{padding:27px 19px 13px}
-  body:has(.mh) #foot .foot-row{display:flex;flex-direction:column;gap:30px}
-  body:has(.mh) #foot .foot-form,body:has(.mh) #foot .foot-field{width:100%}
-  body:has(.mh) #foot .foot-lead{font-family:var(--body);font-style:normal;font-size:10px;margin-bottom:14px}
-  body:has(.mh) #foot .foot-links{align-self:flex-end;gap:20px;font-family:var(--body);font-size:10px}
-  body:has(.mh) #foot .foot-mark{width:190px;margin-top:31px}
   .nav-logo img{height:28px}
   .hero{padding:20px 16px 24px;display:flex;flex-direction:column;justify-content:center}
   .hero-card{gap:22px}
@@ -503,26 +443,6 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .nav.menu-open.on-dark .nav-logo img{filter:brightness(0)!important}
   .nav.menu-open.on-dark .nav-menu span{background:var(--ink)!important}
 
-  /* ---- Mobile shop plate list (mobile_SHOP.png) ---- */
-  .mshop{display:block;background:#000;padding-bottom:63.846vw}
-  .mshop-item{display:block;text-decoration:none;color:inherit}
-  .mshop-img{position:relative;line-height:0;background:#111}
-  .mshop-img img{width:100%;height:auto;display:block}
-  .mshop-cap{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-  .mshop-item:first-child{margin-bottom:46.923vw}
-  .mshop-item:first-child .mshop-img{height:183.59vw;overflow:hidden}
-  .mshop-item:first-child .mshop-img img{height:100%;object-fit:cover;object-position:center bottom}
-  .mshop-item:nth-child(2){margin-bottom:48.974vw}
-  .mshop-item:nth-child(2) .mshop-img{height:125.641vw;overflow:hidden}
-  .mshop-item:nth-child(2) .mshop-img img{position:absolute;left:27.44%;top:50%;width:125.641vw;max-width:none;transform:translate(-50%,-50%) rotate(-90deg)}
-  .mshop-cap .name{display:block;font-family:var(--editorial);font-weight:500;font-size:15px;line-height:1.15}
-  .mshop-cap .sub{display:block;font-family:var(--body);font-size:10.5px;line-height:1.2;margin-top:4px}
-  .mshop-cap .price{font-family:var(--body);font-size:10.5px;line-height:1.15;white-space:nowrap}
-  .mshop-img .mh-cap{left:15px}
-  .mshop-img .mh-cap .name{font-size:14.5px}
-  .mshop-img .mh-cap .sub{font-size:10.5px;margin-top:2px}
-  .mshop-img .mh-cap-soon{right:13px;font-size:11px}
-
   /* ---- Page frame + breadcrumb (all mobile inner pages) ---- */
   .pg{padding-top:calc(var(--nav-h) + 9px)!important}
   .crumbs{font-family:var(--body);font-size:11px;line-height:15.7px;gap:4px;padding:0 0 4px;color:var(--ink)}
@@ -561,44 +481,6 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .mat-body p{font-size:13.5px;line-height:15.6px;margin:20px 0 0}
   .mat-cta{padding:0;text-align:center;margin-top:auto}
   .mat-cta .link{font-family:var(--body);font-size:11px;border-bottom-width:1px;padding-bottom:2px}
-
-  /* ---- Mobile product detail (mobile_Purse.png / mobile_Bookmark.png) ---- */
-  .mpd{display:block;padding-top:73px}
-  .mpd-crumbs{font-family:var(--body);font-size:11px;line-height:15.7px;padding:0 19px;color:var(--ink)}
-  .mpd-crumbs a{text-decoration:none}
-  .mpd-gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-top:4px;background:#f1efe9;line-height:0;height:133.077vw}
-  .mpd-gallery::-webkit-scrollbar{display:none}
-  .mpd-slide{flex:0 0 100%;width:100%;height:100%;overflow:hidden;scroll-snap-align:start}
-  .mpd-gallery img{width:100%;height:100%;object-fit:cover}
-  .mpd-salmon-purse .mpd-slide:first-child img{transform:scale(1.18)}
-  .mpd-salmon-bookmark .mpd-gallery{margin-top:41.3px;height:115.897vw}
-  .mpd-body{padding:0 38px;font-family:var(--body);font-size:10.5px;line-height:15.7px}
-  .mpd-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:35px}
-  .mpd-salmon-bookmark .mpd-head{padding-top:41px}
-  .mpd-name{font-family:var(--editorial);font-weight:500;font-size:15px;line-height:17px;margin:0}
-  .mpd-n{font-size:10.5px;line-height:15.7px;white-space:nowrap}
-  .mpd-line{margin:8px 0 0}
-  .mpd-line + .mpd-line{margin-top:0}
-  .mpd-p{margin:15.5px 0 0}
-  .mpd-add{margin:12px 0 0;width:auto;min-height:44px;font-family:var(--body);font-size:11px;letter-spacing:0;text-transform:none;padding:0;border:0;background:transparent;color:var(--ink);text-decoration:underline;text-underline-offset:4px}
-  .mpd-add:hover{background:transparent;color:var(--olive)}
-
-  /* ---- Mobile fish-leather list (mobile_Product_List_Page.png) ---- */
-  /* mobile_Product_List_Page.png: seamless neutral off-white body, same tone as nav-neutral/foot-neutral above and below it, not the page's default warm --paper beige. */
-  .mpl{display:block;padding:88px 0 145px;position:relative;isolation:isolate;background:#e9e8e6}
-  .mpl::before{content:'';position:absolute;inset:180px 0 0;z-index:-1;background:url('/img/illustration-ocean.png') center bottom/175% auto repeat-y;filter:grayscale(1);opacity:.4;pointer-events:none}
-  .mpl-card{display:block;text-decoration:none;color:inherit;margin:0 19px 0 14px}
-  .mpl-card:first-child{padding-bottom:40px}
-  .mpl-card:first-child .mpl-img{height:137.949vw;overflow:hidden}
-  .mpl-card:first-child .mpl-img img{height:100%;object-fit:cover;object-position:center bottom}
-  .mpl-card + .mpl-card{margin:0 4px 0 0;padding:75px 30px 68px 31px;background:#fff}
-  .mpl-card + .mpl-card .mpl-cap{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;padding:0}
-  .mpl-img{line-height:0;background:#111}
-  .mpl-img img{width:100%;height:auto;display:block}
-  .mpl-cap{padding:17px 0 0 11px}
-  .mpl-cap .name{display:block;font-family:var(--editorial);font-style:italic;font-weight:500;font-size:19px;line-height:20px}
-  .mpl-cap .sub{display:block;font-family:var(--editorial);font-size:14px;line-height:17px;margin-top:2px}
-  .mpl-cap .sub em{font-style:italic}
 
   /* ---- Header (all mobile mockups) ---- */
   .nav{padding:0 8px}
@@ -663,7 +545,6 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .foot-mark{width:184.6px;margin:0 auto;display:block}
   .foot,.nav.solid{background-image:linear-gradient(rgba(232,231,229,.6),rgba(232,231,229,.6)),url('/img/texture.jpg');background-size:auto,844px 844px;background-blend-mode:normal}
   .nav.on-dark,.nav.menu-open{background:transparent}
-  body:has(.mshop) #foot,body:has(.mpl) #foot{padding-top:10px}
 
   /* ---- Home footer variant (mobile_HOME.png): separate neutral paper treatment ---- */
   /* was border-top:50px solid #fff — an opaque white rectangle painted over the textured
@@ -690,79 +571,10 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .nav.nav-neutral{background:#e9e8e6 url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply;
     backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
 
-  /* ============================================================
-     MOBILE HOME v2 — per Stella's reference screenshot.
-     Four full-bleed plates (Purse / Bookmark / Tote / Chapter I Ocean), each one
-     a link in its entirety (image + caption), then the shared site footer.
-     ============================================================ */
-  .mh2{display:flex;flex-direction:column;background:#0f0f0f}
-  .mh2-plate{display:block;position:relative;line-height:0;text-decoration:none;color:#fff;background:#0f0f0f}
-  .mh2-plate img{width:100%;height:auto;display:block}
-  /* caption type — shared */
-  .mh2-cap{display:block;text-align:center;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.5)}
-  .mh2-cap .t1{display:block;font-family:var(--display);font-style:italic;font-weight:400;
-    font-size:19px;line-height:1.2;letter-spacing:.06em;text-transform:uppercase}
-  .mh2-cap .t2{display:block;font-family:var(--body);font-weight:400;font-size:10.5px;
-    line-height:1.3;letter-spacing:.18em;text-transform:uppercase;margin-top:9px}
-  .mh2-cap .t2[data-shop-link]{cursor:pointer}
-  .mh2-cap .t2[data-shop-link]:focus-visible{outline:1px solid currentColor;outline-offset:3px}
-  .mh2-cap .t2.soon{margin-top:4px}
-  .mh2-cap.over{position:absolute;left:0;right:0;z-index:2}
-
-  /* 1 — Salmon Purse: the photo is FULL-BLEED from the very top of the page (it runs
-     up behind the transparent nav) and the caption is overlaid directly on the
-     photograph's own dark upper area — there is no separate black band above the photo.
-     Reference measurements (206x1280 screenshot, purse plate = 0..358px):
-       plate aspect        358/206  -> 1.738
-       "SALMON PURSE"      centre y  79.5 -> 22.2% of plate height
-       "OCEAN COLLECTION"  centre y  96.5 -> 27.0% of plate height
-       strap first appears y 109     -> 30.4% of plate height
-     purse-dark.jpg is 1600x2951 (aspect 1.844) with the strap starting at 34.9%, so a
-     bottom-anchored cover crop to 1.738 trims ~5.7% off the top and lands the strap at
-     ~30.9% — matching the reference while keeping the bag and floor complete. */
-  .mh2-purse{padding-top:0}
-  .mh2-purse img{aspect-ratio:206/358;object-fit:cover;object-position:50% 100%}
-  /* Caption sits a touch BELOW the top of the strap arc. Measured on the live plate
-     (390x678, nav + caption hidden): the strap's highest point is y 209 = 30.83% of
-     the plate. Starting the caption at 33% clears the peak by ~15px so both lines
-     read against the dark backdrop inside the arc rather than colliding with it. */
-  .mh2-purse .mh2-cap{position:absolute;left:0;right:0;top:33%;z-index:2;padding:0 20px}
-  .mh2-purse .mh2-cap .t2{margin-top:14px}
-
-  /* 2 — Salmon Bookmark: dark panel inset inside a white field, caption over the panel */
-  .mh2-bookmark{background:#fff;padding:26px 20px 30px}
-  .mh2-frame{display:block;position:relative;line-height:0}
-  .mh2-bookmark .mh2-cap.over{top:11%}
-
-  /* 3 — Algae Tote: caption centred over the photo */
-  .mh2-tote .mh2-cap.over{top:34%}
-  .mh2-tote img{aspect-ratio:1600/1200;object-fit:cover}
-
-  /* 4 — Chapter I Ocean: headline art is baked into m-ocean.jpg; body copy + link overlay.
-     m-ocean.jpg carries a flat grey strip in its top 40px (mean luma ~72, low row SD)
-     followed by a white hairline at row 41 — that strip was rendering as a grey filler
-     band between the Algae Tote photo above and the fish-scale photo. Bottom-anchored
-     cover crop to 1563/2615 trims exactly those top 43px so the scales start clean, and
-     the plate carries a white gap above the photo instead of the dark plate colour. */
-  .mh2-ocean{background:#fff;padding-top:10px}
-  .mh2-ocean img{aspect-ratio:1563/2615;object-fit:cover;object-position:50% 100%}
-  .mh2-ocean-txt{position:absolute;left:0;right:0;top:57%;z-index:2;display:flex;
-    flex-direction:column;align-items:center;padding:0 22px;text-align:center}
-  .mh2-ocean-txt .body{display:block;font-family:var(--body);font-weight:400;font-size:11.5px;
-    line-height:1.55;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.55)}
-  .mh2-ocean-txt .mh2-link{display:inline-block;margin-top:22px;font-family:var(--body);
-    font-weight:400;font-size:10.5px;line-height:1.2;color:#fff;
-    border-bottom:1px solid rgba(255,255,255,.85);padding-bottom:3px;
-    text-shadow:0 1px 12px rgba(0,0,0,.55)}
 }
 
-/* Stella's supplied mobile landing artwork: never crop, filter or re-encode. */
+/* Supplied full-resolution artwork (mobile About Materials): never crop, filter or re-encode. */
 @media(max-width:760px){
-  body.mobile-home-original{background:#fff}
-  body.mobile-home-original .page{animation:none;opacity:1;transform:none}
-  body.mobile-home-original::before,body.mobile-home-original::after{display:none}
-  body.mobile-home-original #nav:not(.menu-open){display:none}
-  body.mobile-home-original #foot{display:none}
   .mh-original{position:relative;width:100%;margin:0;padding:0;line-height:0;background:#fff}
   .mh-original .mh-original-art{display:block;width:100%;height:auto;max-width:none;margin:0;padding:0;border:0;filter:none;opacity:1}
   .mh-original-hit{position:absolute;display:block;padding:0!important;margin:0!important;border:0;background:transparent;color:transparent;min-width:0;min-height:0;cursor:pointer}
@@ -777,14 +589,6 @@ h1 .soft{font-style:italic;color:var(--muted)}
   .mh-original-email:focus-within button{opacity:1}
 }
 
-/* Mobile World shares intact-artwork controls; desktop World is deliberately untouched. */
-@media(max-width:760px){
-  body.mobile-world-original{background:#fff}
-  body.mobile-world-original .page{animation:none;opacity:1;transform:none}
-  body.mobile-world-original::before,body.mobile-world-original::after{display:none}
-  body.mobile-world-original #nav:not(.menu-open),body.mobile-world-original #foot{display:none}
-}
-
 /* About Materials mobile: supplied artwork unchanged, only transparent controls. */
 @media(max-width:760px){
   body.mobile-materials-original{background:#fff}
@@ -793,42 +597,253 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body.mobile-materials-original #nav:not(.menu-open),body.mobile-materials-original #foot{display:none}
 }
 
-/* Menu footer only — unchanged menu rows/header, measured from 759 × 1280 design. */
-@media(max-width:760px){
-  #menu .menu-footer{
-    position:fixed;left:0;right:0;bottom:0;z-index:2;
-    width:100%;height:32.02vw;min-height:0;max-width:none;
-    margin:0;padding:0;display:block;
-    background:#eadcbf url('/img/texture.jpg') center/100% auto;
-    background-blend-mode:multiply;color:#111;
-  }
-  #menu .menu-footer .foot-form{margin:0;padding:0}
-  #menu .menu-footer .foot-lead{
-    position:absolute;left:5.53vw;top:8.05vw;margin:0;
-    font:700 2.65vw/1.2 var(--body);white-space:nowrap;letter-spacing:0;
-  }
-  #menu .menu-footer .foot-field{
-    position:absolute;left:5.53vw;top:14.2vw;width:58.5vw;height:4.2vw;
-    border-bottom:1px solid rgba(17,17,17,.5);margin:0;padding:0;
-  }
-  #menu .menu-footer .foot-field input{
-    font:italic 3.3vw/1.2 var(--editorial);padding:0 .5vw;
-    width:100%;height:100%;min-height:0;color:#111;
-  }
-  #menu .menu-footer .foot-field button{
-    position:absolute;right:0;top:0;width:8vw;height:100%;
-    min-width:0;min-height:0;opacity:0;padding:0;
-  }
-  #menu .menu-footer .foot-field:focus-within button{opacity:1}
-  #menu .menu-footer .foot-row{display:contents}
-  #menu .menu-footer .foot-links{
-    position:absolute;right:6.45vw;top:8.05vw;
-    display:flex;flex-direction:column;gap:3.8vw;margin:0;padding:0;
-    font:600 2.65vw/1.2 var(--body);text-align:right;
-  }
-  #menu .menu-footer .foot-links a{margin:0;padding:0;border:0}
-  #menu .menu-footer .foot-mark{
-    position:absolute;left:50%;bottom:4.35vw;transform:translateX(-50%);
-    width:50.8vw;max-width:none;height:auto;margin:0;mix-blend-mode:multiply;
-  }
+/* ============================================================
+   MOBILE v2 — Drive redesign (design-ref/mobile-v2/*@2x.png, 751px artboards).
+   Mobile only: every rule is inside max-width:760px AND scoped to body.m2, a class
+   render() sets only while isMobile(). Geometry is in artboard units: 1u = 100vw/751,
+   so each value below is the pixel measured on the 751px mockup.
+   ============================================================ */
+@media (max-width:760px){
+  body.m2{--u:calc(100vw / 751);--m-serif:"Old Standard TT","EB Garamond",Georgia,serif;--m-serif-up:"Source Serif 4","EB Garamond",Georgia,serif;--m-sans:"Source Sans 3","DM Sans",system-ui,sans-serif;--m-caps:Arimo,"Helvetica Neue",Arial,sans-serif;
+    --m-ink:#24221e;
+    --paper-light:linear-gradient(rgba(255,255,255,.55),rgba(255,255,255,.55)),url('/img/texture.jpg');
+    --paper-mid:linear-gradient(rgba(216,214,210,.46),rgba(216,214,210,.46)),url('/img/texture.jpg');
+    --paper-foot:linear-gradient(rgba(218,192,133,.505),rgba(218,192,133,.505)),url('/img/texture.jpg');
+    background:#fff;color:var(--m-ink)}
+  body.m2 .page{animation:none}
+  body.m2 .m2-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;margin:0}
+
+  /* ---- Header (all v2 mockups: hamburger 36-74 × 45-75, logo 343-414 × 32-94, cart 676-716 × 31-80) ---- */
+  body.m2 .nav,body.m2 .nav.solid,body.m2 .nav.on-dark,body.m2 .nav.nav-neutral{position:absolute;inset:0 0 auto 0;height:calc(135*var(--u));padding:0;display:block;
+    background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;color:var(--m-ink)}
+  body.m2 .nav.menu-open{position:fixed;color:#111}
+  body.m2.m2-light .nav:not(.menu-open){color:#fff}
+  body.m2 .nav-btn{position:absolute;min-width:0;min-height:0}
+  body.m2 .nav-menu{left:calc(36*var(--u) - 12px);top:calc(45*var(--u) - 12px);width:calc(38*var(--u) + 24px);height:calc(30*var(--u) + 24px);display:block}
+  body.m2 .nav-menu::before,body.m2 .nav.on-dark .nav-menu::before,body.m2 .nav.menu-open .nav-menu::before{content:"";position:absolute;left:12px;top:12px;width:calc(38*var(--u));height:calc(30*var(--u));background:currentColor;
+    -webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 30" preserveAspectRatio="none"><path d="M0 1.5h38M0 15h38M0 28.9h38" stroke="black" stroke-width="1.7"/></svg>') 0 0/100% 100% no-repeat;
+            mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 30" preserveAspectRatio="none"><path d="M0 1.5h38M0 15h38M0 28.9h38" stroke="black" stroke-width="1.7"/></svg>') 0 0/100% 100% no-repeat}
+  /* Edit Notes (9/7): the WRM logo carries the hamburger's line weight. The PNG's
+     script stroke is thinner than the 1.7u rules, so it is dilated with stacked
+     drop-shadows (each one thickens the previous result by ~.35u). */
+  body.m2 .nav-logo{position:absolute;left:calc(334.8*var(--u));top:calc(25*var(--u));width:calc(92.8*var(--u));min-width:0;min-height:0;display:block;transform:none}
+  body.m2 .nav-logo img,body.m2 .nav.on-dark .nav-logo img,body.m2 .nav.menu-open .nav-logo img,body.m2 .nav.on-dark.menu-open .nav-logo img{width:100%;height:auto;
+    filter:brightness(0) drop-shadow(0 0 calc(.35*var(--u)) #000) drop-shadow(0 0 calc(.25*var(--u)) #000)!important}
+  body.m2.m2-light .nav:not(.menu-open) .nav-logo img{filter:brightness(0) invert(1) drop-shadow(0 0 calc(.35*var(--u)) #fff) drop-shadow(0 0 calc(.25*var(--u)) #fff)!important}
+  body.m2 .nav-cart{left:calc(665.7*var(--u));top:calc(24.5*var(--u));width:calc(61.2*var(--u));height:calc(61.2*var(--u));margin:0;display:block}
+  body.m2 .nav-cart svg{width:100%;height:100%;display:block;stroke-width:.95}
+  body.m2 .nav-cart::after{content:none}
+  body.m2 .nav-cart-count{top:calc(2*var(--u));right:calc(-6*var(--u))}
+  body.m2.m2-light .nav:not(.menu-open) .nav-cart-count{background:#fff;color:#111}
+  body.m2 .nav.menu-open .nav-cart{visibility:hidden}
+  body.m2 .mobile-menu-close{left:calc(696*var(--u) - 22px);top:calc(55.5*var(--u) - 22px);right:auto;width:44px;height:44px}
+  body.m2 .mobile-menu-close span{left:50%;top:50%;width:calc(43*var(--u));height:calc(2*var(--u));margin:0;background:#111;transform:translate(-50%,-50%) rotate(42deg)}
+  body.m2 .mobile-menu-close span+span{transform:translate(-50%,-50%) rotate(-42deg)}
+
+  /* ---- Footer (every v2 mockup: 244u tall, measured on Purse@2x 2073-2317) ---- */
+  body.m2 #foot,body.m2 #menu .menu-footer{position:relative;display:block;width:100%;max-width:none;height:calc(244*var(--u));min-height:0;margin:0;padding:0;
+    background:var(--paper-foot);background-size:auto,calc(1000*var(--u)) auto;background-blend-mode:normal;color:#111;border:0;box-shadow:none}
+  body.m2 #menu .menu-footer{position:fixed;left:0;right:0;bottom:0;z-index:2}
+  body.m2 #foot.hide{display:none}
+  body.m2 #foot .foot-form,body.m2 #menu .menu-footer .foot-form{display:block;margin:0;padding:0}
+  body.m2 #foot .foot-lead,body.m2 #menu .menu-footer .foot-lead{position:absolute;left:calc(42*var(--u));top:calc(54.5*var(--u));margin:0;white-space:nowrap;
+    font:400 calc(19.7*var(--u))/calc(27*var(--u)) var(--m-sans);letter-spacing:0}
+  body.m2 #foot .foot-field,body.m2 #menu .menu-footer .foot-field{position:absolute;left:calc(41*var(--u));top:calc(100*var(--u));width:calc(438*var(--u));height:calc(38*var(--u));
+    margin:0;padding:0;border:0;border-bottom:calc(1.3*var(--u)) solid rgba(17,17,17,.62);display:block}
+  body.m2 #foot .foot-field input,body.m2 #menu .menu-footer .foot-field input{position:absolute;inset:0;width:100%;height:100%;padding:0 calc(5*var(--u));margin:0;border:0;background:transparent;
+    font:italic 400 calc(24*var(--u))/1 var(--m-serif);color:#111;min-height:0}
+  body.m2 #foot .foot-field input::placeholder,body.m2 #menu .menu-footer .foot-field input::placeholder{color:#111;opacity:1}
+  body.m2 #foot .foot-field button,body.m2 #menu .menu-footer .foot-field button{position:absolute;right:0;top:0;width:calc(50*var(--u));height:100%;min-width:0;min-height:0;margin:0;padding:0;
+    opacity:0;font:400 calc(26*var(--u))/1 var(--m-sans)}
+  body.m2 #foot .foot-field:focus-within button,body.m2 #menu .menu-footer .foot-field:focus-within button{opacity:1}
+  body.m2 #foot .foot-field .arr::before,body.m2 #menu .menu-footer .foot-field .arr::before{content:">";font-size:calc(24*var(--u))}
+  body.m2 #foot .foot-field .arr,body.m2 #menu .menu-footer .foot-field .arr{font-size:0}
+  body.m2 #foot .foot-row,body.m2 #menu .menu-footer .foot-row{display:contents;margin:0}
+  body.m2 #foot .foot-links,body.m2 #menu .menu-footer .foot-links{position:absolute;right:calc(52*var(--u));top:calc(55*var(--u));margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-end;gap:0;
+    font:400 calc(19.3*var(--u))/calc(50*var(--u)) var(--m-sans);text-align:right}
+  body.m2 #foot .foot-links a,body.m2 #menu .menu-footer .foot-links a{display:block;height:calc(50*var(--u));line-height:calc(27*var(--u));margin:0;padding:0;border:0}
+  body.m2 #foot .foot-links a:first-child{display:none} /* footer shows Contact + FAQ only */
+  body.m2 #foot .foot-mark,body.m2 #menu .menu-footer .foot-mark{position:absolute;left:calc(184.1*var(--u));top:calc(167.8*var(--u));width:calc(381.7*var(--u));max-width:none;height:auto;margin:0;transform:none;mix-blend-mode:multiply}
+
+  /* ---- Menu (MENU@2x / MENU_1@2x): flat #c6c3a1 panel sampled from the artboard ----
+     All 4 parent rows (Shop, About Materials, WRM World, FAQ) per Andy; Shop expands to
+     Fish Leather + Algae. Flow layout (not absolute) since the Shop sub-rows make the
+     total row count variable. */
+  body.m2 .menu{background:#c6c3a1;background-image:none}
+  body.m2 .menu-list{display:block;min-height:0;padding:calc(151*var(--u)) calc(40*var(--u)) 0 calc(43*var(--u));max-width:none}
+  body.m2 .m2-menu-row{position:relative;width:100%;height:calc(100*var(--u));margin:0 0 calc(33*var(--u));padding:0;display:block;border:0;appearance:none;-webkit-appearance:none;
+    font:400 calc(28.1*var(--u))/1 var(--m-serif-up);font-variation-settings:'opsz' 12;color:#111;text-decoration:none;text-align:left;background:none}
+  body.m2 .m2-menu-row:hover{padding-left:0}
+  body.m2 .m2-menu-row .m2-menu-label{position:absolute;left:0;bottom:calc(24*var(--u));line-height:1;display:flex;align-items:flex-end;gap:calc(14*var(--u))}
+  /* Edit Notes: "Arrows need to all match" — one chevron, drawn once, used by every menu row and drop-down (11 × 13u, MENU@2x). */
+  body.m2 .m2-menu-row .chev,body.m2 .m2-acc-q .chev{position:absolute;right:0;top:calc(57*var(--u));width:calc(11*var(--u));height:calc(13*var(--u));font-size:0;color:inherit;transition:transform .2s;
+    background:currentColor;-webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 13"><path d="M.6.6 10.2 6.5.6 12.4" fill="none" stroke="black" stroke-width="1.5"/></svg>') 0 0/100% 100% no-repeat;
+    mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 13"><path d="M.6.6 10.2 6.5.6 12.4" fill="none" stroke="black" stroke-width="1.5"/></svg>') 0 0/100% 100% no-repeat}
+  body.m2 .m2-menu-row[aria-expanded="true"] .chev{transform:rotate(90deg)}
+  body.m2 .m2-menu-ocean{display:block;width:calc(170*var(--u));height:auto;max-width:none;
+    filter:brightness(0) drop-shadow(0 0 calc(.5*var(--u)) #000) drop-shadow(0 0 calc(.4*var(--u)) #000) drop-shadow(0 0 calc(.3*var(--u)) #000)}
+  body.m2 .m2-menu-shop{margin:0 0 calc(33*var(--u))}
+  body.m2 .m2-menu-shop .m2-menu-row{margin:0}
+  body.m2 .m2-menu-sub{padding-top:calc(10*var(--u))}
+  body.m2 .m2-menu-sub-row{height:calc(72*var(--u));margin:0 0 calc(10*var(--u))}
+  body.m2 .m2-menu-sub-row .m2-menu-label{left:calc(24*var(--u));bottom:calc(18*var(--u));font-size:calc(22*var(--u))}
+  body.m2 .m2-menu-sub-row .chev{top:calc(40*var(--u))}
+
+  /* ---- Shared: outlined caps button over photography ---- */
+  body.m2 .m2-box-btn{display:inline-flex;align-items:center;justify-content:center;border:calc(1.6*var(--u)) solid #fff;color:#fff;
+    font:400 calc(21.8*var(--u))/1.15 var(--m-caps);text-transform:uppercase;text-align:center;letter-spacing:0;text-decoration:none}
+
+  /* ---- Home (HOME@2x.png 751 × 5762) ---- */
+  body.m2 .m2h{position:relative;background:var(--paper-light);background-size:auto,calc(1000*var(--u)) auto;padding-bottom:calc(72*var(--u))}
+  body.m2 .m2h-hero{position:relative;height:calc(1389*var(--u));overflow:hidden;background:#111}
+  body.m2 .m2h-hero-img{width:100%;height:100%;object-fit:cover}
+  body.m2 .m2h-ocean{position:absolute;left:calc(131.6*var(--u));top:calc(148.3*var(--u));width:calc(522*var(--u));max-width:none;filter:brightness(0) invert(1)}
+  body.m2 .m2h-chapter{position:absolute;left:calc(337*var(--u));top:calc(243*var(--u));margin:0;color:#fff;font:italic 400 calc(18.4*var(--u))/1.3 var(--m-serif);text-transform:uppercase;letter-spacing:0}
+  body.m2 .m2h-lede{position:absolute;left:0;right:0;top:calc(481*var(--u));margin:0;color:#fff;text-align:center;font:400 calc(22*var(--u))/calc(28*var(--u)) var(--m-sans)}
+  body.m2 .m2h-credit{position:absolute;right:calc(29*var(--u));bottom:calc(25*var(--u));margin:0;color:#fff;font:400 calc(15.5*var(--u))/1.3 var(--m-sans)}
+  body.m2 .m2h-plate{position:relative;display:block;line-height:0;text-decoration:none;color:#fff}
+  body.m2 .m2h-plate img{width:100%;height:100%;object-fit:cover}
+  body.m2 .m2h-cap{position:absolute;left:0;right:0;line-height:1;text-align:center;font:italic 400 calc(27*var(--u))/1 var(--m-serif);text-transform:uppercase;letter-spacing:0;color:#fff}
+  body.m2 .m2h-purse{margin:calc(114*var(--u)) 0 0 calc(52*var(--u));width:calc(658*var(--u));height:calc(877*var(--u))}
+  body.m2 .m2h-purse .m2h-cap{top:calc(774*var(--u));font-size:calc(25.1*var(--u))}
+  body.m2 .m2h-bookmark{margin:calc(54*var(--u)) 0 0 calc(55*var(--u));width:calc(650*var(--u));height:calc(756*var(--u))}
+  body.m2 .m2h-bookmark .m2h-cap{top:calc(181*var(--u));font-size:calc(25.9*var(--u))}
+  body.m2 .m2h-tote{margin:calc(53*var(--u)) 0 0 calc(45*var(--u));width:calc(659*var(--u));height:calc(484*var(--u))}
+  body.m2 .m2h-tote .m2h-cap{top:calc(229*var(--u));font-size:calc(23.1*var(--u))}
+  body.m2 .m2h-gallery{position:relative;margin-top:calc(62*var(--u));height:calc(1155*var(--u));overflow:hidden}
+  body.m2 .m2h-gallery>img{width:100%;height:100%;object-fit:cover}
+  body.m2 .m2h-gallery::before,body.m2 .m2h-tote::before,body.m2 .m2h-world::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.3);pointer-events:none}
+  body.m2 .m2h-tote::before{background:rgba(0,0,0,.33)}
+  body.m2 .m2h-world::before{background:rgba(0,0,0,.41)}
+  body.m2 .m2h-gallery-txt,body.m2 .m2h-gallery .m2h-credit,body.m2 .m2h-cap,body.m2 .m2h-world-btn{z-index:1}
+  body.m2 .m2h-gallery-txt{position:absolute;left:0;right:0;top:calc(783*var(--u));color:#fff;text-align:center;font:400 calc(23.9*var(--u))/calc(28*var(--u)) var(--m-sans)}
+  body.m2 .m2h-gallery-txt p{margin:0 0 calc(28*var(--u))}
+  body.m2 .m2h-gallery .m2h-credit{right:calc(39*var(--u));bottom:calc(10*var(--u))}
+  body.m2 .m2h-world{position:relative;margin:calc(201*var(--u)) 0 0 calc(21*var(--u));width:calc(708*var(--u));height:calc(300*var(--u))}
+  body.m2 .m2h-world>img{width:100%;height:100%;object-fit:cover}
+  body.m2 .m2h-world-btn{position:absolute;left:calc(145*var(--u));top:calc(125*var(--u));width:calc(418*var(--u));height:calc(49*var(--u));font-size:calc(21.2*var(--u))}
+
+  /* ---- Shop (SHOP@2x.png 751 × 3225) ---- */
+  body.m2 .m2s{position:relative;background:var(--paper-light);background-size:auto,calc(1000*var(--u)) auto;padding:calc(163*var(--u)) 0 calc(89*var(--u));overflow:hidden}
+  body.m2 .m2s-ocean{position:absolute;left:calc(-48*var(--u));top:calc(-23*var(--u));width:calc(860*var(--u));max-width:none;z-index:2;pointer-events:none;
+    filter:brightness(0) drop-shadow(0 0 calc(.3*var(--u)) #000)} /* keeps SHOP@2x's ~2u black line at phone DPRs */
+  body.m2 .m2s-item{position:relative;display:block;text-decoration:none;color:var(--m-ink)}
+  body.m2 .m2s-img{display:block;line-height:0;overflow:hidden}
+  body.m2 .m2s-img img{width:100%;height:100%;object-fit:cover}
+  body.m2 .m2s-purse .m2s-img{margin-left:calc(25*var(--u));width:calc(700*var(--u));height:calc(932*var(--u))}
+  body.m2 .m2s-bookmark{margin-top:calc(68*var(--u))}
+  body.m2 .m2s-bookmark .m2s-img{margin-left:calc(25*var(--u));width:calc(700*var(--u));height:calc(879*var(--u))}
+  body.m2 .m2s-tote{margin-top:calc(90*var(--u))}
+  body.m2 .m2s-tote .m2s-img{margin-left:calc(20*var(--u));width:calc(711*var(--u));height:calc(534*var(--u))}
+  body.m2 .m2s-cap{position:relative;display:block;height:calc(78*var(--u));margin:0 calc(46*var(--u)) 0 calc(48*var(--u))}
+  body.m2 .m2s-name{position:absolute;left:0;top:calc(29*var(--u));font:700 calc(22.8*var(--u))/1.2 var(--m-serif-up);font-variation-settings:'opsz' 12}
+  body.m2 .m2s-sub{position:absolute;left:0;top:calc(61*var(--u));font:400 calc(19.3*var(--u))/1.2 var(--m-sans)}
+  body.m2 .m2s-price{position:absolute;right:0;top:calc(35*var(--u));font:400 calc(19.3*var(--u))/1.2 var(--m-sans)}
+  body.m2 .m2s-bookmark .m2s-cap{margin-top:calc(-6*var(--u))}
+
+  /* ---- Product detail (Purse@2x / Bookmark@2x / Algae_Tote@2x.png) ---- */
+  body.m2 .m2p{display:block;background:#E3E3E3;padding-top:calc(135*var(--u))}
+  body.m2 .m2p-gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;line-height:0;height:calc(967*var(--u));background:#fff}
+  body.m2 .m2p-gallery::-webkit-scrollbar{display:none}
+  body.m2 .m2p-slide{flex:0 0 100%;height:100%;overflow:hidden;scroll-snap-align:start;position:relative}
+  body.m2 .m2p-slide img{width:100%;height:100%;object-fit:cover}
+  body.m2 .m2p-slide+.m2p-slide img{object-fit:contain;background:#fff}
+  body.m2 .m2p-body{padding:0 0 calc(105*var(--u)) calc(71*var(--u));width:calc(684*var(--u));font:400 calc(21.9*var(--u))/calc(30*var(--u)) var(--m-sans);color:#111}
+  body.m2 .m2p-head{position:relative;height:calc(87*var(--u));border-bottom:calc(1*var(--u)) solid #6e6e6e;margin-right:calc(7*var(--u))}
+  body.m2 .m2p-name{position:absolute;left:0;top:calc(45*var(--u));margin:0;font:700 calc(24.6*var(--u))/1 var(--m-serif-up);font-variation-settings:'opsz' 12;letter-spacing:0}
+  body.m2 .m2p-price{position:absolute;right:calc(35*var(--u));top:calc(45*var(--u));font:400 calc(21.9*var(--u))/1 var(--m-sans)}
+  body.m2 .m2p-variant{margin:calc(16*var(--u)) 0 0}
+  body.m2 .m2p-body p{margin:calc(30*var(--u)) 0 0}
+  body.m2 .m2p-body p.m2p-variant{margin-top:calc(19*var(--u))}
+  body.m2 .m2p-body a{color:inherit;text-decoration:none}
+  body.m2 .m2p-add{display:inline-block;margin:calc(30*var(--u)) 0 0;padding:0;min-height:44px;font:inherit;color:#111;text-decoration:underline;text-underline-offset:calc(5*var(--u));background:none;border:0}
+  body.m2 .m2p-salmon-bookmark .m2p-gallery{height:calc(1009*var(--u))}
+  body.m2 .m2p-salmon-bookmark .m2p-slide:first-child img{position:absolute;left:calc(66*var(--u));top:calc(140*var(--u));width:calc(624*var(--u));height:calc(723*var(--u))}
+  body.m2 .m2p-salmon-bookmark .m2p-body p:nth-of-type(6){margin-top:calc(60*var(--u))} /* Bookmark@2x: extra blank line before Material */
+  body.m2 .m2p-salmon-bookmark .m2p-body{padding-bottom:calc(59*var(--u))}
+  body.m2 .m2p-algae-tote{padding-top:0}
+  body.m2 .m2p-algae-tote .m2p-gallery{height:calc(1232*var(--u))}
+  body.m2 .m2p-algae-tote .m2p-body{padding-left:calc(64*var(--u));width:calc(690*var(--u));padding-bottom:calc(80*var(--u))}
+  body.m2 .m2p-algae-tote .m2p-body p.m2p-variant{margin-top:calc(26*var(--u))}
+  body.m2 .m2p-algae-tote .m2p-price{right:calc(34*var(--u))}
+  body.m2 .m2p-algae-tote .m2p-head{margin-right:calc(19*var(--u))}
+
+  /* ---- About Materials stories (Salmon_ / Algae_About_Material@2x.png) ---- */
+  body.m2 .m2m{display:block;background:#fff;color:#111}
+  body.m2 .m2m-hero{position:relative;height:calc(846*var(--u));overflow:hidden;background:#444}
+  body.m2 .m2m-hero-img{width:100%;height:100%;object-fit:cover}
+  body.m2 .m2m-fish .m2m-hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.3);pointer-events:none} /* Salmon_About_Material@2x hero is x.70 of the photo */
+  body.m2 .m2m-sil,body.m2 .m2m-title{z-index:1}
+  body.m2 .m2m-sil{position:absolute;filter:brightness(0) invert(.94);max-width:none}
+  body.m2 .m2m-fish .m2m-sil{left:calc(70*var(--u));top:calc(485*var(--u));width:calc(133*var(--u))}
+  body.m2 .m2m-algae .m2m-sil{left:calc(84*var(--u));top:calc(183*var(--u));width:calc(76*var(--u))}
+  body.m2 .m2m-title{position:absolute;left:calc(68*var(--u));margin:0;color:#f4f1ec;font:italic 400 calc(66.5*var(--u))/calc(72*var(--u)) var(--m-serif);text-transform:uppercase;letter-spacing:0}
+  body.m2 .m2m-fish .m2m-title{top:calc(572*var(--u))}
+  body.m2 .m2m-algae .m2m-title{top:calc(500*var(--u))}
+  body.m2 .m2m-body{padding:calc(64*var(--u)) calc(64*var(--u)) 0 calc(59*var(--u));font:400 calc(21.9*var(--u))/calc(30*var(--u)) var(--m-sans)}
+  body.m2 .m2m-algae .m2m-body{font-size:calc(23.9*var(--u));padding-top:calc(65*var(--u));padding-right:calc(77*var(--u))}
+  body.m2 .m2m-body p{margin:0 0 calc(30*var(--u))}
+  body.m2 .m2m-body blockquote{margin:0 0 calc(30*var(--u)) calc(32*var(--u));padding:0}
+  body.m2 .m2m-indent{text-indent:calc(12*var(--u))}
+  body.m2 .m2m-fig{margin:calc(77*var(--u)) 0 calc(103*var(--u));text-align:left}
+  body.m2 .m2m-fig img{display:block;margin:0 auto;height:auto;max-width:none}
+  body.m2 .m2m-kanten img{width:calc(353*var(--u));margin-left:calc(108*var(--u))}
+  body.m2 .m2m-sway img{width:calc(291*var(--u));margin-left:calc(172.7*var(--u))}
+  body.m2 .m2m-fig figcaption{margin-top:calc(12*var(--u));font:italic 400 calc(18.8*var(--u))/1.2 var(--m-serif)}
+  body.m2 .m2m-kanten figcaption{padding-left:calc(165*var(--u))}
+  body.m2 .m2m-kanten{margin-bottom:calc(93*var(--u))}
+  body.m2 .m2m-sway{margin-top:calc(49*var(--u))}
+  body.m2 .m2m-sway figcaption{margin-top:calc(1*var(--u))}
+  body.m2 .m2m-sway figcaption{padding-left:calc(180*var(--u))}
+  body.m2 .m2m-sway-p{margin-left:calc(-8*var(--u))!important;margin-top:calc(57*var(--u))!important;margin-right:calc(1*var(--u))!important}
+  body.m2 .m2m-more{margin:calc(30*var(--u)) 0 0 calc(56*var(--u));font:400 calc(21.9*var(--u))/calc(30*var(--u)) var(--m-sans)}
+  body.m2 .m2m-more a{color:inherit;text-decoration:underline;text-underline-offset:calc(6*var(--u))}
+  body.m2 .m2-tiles{display:flex;justify-content:space-between;padding:calc(56*var(--u)) calc(21*var(--u)) calc(22*var(--u)) calc(24*var(--u))}
+  body.m2 .m2-tile{position:relative;display:block;width:calc(344*var(--u));height:calc(469*var(--u));line-height:0;color:#fff;text-decoration:none}
+  body.m2 .m2-tile+.m2-tile{width:calc(346*var(--u))}
+  body.m2 .m2-tile img{width:100%;height:100%;object-fit:cover}
+  body.m2 .m2-tile .m2-box-btn{position:absolute;left:calc(60*var(--u));top:calc(200*var(--u));width:calc(226*var(--u));height:calc(54*var(--u));font-size:calc(21.6*var(--u))}
+  body.m2 .m2-tile-algae .m2-box-btn,body.m2 .m2-tile-fish .m2-box-btn{font-size:calc(19.6*var(--u))}
+  body.m2 .m2-tile-fish .m2-box-btn{height:calc(81*var(--u));top:calc(186*var(--u))}
+
+  /* ---- Accordions (Edit Notes FAQs) — same row type and chevron as the menu ---- */
+  body.m2 .m2-acc{margin:calc(30*var(--u)) calc(64*var(--u)) 0 calc(59*var(--u));border-top:calc(1*var(--u)) solid #8a8a8a}
+  body.m2 .m2-acc-item{border-bottom:calc(1*var(--u)) solid #8a8a8a}
+  body.m2 .m2-acc-q{position:relative;display:block;width:100%;height:calc(86*var(--u));padding:0 calc(40*var(--u)) 0 0;text-align:left;font:400 calc(28.1*var(--u))/1 var(--m-serif-up);font-variation-settings:'opsz' 12;color:inherit}
+  body.m2 .m2-acc-q .chev{top:50%;transform:translateY(-50%)}
+  body.m2 .m2-acc-q[aria-expanded="true"] .chev{transform:translateY(-50%) rotate(90deg)}
+  body.m2 .m2-acc-a{padding:0 0 calc(20*var(--u));font:400 calc(21.9*var(--u))/calc(30*var(--u)) var(--m-sans)}
+  body.m2 .m2-acc-a p{margin:0 0 calc(22*var(--u))}
+  body.m2 .m2-acc-a .m2-acc-qq{margin:0;font-weight:600}
+
+  /* ---- FAQ (FAQ@2x.png: textured page; Edit Notes: shipping only) ---- */
+  body.m2 .m2f{min-height:calc(1624*var(--u) - 244*var(--u));background:var(--paper-mid);background-size:auto,calc(1000*var(--u)) auto;padding:calc(200*var(--u)) 0 calc(120*var(--u))}
+  body.m2 .m2f-title{margin:0 calc(64*var(--u)) calc(24*var(--u)) calc(59*var(--u));font:italic 400 calc(44*var(--u))/1 var(--m-serif);text-transform:uppercase;letter-spacing:0}
+  body.m2 .m2f .m2-acc{margin-top:0}
+
+  /* ---- WRM World (WRM_WORLD@2x.png 751 × 3882) ---- */
+  body.m2 .m2w{position:relative;height:calc(3637*var(--u));background:var(--paper-mid);background-size:auto,calc(1000*var(--u)) auto;overflow:hidden}
+  body.m2 .m2w-pc{position:absolute;display:block;max-width:none;object-fit:cover}
+  body.m2 .m2w-top{left:0;top:0;width:calc(751*var(--u));height:calc(834.5*var(--u))}
+  body.m2 .m2w-yarn{left:calc(62*var(--u));top:calc(957*var(--u));width:calc(243*var(--u));height:calc(242*var(--u))}
+  body.m2 .m2w-dyedbag{left:calc(406*var(--u));top:calc(845*var(--u));width:calc(345*var(--u));height:calc(432*var(--u))}
+  body.m2 .m2w-note{left:calc(349*var(--u));top:calc(1002*var(--u));width:calc(134*var(--u));height:calc(166*var(--u))}
+  body.m2 .m2w-vase{left:calc(183*var(--u));top:calc(1398*var(--u));width:calc(329*var(--u));height:calc(412*var(--u))}
+  body.m2 .m2w-wall{left:calc(35*var(--u));top:calc(1899*var(--u));width:calc(679*var(--u));height:calc(689*var(--u))}
+  body.m2 .m2w-purse{left:0;top:calc(2764*var(--u));width:calc(347*var(--u));height:calc(475*var(--u))}
+  body.m2 .m2w-calder{left:calc(403*var(--u));top:calc(2764*var(--u));width:calc(348*var(--u));height:calc(475*var(--u))}
+  body.m2 .m2w-red{left:calc(289*var(--u));top:calc(2810*var(--u));width:calc(174*var(--u));height:calc(224*var(--u))}
+  body.m2 .m2w-sticky{left:calc(316*var(--u));top:calc(3057*var(--u));width:calc(130*var(--u));height:calc(133*var(--u))}
+  body.m2 .m2w-cap{position:absolute;margin:0;font:italic 400 calc(24*var(--u))/calc(26*var(--u)) var(--m-serif);color:#111;letter-spacing:0;white-space:nowrap}
+  body.m2 .m2w-cap.m2w-light{color:#fff}
+  body.m2 .m2w-c1{left:calc(183*var(--u));top:calc(719*var(--u))}
+  body.m2 .m2w-c2{left:calc(62*var(--u));top:calc(1217*var(--u))}
+  body.m2 .m2w-c3{left:calc(447*var(--u));top:calc(2507*var(--u));color:#fff}
+  body.m2 .m2w-c4{left:calc(36*var(--u));top:calc(2603*var(--u))}
+  body.m2 .m2w-c5{left:calc(8*var(--u));top:calc(3202*var(--u))}
+  body.m2 .m2w-c6{left:calc(415*var(--u));top:calc(3200*var(--u))}
+  body.m2 .m2w-learn{position:absolute;left:0;top:calc(3362*var(--u));width:100%;height:calc(229*var(--u));display:flex;line-height:0}
+  body.m2 .m2w-learn img{height:100%;object-fit:cover;width:calc(380*var(--u))}
+  body.m2 .m2w-learn img+img{width:calc(371*var(--u))}
+  body.m2 .m2w-learn .m2-box-btn{position:absolute;left:calc(207*var(--u));top:calc(91*var(--u));width:calc(352*var(--u));height:calc(41*var(--u));font-size:calc(17.8*var(--u));white-space:nowrap}
 }
