@@ -610,6 +610,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
     --paper-mid:linear-gradient(rgba(216,214,210,.46),rgba(216,214,210,.46)),url('/img/texture.jpg');
     --paper-foot:linear-gradient(rgba(218,192,133,.505),rgba(218,192,133,.505)),url('/img/texture.jpg');
     background:#fff;color:var(--m-ink)}
+  html:has(body.m2){background:#fff}
   body.m2 .page{animation:none}
   body.m2 .m2-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;margin:0}
 
