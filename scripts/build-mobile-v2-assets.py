@@ -93,7 +93,7 @@ save(im.crop((0, 5790, 1563, 8219)), 'm2-home-gallery.jpg', 1200)
 
 print('=== Shop (SHOP@2x.png) ===')
 # purse 25,163-725,1095  <- desktop/shop-purse-flat.webp (whole frame) ncc .992
-extract(f'{IMG}/desktop/shop-purse-flat.webp', (0, 0, 536, 716), 'm2-shop-purse.jpg', 1100, q=90)
+extract(f'{IMG}/desktop/shop-purse-flat.webp', (0, 0, 100000, 100000), 'm2-shop-purse.jpg', 1100, q=90)
 # bookmark 25,1241-725,2120  <- WRM3172-Edit.jpg rotated 90  ncc .988  scale 5.65
 extract(f'{V2}/WRM3172-Edit.jpg', (2954, 468, 6910, 5435), 'm2-shop-bookmark.jpg', 1100, rot=90)
 # tote 20,2282-731,2816  <- WRM3221-Edit.jpg  ncc .990  scale 11.55 (clamped to frame)
