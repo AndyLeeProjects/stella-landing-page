@@ -3,3 +3,6 @@ serve.py
 .DS_Store
 originals/
 pagedesigns/
+.env
+.env.local
+.env*.local

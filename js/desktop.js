@@ -45,7 +45,7 @@ window.WRMDesktop = (() => {
   /* SHOP@2x.png */
   function shop(){
     document.title = 'Shop — WRM';
-    const cap = (name, sub) => `<span class="d2-cap"><span class="d2-cap-name">${name}</span><span class="d2-cap-price">$0</span><span class="d2-cap-sub">${sub}</span></span>`;
+    const cap = (name, sub) => `<span class="d2-cap"><span class="d2-cap-name">${name}</span><span class="d2-cap-price" data-card-price>$0</span><span class="d2-cap-sub">${sub}</span></span>`;
     const card = (cls, href, name, alt, title, sub) => `<a class="d2s-card ${cls}" href="${href}" data-link>${photo(name, alt)}${cap(title, sub)}</a>`;
     return `<div class="d2-page d2-shop">
       <h1 class="d2-sr">Shop — Ocean Collection</h1>
@@ -102,14 +102,14 @@ window.WRMDesktop = (() => {
   function product(id){
     const p = PRODUCTS[id];
     document.title = `${p.name} — WRM`;
-    return `<div class="d2-page d2-product d2p-${id}">
+    return `<div class="d2-page d2-product d2p-${id}" data-product="${id}">
       <div class="d2p-gallery">${p.photos.map(([n,alt],i)=>photo(n, alt, i===0, `d2p-ph d2p-ph${i+1}`)).join('')}</div>
       <div class="d2p-info">
-        <div class="d2p-head"><h1>${p.name}</h1><span class="d2p-price">$0.00</span></div>
+        <div class="d2p-head"><h1>${p.name}</h1><span class="d2p-price" data-price>$0.00</span></div>
         <div class="d2p-copy">
           ${p.blocks.map(b=>`<p>${b.join('<br>')}</p>`).join('')}
           ${p.more}
-          ${p.soon ? '' : `<button class="d2p-add" data-add="${id}">Add to cart</button>`}
+          <button class="d2p-add" data-add disabled>Add to cart</button>
         </div>
       </div>
     </div>`;

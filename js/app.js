@@ -155,23 +155,48 @@ function toast(msg){
   clearTimeout(t._h); t._h = setTimeout(()=>t.classList.remove('show'), 2400);
 }
 
-/* ---------- Cart ---------- */
-let cart = JSON.parse(localStorage.getItem('wrm-cart') || '[]');
-const save = () => localStorage.setItem('wrm-cart', JSON.stringify(cart));
-const count = () => cart.reduce((n,i)=>n+i.qty,0);
-const total = () => cart.reduce((n,i)=>n+(PRODUCTS[i.id]?.price||0)*i.qty,0);
+/* ---------- Shop (Shopify Storefront API via our own /api/* functions) ----------
+   The browser never sees a Shopify token: /api/product(s) and /api/cart run on
+   Vercel with the private token (api/_lib/shopify.js). The cart ID is kept in an
+   HttpOnly cookie set by /api/cart, so this file only ever holds the cart object. */
+const sized = (u,w) => u + (u.includes('?')?'&':'?') + 'width=' + w;
+const priceOf = m => m ? Number(m.amount).toLocaleString('en-US',{style:'currency',currency:m.currencyCode||'USD'}) : '';
+async function api(path, opts={}){
+  let res, data = null;
+  try{
+    res = await fetch(path, {credentials:'same-origin', ...opts, headers:{'Content-Type':'application/json', ...(opts.headers||{})}});
+    data = await res.json();
+  }catch(e){ throw Object.assign(new Error('The shop could not be reached. Please try again.'), {code:'network'}); }
+  if(!res.ok) throw Object.assign(new Error(data?.message || 'Something went wrong. Please try again.'), {code:data?.error, status:res.status});
+  return data;
+}
 
-function add(id){
-  const p = PRODUCTS[id]; if(!p || p.soon) return;
-  const it = cart.find(i=>i.id===id); it ? it.qty++ : cart.push({id, qty:1});
-  save(); renderCart(); toast(`${p.name} added to cart`);
+let cart = null, cartBusy = false;
+localStorage.removeItem('wrm-cart'); /* retire the old local-only cart */
+const lines = () => cart?.lines?.nodes || [];
+const count = () => cart?.totalQuantity || 0;
+
+async function loadCart(){
+  try{ cart = (await api('/api/cart')).cart; }catch(e){ cart = null; }
+  renderCart();
 }
-function setQty(id, d){
-  const it = cart.find(i=>i.id===id); if(!it) return;
-  it.qty += d; if(it.qty<=0) cart = cart.filter(i=>i.id!==id);
-  save(); renderCart();
+async function cartAction(payload, okMsg){
+  if(cartBusy) return false;
+  cartBusy = true; $('#cart').classList.add('busy');
+  try{ cart = (await api('/api/cart', {method:'POST', body:JSON.stringify(payload)})).cart; if(okMsg) toast(okMsg); return true; }
+  catch(e){ toast(e.message); if(e.code==='no_cart') cart = null; return false; }
+  finally{ cartBusy = false; $('#cart').classList.remove('busy'); renderCart(); }
 }
-function remove(id){ cart = cart.filter(i=>i.id!==id); save(); renderCart(); }
+async function add(btn){
+  const id = btn.dataset.variant; if(!id || btn.disabled) return;
+  const ok = await cartAction({action:'add', merchandiseId:id, quantity:1}, `${btn.dataset.name || 'Item'} added to cart`);
+  if(ok) openCart();
+}
+function setQty(lineId, d){
+  const l = lines().find(x=>x.id===lineId); if(!l) return;
+  cartAction({action:'update', lineId, quantity:Math.max(0, l.quantity + d)});
+}
+function remove(lineId){ cartAction({action:'remove', lineId}); }
 
 function renderCart(){
   const n = count();
@@ -181,22 +206,92 @@ function renderCart(){
   btn.setAttribute('aria-label', n ? `Open cart, ${n} item${n>1?'s':''}` : 'Open cart');
   const body = $('#cartBody'), ft = $('#cartFoot');
   if(!n){ body.innerHTML = `<p class="cart-empty">Your cart is empty.</p>`; ft.hidden = true; return; }
-  body.innerHTML = cart.map(i=>{ const p=PRODUCTS[i.id]; return `
+  body.innerHTML = lines().map(l=>{ const v=l.merchandise, img=v.image||v.product.featuredImage; return `
     <div class="cart-item">
-      <img src="${p.images[0]}" alt="">
+      ${img ? `<img src="${esc(sized(img.url,160))}" alt="">` : '<span></span>'}
       <div>
-        <div class="cart-item-name">${esc(p.name)}</div>
-        <div class="cart-item-sub">${esc(p.variant)}</div>
-        <div class="cart-item-price">${money(p.price)}</div>
-        <button class="cart-remove" data-remove="${p.id}">Remove</button>
+        <div class="cart-item-name">${esc(v.product.title)}</div>
+        ${v.title && v.title!=='Default Title' ? `<div class="cart-item-sub">${esc(v.title)}</div>` : ''}
+        <div class="cart-item-price">${priceOf(l.cost.totalAmount)}</div>
+        ${v.availableForSale ? '' : '<div class="cart-item-sub cart-soldout">Sold out</div>'}
+        <button class="cart-remove" data-remove="${esc(l.id)}">Remove</button>
       </div>
       <div class="qty">
-        <button data-qty="${p.id}" data-d="-1" aria-label="Decrease">−</button>
-        <span>${i.qty}</span>
-        <button data-qty="${p.id}" data-d="1" aria-label="Increase">+</button>
+        <button data-qty="${esc(l.id)}" data-d="-1" aria-label="Decrease">−</button>
+        <span>${l.quantity}</span>
+        <button data-qty="${esc(l.id)}" data-d="1" aria-label="Increase">+</button>
       </div>
     </div>`; }).join('');
-  ft.hidden = false; $('#cartTotal').textContent = money(total());
+  ft.hidden = false; $('#cartTotal').textContent = priceOf(cart.cost.subtotalAmount);
+  $('#checkout').disabled = lines().some(l=>!l.merchandise.availableForSale);
+}
+
+/* ---------- Product + shop hydration ----------
+   Stella's designed pages keep their copy and photos; Shopify supplies the live
+   price, variants, stock and the add-to-cart target, matched by product handle
+   (e.g. /product/algae-tote <-> Shopify handle "algae-tote"). */
+const variantLabel = v => v.selectedOptions.map(o=>o.value).join(' / ');
+function setAddButton(btn, p, v){
+  btn.dataset.name = p.title;
+  if(!v){ btn.disabled = true; btn.removeAttribute('data-variant'); btn.textContent = 'Coming soon'; return; }
+  btn.dataset.variant = v.id;
+  btn.disabled = !v.availableForSale;
+  btn.textContent = v.availableForSale ? 'Add to cart' : 'Sold out';
+}
+async function hydrateProduct(handle){
+  const page = app.querySelector('[data-product]'); if(!page) return;
+  const btn = page.querySelector('[data-add]'), price = page.querySelector('[data-price]');
+  let p;
+  try{ p = (await api('/api/product?handle='+encodeURIComponent(handle))).product; }
+  catch(e){
+    if(location.pathname !== '/product/'+handle) return;
+    if(price) price.textContent = '';
+    if(btn){ btn.disabled = true; btn.removeAttribute('data-variant'); btn.textContent = e.status===404 ? 'Coming soon' : 'Unavailable right now'; }
+    if(page.dataset.product === 'generic') page.innerHTML = `<p class="sp-msg">${e.status===404 ? 'This piece is not available yet.' : esc(e.message)}</p>`;
+    return;
+  }
+  if(location.pathname !== '/product/'+handle) return;
+  if(page.dataset.product === 'generic') page.innerHTML = genericProduct(p);
+  const vs = p.variants.nodes;
+  const first = vs.find(v=>v.availableForSale) || vs[0];
+  const b = page.querySelector('[data-add]'), pr = page.querySelector('[data-price]');
+  if(pr) pr.textContent = first ? priceOf(first.price) : '';
+  if(b){
+    setAddButton(b, p, first);
+    if(vs.length > 1 && !page.querySelector('[data-variant-select]')){
+      b.insertAdjacentHTML('beforebegin', `<label class="sp-variant"><span class="d2-sr">Option</span><select data-variant-select>${
+        vs.map(v=>`<option value="${esc(v.id)}"${v===first?' selected':''}>${esc(variantLabel(v))}${v.availableForSale?'':' (sold out)'}</option>`).join('')}</select></label>`);
+      page.querySelector('[data-variant-select]').addEventListener('change', e=>{
+        const v = vs.find(x=>x.id===e.target.value); setAddButton(b, p, v); if(pr) pr.textContent = priceOf(v.price);
+      });
+    }
+  }
+}
+function genericProduct(p){
+  const imgs = p.images.nodes;
+  return `<div class="sp-gallery">${imgs.map((im,i)=>`<img src="${esc(sized(im.url,1400))}" alt="${esc(im.altText||p.title)}"${i?' loading="lazy"':''}>`).join('')}</div>
+    <div class="sp-info">
+      <div class="sp-head"><h1>${esc(p.title)}</h1><span data-price></span></div>
+      <div class="sp-desc">${p.descriptionHtml || esc(p.description)}</div>
+      <button class="sp-add" data-add disabled>Loading…</button>
+    </div>`;
+}
+/* Shop page: fill real prices on designed tiles; list any extra Shopify products below. */
+async function hydrateShop(){
+  let products;
+  try{ products = (await api('/api/products')).products; }catch(e){ return; }
+  if(!/^\/shop\/?$/.test(location.pathname)) return;
+  const designed = new Set(Object.keys(PRODUCTS));
+  const byHandle = Object.fromEntries(products.map(p=>[p.handle,p]));
+  app.querySelectorAll('a[href^="/product/"] [data-card-price]').forEach(el=>{
+    const p = byHandle[el.closest('a').getAttribute('href').split('/')[2]];
+    el.textContent = !p ? '' : p.availableForSale ? priceOf(p.priceRange.minVariantPrice) : 'Sold out';
+  });
+  const extra = products.filter(p=>!designed.has(p.handle));
+  const page = app.querySelector('.page > *');
+  if(extra.length && page) page.insertAdjacentHTML('beforeend', `<section class="sp-more" aria-label="More pieces">${
+    extra.map(p=>`<a class="sp-card" href="/product/${esc(p.handle)}" data-link>${p.featuredImage?`<img src="${esc(sized(p.featuredImage.url,800))}" alt="${esc(p.featuredImage.altText||p.title)}" loading="lazy">`:''}
+      <span class="sp-card-name">${esc(p.title)}</span><span class="sp-card-price">${p.availableForSale?priceOf(p.priceRange.minVariantPrice):'Sold out'}</span></a>`).join('')}</section>`);
 }
 
 /* ---------- Overlays ---------- */
@@ -418,7 +513,7 @@ const pages = {
     const item = (cls, href, img, name, sub, price) => `
       <a class="m2s-item ${cls}" href="${href}" data-link>
         <span class="m2s-img"><img src="${img}" alt="${esc(name)}" loading="lazy"></span>
-        <span class="m2s-cap"><span class="m2s-name">${esc(name)}</span><span class="m2s-price">${price}</span><span class="m2s-sub">${esc(sub)}</span></span>
+        <span class="m2s-cap"><span class="m2s-name">${esc(name)}</span><span class="m2s-price" data-card-price>${price}</span><span class="m2s-sub">${esc(sub)}</span></span>
       </a>`;
     return `<section class="m2s" aria-label="Ocean Collection">
       <h1 class="m2-sr">Ocean Collection</h1>
@@ -486,15 +581,15 @@ const pages = {
   /* Mobile product detail — Purse@2x / Bookmark@2x / Algae_Tote@2x.png */
   mProduct(p){
     const m = M2_PRODUCT[p.id];
-    return `<section class="m2p m2p-${p.id}">
+    return `<section class="m2p m2p-${p.id}" data-product="${p.id}">
       <div class="m2p-gallery" id="pdStrip" aria-label="${esc(p.name)} photos">
         ${m.images.map((src,i)=>`<div class="m2p-slide"><img src="${src}" alt="${esc(i?p.name+' — detail':m.alt)}"${i?' loading="lazy"':' fetchpriority="high"'}></div>`).join('')}
       </div>
       <div class="m2p-body">
-        <div class="m2p-head"><h1 class="m2p-name">${esc(p.name)}</h1><span class="m2p-price">${m.price}</span></div>
+        <div class="m2p-head"><h1 class="m2p-name">${esc(p.name)}</h1><span class="m2p-price" data-price>${m.price}</span></div>
         <p class="m2p-variant">${esc(m.variant)}</p>
         ${m.blocks.map(b=>`<p>${b.join('<br>')}</p>`).join('')}
-        ${p.soon ? '' : `<button class="m2p-add" data-add="${p.id}">Add to cart</button>`}
+        <button class="m2p-add" data-add disabled>Add to cart</button>
       </div>
     </section>`;
   },
@@ -502,7 +597,7 @@ const pages = {
   product(id){
     const p = PRODUCTS[id];
     if(p && isMobile() && M2_PRODUCT[id]){ document.title = `${p.name} — WRM`; return pages.mProduct(p); }
-    if(!p || p.soon) return pages.notFound();
+    if(!p || p.soon){ document.title = 'WRM'; return `<section class="sp-page" data-product="generic"><p class="sp-msg">Loading…</p></section>`; }
     document.title = `${p.name} — WRM`;
     return `<section class="pg editorial"><div class="ed-page">
       ${crumbs([['Ocean','/shop/ocean-season'],['Fish Leather','/shop/ocean-season/fish-leather'],[p.name]])}
@@ -517,7 +612,7 @@ const pages = {
           <p class="pd-desc">${esc(p.desc)}</p>
           <p class="pd-desc small">${esc(p.note)}</p>
           <div class="pd-origin">${esc(p.origin)}</div>
-          <div class="pd-actions"><button class="btn btn-fill" style="width:auto" data-add="${p.id}">Add to cart <span class="arr">→</span></button></div>
+          <div class="pd-actions"><button class="btn btn-fill" style="width:auto" data-add disabled>Add to cart</button></div>
           <div class="specs">
             <h3>Dimensions</h3>
             ${p.dims.map(([k,v])=>`<div class="line"><span class="k">${k}</span><span>${v}</span></div>`).join('')}
@@ -738,6 +833,9 @@ function render(path, y=0){
   let html = isMobile() ? null : window.WRMDesktop.render(path.replace(/\/$/,'') || '/');
   if(html === null) for(const [re,fn] of routes){ const m = path.match(re); if(m){ html = fn(m); break; } }
   app.innerHTML = `<div class="page">${html ?? pages.notFound()}</div>`;
+  const pm = path.match(/^\/product\/([\w-]+)\/?$/);
+  if(pm) hydrateProduct(pm[1]);
+  if(/^\/shop\/?$/.test(path)) hydrateShop();
   const isHome = path === '/';
 
   const isProductDetail = /^\/product\//.test(path);
@@ -782,14 +880,14 @@ document.addEventListener('click', e => {
   const shop = e.target.closest('[data-shop-link]'); if(shop){ e.preventDefault(); e.stopPropagation(); go('/shop'); return; }
   const a = e.target.closest('a[data-link]'); if(a){ e.preventDefault(); go(a.getAttribute('href')); return; }
   const tg = e.target.closest('[data-toggle]'); if(tg){ const open = tg.getAttribute('aria-expanded')==='true'; tg.setAttribute('aria-expanded',String(!open)); tg.nextElementSibling.classList.toggle('open',!open); return; }
-  const ad = e.target.closest('[data-add]'); if(ad){ add(ad.dataset.add); openCart(); return; }
+  const ad = e.target.closest('[data-add]'); if(ad){ add(ad); return; }
   const q = e.target.closest('[data-qty]'); if(q){ setQty(q.dataset.qty, +q.dataset.d); return; }
   const rm = e.target.closest('[data-remove]'); if(rm){ remove(rm.dataset.remove); return; }
   const th = e.target.closest('[data-thumb]'); if(th){ const i=+th.dataset.thumb, p=PRODUCTS[location.pathname.split('/')[2]]; $('#pdImg').src=p.images[i]; $('#pdN').textContent=`${i+1} / ${p.images.length}`; document.querySelectorAll('[data-thumb]').forEach(b=>b.setAttribute('aria-current',String(b===th))); return; }
   const ac = e.target.closest('[data-acc]'); if(ac){ const open = ac.getAttribute('aria-expanded')==='true'; ac.setAttribute('aria-expanded',String(!open)); ac.nextElementSibling.hidden = open; return; }
   const fq = e.target.closest('.faq-q'); if(fq){ const it=fq.parentElement, open=it.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(x=>{x.classList.remove('open'); x.querySelector('.faq-q').setAttribute('aria-expanded','false');}); if(!open){ it.classList.add('open'); fq.setAttribute('aria-expanded','true'); } return; }
   const nt = e.target.closest('[data-notify]'); if(nt){ toast('Sign up below and we\'ll tell you when it\'s ready.'); foot.querySelector('input')?.focus(); return; }
-  if(e.target.closest('#checkout')){ location.href = 'mailto:hello@withrawmaterials.com?subject=' + encodeURIComponent('Order enquiry — WRM') + '&body=' + encodeURIComponent(cart.map(i=>`${i.qty} × ${PRODUCTS[i.id].name} (${PRODUCTS[i.id].variant})`).join('\n') + `\n\nTotal ${money(total())}`); return; }
+  if(e.target.closest('#checkout')){ if(cart?.checkoutUrl){ e.target.closest('#checkout').disabled = true; location.href = cart.checkoutUrl; } return; }
 });
 document.addEventListener('keydown', e => {
   if((e.key==='Enter'||e.key===' ') && e.target.matches('[data-shop-link]')){
@@ -835,4 +933,5 @@ window.matchMedia('(max-width:760px)').addEventListener('change', ()=>{
 /* ---------- Init ---------- */
 buildMenu();
 render(location.pathname);
+loadCart();
 })();

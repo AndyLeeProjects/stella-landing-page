@@ -2,3 +2,8 @@
 .DS_Store
 /originals/
 /pagedesigns/
+/design-ref/
+.impact-graph.json
+.env
+.env.local
+.env*.local
