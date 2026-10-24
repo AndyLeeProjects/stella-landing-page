@@ -223,7 +223,9 @@ function renderCart(){
       </div>
     </div>`; }).join('');
   ft.hidden = false; $('#cartTotal').textContent = priceOf(cart.cost.subtotalAmount);
-  $('#checkout').disabled = lines().some(l=>!l.merchandise.availableForSale);
+  const co = $('#checkout'), soldOut = lines().some(l=>!l.merchandise.availableForSale);
+  co.disabled = soldOut || !cart.checkoutUrl;
+  co.innerHTML = !cart.checkoutUrl ? 'Checkout opens at launch' : soldOut ? 'Remove sold-out items to check out' : 'Checkout <span class="arr">→</span>';
 }
 
 /* ---------- Product + shop hydration ----------

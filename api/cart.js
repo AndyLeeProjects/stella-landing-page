@@ -21,6 +21,15 @@ function cookieHeader(req, value) {
   return value ? `${base}; Max-Age=${MAX_AGE}` : `${base}; Max-Age=0`;
 }
 
+/* Pre-launch kill switch: until CHECKOUT_OPEN=true is set in Vercel, the Shopify
+   checkout URL is never sent to the browser, so nobody can reach checkout from this
+   site regardless of Shopify's own storefront password. Browsing and cart still work. */
+const checkoutOpen = () => String(process.env.CHECKOUT_OPEN || '').trim().toLowerCase() === 'true';
+function gate(cart) {
+  if (!cart) return cart;
+  return checkoutOpen() ? { ...cart, checkoutOpen: true } : { ...cart, checkoutUrl: null, checkoutOpen: false };
+}
+
 const qty = n => { n = Number(n); return Number.isInteger(n) && n >= 0 && n <= MAX_QTY ? n : null; };
 
 module.exports = async (req, res) => {
@@ -32,7 +41,7 @@ module.exports = async (req, res) => {
     if (cartId && !cart) cartId = null;
 
     if (req.method === 'GET') {
-      return send(res, 200, { cart }, cart ? {} : { 'Set-Cookie': cookieHeader(req, null) });
+      return send(res, 200, { cart: gate(cart) }, cart ? {} : { 'Set-Cookie': cookieHeader(req, null) });
     }
     if (req.method !== 'POST') return send(res, 405, { error: 'method', message: 'Method not allowed.' });
 
@@ -56,6 +65,6 @@ module.exports = async (req, res) => {
     } else {
       return send(res, 400, { error: 'bad_request', message: 'Unknown cart action.' });
     }
-    send(res, 200, { cart }, { 'Set-Cookie': cookieHeader(req, cart.id) });
+    send(res, 200, { cart: gate(cart) }, { 'Set-Cookie': cookieHeader(req, cart.id) });
   } catch (e) { fail(res, e); }
 };
