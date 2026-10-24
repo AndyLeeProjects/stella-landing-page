@@ -172,7 +172,7 @@ window.WRMDesktop = (() => {
       ${photo('world-dye','Spool of algae yarn dyed with activated charcoal, and a handwritten research note',false,'d2w-ph d2w-dye')}
       ${cap('d2w-c3','03. Spool of algae yarn dyed with activated charcoal')}
       ${photo('world-vase','Glass vase with fish in relief',false,'d2w-ph d2w-vase')}
-      ${cap('d2w-c4','04. Fish Jar by')}
+      ${cap('d2w-c4','04. “Salmonidé” Vase by René Lalique, 1928')}
       ${photo('world-wall','Stella’s childhood bedroom wallpaper with a Wiener Werkstätte display photograph, a design note and an algae yarn weaving',false,'d2w-ph d2w-wall')}
       ${cap('d2w-c5 d2w-light','05. Stella’s childhood bedroom wallpaper')}
       ${cap('d2w-c6 d2w-light','06. Algae yarn weaving with quartz beads')}
