@@ -21,10 +21,9 @@ function cookieHeader(req, value) {
   return value ? `${base}; Max-Age=${MAX_AGE}` : `${base}; Max-Age=0`;
 }
 
-/* Pre-launch kill switch: until CHECKOUT_OPEN=true is set in Vercel, the Shopify
-   checkout URL is never sent to the browser, so nobody can reach checkout from this
-   site regardless of Shopify's own storefront password. Browsing and cart still work. */
-const checkoutOpen = () => String(process.env.CHECKOUT_OPEN || '').trim().toLowerCase() === 'true';
+/* Checkout kill switch: open by default. Set CHECKOUT_OPEN=false in Vercel to withhold
+   the Shopify checkout URL from the browser (cart and browsing keep working). */
+const checkoutOpen = () => String(process.env.CHECKOUT_OPEN || '').trim().toLowerCase() !== 'false';
 function gate(cart) {
   if (!cart) return cart;
   return checkoutOpen() ? { ...cart, checkoutOpen: true } : { ...cart, checkoutUrl: null, checkoutOpen: false };
