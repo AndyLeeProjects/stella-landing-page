@@ -677,9 +677,64 @@ const routes = [
   [/^\/faq\/?$/, ()=>pages.faq()],
 ];
 
+/* ---------- Pre-launch gate ----------
+   Visitors only see the "Ocean season coming soon" landing on every URL. Admins
+   unlock the full site per browser via the faint lock in the corner. This is a
+   soft client-side curtain (only a SHA-256 of the password ships), not real
+   access control: anyone reading the JS can still reach the page code. */
+const ADMIN_HASH = '128b70a337eccc60b3022d9b1860c3b512830364b39a6b3cf7a8130abfa33ee3';
+const ADMIN_KEY = 'wrm-admin-unlocked';
+const isUnlocked = () => { try{ return localStorage.getItem(ADMIN_KEY) === ADMIN_HASH; }catch(e){ return false; } };
+const LOCK_SVG = open => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="${open?'M8 11V7.5a4 4 0 0 1 7.6-1.7':'M8 11V7.5a4 4 0 0 1 8 0V11'}"/></svg>`;
+const adminLock = document.createElement('div');
+adminLock.className = 'admin-lock';
+document.body.appendChild(adminLock);
+function drawAdminLock(){
+  const open = isUnlocked();
+  adminLock.innerHTML = `<button class="admin-lock-btn" type="button" aria-label="${open?'Lock site (show landing page)':'Admin access'}">${LOCK_SVG(open)}</button>
+    ${open?'':`<form class="admin-lock-form" hidden><input type="password" autocomplete="current-password" placeholder="Password" aria-label="Admin password"><button type="submit">Enter</button></form>`}`;
+}
+adminLock.addEventListener('click', e => {
+  if(!e.target.closest('.admin-lock-btn')) return;
+  if(isUnlocked()){ localStorage.removeItem(ADMIN_KEY); drawAdminLock(); render(location.pathname); return; }
+  const f = adminLock.querySelector('form'); f.hidden = !f.hidden; if(!f.hidden) f.querySelector('input').focus();
+});
+adminLock.addEventListener('submit', async e => {
+  e.preventDefault();
+  const input = e.target.querySelector('input');
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(input.value));
+  const hex = [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+  if(hex === ADMIN_HASH){ localStorage.setItem(ADMIN_KEY, hex); drawAdminLock(); render(location.pathname); }
+  else { input.value=''; input.placeholder='Wrong password'; adminLock.classList.remove('shake'); void adminLock.offsetWidth; adminLock.classList.add('shake'); }
+});
+drawAdminLock();
+
+function landing(){
+  document.title = 'WRM — Ocean season coming soon';
+  return `<section class="hero landing-hero">
+  <div class="hero-card">
+    <div class="logo-wrap reveal"><img src="/img/wrm-logo-dark.png" alt="WRM — With Raw Materials"></div>
+    <h1 class="headline reveal d2">Ocean season <span class="italic">coming</span> <span class="soft">soon.</span></h1>
+    <form class="notify reveal d3" data-newsletter="landing">
+      <input type="email" required placeholder="Your email" autocomplete="email" aria-label="Email">
+      <button type="submit"><span data-label>Notify me</span> <span class="arr">→</span></button>
+    </form>
+  </div>
+  <span class="scroll-hint reveal d4">Chapter I</span>
+</section>`;
+}
+
 let io;
 function render(path, y=0){
   closeMenu(); closeCart();
+  const gated = !isUnlocked();
+  document.body.classList.toggle('landing', gated);
+  if(gated){
+    document.body.classList.remove('m2','d2','m2-light','mobile-materials-original');
+    app.innerHTML = `<div class="page">${landing()}</div>`;
+    window.scrollTo({top:0, behavior:'instant'});
+    return;
+  }
   let html = isMobile() ? null : window.WRMDesktop.render(path.replace(/\/$/,'') || '/');
   if(html === null) for(const [re,fn] of routes){ const m = path.match(re); if(m){ html = fn(m); break; } }
   app.innerHTML = `<div class="page">${html ?? pages.notFound()}</div>`;

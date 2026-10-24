@@ -854,3 +854,26 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body.m2 .m2w-learn img+img{width:calc(371*var(--u))}
   body.m2 .m2w-learn .m2-box-btn{position:absolute;left:calc(207*var(--u));top:calc(91*var(--u));width:calc(352*var(--u));height:calc(41*var(--u));font-size:calc(17.8*var(--u));white-space:nowrap}
 }
+
+/* ---------- Pre-launch landing gate (js/app.js landing()) ---------- */
+body.landing .nav,body.landing .foot,body.landing .menu,body.landing .cart,body.landing .scrim{display:none!important}
+body.landing .landing-hero{padding-top:20px}
+.admin-lock{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:300;display:flex;flex-direction:row-reverse;align-items:center;gap:8px}
+.admin-lock-btn{width:28px;height:28px;padding:5px;color:var(--ink);opacity:.18;transition:opacity .2s;background:none;border:0;cursor:pointer}
+.admin-lock-btn:hover,.admin-lock-btn:focus-visible{opacity:.7}
+.admin-lock-btn svg{width:100%;height:100%;display:block}
+.admin-lock-form{display:flex;border-bottom:1px solid var(--ink);background:rgba(232,223,200,.92)}
+.admin-lock-form[hidden]{display:none}
+.admin-lock-form input{width:150px;border:0;background:transparent;padding:6px 4px;font-size:16px;outline:none;font-family:inherit;color:var(--ink)}
+.admin-lock-form button{border:0;background:none;padding:0 6px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;color:var(--ink)}
+.admin-lock.shake .admin-lock-form{animation:adminShake .35s}
+@keyframes adminShake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+/* Landing: same warm textured paper as Andy's reference on every width (desktop.css
+   whitens html/body; mobile v2 swaps to off-white). */
+html:has(body.landing){background:#E8DFC8!important}
+body.landing{background:#E8DFC8 url("/img/texture.jpg") repeat!important;background-size:900px 900px!important;background-blend-mode:multiply!important;color:var(--ink)}
+body.landing{--paper:#E8DFC8}
+body.landing::before,body.landing::after{display:block}
+@media (max-width:760px){
+  body.landing .logo-wrap{height:38vh}
+}
