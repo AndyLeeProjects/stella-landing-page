@@ -137,6 +137,9 @@ const M2_MATERIAL_FAQ = {
 /* Edit Notes (9/7): FAQ keeps shipping only. */
 const M2_FAQ = [['Shipping and returns','Pieces ship within 3–5 business days. Unused items may be returned within 14 days of delivery. Write to hello@withrawmaterials.com.']];
 
+/* Desktop v2 (js/desktop.js) reuses the same FAQ data. */
+window.WRMData = { M2_FAQ, M2_MATERIAL_FAQ };
+
 const NEWSLETTER ='https://script.google.com/macros/s/AKfycbxktzrSNaAXo-I6Hqab5Im9P1R_oXAiIH9d4dtLao1d7F4XntBG1BKKa_5cwD5_leshcg/exec';
 
 /* ---------- Helpers ---------- */
@@ -691,6 +694,7 @@ function render(path, y=0){
   /* Mobile v2 (Drive redesign): every mobile page is real HTML except About Materials,
      whose new mockup is unchanged from the supplied full-resolution artwork. */
   document.body.classList.toggle('m2', isMobile());
+  document.body.classList.toggle('d2', !isMobile());
   document.body.classList.toggle('m2-light', isMobile() && (isHome || /^\/about-materials\/(fish-leather|algae)\/?$/.test(path)));
   const isMobileMaterials = isMobile() && path.replace(/\/$/,'') === '/about-materials';
   document.body.classList.toggle('mobile-materials-original', isMobileMaterials);
@@ -754,13 +758,19 @@ function onScroll(){
   /* Desktop: the header is fixed, so its white "on-dark" treatment must only stay while
      it actually overlaps the dark hero at the top of the page. Past the hero the content
      is light and white text/logo would be invisible, so drop back to dark ink. */
+  /* Desktop v2: the header stays transparent, so its ink follows whatever is under it —
+     white over sections marked data-tone="light" (dark photos), black elsewhere. */
   if(!isMobile()){
-    const hero = document.querySelector('.d-home-hero, .mh2-purse, .season-hero, .mat-hero');
-    const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
-    nav.classList.toggle('over-dark-hero', heroBottom > nav.getBoundingClientRect().height);
+    const y = nav.getBoundingClientRect().height / 2;
+    const under = (x) => document.elementsFromPoint(x, y).find(el => !nav.contains(el) && el !== nav);
+    const tone = (x) => under(x)?.closest('[data-tone]')?.dataset.tone === 'light';
+    nav.classList.toggle('d2-ink-light', tone(innerWidth * .5));
+    nav.classList.toggle('d2-links-light', tone(innerWidth * .1));
+    nav.classList.toggle('d2-cart-light', tone(innerWidth * .95));
   }
 }
 window.addEventListener('scroll', onScroll, {passive:true});
+window.addEventListener('resize', ()=>{ if(!isMobile()) onScroll(); }, {passive:true});
 
 window.matchMedia('(max-width:760px)').addEventListener('change', ()=>{
   foot.querySelector('.foot-lead').textContent = 'Sign up to stay updated with WRM’s journey';
