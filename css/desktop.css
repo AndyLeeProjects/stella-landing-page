@@ -217,7 +217,7 @@
   .d2w-paper-strip{left:42.7083vw;top:0;width:7.5694vw;height:62.1528vw}
   .d2w-paper-left{left:0;top:64.0278vw;width:50.2778vw;height:62.5vw}
   .d2w-ph{position:absolute}
-  .d2w-crochet{left:0;top:0;width:42.7083vw;height:64.0278vw}
+  .d2w-crochet{left:0;top:0;width:50.2778vw;height:64.0278vw;object-fit:cover;object-position:50% 50%} /* full uncropped original (703×898) fills the half panel; bag centred like WRM WORLD ref */
   /* Ocean outline, 1100 wide, turned 34deg clockwise (fitted to the artboard strokes), clipped to the panel */
   .d2w-ocean-clip{position:absolute;left:50.2778vw;top:0;width:49.7222vw;height:64.0278vw;overflow:hidden}
   .d2w-ocean{position:absolute;left:-9.0278vw;top:10.6944vw;width:76.3889vw;height:auto;transform:rotate(34deg);filter:brightness(0);opacity:.75}

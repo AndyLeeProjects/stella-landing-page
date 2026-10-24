@@ -164,7 +164,7 @@ window.WRMDesktop = (() => {
       <h1 class="d2-sr">WRM World</h1>
       <div class="d2w-paper d2w-paper-strip"></div>
       <div class="d2w-paper d2w-paper-left"></div>
-      ${photo('world-crochet','Crocheted algae yarn bag',true,'d2w-ph d2w-crochet')}
+      <img class="d2w-ph d2w-crochet" src="/img/desktop/world-clear-bag.webp" width="703" height="898" alt="Crocheted algae yarn bag" fetchpriority="high" decoding="async">
       ${cap('d2w-c1 d2w-light','01. Crocheted algae yarn exploration')}
       <div class="d2w-ocean-clip">${ocean('d2w-ocean')}</div>
       ${photo('world-samples','Twelve algae yarn crochet samples',true,'d2w-ph d2w-samples')}
