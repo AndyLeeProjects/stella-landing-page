@@ -779,7 +779,7 @@ const routes = [
    unlock the full site per browser via the faint lock in the corner. This is a
    soft client-side curtain (only a SHA-256 of the password ships), not real
    access control: anyone reading the JS can still reach the page code. */
-const ADMIN_HASH = 'e2249f18b53c2567c111ec953690a14803b12de3c232f9138fda5f3824679d1c';
+const ADMIN_HASH = '2504d0ac9df6c61a24511608889e47c745e57a249078e6269bf1284f89c3867f';
 const ADMIN_KEY = 'wrm-admin-unlocked';
 const isUnlocked = () => { try{ return localStorage.getItem(ADMIN_KEY) === ADMIN_HASH; }catch(e){ return false; } };
 const LOCK_SVG = open => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="${open?'M8 11V7.5a4 4 0 0 1 7.6-1.7':'M8 11V7.5a4 4 0 0 1 8 0V11'}"/></svg>`;
