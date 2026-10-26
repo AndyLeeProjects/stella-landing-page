@@ -687,8 +687,8 @@ h1 .soft{font-style:italic;color:var(--muted)}
     background:currentColor;-webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 13"><path d="M.6.6 10.2 6.5.6 12.4" fill="none" stroke="black" stroke-width="1.5"/></svg>') 0 0/100% 100% no-repeat;
     mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 13"><path d="M.6.6 10.2 6.5.6 12.4" fill="none" stroke="black" stroke-width="1.5"/></svg>') 0 0/100% 100% no-repeat}
   body.m2 .m2-menu-row[aria-expanded="true"] .chev{transform:rotate(90deg)}
-  body.m2 .m2-menu-ocean{display:block;width:calc(170*var(--u));height:auto;max-width:none;
-    filter:brightness(0) drop-shadow(0 0 calc(.5*var(--u)) #000) drop-shadow(0 0 calc(.4*var(--u)) #000) drop-shadow(0 0 calc(.3*var(--u)) #000)}
+  body.m2 .m2-menu-ocean{display:block;width:calc(170*var(--u));height:auto;max-width:none;transform:translateY(calc(28.5*var(--u)));
+    filter:brightness(0) drop-shadow(0 0 calc(1*var(--u)) #000) drop-shadow(0 0 calc(.8*var(--u)) #000) drop-shadow(0 0 calc(.6*var(--u)) #000) drop-shadow(0 0 calc(.4*var(--u)) #000)}
   body.m2 .m2-menu-shop{margin:0 0 calc(33*var(--u))}
   body.m2 .m2-menu-shop .m2-menu-row{margin:0}
   body.m2 .m2-menu-sub{padding-top:calc(10*var(--u))}
