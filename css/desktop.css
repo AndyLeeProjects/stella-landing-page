@@ -135,7 +135,7 @@
   .d2-product{display:grid;grid-template-columns:50vw 50vw;align-items:start;overflow:clip;background:#fff}
   .d2p-gallery{grid-column:1;grid-row:1;width:50vw}
   .d2p-ph{width:100%}
-  .d2p-info{position:sticky;grid-column:2;grid-row:1;top:calc(5.5556vw + 20px);width:24.7917vw;margin:9.8611vw 0 0 12.2917vw}
+  .d2p-info{position:sticky;grid-column:2;grid-row:1;top:calc(5.5556vw + 30px);width:24.7917vw;margin:9.8611vw 0 0 12.2917vw}
   .d2p-head{display:flex;justify-content:space-between;align-items:baseline;padding:0 0.7639vw 2.2917vw 0.2083vw;border-bottom:1px solid #a8a8a8}
   .d2p-head h1{margin:0;font:600 1.1875vw/1 var(--d2-serif);letter-spacing:.035em}
   .d2p-price{font:400 0.9167vw/1 var(--d2-sans)}
