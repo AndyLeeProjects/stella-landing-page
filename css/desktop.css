@@ -34,7 +34,7 @@
   body.d2 .nav-cart{position:absolute;right:4.2361vw;top:2.1875vw;width:auto;height:auto;min-height:0;display:flex;gap:0.2778vw;font:400 0.9861vw/1 var(--d2-sans)}
   body.d2 .nav-cart svg{display:none}
   body.d2 .desktop-cart-label{display:block}
-  body.d2 .nav-cart-count{position:static;min-width:0;height:auto;padding:0;border-radius:0;background:none;color:inherit;font:inherit;line-height:1}
+  body.d2 .nav .nav-cart-count{position:static;min-width:0;height:auto;padding:0;border-radius:0;background:none;color:inherit;font:inherit;line-height:1}
   body.d2 .nav-cart-count::before{content:"("}body.d2 .nav-cart-count::after{content:")"}
   body.d2 .nav-cart-count[hidden]{display:none}
   body.d2 .nav.d2-links-light .desktop-links,body.d2 .nav.d2-cart-light .nav-cart{color:#fff}
