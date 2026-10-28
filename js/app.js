@@ -689,8 +689,7 @@ const pages = {
         <h1 class="m2m-title">${fish?'From industry<br>byproduct to<br>hand bags':'Algae as a<br>future<br>replacement<br>to plastic'}</h1>
       </header>
       <div class="m2m-body">${body}</div>
-      ${pages.m2Accordion(M2_MATERIAL_FAQ[fish?'fish':'algae'], fish?'Salmon leather questions':'Algae questions')}
-      ${fish?'<p class="m2m-more">More questions?<br>Visit the <a href="/faq" data-link>FAQ page</a>.</p>':''}
+      <p class="m2m-more">Questions about this material?<br>Visit the <a href="/faq" data-link>FAQ page</a>.</p>
       <div class="m2-tiles">
         ${tile('m2-tile-purse','/shop','/img/m2-tile-purse.jpg','View collection')}
         ${fish ? tile('m2-tile-algae','/about-materials/algae','/img/m2-tile-algae.jpg','Explore algae')
@@ -752,7 +751,9 @@ const pages = {
 
   faq(){
     document.title = 'FAQ — WRM';
-    if(isMobile()) return `<section class="m2f"><h1 class="m2f-title">FAQ</h1>${pages.m2Accordion([['Shipping', M2_FAQ]], 'Frequently asked questions', true)}</section>`;
+    if(isMobile()) return `<section class="m2f"><h1 class="m2f-title">FAQ</h1>${pages.m2Accordion([['Shipping', M2_FAQ],
+      ...M2_MATERIAL_FAQ.fish.map(([t,qa])=>[`Fish Leather — ${t}`, qa]),
+      ...M2_MATERIAL_FAQ.algae.map(([t,qa])=>[`Algae — ${t}`, qa])], 'Frequently asked questions')}</section>`;
     return `<section class="pg editorial"><div class="ed-page">
       ${crumbs([['Home','/'],['FAQ']])}
       <h1 class="pg-title">Questions</h1>
