@@ -774,6 +774,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body.m2 .m2p-algae-tote .m2p-body p.m2p-variant{margin-top:calc(26*var(--u))}
   body.m2 .m2p-algae-tote .m2p-price{right:calc(34*var(--u))}
   body.m2 .m2p-algae-tote .m2p-head{margin-right:calc(19*var(--u))}
+  body.m2 .m2p-acc.m2-acc{margin:calc(30*var(--u)) 0 calc(24*var(--u));border-top:calc(1*var(--u)) solid #8a8a8a}
 
   /* ---- About Materials stories (Salmon_ / Algae_About_Material@2x.png) ---- */
   body.m2 .m2m{display:block;background:#fff;color:#111}

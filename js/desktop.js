@@ -74,8 +74,7 @@ window.WRMDesktop = (() => {
         ['Please note the textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical.'],
         ['Product Detail','Made in San Francisco'],
         ['Dimensions','H: 6″ x W: 7 ″ D: 1.5″','Strap Drop: 5.25″'],
-        ['Material and Care','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric'],
-        ['Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight']],
+        ['Material & Care','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight']],
       more:'<p class="d2p-more">Learn more about fish leather <a href="/about-materials/fish-leather" data-link><em>here</em></a></p>'},
     'salmon-bookmark': {name:'Salmon Bookmark', photos:[
         ['pd-bm-1','Salmon Bookmark lining with its WITH RAW MATERIALS label on an open book'],['pd-bm-2','Salmon Bookmark, salmon leather front and lining'],
@@ -85,8 +84,7 @@ window.WRMDesktop = (() => {
         ['Textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical.'],
         ['Product Detail','Made in San Francisco'],
         ['Dimensions','H: 6.5″ x W: 2 ″'],
-        ['Material and Care','Exterior: 100% Ocean-Caught Alaskan Sockeye Salmon','Lining: 100% Korean Hemp fabric'],
-        ['Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight']],
+        ['Material & Care','Exterior: 100% Ocean-Caught Alaskan Sockeye Salmon','Lining: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight']],
       more:'<p class="d2p-more">Learn more about fish leather <a href="/about-materials/fish-leather" data-link><em>here</em></a></p>'},
     'algae-tote': {name:'Algae Tote', price:'$150.00', soon:true, photos:[
         ['pd-tote-1','Algae Tote, translucent seaweed-based sheet, backlit'],['pd-tote-2','Algae Tote in natural, lit from the side']],
@@ -95,10 +93,18 @@ window.WRMDesktop = (() => {
         ['You can expect a waxed canvas-like hand feel. The waxiness will disappear with wear. Please note the textures and colors of the bags vary piece to piece.'],
         ['Product Detail','Manufactured in San Francisco'],
         ['Dimensions','H: 6″ x W: 7 ″ D: 1.5″','Strap Drop: 5.25″'],
-        ['Material','Exterior Body: 100% compostable algae-based sheet'],
-        ['Care','Avoid moisture and direct sunlight','Please see <a href="/faq" data-link>FAQ page</a> for detailed instructions on how to care for this material.']],
+        ['Material & Care','Exterior Body: 100% compostable algae-based sheet','Avoid moisture and direct sunlight','Please see <a href="/faq" data-link>FAQ page</a> for detailed instructions on how to care for this material.']],
       more:''}
   };
+  const detailTitles = new Set(['Product Detail','Dimensions','Material & Care']);
+  function productCopy(blocks, id){
+    const intro = blocks.filter(b=>!detailTitles.has(b[0])).map(b=>`<p>${b.join('<br>')}</p>`).join('');
+    const details = blocks.filter(b=>detailTitles.has(b[0]));
+    return `${intro}<div class="d2p-acc d2-acc" data-product-accordion>${details.map((b,i)=>`<div class="d2p-acc-item d2-acc-item" data-product-section>
+      <button class="d2p-acc-q d2-acc-q" data-acc aria-expanded="false" aria-controls="d2p-${id}-${i}"><span>${b[0]}</span><span class="d2p-chev d2-chev" aria-hidden="true"></span></button>
+      <div class="d2p-acc-a d2-acc-a" id="d2p-${id}-${i}" data-product-content hidden>${b.slice(1).join('<br>')}</div>
+    </div>`).join('')}</div>`;
+  }
   function product(id){
     const p = PRODUCTS[id];
     document.title = `${p.name} — WRM`;
@@ -107,7 +113,7 @@ window.WRMDesktop = (() => {
       <div class="d2p-info">
         <div class="d2p-head"><h1>${p.name}</h1><span class="d2p-price" data-price>${p.price || '$0.00'}</span></div>
         <div class="d2p-copy">
-          ${p.blocks.map(b=>`<p>${b.join('<br>')}</p>`).join('')}
+          ${productCopy(p.blocks, id)}
           ${p.more}
           <button class="d2p-add" data-add disabled>Add to cart</button>
         </div>

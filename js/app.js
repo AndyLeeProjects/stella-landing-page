@@ -66,8 +66,7 @@ const M2_PRODUCT = {
       ['Please note the textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical.'],
       ['Product Detail','Made in San Francisco'],
       ['Dimensions','H: 6” x W: 7” D: 1.5”','Strap Drop: 5.25”'],
-      ['Material','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric'],
-      ['Care','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight']
+      ['Material & Care','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight']
     ]},
   'salmon-bookmark': { variant:'Natural Crust', price:'$', images:['/img/m2-pd-bookmark.jpg','/img/bookmark-detail.jpg'],
     alt:'Salmon Bookmark, salmon leather front and horsehair lining',
@@ -76,8 +75,7 @@ const M2_PRODUCT = {
       ['Please note the textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical.'],
       ['Product Detail','Made in San Francisco'],
       ['Dimensions','H: 6.7” x W: 2”'],
-      ['Material','Leather: Ocean-caught Alaskan Sockeye Salmon','Lining: Horsehair'],
-      ['Care','Treat like any other leather products.','Avoid direct sunlight.']
+      ['Material & Care','Leather: Ocean-caught Alaskan Sockeye Salmon','Lining: Horsehair','Treat like any other leather products.','Avoid direct sunlight.']
     ]},
   'algae-tote': { variant:'Natural', price:'$150.00', images:['/img/m2-pd-tote.jpg'],
     alt:'Algae Tote, translucent seaweed-based sheet',
@@ -86,8 +84,7 @@ const M2_PRODUCT = {
       ['You can expect a waxed canvas-like hand feel. The waxiness will disappear with wear. Please note the textures and colors of the bags vary piece to piece.'],
       ['Product Detail','Manufactured in San Francisco'],
       ['Dimensions','H: 6” x W: 7” D: 1.5”','Strap Drop: 5.25”'],
-      ['Material','Exterior Body: 100% compostable algae-based sheet'],
-      ['Care','Avoid moisture and direct sunlight','Please see <a href="/faq" data-link>FAQ page</a> for detailed instructions on how to care for this material.']
+      ['Material & Care','Exterior Body: 100% compostable algae-based sheet','Avoid moisture and direct sunlight','Please see <a href="/faq" data-link>FAQ page</a> for detailed instructions on how to care for this material.']
     ]}
 };
 
@@ -581,6 +578,15 @@ const pages = {
   },
 
   /* Mobile product detail — Purse@2x / Bookmark@2x / Algae_Tote@2x.png */
+  mProductCopy(blocks, id){
+    const detailTitles = new Set(['Product Detail','Dimensions','Material & Care']);
+    const intro = blocks.filter(b=>!detailTitles.has(b[0])).map(b=>`<p>${b.join('<br>')}</p>`).join('');
+    const details = blocks.filter(b=>detailTitles.has(b[0]));
+    return `${intro}<div class="m2p-acc m2-acc" data-product-accordion>${details.map((b,i)=>`<div class="m2p-acc-item m2-acc-item" data-product-section>
+      <button class="m2p-acc-q m2-acc-q" data-acc aria-expanded="false" aria-controls="m2p-${id}-${i}"><span>${b[0]}</span><span class="chev" aria-hidden="true">&gt;</span></button>
+      <div class="m2p-acc-a m2-acc-a" id="m2p-${id}-${i}" data-product-content hidden>${b.slice(1).join('<br>')}</div>
+    </div>`).join('')}</div>`;
+  },
   mProduct(p){
     const m = M2_PRODUCT[p.id];
     return `<section class="m2p m2p-${p.id}" data-product="${p.id}">
@@ -590,7 +596,7 @@ const pages = {
       <div class="m2p-body">
         <div class="m2p-head"><h1 class="m2p-name">${esc(p.name)}</h1><span class="m2p-price" data-price>${m.price}</span></div>
         <p class="m2p-variant">${esc(m.variant)}</p>
-        ${m.blocks.map(b=>`<p>${b.join('<br>')}</p>`).join('')}
+        ${this.mProductCopy(m.blocks, p.id)}
         <button class="m2p-add" data-add disabled>Add to cart</button>
       </div>
     </section>`;
