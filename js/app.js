@@ -68,7 +68,7 @@ const M2_PRODUCT = {
       ['Dimensions','H: 6” x W: 7” D: 1.5”','Strap Drop: 5.25”'],
       ['Material & Care','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight']
     ]},
-  'salmon-bookmark': { variant:'Natural Crust', price:'$', images:['/img/m2-pd-bookmark.jpg','/img/bookmark-detail.jpg','/img/bookmark-texture.mp4'],
+  'salmon-bookmark': { variant:'Natural Crust', price:'$', images:['/img/m2-pd-bookmark.jpg','/img/bookmark-texture.mp4'],
     alt:'Salmon Bookmark, salmon leather front and horsehair lining',
     blocks:[
       ['A small piece of fish leather for your everyday reading. Made with leftover pieces from making the purses. Lined with horse hair classically used for suiting.'],
@@ -865,6 +865,7 @@ function render(path, y=0){
   foot.classList.toggle('hide', isMobileMaterials);
   foot.classList.toggle('foot-home', isHome); /* mobile_HOME.png shows a distinct footer style (sans-serif lead, wider link spacing) vs mobile_SHOP/_Purse/etc */
   foot.classList.toggle('foot-neutral', isProductDetail || (isMobile() && (isAboutMaterials || isProductList || isShop))); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png / mobile_SHOP.png: footer continues the neutral off-white/textured tone, not the warm --paper beige */
+  nav.classList.toggle('nav-product', isMobile() && isProductDetail); /* product pages: plain white header to match the white page body */
   nav.classList.toggle('nav-neutral', isMobile() && (isProductDetail || isAboutMaterials || isProductList)); /* mobile_Purse.png / mobile_Bookmark.png / mobile_About_Material-08/09/10.png / mobile_Product_List_Page.png: header bar is the SAME seamless neutral off-white paper texture as the page body below it — no beige blur bar, no dividing line */
   nav.classList.toggle('on-dark', isHome || (isMobile() && (path==='/shop' || path==='/shop/' || path.replace(/\/$/,'')==='/shop/ocean-season')));
   renderCart();

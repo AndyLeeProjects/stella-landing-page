@@ -22,7 +22,7 @@ try:
     def ev(expr):return send('Runtime.evaluate',expression=expr,returnByValue=True).get('result',{}).get('value')
     send('Page.enable');send('Page.navigate',url=f'http://localhost:{WEB}/');time.sleep(1)
     ev("localStorage.setItem('wrm-admin-unlocked','2504d0ac9df6c61a24511608889e47c745e57a249078e6269bf1284f89c3867f')")
-    for width,mobile,count in [(1440,False,4),(390,True,3)]:
+    for width,mobile,count in [(1440,False,4),(390,True,2)]:
         send('Emulation.setDeviceMetricsOverride',width=width,height=900,deviceScaleFactor=1,mobile=mobile)
         send('Page.navigate',url=f'http://localhost:{WEB}/product/salmon-bookmark');time.sleep(1)
         ev("document.querySelector('video[src=\"/img/bookmark-texture.mp4\"]').scrollIntoView({block:'center',inline:'center'})");time.sleep(1)
