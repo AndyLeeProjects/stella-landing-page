@@ -29,7 +29,7 @@ const PRODUCTS = {
     care:'Treat like any other leather products. Avoid direct sunlight.'
   },
   'algae-tote': {
-    id:'algae-tote', name:'Algae Tote', variant:'Natural', price:null, soon:true,
+    id:'algae-tote', name:'Algae Tote', variant:'Natural', price:150, soon:true,
     category:'Algae', season:'Ocean Season', images:['/img/algae-tote.jpg'],
     desc:'A translucent tote made from seaweed-based algae film. Still finding its shape.'
   }
@@ -79,7 +79,7 @@ const M2_PRODUCT = {
       ['Material','Leather: Ocean-caught Alaskan Sockeye Salmon','Lining: Horsehair'],
       ['Care','Treat like any other leather products.','Avoid direct sunlight.']
     ]},
-  'algae-tote': { variant:'Natural', price:'$', images:['/img/m2-pd-tote.jpg'],
+  'algae-tote': { variant:'Natural', price:'$150.00', images:['/img/m2-pd-tote.jpg'],
     alt:'Algae Tote, translucent seaweed-based sheet',
     blocks:[
       ['Your classic everyday tote made with algae. The seaweed is dehydrated and processed into a powder form, which then formulated and turned into sheets by Sway (learn more about Sway in our <a href="/about-materials/algae" data-link>materials page</a>).'],
@@ -522,7 +522,7 @@ const pages = {
       <img class="m2s-ocean" src="/img/illustration-ocean.png" alt="">
       ${item('m2s-purse','/product/salmon-purse','/img/m2-shop-purse.jpg','Salmon Purse','Natural Crust','$0')}
       ${item('m2s-bookmark','/product/salmon-bookmark','/img/m2-shop-bookmark.jpg','Salmon Bookmark','Natural Crust','$0')}
-      ${item('m2s-tote','/product/algae-tote','/img/m2-shop-tote.jpg','Algae Tote','Natural','$0')}
+      ${item('m2s-tote','/product/algae-tote','/img/m2-shop-tote.jpg','Algae Tote','Natural','$150.00')}
     </section>`;
   },
 

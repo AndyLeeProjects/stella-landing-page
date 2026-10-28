@@ -45,8 +45,8 @@ window.WRMDesktop = (() => {
   /* SHOP@2x.png */
   function shop(){
     document.title = 'Shop — WRM';
-    const cap = (name, sub) => `<span class="d2-cap"><span class="d2-cap-name">${name}</span><span class="d2-cap-price" data-card-price>$0</span><span class="d2-cap-sub">${sub}</span></span>`;
-    const card = (cls, href, name, alt, title, sub) => `<a class="d2s-card ${cls}" href="${href}" data-link>${photo(name, alt)}${cap(title, sub)}</a>`;
+    const cap = (name, sub, price='$0') => `<span class="d2-cap"><span class="d2-cap-name">${name}</span><span class="d2-cap-price" data-card-price>${price}</span><span class="d2-cap-sub">${sub}</span></span>`;
+    const card = (cls, href, name, alt, title, sub, price) => `<a class="d2s-card ${cls}" href="${href}" data-link>${photo(name, alt)}${cap(title, sub, price)}</a>`;
     return `<div class="d2-page d2-shop">
       <h1 class="d2-sr">Shop — Ocean Collection</h1>
       ${ocean('d2s-ocean')}
@@ -59,7 +59,7 @@ window.WRMDesktop = (() => {
         <h2 class="d2-collection-title" id="d2s-coll">The Collection</h2>
         ${card('d2s-c-purse','/product/salmon-purse','shop-c-purse','Salmon Purse','Salmon Purse','Natural Crust')}
         ${card('d2s-c-bookmark','/product/salmon-bookmark','shop-c-bookmark','Salmon Bookmark','Salmon Bookmark','Natural Crust')}
-        ${card('d2s-c-tote','/product/algae-tote','shop-c-tote','Algae Tote','Algae Tote','Natural')}
+        ${card('d2s-c-tote','/product/algae-tote','shop-c-tote','Algae Tote','Algae Tote','Natural','$150.00')}
       </section>
     </div>`;
   }
@@ -88,7 +88,7 @@ window.WRMDesktop = (() => {
         ['Material and Care','Exterior: 100% Ocean-Caught Alaskan Sockeye Salmon','Lining: 100% Korean Hemp fabric'],
         ['Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight']],
       more:'<p class="d2p-more">Learn more about fish leather <a href="/about-materials/fish-leather" data-link><em>here</em></a></p>'},
-    'algae-tote': {name:'Algae Tote', soon:true, photos:[
+    'algae-tote': {name:'Algae Tote', price:'$150.00', soon:true, photos:[
         ['pd-tote-1','Algae Tote, translucent seaweed-based sheet, backlit'],['pd-tote-2','Algae Tote in natural, lit from the side']],
       blocks:[['Natural'],
         ['Your classic everyday tote made with algae. The seaweed is dehydrated and processed into a powder form, which then formulated and turned into sheets by Sway (learn more about Sway in our <a href="/about-materials/algae" data-link>materials page</a>).'],
@@ -105,7 +105,7 @@ window.WRMDesktop = (() => {
     return `<div class="d2-page d2-product d2p-${id}" data-product="${id}">
       <div class="d2p-gallery">${p.photos.map(([n,alt],i)=>photo(n, alt, i===0, `d2p-ph d2p-ph${i+1}`)).join('')}</div>
       <div class="d2p-info">
-        <div class="d2p-head"><h1>${p.name}</h1><span class="d2p-price" data-price>$0.00</span></div>
+        <div class="d2p-head"><h1>${p.name}</h1><span class="d2p-price" data-price>${p.price || '$0.00'}</span></div>
         <div class="d2p-copy">
           ${p.blocks.map(b=>`<p>${b.join('<br>')}</p>`).join('')}
           ${p.more}
