@@ -132,10 +132,10 @@
   .d2s-c-tote{left:54.8611vw;width:42.8472vw}
 
   /* ---- Product detail (Salmon Purse / Bookmark / Algae Tote @2x.png) ---- */
-  .d2-product{background:#fff}
-  .d2p-gallery{width:50vw}
+  .d2-product{display:grid;grid-template-columns:50vw 50vw;align-items:start;overflow:clip;background:#fff}
+  .d2p-gallery{grid-column:1;grid-row:1;width:50vw}
   .d2p-ph{width:100%}
-  .d2p-info{position:absolute;left:62.2917vw;top:9.8611vw;width:24.7917vw}
+  .d2p-info{position:sticky;grid-column:2;grid-row:1;top:calc(5.5556vw + 20px);width:24.7917vw;margin:9.8611vw 0 0 12.2917vw}
   .d2p-head{display:flex;justify-content:space-between;align-items:baseline;padding:0 0.7639vw 2.2917vw 0.2083vw;border-bottom:1px solid #a8a8a8}
   .d2p-head h1{margin:0;font:600 1.1875vw/1 var(--d2-serif);letter-spacing:.035em}
   .d2p-price{font:400 0.9167vw/1 var(--d2-sans)}
@@ -157,13 +157,13 @@
   .d2p-salmon-bookmark .d2p-ph1{position:absolute;left:0;top:0;width:100vw;height:61.1111vw}
   .d2p-salmon-bookmark .d2p-ph2{margin-top:61.1111vw;height:57.7778vw}
   .d2p-salmon-bookmark .d2p-ph3{height:66.3194vw}
-  .d2p-salmon-bookmark .d2p-info{top:73.4028vw}
+  .d2p-salmon-bookmark .d2p-info{margin-top:73.4028vw}
   .d2p-salmon-bookmark .d2p-head{padding-bottom:0.9028vw}
   .d2p-algae-tote{height:119.9306vw}
   .d2p-algae-tote .d2p-gallery{width:50.2778vw}
   .d2p-algae-tote .d2p-ph1{height:82.9167vw}
   .d2p-algae-tote .d2p-ph2{height:37.0139vw}
-  .d2p-algae-tote .d2p-info{top:19.3056vw}
+  .d2p-algae-tote .d2p-info{margin-top:calc(19.3056vw - 20px)}
   .d2p-algae-tote .d2p-head{padding-bottom:2.5vw}
 
   /* ---- About Materials (Mateiral Story@2x.png) ---- */
