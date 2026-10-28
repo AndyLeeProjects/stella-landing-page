@@ -763,7 +763,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body.m2 .m2p-body p{margin:calc(30*var(--u)) 0 0}
   body.m2 .m2p-body p.m2p-variant{margin-top:calc(19*var(--u))}
   body.m2 .m2p-body a{color:inherit;text-decoration:none}
-  body.m2 .m2p-add{display:inline-block;margin:calc(30*var(--u)) 0 0;padding:0;min-height:44px;font:inherit;color:#111;text-decoration:underline;text-underline-offset:calc(5*var(--u));background:none;border:0}
+  body.m2 .m2p-add{display:flex;align-items:center;justify-content:center;width:calc(100% + 64*var(--u));height:calc(72*var(--u));min-height:44px;margin:calc(30*var(--u)) 0 0 calc(-32*var(--u));padding:0;border:1px solid #000;border-radius:0;background:#000;color:#fff;font:inherit;text-decoration:none;opacity:1}
   body.m2 .m2p-salmon-bookmark .m2p-gallery{height:calc(1009*var(--u))}
   body.m2 .m2p-salmon-bookmark .m2p-slide:first-child img{position:absolute;left:calc(66*var(--u));top:calc(140*var(--u));width:calc(624*var(--u));height:calc(723*var(--u))}
   body.m2 .m2p-salmon-bookmark .m2p-body p:nth-of-type(6){margin-top:calc(60*var(--u))} /* Bookmark@2x: extra blank line before Material */
@@ -775,6 +775,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body.m2 .m2p-algae-tote .m2p-price{right:calc(34*var(--u))}
   body.m2 .m2p-algae-tote .m2p-head{margin-right:calc(19*var(--u))}
   body.m2 .m2p-acc.m2-acc{margin:calc(30*var(--u)) 0 calc(24*var(--u));border-top:calc(1*var(--u)) solid #8a8a8a}
+  body.m2 .m2p-acc .m2p-acc-q,body.m2 .m2p-acc .m2p-acc-a{font:inherit}
 
   /* ---- About Materials stories (Salmon_ / Algae_About_Material@2x.png) ---- */
   body.m2 .m2m{display:block;background:#fff;color:#111}
