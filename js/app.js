@@ -834,6 +834,7 @@ function render(path, y=0){
   closeMenu(); closeCart();
   const gated = !isUnlocked();
   document.body.classList.toggle('landing', gated);
+  document.body.classList.toggle('world-page', !gated && path.replace(/\/$/,'') === '/wrm-world');
   if(gated){
     document.body.classList.remove('m2','d2','m2-light','mobile-materials-original');
     app.innerHTML = `<div class="page">${landing()}</div>`;
