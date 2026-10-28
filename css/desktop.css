@@ -132,7 +132,7 @@
   .d2s-c-tote{left:54.8611vw;width:42.8472vw}
 
   /* ---- Product detail (Salmon Purse / Bookmark / Algae Tote @2x.png) ---- */
-  .d2-product{display:grid;grid-template-columns:50vw 50vw;align-items:start;overflow:clip;background:#fff}
+  .d2-product{display:grid;grid-template-columns:50vw 50vw;align-items:start;overflow:clip;margin-bottom:64px;background:#fff}
   .d2p-gallery{grid-column:1;grid-row:1;width:50vw}
   .d2p-ph{width:100%}
   .d2p-info{position:sticky;grid-column:2;grid-row:1;top:calc(5.5556vw + 30px);width:24.7917vw;margin:9.8611vw 0 0 12.2917vw}

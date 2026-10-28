@@ -749,7 +749,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body.m2 .m2s-bookmark .m2s-cap{margin-top:calc(-6*var(--u))}
 
   /* ---- Product detail (Purse@2x / Bookmark@2x / Algae_Tote@2x.png) ---- */
-  body.m2 .m2p{display:block;background:#E3E3E3;padding-top:calc(135*var(--u))}
+  body.m2 .m2p{display:block;margin-bottom:48px;background:#E3E3E3;padding-top:calc(135*var(--u))}
   body.m2 .m2p-gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;line-height:0;height:calc(967*var(--u));background:#fff}
   body.m2 .m2p-gallery::-webkit-scrollbar{display:none}
   body.m2 .m2p-slide{flex:0 0 100%;height:100%;overflow:hidden;scroll-snap-align:start;position:relative}
