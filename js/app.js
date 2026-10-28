@@ -68,7 +68,7 @@ const M2_PRODUCT = {
       ['Dimensions','H: 6” x W: 7” D: 1.5”','Strap Drop: 5.25”'],
       ['Material & Care','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight']
     ]},
-  'salmon-bookmark': { variant:'Natural Crust', price:'$', images:['/img/m2-pd-bookmark.jpg','/img/bookmark-detail.jpg'],
+  'salmon-bookmark': { variant:'Natural Crust', price:'$', images:['/img/m2-pd-bookmark.jpg','/img/bookmark-detail.jpg','/img/bookmark-texture.mp4'],
     alt:'Salmon Bookmark, salmon leather front and horsehair lining',
     blocks:[
       ['A small piece of fish leather for your everyday reading. Made with leftover pieces from making the purses. Lined with horse hair classically used for suiting.'],
@@ -591,7 +591,9 @@ const pages = {
     const m = M2_PRODUCT[p.id];
     return `<section class="m2p m2p-${p.id}" data-product="${p.id}">
       <div class="m2p-gallery" id="pdStrip" aria-label="${esc(p.name)} photos">
-        ${m.images.map((src,i)=>`<div class="m2p-slide"><img src="${src}" alt="${esc(i?p.name+' — detail':m.alt)}"${i?' loading="lazy"':' fetchpriority="high"'}></div>`).join('')}
+        ${m.images.map((src,i)=>`<div class="m2p-slide">${src.endsWith('.mp4')
+          ? `<video src="${src}" aria-label="${esc(p.name+' — detail animation')}" autoplay muted loop playsinline preload="metadata"></video>`
+          : `<img src="${src}" alt="${esc(i?p.name+' — detail':m.alt)}"${i?' loading="lazy"':' fetchpriority="high"'}>`}</div>`).join('')}
       </div>
       <div class="m2p-body">
         <div class="m2p-head"><h1 class="m2p-name">${esc(p.name)}</h1><span class="m2p-price" data-price>${m.price}</span></div>

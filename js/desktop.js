@@ -6,6 +6,9 @@ window.WRMDesktop = (() => {
   'use strict';
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const photo = (name, alt, eager=false, cls='') => `<img${cls?` class="${cls}"`:''} src="/img/d2-${name}.jpg" alt="${esc(alt)}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
+  const productMedia = (name, alt, eager=false, cls='') => name.endsWith('.mp4')
+    ? `<video${cls?` class="${cls}"`:''} src="/img/${name}" aria-label="${esc(alt)}" autoplay muted loop playsinline preload="metadata"></video>`
+    : photo(name, alt, eager, cls);
   const ocean = (cls) => `<img class="${cls}" src="/img/illustration-ocean.png" alt="" aria-hidden="true">`;
   const boxLink = (href, label, cls='') => `<a class="d2-box ${cls}" href="${href}" data-link>${label}</a>`;
 
@@ -78,7 +81,7 @@ window.WRMDesktop = (() => {
       more:'<p class="d2p-more">Learn more about fish leather <a href="/about-materials/fish-leather" data-link><em>here</em></a></p>'},
     'salmon-bookmark': {name:'Salmon Bookmark', photos:[
         ['pd-bm-1','Salmon Bookmark lining with its WITH RAW MATERIALS label on an open book'],['pd-bm-2','Salmon Bookmark, salmon leather front and lining'],
-        ['pd-bm-3','Strips of tanned salmon skin']],
+        ['pd-bm-3','Strips of tanned salmon skin'],['bookmark-texture.mp4','Salmon leather bookmark strips arranged on woven fabric']],
       blocks:[['Natural Crust'],
         ['A small piece of fish leather for your everyday reading.','Lined with horse hair classically used for suiting.'],
         ['Textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical.'],
@@ -109,7 +112,7 @@ window.WRMDesktop = (() => {
     const p = PRODUCTS[id];
     document.title = `${p.name} — WRM`;
     return `<div class="d2-page d2-product d2p-${id}" data-product="${id}">
-      <div class="d2p-gallery">${p.photos.map(([n,alt],i)=>photo(n, alt, i===0, `d2p-ph d2p-ph${i+1}`)).join('')}</div>
+      <div class="d2p-gallery">${p.photos.map(([n,alt],i)=>productMedia(n, alt, i===0, `d2p-ph d2p-ph${i+1}`)).join('')}</div>
       <div class="d2p-info">
         <div class="d2p-head"><h1>${p.name}</h1><span class="d2p-price" data-price>${p.price || '$0.00'}</span></div>
         <div class="d2p-copy">
