@@ -90,6 +90,7 @@
   .d2h-ocean{position:absolute;left:28.0556vw;top:17.2917vw;width:43.2639vw;height:auto;filter:brightness(0) invert(1)}
   .d2h-chapter{position:absolute;left:45.3472vw;top:25.5556vw;margin:0;white-space:nowrap;text-transform:uppercase;font:italic 400 1.2431vw/1 var(--d2-it);letter-spacing:.075em}
   .d2h-lede{position:absolute;left:29.8611vw;top:39.8611vw;width:41.6667vw;margin:0;text-align:center;font:400 1.0556vw/1.125vw var(--d2-grotesk)}
+  .d2h-ocean,.d2h-chapter,.d2h-lede{transform:translateY(-5px)}
   .d2h-credit{position:absolute;left:0;right:0;top:122.9167vw;margin:0;text-align:center;font:400 0.6597vw/1 var(--d2-sans);opacity:.9}
   .d2h-collection{position:absolute;left:0;top:126.7361vw;width:100%;height:65.9722vw}
   .d2h-collection .d2-collection-title{left:8.75vw;top:5.2083vw;font-size:1.7396vw}
