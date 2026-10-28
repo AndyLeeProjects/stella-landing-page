@@ -571,7 +571,6 @@ h1 .soft{font-style:italic;color:var(--muted)}
      warm-beige blurred bar, no dividing shadow line, matches the mockup exactly. ---- */
   .nav.nav-neutral{background:#e9e8e6 url("/img/texture.jpg") repeat;background-size:900px 900px;background-blend-mode:multiply;
     backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
-  .nav.nav-neutral.nav-product{background:#fff}
 
 }
 
