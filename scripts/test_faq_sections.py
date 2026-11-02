@@ -21,7 +21,7 @@ try:
     send('Page.enable'); send('Network.setCacheDisabled',cacheDisabled=True)
     send('Page.navigate',url=BASE+'/'); time.sleep(1.5)
     ev("localStorage.setItem('wrm-admin-unlocked','2504d0ac9df6c61a24511608889e47c745e57a249078e6269bf1284f89c3867f')")
-    expected={'Shipping':1,'Fish Leather':19,'Algae':7}
+    expected={'Shipping':1,'Fish Leather':11,'Algae':7}
     for width,mobile in [(1440,False),(390,True)]:
         send('Emulation.setDeviceMetricsOverride',width=width,height=900,deviceScaleFactor=1,mobile=mobile)
         send('Page.navigate',url=BASE+'/faq'); time.sleep(1.5)

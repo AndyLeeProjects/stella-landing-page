@@ -93,28 +93,20 @@ const M2_MATERIAL_FAQ = {
   fish: [
     ['Material & Performance', [
       ['How strong is it?','Salmon leather is stronger than cowhide of the same weight. Its fibers cross rather than run in a single direction, a structure shaped by the fish’s need to move through water.'],
-      ['Is it waterproof?','Not by nature. We recommend keeping it dry and away from prolonged moisture.'],
-      ['How does it wear over time?','The leather softens with use, and patinas into a natural darker shade over time. A natural patina rather than wear.'],
-      ['Does the texture vary piece to piece?','Yes. Please understand that each skin is unique, and no two pieces are identical!'],
-      ['Does the color fade in sunlight?','As with any natural leather, prolonged direct sunlight will expedite the darkening of the tone over time. We recommend storing it out of direct light.']]],
+      ['Is each piece unique?','Yes. Each skin is unique, so texture and color vary from piece to piece. Every piece is one of one, and no two are identical.'],
+      ['How does it age over time?','The leather softens with use and patinas into a natural darker shade over time. As with any natural leather, prolonged direct sunlight will speed up this darkening, so we recommend storing it out of direct light.'],
+      ['Is it waterproof, and can it get wet?','Not by nature. We recommend keeping it dry and away from prolonged moisture. If you get caught in the rain, this is not the bag to use as cover. If it does get wet, allow it to air dry away from direct heat.']]],
     ['Living With It', [
+      ['How do I clean and care for it?','Wipe with a soft, dry cloth. Avoid water and household cleaning products. You may use wax to buff the area afterwards. No regular conditioning is required. Store it in a cool, dry place, away from direct sunlight, ideally in its dust bag.'],
       ['What does it smell like?','Properly tanned leather carries zero to barely any scent of fish.'],
-      ['Will my pet eat it?','It is leather, and should be treated with the same care as any fine leather good around pets.'],
-      ['How do I clean it?','Wipe with a soft, dry cloth. Avoid water and household cleaning products. You may use wax to buff the area afterwards.'],
-      ['Can it get wet?','If you get caught in the rain, this is not the bag to use as cover. We recommend against getting wet. If it happens, allow it to air dry away from direct heat.'],
-      ['How should I store it?','In a cool, dry place, away from direct sunlight — ideally in its dust bag.'],
-      ['Does it need conditioning?','No regular conditioning is required.']]],
+      ['Will my pet eat it?','It is leather, and should be treated with the same care as any fine leather good around pets.']]],
     ['Origin & Sourcing', [
-      ['Where does the salmon skin come from?','The tannery works closely with a sushi restaurant group to collect the skins. The restaurant uses ocean-caught Alaskan salmon; the tannery takes what would otherwise be discarded.'],
-      ['Is this a byproduct, or is the fish farmed for the leather?','A byproduct of the restaurant industry. No fish is farmed for the leather.'],
-      ['Is the fish also used for food?','Yes. The fillet is served at the restaurant the tannery works with.'],
+      ['Where does the salmon skin come from?','The tannery works closely with a sushi restaurant group to collect the skins. The restaurant uses ocean-caught Alaskan salmon and serves the fillet, and the tannery takes the skin that would otherwise be discarded. It is a byproduct of the restaurant industry. No fish is farmed for the leather.'],
       ['Is it vegan?','No. This is an animal material.']]],
     ['Circularity & End of Life', [
       ['What happens to it, eventually?','The leather is tanned without chromium, so it can return to soil at the end of its life. Thread selection and full compostability testing for the finished object are ongoing.']]],
     ['Value & Ownership', [
-      ['How long will it last?','The material is built for use over years.'],
-      ['Is each piece one of one?','Each bag is one of one. no two are identical due to the nature of the skin'],
-      ['Can it be repaired if damaged?','Contact us directly to discuss repair.']]]
+      ['How long will it last, and can it be repaired?','The material is built for use over years. If it is ever damaged, contact us directly to discuss repair.']]]
   ],
   algae: [
     ['Material & Performance', [
