@@ -805,7 +805,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body.m2 .m2m-kanten img{width:calc(353*var(--u));margin-left:calc(108*var(--u))}
   body.m2 .m2m-sway img{width:calc(291*var(--u));margin-left:calc(172.7*var(--u))}
   body.m2 .m2m-fig figcaption{margin-top:calc(12*var(--u));font:italic 400 calc(18.8*var(--u))/1.2 var(--m-serif)}
-  body.m2 .m2m-kanten figcaption{padding-left:calc(165*var(--u))}
+  body.m2 .m2m-kanten figcaption{padding-left:calc(108*var(--u))}
   body.m2 .m2m-kanten{margin-bottom:calc(93*var(--u))}
   body.m2 .m2m-sway{margin-top:calc(49*var(--u))}
   body.m2 .m2m-sway figcaption{margin-top:calc(1*var(--u))}
