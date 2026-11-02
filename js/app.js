@@ -780,9 +780,16 @@ const pages = {
 
   faq(){
     document.title = 'FAQ — WRM';
-    if(isMobile()) return `<section class="m2f"><h1 class="m2f-title">FAQ</h1>${pages.m2Accordion([['Shipping', M2_FAQ],
-      ...M2_MATERIAL_FAQ.fish.map(([t,qa])=>[`Fish Leather — ${t}`, qa]),
-      ...M2_MATERIAL_FAQ.algae.map(([t,qa])=>[`Algae — ${t}`, qa])], 'Frequently asked questions')}</section>`;
+    if(isMobile()){
+      const flat = groups => groups.flatMap(([, qa]) => qa);
+      const sections = [['Shipping', M2_FAQ], ['Fish Leather', flat(M2_MATERIAL_FAQ.fish)], ['Algae', flat(M2_MATERIAL_FAQ.algae)]];
+      return `<section class="m2f"><h1 class="m2f-title">FAQ</h1>${sections.map(([title, qa], s)=>`
+        <section class="m2f-section" data-faq-section aria-labelledby="m2faq-h${s}"><h2 class="m2f-h" id="m2faq-h${s}">${esc(title)}</h2>
+        <div class="m2-acc">${qa.map(([q,a], i)=>`<div class="m2-acc-item">
+          <button class="m2-acc-q" data-acc aria-expanded="false" aria-controls="m2faq-${s}-${i}"><span>${esc(q)}</span><span class="chev" aria-hidden="true">&gt;</span></button>
+          <div class="m2-acc-a" id="m2faq-${s}-${i}" hidden><p>${esc(a)}</p></div>
+        </div>`).join('')}</div></section>`).join('')}</section>`;
+    }
     return `<section class="pg editorial"><div class="ed-page">
       ${crumbs([['Home','/'],['FAQ']])}
       <h1 class="pg-title">Questions</h1>

@@ -198,13 +198,17 @@ window.WRMDesktop = (() => {
   function faq(){
     document.title = 'FAQ — WRM';
     const data = window.WRMData || {};
-    const groups = [['Shipping', data.M2_FAQ || []], ...((data.M2_MATERIAL_FAQ?.fish)||[]).map(([t,qa])=>[`Fish Leather — ${t}`, qa]), ...((data.M2_MATERIAL_FAQ?.algae)||[]).map(([t,qa])=>[`Algae — ${t}`, qa])];
+    const flat = groups => (groups || []).flatMap(([, qa]) => qa);
+    const sections = [['Shipping', data.M2_FAQ || []], ['Fish Leather', flat(data.M2_MATERIAL_FAQ?.fish)], ['Algae', flat(data.M2_MATERIAL_FAQ?.algae)]];
     return `<div class="d2-page d2-faq">
       <h1>FAQ</h1>
-      <div class="d2-acc">${groups.map(([topic, qa], i)=>`<div class="d2-acc-item">
-        <button class="d2-acc-q" data-acc aria-expanded="${i===0}" aria-controls="d2acc-${i}"><span>${esc(topic)}</span><span class="d2-chev" aria-hidden="true"></span></button>
-        <div class="d2-acc-a" id="d2acc-${i}"${i===0?'':' hidden'}>${qa.map(([q,a])=>`<p class="d2-acc-qq">${esc(q)}</p><p>${esc(a)}</p>`).join('')}</div>
-      </div>`).join('')}</div>
+      ${sections.map(([title, qa], s)=>`<section class="d2-faq-section" data-faq-section aria-labelledby="d2faq-h${s}">
+        <h2 class="d2-faq-h" id="d2faq-h${s}">${esc(title)}</h2>
+        <div class="d2-acc">${qa.map(([q,a], i)=>`<div class="d2-acc-item">
+          <button class="d2-acc-q" data-acc aria-expanded="false" aria-controls="d2faq-${s}-${i}"><span>${esc(q)}</span><span class="d2-chev" aria-hidden="true"></span></button>
+          <div class="d2-acc-a" id="d2faq-${s}-${i}" hidden><p>${esc(a)}</p></div>
+        </div>`).join('')}</div>
+      </section>`).join('')}
     </div>`;
   }
 
