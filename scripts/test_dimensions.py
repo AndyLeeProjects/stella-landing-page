@@ -5,8 +5,8 @@ ROOT='/root/projects/stella'; BASE=sys.argv[1] if len(sys.argv)>1 else None; WEB
 server=None if BASE else subprocess.Popen(['python3','serve.py',str(WEB)],cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 BASE=BASE or f'http://localhost:{WEB}'
 EXPECT={'salmon-purse':['Height: 15.2 cm | 6”','Width: 17.8 cm | 7”','Depth: 3.8 cm | 1.5”','Strap Drop: 13.3 cm | 5.25”'],
-        'salmon-bookmark':['Height: 17 cm | 6.7”','Width: 5.1 cm | 2”'],
-        'algae-tote':['Height: 15.2 cm | 6”','Width: 17.8 cm | 7”','Depth: 3.8 cm | 1.5”','Strap Drop: 13.3 cm | 5.25”']}
+        'salmon-bookmark':['Height: 16.5 cm | 6.5”','Width: 5.1 cm | 2”'],
+        'algae-tote':['Height: x cm | x”','Width: x cm | x”','Depth: x cm | x”','Strap Drop: x cm | x”']}
 chrome=None
 try:
     time.sleep(.8)

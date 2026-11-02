@@ -74,7 +74,7 @@ const M2_PRODUCT = {
       ['A small piece of fish leather for your everyday reading. Made with leftover pieces from making the purses. Lined with horse hair classically used for suiting.'],
       ['Please note the textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical.'],
       ['Product Detail','Made in San Francisco'],
-      ['Dimensions','Height: 17 cm | 6.7”','Width: 5.1 cm | 2”'],
+      ['Dimensions','Height: 16.5 cm | 6.5”','Width: 5.1 cm | 2”'],
       ['Material & Care','Leather: Ocean-caught Alaskan Sockeye Salmon','Lining: Horsehair','Treat like any other leather products.','Avoid direct sunlight.']
     ]},
   'algae-tote': { variant:'Natural', price:'$150.00', images:['/img/m2-pd-tote.jpg'],
@@ -83,7 +83,7 @@ const M2_PRODUCT = {
       ['Your classic everyday tote made with algae. The seaweed is dehydrated and processed into a powder form, which then formulated and turned into sheets by Sway (learn more about Sway in our <a href="/about-materials/algae" data-link>materials page</a>).'],
       ['You can expect a waxed canvas-like hand feel. The waxiness will disappear with wear. Please note the textures and colors of the bags vary piece to piece.'],
       ['Product Detail','Manufactured in San Francisco'],
-      ['Dimensions','Height: 15.2 cm | 6”','Width: 17.8 cm | 7”','Depth: 3.8 cm | 1.5”','Strap Drop: 13.3 cm | 5.25”'],
+      ['Dimensions','Height: x cm | x”','Width: x cm | x”','Depth: x cm | x”','Strap Drop: x cm | x”'],
       ['Material & Care','Exterior Body: 100% compostable algae-based sheet','Avoid moisture and direct sunlight','Please see <a href="/faq" data-link>FAQ page</a> for detailed instructions on how to care for this material.']
     ]}
 };
