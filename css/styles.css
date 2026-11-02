@@ -743,7 +743,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body.m2 .m2s-bookmark{margin-top:calc(68*var(--u))}
   body.m2 .m2s-bookmark .m2s-img{margin-left:calc(25*var(--u));width:calc(700*var(--u));height:calc(879*var(--u))}
   body.m2 .m2s-tote{margin-top:calc(90*var(--u))}
-  body.m2 .m2s-algae .m2s-tote{margin-top:0} /* Shop > Algae: the tote is the only item */
+  body.m2 .m2s-algae .m2s-tote{margin-top:calc(277*var(--u))} /* Shop > Algae: the tote is the only item; sits below the 'Ocean' drawing (ink ends ~404u) */
   body.m2 .m2s-algae{min-height:calc(100svh - 126px)} /* single item: keep the footer at the bottom of the screen */
   body.m2 .m2s-tote .m2s-img{margin-left:calc(20*var(--u));width:calc(711*var(--u));height:calc(534*var(--u))}
   body.m2 .m2s-cap{position:relative;display:block;height:calc(78*var(--u));margin:0 calc(46*var(--u)) 0 calc(48*var(--u))}
