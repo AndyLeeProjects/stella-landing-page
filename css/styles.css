@@ -922,4 +922,4 @@ body.landing::before,body.landing::after{display:block}
 .pd-more-info{display:block;margin-top:1em}
 .pd-more-info a.pd-faq-link,body.m2 .m2p-body .pd-more-info a.pd-faq-link{font-weight:700;text-decoration:underline;text-underline-offset:.15em;color:inherit}
 /* Algae Tote copy: "Sway" + "materials page" link to the algae story, underlined (desktop + mobile) */
-.pd-inline-link,body.m2 .m2p-body a.pd-inline-link,body.d2 .d2p-copy a.pd-inline-link{color:inherit;text-decoration:underline;text-underline-offset:.15em}
+.pd-inline-link,body.m2 .m2p-body a.pd-inline-link,body.d2 .d2p-copy a.pd-inline-link{color:inherit;text-decoration:underline;text-underline-offset:.15em;white-space:nowrap}

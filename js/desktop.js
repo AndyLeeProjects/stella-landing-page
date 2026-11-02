@@ -73,7 +73,7 @@ window.WRMDesktop = (() => {
         ['pd-purse-1','Salmon Purse, front, in natural crust salmon leather'],
         ['pd-purse-3','Salmon leather grain, close'],['pd-purse-4','Corner of the Salmon Purse on a blue backdrop'],['pd-purse-5','Salmon Purse carried in a car']],
       blocks:[['Natural Crust'],
-        ['Your classic evening purse made with ocean-caught salmon leather. Fits your essentials. Pleated sides, lined with Korean hemp, finished with invisible magnet closure.'],
+        ['Your classic evening purse made with ocean-caught salmon leather. Fits your essentials. Pleated sides, lined with Korean hemp, finished with invisible magnet closure. Processed and tanned by <a class="pd-inline-link" href="/about-materials/fish-leather" data-link>7 Leagues Leather</a>.'],
         ['Please note the textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical.'],
         ['Product Detail','Made in San Francisco'],
         ['Dimensions','Height: 6” | 15.2 cm','Width: 7” | 17.8 cm','Depth: 1.5” | 3.8 cm','Strap Drop: 5.25” | 13.3 cm'],
