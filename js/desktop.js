@@ -92,7 +92,7 @@ window.WRMDesktop = (() => {
     'algae-tote': {name:'Algae Tote', price:'$150.00', soon:true, photos:[
         ['pd-tote-1','Algae Tote, translucent seaweed-based sheet, backlit'],['pd-tote-2','Algae Tote in natural, lit from the side']],
       blocks:[['Natural'],
-        ['Your classic everyday tote made with algae. The seaweed is dehydrated and processed into a powder form, which then formulated and turned into sheets by Sway (learn more about Sway in our <a href="/about-materials/algae" data-link>materials page</a>).'],
+        ['Your classic everyday tote made with algae. The seaweed is dehydrated and processed into a powder form, which then formulated and turned into sheets by <a class="pd-inline-link" href="/about-materials/algae" data-link>Sway</a> (learn more about Sway in our <a class="pd-inline-link" href="/about-materials/algae" data-link>materials page</a>).'],
         ['You can expect a waxed canvas-like hand feel. The waxiness will disappear with wear. Please note the textures and colors of the bags vary piece to piece.'],
         ['Product Detail','Manufactured in San Francisco'],
         ['Dimensions','Height: x” | x cm','Width: x” | x cm','Depth: x” | x cm','Strap Drop: x” | x cm'],
