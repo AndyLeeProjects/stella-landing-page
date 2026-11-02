@@ -62,8 +62,8 @@ const M2_PRODUCT = {
   'salmon-purse': { variant:'Natural Crust', price:'$', images:['/img/m2-pd-purse.jpg','/img/purse-dark.jpg'],
     alt:'Salmon Purse in natural crust salmon leather',
     blocks:[
-      ['Your classic evening purse made with ocean-caught salmon leather. Fits your essentials. Pleated sides, lined with Korean hemp, finished with invisible magnet closure. Processed and tanned by <a class="pd-inline-link" href="/about-materials/fish-leather" data-link>7 Leagues Leather</a>.'],
-      ['Please note the textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical.'],
+      ['Your classic evening purse made with ocean-caught salmon leather. Fits your essentials. Pleated sides, lined with Korean hemp, finished with invisible magnet closure.'],
+      ['Please note the textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical. Leather is processed and tanned by <a class="pd-inline-link" href="/about-materials/fish-leather" data-link>7 Leagues Leather</a>.'],
       ['Product Detail','Made in San Francisco'],
       ['Dimensions','Height: 6” | 15.2 cm','Width: 7” | 17.8 cm','Depth: 1.5” | 3.8 cm','Strap Drop: 5.25” | 13.3 cm'],
       ['Material & Care','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>']
@@ -72,7 +72,7 @@ const M2_PRODUCT = {
     alt:'Salmon Bookmark, salmon leather front and horsehair lining',
     blocks:[
       ['A small piece of fish leather for your everyday reading. Made with leftover pieces from making the purses. Lined with horse hair classically used for suiting.'],
-      ['Please note the textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical.'],
+      ['Please note the textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical. Leather is processed and tanned by <a class="pd-inline-link" href="/about-materials/fish-leather" data-link>7 Leagues Leather</a>.'],
       ['Product Detail','Made in San Francisco'],
       ['Dimensions','Height: 6.5” | 16.5 cm','Width: 2” | 5.1 cm'],
       ['Material & Care','Leather: Ocean-caught Alaskan Sockeye Salmon','Lining: Horsehair','Treat like any other leather products.','Avoid direct sunlight.','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>']
