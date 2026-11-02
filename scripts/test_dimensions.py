@@ -34,8 +34,8 @@ try:
             assert got['lines']==want, f'{width} {handle}: got {got["lines"]}'
             mc=json.loads(ev("""(()=>{const b=[...document.querySelectorAll('[data-product-section] [data-acc]')].find(x=>x.textContent.trim().startsWith('Material'));
               b.click();const a=document.getElementById(b.getAttribute('aria-controls'));const ls=a.innerText.split('\\n').map(s=>s.trim()).filter(Boolean);
-              const links=[...a.querySelectorAll('a[href="/faq"]')];return JSON.stringify({last:ls[ls.length-1],faqLinks:links.length,linkText:links[0]?.textContent})})()"""))
-            assert mc['last']=='For more information, please visit our FAQ page.' and mc['faqLinks']==1 and mc['linkText']=='FAQ page', f'{width} {handle} material&care: {mc}'
+              const links=[...a.querySelectorAll('a[href="/faq"]')];const l=links[0],cs=l&&getComputedStyle(l),info=a.querySelector('.pd-more-info');const prev=info.previousSibling;const r=document.createRange();r.setStartBefore(a.firstChild);r.setEndAfter(prev);const rs=[...r.getClientRects()];const gap=info.getBoundingClientRect().top-Math.max(...rs.map(x=>x.bottom));return JSON.stringify({last:ls[ls.length-1],faqLinks:links.length,linkText:l?.textContent,bold:+cs.fontWeight>=700,underline:cs.textDecorationLine.includes('underline'),gap:Math.round(gap),lh:parseFloat(getComputedStyle(a).fontSize)})})()"""))
+            assert mc['last']=='For more information, please visit our FAQ page.' and mc['faqLinks']==1 and mc['bold'] and mc['underline'] and mc['lh']*0.6<=mc['gap']<=mc['lh']*1.6 and mc['linkText']=='FAQ', f'{width} {handle} material&care: {mc}'
             ev("[...document.querySelectorAll('[data-product-section] a[href=\"/faq\"]')].pop().click()"); time.sleep(1)
             assert ev("location.pathname")=='/faq', f'{width} {handle}: FAQ link did not navigate'
             print('PASS',width,handle,got['lines'],'| FAQ line ok')

@@ -917,3 +917,7 @@ body.landing::before,body.landing::after{display:block}
   .sp-info{position:static}
   .sp-more{grid-template-columns:1fr 1fr;gap:16px;padding:32px 16px 64px}
 }
+
+/* Material & Care: FAQ pointer on its own line with space above; "FAQ" bold + underlined (desktop + mobile) */
+.pd-more-info{display:block;margin-top:1em}
+.pd-more-info a.pd-faq-link,body.m2 .m2p-body .pd-more-info a.pd-faq-link{font-weight:700;text-decoration:underline;text-underline-offset:.15em;color:inherit}

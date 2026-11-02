@@ -77,7 +77,7 @@ window.WRMDesktop = (() => {
         ['Please note the textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical.'],
         ['Product Detail','Made in San Francisco'],
         ['Dimensions','Height: 6” | 15.2 cm','Width: 7” | 17.8 cm','Depth: 1.5” | 3.8 cm','Strap Drop: 5.25” | 13.3 cm'],
-        ['Material & Care','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight','For more information, please visit our <a href="/faq" data-link>FAQ page</a>.']],
+        ['Material & Care','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>']],
       more:'<p class="d2p-more">Learn more about fish leather <a href="/about-materials/fish-leather" data-link><em>here</em></a></p>'},
     'salmon-bookmark': {name:'Salmon Bookmark', photos:[
         ['pd-bm-1','Salmon Bookmark lining with its WITH RAW MATERIALS label on an open book'],['pd-bm-2','Salmon Bookmark, salmon leather front and lining'],
@@ -87,7 +87,7 @@ window.WRMDesktop = (() => {
         ['Textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical.'],
         ['Product Detail','Made in San Francisco'],
         ['Dimensions','Height: 6.5” | 16.5 cm','Width: 2” | 5.1 cm'],
-        ['Material & Care','Exterior: 100% Ocean-Caught Alaskan Sockeye Salmon','Lining: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight','For more information, please visit our <a href="/faq" data-link>FAQ page</a>.']],
+        ['Material & Care','Exterior: 100% Ocean-Caught Alaskan Sockeye Salmon','Lining: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>']],
       more:'<p class="d2p-more">Learn more about fish leather <a href="/about-materials/fish-leather" data-link><em>here</em></a></p>'},
     'algae-tote': {name:'Algae Tote', price:'$150.00', soon:true, photos:[
         ['pd-tote-1','Algae Tote, translucent seaweed-based sheet, backlit'],['pd-tote-2','Algae Tote in natural, lit from the side']],
@@ -96,7 +96,7 @@ window.WRMDesktop = (() => {
         ['You can expect a waxed canvas-like hand feel. The waxiness will disappear with wear. Please note the textures and colors of the bags vary piece to piece.'],
         ['Product Detail','Manufactured in San Francisco'],
         ['Dimensions','Height: x” | x cm','Width: x” | x cm','Depth: x” | x cm','Strap Drop: x” | x cm'],
-        ['Material & Care','Exterior Body: 100% compostable algae-based sheet','Avoid moisture and direct sunlight','For more information, please visit our <a href="/faq" data-link>FAQ page</a>.']],
+        ['Material & Care','Exterior Body: 100% compostable algae-based sheet','Avoid moisture and direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>']],
       more:''}
   };
   const detailTitles = new Set(['Product Detail','Dimensions','Material & Care']);

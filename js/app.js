@@ -66,7 +66,7 @@ const M2_PRODUCT = {
       ['Please note the textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical.'],
       ['Product Detail','Made in San Francisco'],
       ['Dimensions','Height: 6” | 15.2 cm','Width: 7” | 17.8 cm','Depth: 1.5” | 3.8 cm','Strap Drop: 5.25” | 13.3 cm'],
-      ['Material & Care','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight','For more information, please visit our <a href="/faq" data-link>FAQ page</a>.']
+      ['Material & Care','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>']
     ]},
   'salmon-bookmark': { variant:'Natural Crust', price:'$', images:['/img/m2-pd-bookmark.jpg','/img/bookmark-texture.mp4'],
     alt:'Salmon Bookmark, salmon leather front and horsehair lining',
@@ -75,7 +75,7 @@ const M2_PRODUCT = {
       ['Please note the textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical.'],
       ['Product Detail','Made in San Francisco'],
       ['Dimensions','Height: 6.5” | 16.5 cm','Width: 2” | 5.1 cm'],
-      ['Material & Care','Leather: Ocean-caught Alaskan Sockeye Salmon','Lining: Horsehair','Treat like any other leather products.','Avoid direct sunlight.','For more information, please visit our <a href="/faq" data-link>FAQ page</a>.']
+      ['Material & Care','Leather: Ocean-caught Alaskan Sockeye Salmon','Lining: Horsehair','Treat like any other leather products.','Avoid direct sunlight.','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>']
     ]},
   'algae-tote': { variant:'Natural', price:'$150.00', images:['/img/m2-pd-tote.jpg'],
     alt:'Algae Tote, translucent seaweed-based sheet',
@@ -84,7 +84,7 @@ const M2_PRODUCT = {
       ['You can expect a waxed canvas-like hand feel. The waxiness will disappear with wear. Please note the textures and colors of the bags vary piece to piece.'],
       ['Product Detail','Manufactured in San Francisco'],
       ['Dimensions','Height: x” | x cm','Width: x” | x cm','Depth: x” | x cm','Strap Drop: x” | x cm'],
-      ['Material & Care','Exterior Body: 100% compostable algae-based sheet','Avoid moisture and direct sunlight','For more information, please visit our <a href="/faq" data-link>FAQ page</a>.']
+      ['Material & Care','Exterior Body: 100% compostable algae-based sheet','Avoid moisture and direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>']
     ]}
 };
 
