@@ -4,9 +4,9 @@ import json, re, subprocess, sys, time, urllib.request, websocket
 ROOT='/root/projects/stella'; BASE=sys.argv[1] if len(sys.argv)>1 else None; WEB=8103; CDP=9383
 server=None if BASE else subprocess.Popen(['python3','serve.py',str(WEB)],cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 BASE=BASE or f'http://localhost:{WEB}'
-EXPECT={'salmon-purse':['Height: 15.2 cm | 6”','Width: 17.8 cm | 7”','Depth: 3.8 cm | 1.5”','Strap Drop: 13.3 cm | 5.25”'],
-        'salmon-bookmark':['Height: 16.5 cm | 6.5”','Width: 5.1 cm | 2”'],
-        'algae-tote':['Height: x cm | x”','Width: x cm | x”','Depth: x cm | x”','Strap Drop: x cm | x”']}
+EXPECT={'salmon-purse':['Height: 6” | 15.2 cm','Width: 7” | 17.8 cm','Depth: 1.5” | 3.8 cm','Strap Drop: 5.25” | 13.3 cm'],
+        'salmon-bookmark':['Height: 6.5” | 16.5 cm','Width: 2” | 5.1 cm'],
+        'algae-tote':['Height: x” | x cm','Width: x” | x cm','Depth: x” | x cm','Strap Drop: x” | x cm']}
 chrome=None
 try:
     time.sleep(.8)
@@ -32,7 +32,13 @@ try:
               return JSON.stringify({lines:a.innerText.split('\\n').map(s=>s.trim()).filter(Boolean),hidden:a.hidden,bullets:a.querySelectorAll('li').length})})()"""))
             assert not got['hidden'] and got['bullets']==0, f'{width} {handle}: {got}'
             assert got['lines']==want, f'{width} {handle}: got {got["lines"]}'
-            print('PASS',width,handle,got['lines'])
+            mc=json.loads(ev("""(()=>{const b=[...document.querySelectorAll('[data-product-section] [data-acc]')].find(x=>x.textContent.trim().startsWith('Material'));
+              b.click();const a=document.getElementById(b.getAttribute('aria-controls'));const ls=a.innerText.split('\\n').map(s=>s.trim()).filter(Boolean);
+              const links=[...a.querySelectorAll('a[href="/faq"]')];return JSON.stringify({last:ls[ls.length-1],faqLinks:links.length,linkText:links[0]?.textContent})})()"""))
+            assert mc['last']=='For more information, please visit our FAQ page.' and mc['faqLinks']==1 and mc['linkText']=='FAQ page', f'{width} {handle} material&care: {mc}'
+            ev("[...document.querySelectorAll('[data-product-section] a[href=\"/faq\"]')].pop().click()"); time.sleep(1)
+            assert ev("location.pathname")=='/faq', f'{width} {handle}: FAQ link did not navigate'
+            print('PASS',width,handle,got['lines'],'| FAQ line ok')
 finally:
     if chrome: chrome.kill()
     if server: server.kill()

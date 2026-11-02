@@ -76,8 +76,8 @@ window.WRMDesktop = (() => {
         ['Your classic evening purse made with ocean-caught salmon leather. Fits your essentials. Pleated sides, lined with Korean hemp, finished with invisible magnet closure.'],
         ['Please note the textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical.'],
         ['Product Detail','Made in San Francisco'],
-        ['Dimensions','Height: 15.2 cm | 6”','Width: 17.8 cm | 7”','Depth: 3.8 cm | 1.5”','Strap Drop: 13.3 cm | 5.25”'],
-        ['Material & Care','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight']],
+        ['Dimensions','Height: 6” | 15.2 cm','Width: 7” | 17.8 cm','Depth: 1.5” | 3.8 cm','Strap Drop: 5.25” | 13.3 cm'],
+        ['Material & Care','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight','For more information, please visit our <a href="/faq" data-link>FAQ page</a>.']],
       more:'<p class="d2p-more">Learn more about fish leather <a href="/about-materials/fish-leather" data-link><em>here</em></a></p>'},
     'salmon-bookmark': {name:'Salmon Bookmark', photos:[
         ['pd-bm-1','Salmon Bookmark lining with its WITH RAW MATERIALS label on an open book'],['pd-bm-2','Salmon Bookmark, salmon leather front and lining'],
@@ -86,8 +86,8 @@ window.WRMDesktop = (() => {
         ['A small piece of fish leather for your everyday reading.','Lined with horse hair classically used for suiting.'],
         ['Textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical.'],
         ['Product Detail','Made in San Francisco'],
-        ['Dimensions','Height: 16.5 cm | 6.5”','Width: 5.1 cm | 2”'],
-        ['Material & Care','Exterior: 100% Ocean-Caught Alaskan Sockeye Salmon','Lining: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight']],
+        ['Dimensions','Height: 6.5” | 16.5 cm','Width: 2” | 5.1 cm'],
+        ['Material & Care','Exterior: 100% Ocean-Caught Alaskan Sockeye Salmon','Lining: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight','For more information, please visit our <a href="/faq" data-link>FAQ page</a>.']],
       more:'<p class="d2p-more">Learn more about fish leather <a href="/about-materials/fish-leather" data-link><em>here</em></a></p>'},
     'algae-tote': {name:'Algae Tote', price:'$150.00', soon:true, photos:[
         ['pd-tote-1','Algae Tote, translucent seaweed-based sheet, backlit'],['pd-tote-2','Algae Tote in natural, lit from the side']],
@@ -95,8 +95,8 @@ window.WRMDesktop = (() => {
         ['Your classic everyday tote made with algae. The seaweed is dehydrated and processed into a powder form, which then formulated and turned into sheets by Sway (learn more about Sway in our <a href="/about-materials/algae" data-link>materials page</a>).'],
         ['You can expect a waxed canvas-like hand feel. The waxiness will disappear with wear. Please note the textures and colors of the bags vary piece to piece.'],
         ['Product Detail','Manufactured in San Francisco'],
-        ['Dimensions','Height: x cm | x”','Width: x cm | x”','Depth: x cm | x”','Strap Drop: x cm | x”'],
-        ['Material & Care','Exterior Body: 100% compostable algae-based sheet','Avoid moisture and direct sunlight','Please see <a href="/faq" data-link>FAQ page</a> for detailed instructions on how to care for this material.']],
+        ['Dimensions','Height: x” | x cm','Width: x” | x cm','Depth: x” | x cm','Strap Drop: x” | x cm'],
+        ['Material & Care','Exterior Body: 100% compostable algae-based sheet','Avoid moisture and direct sunlight','For more information, please visit our <a href="/faq" data-link>FAQ page</a>.']],
       more:''}
   };
   const detailTitles = new Set(['Product Detail','Dimensions','Material & Care']);
