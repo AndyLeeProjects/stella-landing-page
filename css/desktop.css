@@ -149,6 +149,11 @@
   .d2p-salmon-bookmark .d2p-copy p:nth-child(4){margin-top:1.25vw}
   .d2p-add{display:flex;align-items:center;justify-content:center;width:100%;height:max(36px,2.5vw);margin-top:1.25vw;padding:0;border:1px solid #000;border-radius:0;background:#000;color:#fff;font:inherit;text-decoration:none;opacity:1;cursor:pointer}
   .d2p-add:disabled{opacity:1}
+  .d2p-add.is-waitlist{background:#fff;color:#000}
+  .d2p-copy .waitlist-form{display:flex;flex-direction:column;gap:0.5556vw;margin-top:0.5556vw}
+  .d2p-copy .waitlist-form input{width:100%;height:max(36px,2.5vw);padding:0 0.8333vw;border:1px solid #000;border-radius:0;background:#fff;color:#000;font:inherit;outline:none}
+  .d2p-copy .waitlist-form .d2p-add{margin-top:0}
+  .d2p-copy .waitlist-done{margin:0.8333vw 0 0}
   /* Photo 2 of the artboard (three-quarter view on white) has no source photograph yet. */
   .d2p-salmon-purse{height:230.7639vw}
   .d2p-salmon-purse .d2p-ph1{height:65.4861vw}

@@ -232,10 +232,39 @@ function renderCart(){
 const variantLabel = v => v.selectedOptions.map(o=>o.value).join(' / ');
 function setAddButton(btn, p, v){
   btn.dataset.name = p.title;
+  btn.classList.remove('is-waitlist'); btn.removeAttribute('data-waitlist');
+  btn.parentElement.querySelector('.waitlist-form,.waitlist-done')?.remove();
   if(!v){ btn.disabled = true; btn.removeAttribute('data-variant'); btn.textContent = 'Coming soon'; return; }
+  if(!v.availableForSale){
+    /* Sold out: same box, white, opens an email field that goes to the Product Waitlist sheet. */
+    btn.removeAttribute('data-variant'); btn.disabled = false;
+    btn.classList.add('is-waitlist'); btn.dataset.waitlist = WAITLIST_NAMES[p.handle] || p.title;
+    btn.textContent = 'Join the waitlist'; return;
+  }
   btn.dataset.variant = v.id;
-  btn.disabled = !v.availableForSale;
-  btn.textContent = v.availableForSale ? 'Add to cart' : 'Sold out';
+  btn.disabled = false;
+  btn.textContent = 'Add to cart';
+}
+/* Product names as they appear in the Product Waitlist sheet. */
+const WAITLIST_NAMES = {'salmon-purse':'Salmon Bag','salmon-bookmark':'Bookmark','algae-tote':'Algae Tote'};
+function openWaitlist(btn){
+  const next = btn.nextElementSibling;
+  if(next?.matches('.waitlist-form')){ next.querySelector('input').focus(); return; }
+  if(next?.matches('.waitlist-done')) return;
+  btn.insertAdjacentHTML('afterend', `<form class="waitlist-form" data-waitlist-form="${esc(btn.dataset.waitlist)}">
+    <input type="email" required placeholder="Email" autocomplete="email" aria-label="Email for the ${esc(btn.dataset.waitlist)} waitlist">
+    <button type="submit" class="${esc(btn.className)}">Notify me</button></form>`);
+  btn.nextElementSibling.querySelector('input').focus();
+}
+async function joinWaitlist(form){
+  const input = form.querySelector('input'), sub = form.querySelector('button');
+  const email = input.value.trim(); if(!email) return;
+  sub.disabled = true; sub.textContent = 'Sending…';
+  try{
+    await fetch(NEWSLETTER,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify({email, source:'waitlist', product:form.dataset.waitlistForm})});
+    form.outerHTML = `<p class="waitlist-done" role="status">You’re on the list. We’ll email you when it’s restocked.</p>`;
+  }catch(e){ sub.disabled = false; sub.textContent = 'Try again'; }
 }
 async function hydrateProduct(handle){
   const page = app.querySelector('[data-product]'); if(!page) return;
@@ -893,6 +922,7 @@ document.addEventListener('click', e => {
   const shop = e.target.closest('[data-shop-link]'); if(shop){ e.preventDefault(); e.stopPropagation(); go('/shop'); return; }
   const a = e.target.closest('a[data-link]'); if(a){ e.preventDefault(); go(a.getAttribute('href')); return; }
   const tg = e.target.closest('[data-toggle]'); if(tg){ const open = tg.getAttribute('aria-expanded')==='true'; tg.setAttribute('aria-expanded',String(!open)); tg.nextElementSibling.classList.toggle('open',!open); return; }
+  const wl = e.target.closest('[data-waitlist]'); if(wl){ openWaitlist(wl); return; }
   const ad = e.target.closest('[data-add]'); if(ad){ add(ad); return; }
   const q = e.target.closest('[data-qty]'); if(q){ setQty(q.dataset.qty, +q.dataset.d); return; }
   const rm = e.target.closest('[data-remove]'); if(rm){ remove(rm.dataset.remove); return; }
@@ -910,6 +940,7 @@ document.addEventListener('keydown', e => {
 document.addEventListener('submit', e => {
   const f = e.target;
   if(f.matches('[data-newsletter]')){ e.preventDefault(); subscribe(f, f.dataset.newsletter); }
+  if(f.matches('[data-waitlist-form]')){ e.preventDefault(); joinWaitlist(f); }
   if(f.id==='footForm'){ e.preventDefault(); subscribe(f,'footer'); f.querySelector('input').value=''; }
 });
 menuBtn.addEventListener('click', ()=> menu.getAttribute('aria-hidden')==='false' ? closeMenu() : openMenu());
