@@ -244,6 +244,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
 .card-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .card-img.natural{aspect-ratio:auto}
 .card-img.natural img{height:auto}
+.grid-algae{grid-template-columns:minmax(0,640px)} /* Shop > Algae: one landscape tote, shown whole */
 @media (hover:hover){.card:hover .card-img img{transform:scale(1.03)}}
 .card-img .soon{position:absolute;right:14px;bottom:12px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#fff;opacity:.85}
 .card-txt{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0 0;font-family:var(--editorial)}
@@ -742,6 +743,8 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body.m2 .m2s-bookmark{margin-top:calc(68*var(--u))}
   body.m2 .m2s-bookmark .m2s-img{margin-left:calc(25*var(--u));width:calc(700*var(--u));height:calc(879*var(--u))}
   body.m2 .m2s-tote{margin-top:calc(90*var(--u))}
+  body.m2 .m2s-algae .m2s-tote{margin-top:0} /* Shop > Algae: the tote is the only item */
+  body.m2 .m2s-algae{min-height:calc(100svh - 126px)} /* single item: keep the footer at the bottom of the screen */
   body.m2 .m2s-tote .m2s-img{margin-left:calc(20*var(--u));width:calc(711*var(--u));height:calc(534*var(--u))}
   body.m2 .m2s-cap{position:relative;display:block;height:calc(78*var(--u));margin:0 calc(46*var(--u)) 0 calc(48*var(--u))}
   body.m2 .m2s-name{position:absolute;left:0;top:calc(29*var(--u));font:700 calc(22.8*var(--u))/1.2 var(--m-serif-up);font-variation-settings:'opsz' 12}

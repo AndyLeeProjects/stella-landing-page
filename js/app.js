@@ -40,7 +40,7 @@ const MENU = [
   { label:'Shop', to:'/shop', children:[
     { label:'Ocean', to:'/shop/ocean-season', children:[
       { label:'Fish Leather', to:'/shop/ocean-season/fish-leather' },
-      { label:'Algae', to:'/about-materials/algae' }
+      { label:'Algae', to:'/shop/ocean-season/algae' }
     ]}
   ]},
   { label:'About Materials', to:'/about-materials' },
@@ -338,7 +338,7 @@ function buildMenu(){
         </button>
         <div class="m2-menu-sub" id="m2menu-shop-sub" hidden>
           <a class="menu-item m2-menu-row m2-menu-sub-row" href="/shop/ocean-season/fish-leather" data-link><span class="m2-menu-label">Fish Leather</span><span class="chev" aria-hidden="true">&gt;</span></a>
-          <a class="menu-item m2-menu-row m2-menu-sub-row" href="/about-materials/algae" data-link><span class="m2-menu-label">Algae</span><span class="chev" aria-hidden="true">&gt;</span></a>
+          <a class="menu-item m2-menu-row m2-menu-sub-row" href="/shop/ocean-season/algae" data-link><span class="m2-menu-label">Algae</span><span class="chev" aria-hidden="true">&gt;</span></a>
         </div>
       </div>` +
       row('About Materials','/about-materials') +
@@ -529,18 +529,20 @@ const pages = {
   },
 
   /* Mobile shop — SHOP@2x.png: every product in Ocean Collection, as one list. */
-  mShopList(){
+  /* only: 'fish' (Shop > Fish Leather) or 'algae' (Shop > Algae); default shows everything. */
+  mShopList(only){
     const item = (cls, href, img, name, sub, price) => `
       <a class="m2s-item ${cls}" href="${href}" data-link>
         <span class="m2s-img"><img src="${img}" alt="${esc(name)}" loading="lazy"></span>
         <span class="m2s-cap"><span class="m2s-name">${esc(name)}</span><span class="m2s-price" data-card-price>${price}</span><span class="m2s-sub">${esc(sub)}</span></span>
       </a>`;
-    return `<section class="m2s" aria-label="Ocean Collection">
-      <h1 class="m2-sr">Ocean Collection</h1>
+    const label = only==='fish' ? 'Fish Leather' : only==='algae' ? 'Algae' : 'Ocean Collection';
+    return `<section class="m2s${only?` m2s-${only}`:''}" aria-label="${label}">
+      <h1 class="m2-sr">${label}</h1>
       <img class="m2s-ocean" src="/img/illustration-ocean.png" alt="">
-      ${item('m2s-purse','/product/salmon-purse','/img/m2-shop-purse.jpg','Salmon Purse','Natural Crust','$0')}
-      ${item('m2s-bookmark','/product/salmon-bookmark','/img/m2-shop-bookmark.jpg','Salmon Bookmark','Natural Crust','$0')}
-      ${item('m2s-tote','/product/algae-tote','/img/m2-shop-tote.jpg','Algae Tote','Natural','$150.00')}
+      ${only==='algae' ? '' : item('m2s-purse','/product/salmon-purse','/img/m2-shop-purse.jpg','Salmon Purse','Natural Crust','$0')}
+      ${only==='algae' ? '' : item('m2s-bookmark','/product/salmon-bookmark','/img/m2-shop-bookmark.jpg','Salmon Bookmark','Natural Crust','$0')}
+      ${only==='fish' ? '' : item('m2s-tote','/product/algae-tote','/img/m2-shop-tote.jpg','Algae Tote','Natural','$150.00')}
     </section>`;
   },
 
@@ -582,7 +584,7 @@ const pages = {
 
   fishLeather(){
     document.title = 'Fish Leather — WRM';
-    if(isMobile()) return pages.mShopList();
+    if(isMobile()) return pages.mShopList('fish');
     const card = p => `<a class="card observe" href="/product/${p.id}" data-link>
       <div class="card-img"><img src="${p.images[0]}" alt="${esc(p.name)}" loading="lazy"></div>
       <div class="card-txt"><div><div class="card-name">${esc(p.name)}</div><div class="card-var">${esc(p.variant)}</div></div>
@@ -591,10 +593,22 @@ const pages = {
       ${crumbs([['Shop','/shop'],['Ocean Season','/shop/ocean-season'],['Fish Leather']])}
       <h1 class="pg-title">Fish Leather</h1>
       <p class="pg-sub">Ocean-caught Alaskan Sockeye salmon. Crust finish.</p>
-      <div class="grid">${card(PRODUCTS['salmon-purse'])}${card(PRODUCTS['salmon-bookmark'])}
-        <div class="card observe"><div class="card-img natural"><img src="/img/algae-tote.jpg" alt="Algae Tote — Natural — Coming soon" loading="lazy"></div>
-          <div class="card-txt"><button class="btn" data-notify>Notify me <span class="arr">→</span></button></div></div>
-      </div>
+      <div class="grid">${card(PRODUCTS['salmon-purse'])}${card(PRODUCTS['salmon-bookmark'])}</div>
+    </div></section>`;
+  },
+
+  /* Shop > Algae: the Algae Tote only (its own shop page, not the About Materials story). */
+  algaeShop(){
+    document.title = 'Algae — WRM';
+    if(isMobile()) return pages.mShopList('algae');
+    const p = PRODUCTS['algae-tote'];
+    return `<section class="pg editorial"><div class="ed-page">
+      ${crumbs([['Shop','/shop'],['Ocean Season','/shop/ocean-season'],['Algae']])}
+      <h1 class="pg-title">Algae</h1>
+      <div class="grid grid-algae"><a class="card observe" href="/product/algae-tote" data-link>
+        <div class="card-img natural"><img src="/img/m2-shop-tote.jpg" alt="${esc(p.name)}" loading="lazy"></div>
+        <div class="card-txt"><div><div class="card-name">${esc(p.name)}</div><div class="card-var">${esc(p.variant)}</div></div>
+        <div class="card-price">${money(p.price)}</div></div></a></div>
     </div></section>`;
   },
 
@@ -804,6 +818,7 @@ const routes = [
   [/^\/shop\/?$/, ()=>pages.shop()],
   [/^\/shop\/ocean-season\/?$/, ()=>pages.season()],
   [/^\/shop\/ocean-season\/fish-leather\/?$/, ()=>pages.fishLeather()],
+  [/^\/shop\/ocean-season\/algae\/?$/, ()=>pages.algaeShop()],
   [/^\/product\/([\w-]+)\/?$/, m=>pages.product(m[1])],
   [/^\/about-materials\/?$/, ()=>pages.materials()],
   [/^\/about-materials\/(fish-leather|algae)\/?$/, m=>pages.materialDetail(m[1])],
@@ -880,7 +895,7 @@ function render(path, y=0){
 
   const isProductDetail = /^\/product\//.test(path);
   const isAboutMaterials = /^\/about-materials/.test(path); /* mobile_About_Material-08/09/10.png: same neutral off-white treatment as product detail pages, not the warm --paper beige */
-  const isProductList = isMobile() && path.replace(/\/$/,'') === '/shop/ocean-season/fish-leather'; /* mobile_Product_List_Page.png: nav/body/footer are the same seamless neutral off-white as product detail pages, not the warm --paper beige — measured live rgba(232,223,200,.86) nav vs mockup rgb(~234,233,231) */
+  const isProductList = isMobile() && /^\/shop\/ocean-season\/(fish-leather|algae)$/.test(path.replace(/\/$/,'')); /* mobile_Product_List_Page.png: nav/body/footer are the same seamless neutral off-white as product detail pages, not the warm --paper beige — measured live rgba(232,223,200,.86) nav vs mockup rgb(~234,233,231) */
   const isShop = isMobile() && (path==='/shop' || path==='/shop/'); /* mobile_SHOP.png: footer is the same neutral off-white (~rgb 235,234,232) as product detail/list pages, not the warm --paper beige — measured live rgb(226,217,195) footer vs mockup rgb(~235,234,232) */
   /* The new mobile home (Stella's reference layout) reuses the standard signup line. */
   foot.querySelector('.foot-lead').textContent = isMobile() ? 'Stay updated with WRM’s material explorations.' : 'Sign up to stay updated with WRM’s material explorations.';
