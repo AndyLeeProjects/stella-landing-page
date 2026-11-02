@@ -39,6 +39,19 @@ try:
         assert o['exp']=='true' and not o['hidden'] and o['text'], f'{width}: click did not open: {o}'
         ok=json.loads(ev("(()=>{const r=[...document.querySelectorAll('[data-acc]')].map(b=>b.getBoundingClientRect());return JSON.stringify(r.every(x=>x.right<=innerWidth+1))})()"))
         assert ok, f'{width}: a row overflows the screen'
+        if not mobile:
+            ev("document.querySelectorAll('[data-acc]').forEach(b=>{if(b.getAttribute('aria-expanded')==='false')b.click()})"); time.sleep(.3)
+            lay=json.loads(ev("""(()=>{const s=[...document.querySelectorAll('[data-faq-section]')].map(e=>e.getBoundingClientRect());
+              const gaps=[...document.querySelectorAll('.d2-faq [data-acc]')].map(b=>b.querySelector('.d2-chev').getBoundingClientRect().left-b.querySelector('span').getBoundingClientRect().right);
+              return JSON.stringify({dash:document.getElementById('app').innerText.includes('—'),fish:[s[1].left,s[1].top,s[1].right],algae:[s[2].left,s[2].top],maxGap:Math.max(...gaps),rowW:document.querySelector('.d2-faq [data-acc]').getBoundingClientRect().width})})()"""))
+            assert not lay['dash'], f'{width}: em-dash still on desktop FAQ'
+            assert lay['algae'][0]>lay['fish'][2] and abs(lay['algae'][1]-lay['fish'][1])<2, f'{width}: not side by side {lay}'
+            assert lay['rowW']<=500, f'{width}: rows still wide ({lay["rowW"]}px)'
+            assert lay['maxGap']<=20, f'{width}: arrow too far from question ({lay["maxGap"]:.0f}px)'
+            print('  desktop layout', lay)
+        else:
+            mob=json.loads(ev("JSON.stringify({cols:!!document.querySelector('.d2-faq-cols'),w:document.querySelector('.m2f .m2-acc-q').getBoundingClientRect().width})"))
+            assert not mob['cols'], f'{width}: columns leaked to mobile'
         for path in ['/about-materials/fish-leather','/about-materials/algae']:
             send('Page.navigate',url=BASE+path); time.sleep(1.2)
             assert ev("document.querySelectorAll('#app [data-acc]').length")==0, f'{width} {path}: drop-downs back on materials page'

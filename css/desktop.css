@@ -65,6 +65,12 @@
   .d2-faq h1+.d2-faq-section{margin-top:4.1667vw}
   .d2-faq-section+.d2-faq-section{margin-top:4.1667vw}
   .d2-faq-h{margin:0 0 1.25vw;font:italic 400 1.75vw/1.1 var(--d2-it);letter-spacing:.02em}
+  .d2-faq-cols{display:grid;grid-template-columns:1fr 1fr;column-gap:4.1667vw;align-items:start;margin-top:4.1667vw}
+  .d2-faq-cols .d2-faq-section{margin-top:0}
+  .d2-faq .d2-acc{max-width:none}
+  .d2-faq>.d2-faq-section{width:calc((100% - 4.1667vw) / 2)}
+  .d2-faq .d2-acc-q{justify-content:flex-start;gap:0.8333vw}
+  .d2-faq .d2-chev{flex:none;margin-right:0}
   .d2-acc{max-width:52.7778vw;border-top:1px solid #cfcfcf}
   .d2-acc-item{border-bottom:1px solid #cfcfcf}
   .d2-acc-q{display:flex;justify-content:space-between;align-items:center;width:100%;padding:1.1111vw 0;text-align:left;font:400 0.9861vw/1.3 var(--d2-sans)}

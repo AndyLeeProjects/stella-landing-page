@@ -199,16 +199,20 @@ window.WRMDesktop = (() => {
     document.title = 'FAQ — WRM';
     const data = window.WRMData || {};
     const flat = groups => (groups || []).flatMap(([, qa]) => qa);
+    const noDash = s => String(s).replace(/\s*—\s*/g, ', '); /* desktop FAQ: no em-dashes */
     const sections = [['Shipping', data.M2_FAQ || []], ['Fish Leather', flat(data.M2_MATERIAL_FAQ?.fish)], ['Algae', flat(data.M2_MATERIAL_FAQ?.algae)]];
-    return `<div class="d2-page d2-faq">
-      <h1>FAQ</h1>
-      ${sections.map(([title, qa], s)=>`<section class="d2-faq-section" data-faq-section aria-labelledby="d2faq-h${s}">
+    const section = ([title, qa], s) => `<section class="d2-faq-section" data-faq-section aria-labelledby="d2faq-h${s}">
         <h2 class="d2-faq-h" id="d2faq-h${s}">${esc(title)}</h2>
         <div class="d2-acc">${qa.map(([q,a], i)=>`<div class="d2-acc-item">
-          <button class="d2-acc-q" data-acc aria-expanded="false" aria-controls="d2faq-${s}-${i}"><span>${esc(q)}</span><span class="d2-chev" aria-hidden="true"></span></button>
-          <div class="d2-acc-a" id="d2faq-${s}-${i}" hidden><p>${esc(a)}</p></div>
+          <button class="d2-acc-q" data-acc aria-expanded="false" aria-controls="d2faq-${s}-${i}"><span>${esc(noDash(q))}</span><span class="d2-chev" aria-hidden="true"></span></button>
+          <div class="d2-acc-a" id="d2faq-${s}-${i}" hidden><p>${esc(noDash(a))}</p></div>
         </div>`).join('')}</div>
-      </section>`).join('')}
+      </section>`;
+    /* Shipping on top; Fish Leather (left) and Algae (right) side by side */
+    return `<div class="d2-page d2-faq">
+      <h1>FAQ</h1>
+      ${section(sections[0], 0)}
+      <div class="d2-faq-cols">${section(sections[1], 1)}${section(sections[2], 2)}</div>
     </div>`;
   }
 
