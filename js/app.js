@@ -721,7 +721,7 @@ const pages = {
       <header class="m2m-hero">
         <img class="m2m-hero-img" src="/img/${fish?'m2-mat-fish-hero.jpg':'m2-mat-algae-hero.jpg'}" alt="${fish?'Salmon skins laid out at the tannery':'Stacked sheets of seaweed-based film'}" fetchpriority="high">
         <img class="m2m-sil" src="${fish?'/img/sil-fish.png':'/img/sil-seaweed.png'}" alt="">
-        <h1 class="m2m-title">${fish?'From industry<br>byproduct to<br>hand bags':'Algae as a<br>future<br>replacement<br>to plastic'}</h1>
+        <h1 class="m2m-title">${fish?'From industry<br>byproduct to<br>handbags':'Algae as a<br>future<br>replacement<br>to plastic'}</h1>
       </header>
       <div class="m2m-body">${body}</div>
       <p class="m2m-more">Questions about this material?<br>Visit the <a href="/faq" data-link>FAQ page</a>.</p>

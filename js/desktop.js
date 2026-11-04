@@ -153,7 +153,7 @@ window.WRMDesktop = (() => {
     return `<article class="d2-page d2-story ${fish?'d2-story-fish':'d2-story-algae'}">
       <header class="d2-story-hero">
         ${photo(fish?'fish-hero':'algae-hero', fish?'Salmon skins laid out at the tannery':'Stacked sheets of seaweed-based film', true, 'd2-story-photo')}
-        <div class="d2-story-title"><p class="d2-story-chapter">Chapter 1<br>Ocean</p><h1>${fish?'From industry<br>byproduct to<br>hand bags':'Algae as<br>a future<br>replacement<br>to plastic'}</h1></div>
+        <div class="d2-story-title"><p class="d2-story-chapter">Chapter 1<br>Ocean</p><h1>${fish?'From industry<br>byproduct to<br>handbags':'Algae as<br>a future<br>replacement<br>to plastic'}</h1></div>
       </header>
       ${body}
       <p class="d2-more">More questions?&nbsp; Visit the <a href="/faq" data-link>FAQ</a> page.</p>
