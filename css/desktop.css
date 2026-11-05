@@ -215,6 +215,20 @@
   .d2-kanten img{width:12.2917vw}
   .d2-sway{left:-0.4167vw;margin-top:2.2222vw}
   .d2-sway img{position:relative;left:-0.4167vw;width:13.3333vw;margin-bottom:0.6944vw}
+  /* ---- Material story essays: editorial paragraph rhythm (Option C), desktop only. Headers/hero/panels untouched. ---- */
+  .d2-essay.d2-essay-c{padding:6.9444vw 0 0;font:400 1.3194vw/1.78 var(--d2-serif)}
+  .d2-essay-c>p{width:43.75vw;margin:0 auto 2em}
+  .d2-essay-c>p.d2c-lead{font-size:1.5972vw;line-height:1.58}
+  .d2-essay-c>p.d2c-lead::first-letter{float:left;font:400 6.9444vw/.72 "Instrument Serif",var(--d2-it);padding:1.0417vw 0.8333vw 0 0}
+  .d2-essay-c .d2c-quote{width:63.8889vw;margin:6.9444vw auto;text-align:center}
+  .d2-essay-c .d2c-quote p{margin:0;font:italic 400 3.3333vw/1.13 "Instrument Serif",var(--d2-it)}
+  .d2-essay-c .d2c-fact{margin:6.25vw auto;padding:1.6667vw 0;border-top:1px solid;border-bottom:1px solid;font:italic 400 2.0833vw/1.2 "Instrument Serif",var(--d2-it)}
+  .d2-essay-c .d2c-fig{margin:6.25vw auto;width:52.7778vw;text-align:left}  /* centred on the page, not offset to the text column */
+  .d2-essay-c .d2c-fig img{display:block;width:100%;height:auto}
+  .d2-essay-c .d2c-kanten{width:min(43.75vw,737px)}  /* algae photos: slightly smaller, centred on the body column; never upscaled */
+  .d2-essay-c .d2c-sway{width:min(31.25vw,806px)}
+  .d2-essay-c .d2c-fig figcaption{margin-top:0.8333vw;font:italic 400 0.9028vw/1.35 "Instrument Serif",var(--d2-it)}
+  .d2-essay-c .d2c-credit{font:400 0.6944vw/1.35 var(--d2-sans)}
   .d2-more{margin:0;padding:9.8611vw 0 0 15.3472vw;font:400 0.9444vw/1 var(--d2-sans)}
   .d2-story-algae .d2-more{padding-top:3.5417vw}
   .d2-more a{border-bottom:1px solid currentColor}
