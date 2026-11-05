@@ -219,10 +219,10 @@
   .d2-essay.d2-essay-c{padding:6.9444vw 0 0;font:400 1.3194vw/1.78 var(--d2-serif)}
   .d2-essay-c>p{width:43.75vw;margin:0 auto 2em}
   .d2-essay-c>p.d2c-lead{font-size:1.5972vw;line-height:1.58}
-  .d2-essay-c>p.d2c-lead::first-letter{float:left;font:400 6.9444vw/.72 "Instrument Serif",var(--d2-it);padding:1.0417vw 0.8333vw 0 0}
+  .d2-essay-c>p.d2c-lead::first-letter{float:left;font:400 6.25vw/.72 Newsreader,var(--d2-serif);padding:1.0417vw 0.8333vw 0 0}
   .d2-essay-c .d2c-quote{width:63.8889vw;margin:6.9444vw auto;text-align:center}
-  .d2-essay-c .d2c-quote p{margin:0;font:italic 400 3.3333vw/1.13 "Instrument Serif",var(--d2-it)}
-  .d2-essay-c .d2c-fact{margin:6.25vw auto;padding:1.6667vw 0;border-top:1px solid;border-bottom:1px solid;font:italic 400 2.0833vw/1.2 "Instrument Serif",var(--d2-it)}
+  .d2-essay-c .d2c-quote p{margin:0;font:italic 400 3vw/1.18 Newsreader,var(--d2-serif)}  /* Newsreader italic: more legible than Instrument Serif */
+  .d2-essay-c .d2c-fact{margin:6.25vw auto;padding:1.6667vw 0;border-top:1px solid;border-bottom:1px solid;font:italic 400 1.875vw/1.3 Newsreader,var(--d2-serif)}
   .d2-essay-c .d2c-fig{margin:6.25vw auto;width:52.7778vw;text-align:left}  /* centred on the page, not offset to the text column */
   .d2-essay-c .d2c-fig img{display:block;width:100%;height:auto}
   .d2-essay-c .d2c-kanten{width:min(43.75vw,737px)}  /* algae photos: slightly smaller, centred on the body column; never upscaled */
