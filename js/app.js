@@ -43,7 +43,7 @@ const MENU = [
       { label:'Algae', to:'/shop/ocean-season/algae' }
     ]}
   ]},
-  { label:'About Materials', to:'/about-materials' },
+  { label:'Materials', to:'/about-materials' },
   { label:'WRM World', to:'/wrm-world' },
   { label:'FAQ', to:'/faq' }
 ];
@@ -83,7 +83,7 @@ const M2_PRODUCT = {
       ['Your classic everyday tote made with algae. The seaweed is dehydrated and processed into a powder form, which then formulated and turned into sheets by <a class="pd-inline-link" href="/about-materials/algae" data-link>Sway</a> (learn more about Sway in our <a class="pd-inline-link" href="/about-materials/algae" data-link>materials page</a>).'],
       ['You can expect a waxed canvas-like hand feel. The waxiness will disappear with wear. Please note the textures and colors of the bags vary piece to piece.'],
       ['Product Detail','Manufactured in San Francisco'],
-      ['Dimensions','Height: x” | x cm','Width: x” | x cm','Depth: x” | x cm','Strap Drop: x” | x cm'],
+      ['Dimensions','Height: 12” | 30.5 cm','Top Width: 18” | 45.7 cm','Bottom Width: 14” | 35.6 cm','Bottom Depth: 4.75” | 12.1 cm','Strap Drop: 13” | 33 cm'],
       ['Material & Care','Exterior Body: 100% compostable algae-based sheet','Avoid moisture and direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>']
     ]}
 };
@@ -341,7 +341,7 @@ function buildMenu(){
           <a class="menu-item m2-menu-row m2-menu-sub-row" href="/shop/ocean-season/algae" data-link><span class="m2-menu-label">Algae</span><span class="chev" aria-hidden="true">&gt;</span></a>
         </div>
       </div>` +
-      row('About Materials','/about-materials') +
+      row('Materials','/about-materials') +
       row('WRM World','/wrm-world') +
       row('FAQ','/faq');
     const menuFooter = foot.cloneNode(true);
@@ -671,9 +671,9 @@ const pages = {
   },
 
   materials(){
-    document.title = 'About the Materials — WRM';
-    if(isMobile()) return `<section class="mh-original ma-original" aria-label="About the Materials">
-      <img class="mh-original-art" src="/img/mobile-materials-original.png" width="1564" height="4718" alt="About the Materials: Fish Leather and Algae. Stay updated with WRM’s material explorations." fetchpriority="high">
+    document.title = 'Materials — WRM';
+    if(isMobile()) return `<section class="mh-original ma-original" aria-label="Materials">
+      <img class="mh-original-art" src="/img/mobile-materials-original.png" width="1564" height="4718" alt="Materials: Fish Leather and Algae. Stay updated with WRM’s material explorations." fetchpriority="high">
       <button class="mh-original-hit" data-home-menu aria-label="Open menu" aria-controls="menu" style="left:2.237852%;top:0.847817%;width:10.869565%;height:4.027130%"></button>
 <a class="mh-original-hit" href="/" data-link aria-label="WRM home" style="left:43.158568%;top:0.847817%;width:14.066496%;height:4.027130%"></a>
 <button class="mh-original-hit" data-home-cart aria-label="Open cart" aria-controls="cart" style="left:86.956522%;top:0.847817%;width:10.869565%;height:4.027130%"></button>
@@ -684,7 +684,7 @@ const pages = {
 <form class="mh-original-email" data-newsletter="mobile-materials" style="left:5.498721%;top:93.683764%;width:58.439898%;height:1.526070%"><input type="email" placeholder=" " required autocomplete="email" aria-label="Email — stay updated with WRM’s material explorations"><button type="submit" aria-label="Subscribe"><span aria-hidden="true">→</span></button></form>
     </section>`;
     return `<section class="pg editorial mat-page"><div class="ed-page">
-      ${crumbs(isMobile() ? [['About The Materials']] : [['Home','/'],['About The Materials']])}
+      ${crumbs(isMobile() ? [['Materials']] : [['Home','/'],['Materials']])}
       <a class="mat-hero observe" href="/about-materials/fish-leather" data-link aria-label="Fish Leather">
         <img class="tex" src="/img/fish-leather-hero.jpg" alt="Fish Leather">
         <div class="mat-cap"><img class="sil" src="/img/sil-fish.png" alt=""><span>Fish Leather</span></div>
@@ -738,7 +738,7 @@ const pages = {
     document.title = (fish?'Fish Leather':'Algae') + ' — WRM';
     if(isMobile()) return pages.mMaterialDetail(fish);
     return `<section class="pg editorial mat-page"><div class="ed-page">
-      ${crumbs([['About The Materials','/about-materials'],[fish?'Fish Leather':'Algae']])}
+      ${crumbs([['Materials','/about-materials'],[fish?'Fish Leather':'Algae']])}
       <div class="mat-detail ${fish?'fish':'algae'}">
         <div class="mat-head observe">
           <img class="sil" src="${fish?'/img/sil-fish.png':'/img/sil-seaweed.png'}" alt="">

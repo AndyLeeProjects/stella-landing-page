@@ -6,7 +6,7 @@ server=None if BASE else subprocess.Popen(['python3','serve.py',str(WEB)],cwd=RO
 BASE=BASE or f'http://localhost:{WEB}'
 EXPECT={'salmon-purse':['Height: 6” | 15.2 cm','Width: 7” | 17.8 cm','Depth: 1.5” | 3.8 cm','Strap Drop: 5.25” | 13.3 cm'],
         'salmon-bookmark':['Height: 6.5” | 16.5 cm','Width: 2” | 5.1 cm'],
-        'algae-tote':['Height: x” | x cm','Width: x” | x cm','Depth: x” | x cm','Strap Drop: x” | x cm']}
+        'algae-tote':['Height: 12” | 30.5 cm','Top Width: 18” | 45.7 cm','Bottom Width: 14” | 35.6 cm','Bottom Depth: 4.75” | 12.1 cm','Strap Drop: 13” | 33 cm']}
 chrome=None
 try:
     time.sleep(.8)

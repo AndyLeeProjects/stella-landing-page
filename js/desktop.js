@@ -95,7 +95,7 @@ window.WRMDesktop = (() => {
         ['Your classic everyday tote made with algae. The seaweed is dehydrated and processed into a powder form, which then formulated and turned into sheets by <a class="pd-inline-link" href="/about-materials/algae" data-link>Sway</a> (learn more about Sway in our <a class="pd-inline-link" href="/about-materials/algae" data-link>materials page</a>).'],
         ['You can expect a waxed canvas-like hand feel. The waxiness will disappear with wear. Please note the textures and colors of the bags vary piece to piece.'],
         ['Product Detail','Manufactured in San Francisco'],
-        ['Dimensions','Height: x” | x cm','Width: x” | x cm','Depth: x” | x cm','Strap Drop: x” | x cm'],
+        ['Dimensions','Height: 12” | 30.5 cm','Top Width: 18” | 45.7 cm','Bottom Width: 14” | 35.6 cm','Bottom Depth: 4.75” | 12.1 cm','Strap Drop: 13” | 33 cm'],
         ['Material & Care','Exterior Body: 100% compostable algae-based sheet','Avoid moisture and direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>']],
       more:''}
   };
@@ -126,10 +126,10 @@ window.WRMDesktop = (() => {
 
   /* Mateiral Story@2x.png */
   function materials(){
-    document.title = 'About the Materials — WRM';
+    document.title = 'Materials — WRM';
     const panel = (cls, href, name, sil, label) => `<a class="d2m-panel ${cls}" href="${href}" data-link data-tone="light">${photo(name,'',true)}<img class="d2m-sil" src="${sil}" alt=""><h2>${label}</h2></a>`;
     return `<div class="d2-page d2-materials">
-      <h1 class="d2-sr">About the Materials</h1>
+      <h1 class="d2-sr">Materials</h1>
       ${panel('d2m-fish','/about-materials/fish-leather','mat-fish','/img/sil-fish.png','Fish Leather')}
       ${panel('d2m-algae','/about-materials/algae','mat-algae','/img/sil-seaweed.png','Algae')}
     </div>`;
