@@ -78,6 +78,7 @@ const M2_PRODUCT = {
       ['Material & Care','Leather: Ocean-caught Alaskan Sockeye Salmon','Lining: Horsehair','Treat like any other leather products.','Avoid direct sunlight.','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>']
     ]},
   'algae-tote': { variant:'Natural', price:'$150.00', images:['/img/m2-pd-tote.jpg'],
+    more:'<p class="m2p-more">Learn more about algae <a href="/about-materials/algae" data-link><em>here</em></a></p>',
     alt:'Algae Tote, translucent seaweed-based sheet',
     blocks:[
       ['Your classic everyday tote made with algae. The seaweed is dehydrated and processed into a powder form, which then formulated and turned into sheets by <a class="pd-inline-link" href="/about-materials/algae" data-link>Sway</a> (learn more about Sway in our <a class="pd-inline-link" href="/about-materials/algae" data-link>materials page</a>).'],
@@ -634,6 +635,7 @@ const pages = {
         <div class="m2p-head"><h1 class="m2p-name">${esc(p.name)}</h1><span class="m2p-price" data-price>${m.price}</span></div>
         <p class="m2p-variant">${esc(m.variant)}</p>
         ${this.mProductCopy(m.blocks, p.id)}
+        ${m.more||''}
         <button class="m2p-add" data-add disabled>Add to cart</button>
       </div>
     </section>`;

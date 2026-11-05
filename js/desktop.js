@@ -97,7 +97,7 @@ window.WRMDesktop = (() => {
         ['Product Detail','Manufactured in San Francisco'],
         ['Dimensions','Height: 12” | 30.5 cm','Top Width: 18” | 45.7 cm','Bottom Width: 14” | 35.6 cm','Bottom Depth: 4.75” | 12.1 cm','Strap Drop: 13” | 33 cm'],
         ['Material & Care','Exterior Body: 100% compostable algae-based sheet','Avoid moisture and direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>']],
-      more:''}
+      more:'<p class="d2p-more">Learn more about algae <a href="/about-materials/algae" data-link><em>here</em></a></p>'}
   };
   const detailTitles = new Set(['Product Detail','Dimensions','Material & Care']);
   function productCopy(blocks, id){
