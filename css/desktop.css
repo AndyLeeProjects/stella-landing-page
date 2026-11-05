@@ -229,8 +229,7 @@
   .d2-essay-c .d2c-sway{width:min(31.25vw,806px)}
   .d2-essay-c .d2c-fig figcaption{margin-top:0.8333vw;font:italic 400 0.9028vw/1.35 "Instrument Serif",var(--d2-it)}
   .d2-essay-c .d2c-credit{font:400 0.6944vw/1.35 var(--d2-sans)}
-  .d2-more{margin:0;padding:9.8611vw 0 0 15.3472vw;font:400 0.9444vw/1 var(--d2-sans)}
-  .d2-story-algae .d2-more{padding-top:3.5417vw}
+  .d2-more{width:43.75vw;margin:0 auto;padding:0;font:400 1.3194vw/1.78 var(--d2-serif)}  /* same as essay body paragraphs, on the body column */
   .d2-more a{border-bottom:1px solid currentColor}
   .d2-panels{position:relative;height:31.875vw;margin-top:7.7778vw}
   .d2-panel{position:absolute;top:0;height:100%;display:block;overflow:hidden}
