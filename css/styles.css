@@ -816,6 +816,19 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body.m2 .m2m-sway-p{margin-left:calc(-8*var(--u))!important;margin-top:calc(57*var(--u))!important;margin-right:calc(1*var(--u))!important}
   body.m2 .m2m-more{margin:calc(30*var(--u)) 0 0 calc(56*var(--u));font:400 calc(21.9*var(--u))/calc(30*var(--u)) var(--m-sans)}
   body.m2 .m2m-more a{color:inherit;text-decoration:underline;text-underline-offset:calc(6*var(--u))}
+  /* ---- Mobile material essays: editorial rhythm matching desktop (Option C). Hero, title, tiles untouched. ---- */
+  body.m2 .m2m-body.m2m-essay-c{padding:calc(80*var(--u)) calc(48*var(--u)) 0;font:400 calc(34*var(--u))/1.68 "Source Serif 4",Georgia,serif}
+  body.m2 .m2m-essay-c>p{margin:0 0 1.7em}
+  body.m2 .m2m-essay-c>p.m2c-lead{font-size:calc(38*var(--u));line-height:1.55}
+  body.m2 .m2m-essay-c>p.m2c-lead::first-letter{float:left;font:400 calc(118*var(--u))/.74 Newsreader,"Source Serif 4",serif;padding:calc(14*var(--u)) calc(12*var(--u)) 0 0}
+  body.m2 .m2m-essay-c .m2c-quote{margin:calc(110*var(--u)) 0;padding:0}
+  body.m2 .m2m-essay-c .m2c-quote p{margin:0;font:italic 400 calc(54*var(--u))/1.2 Newsreader,"Source Serif 4",serif}
+  body.m2 .m2m-essay-c .m2c-fact{margin:calc(100*var(--u)) 0;padding:calc(30*var(--u)) 0;border-top:1px solid;border-bottom:1px solid;font:italic 400 calc(44*var(--u))/1.3 Newsreader,"Source Serif 4",serif}
+  body.m2 .m2m-essay-c .m2c-fig{margin:calc(100*var(--u)) auto;text-align:left}
+  body.m2 .m2m-essay-c .m2c-fig img{display:block;width:100%;height:auto;margin:0}
+  body.m2 .m2m-essay-c .m2c-sway{width:72%}
+  body.m2 .m2m-essay-c .m2c-fig figcaption{margin-top:calc(14*var(--u));font:italic 400 calc(22*var(--u))/1.35 var(--m-serif)}
+  body.m2 .m2m-essay-c .m2c-credit{font:400 calc(18*var(--u))/1.35 var(--m-sans)}
   body.m2 .m2-tiles{display:flex;justify-content:space-between;padding:calc(56*var(--u)) calc(21*var(--u)) calc(22*var(--u)) calc(24*var(--u))}
   body.m2 .m2-tile{position:relative;display:block;width:calc(344*var(--u));height:calc(469*var(--u));line-height:0;color:#fff;text-decoration:none}
   body.m2 .m2-tile+.m2-tile{width:calc(346*var(--u))}
