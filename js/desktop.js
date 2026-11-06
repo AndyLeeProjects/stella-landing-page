@@ -53,15 +53,15 @@ window.WRMDesktop = (() => {
     return `<div class="d2-page d2-shop">
       <h1 class="d2-sr">Shop — Ocean Collection</h1>
       ${ocean('d2s-ocean')}
-      ${card('d2s-purse','/product/salmon-purse','shop-purse','Salmon Purse lying on a white surface','Salmon Purse','Natural Crust')}
+      ${card('d2s-purse','/product/salmon-purse','shop-purse','Salmon Purse lying on a white surface','Salmon Purse','Natural Crust','$700.00')}
       <a class="d2s-dyedbag" href="/product/salmon-purse" data-link>${photo('shop-dyedbag','Salmon Purse wrapped in its WRM dust cloth',true)}</a>
       <a class="d2s-bookmark" href="/product/salmon-bookmark" data-link data-tone="light">${photo('shop-bookmark','Salmon Bookmark, salmon leather front and lining')}</a>
-      ${card('d2s-bookbm','/product/salmon-bookmark','shop-bookbm','Salmon Bookmark on a book','Salmon Bookmark','Natural Crust')}
+      ${card('d2s-bookbm','/product/salmon-bookmark','shop-bookbm','Salmon Bookmark on a book','Salmon Bookmark','Natural Crust','$32.00')}
       <a class="d2s-tote" href="/product/algae-tote" data-link>${photo('shop-tote','Translucent Algae Tote')}<span class="d2s-tote-label">Algae Tote</span></a>
       <section class="d2s-collection" aria-labelledby="d2s-coll">
         <h2 class="d2-collection-title" id="d2s-coll">The Collection</h2>
-        ${card('d2s-c-purse','/product/salmon-purse','shop-c-purse','Salmon Purse','Salmon Purse','Natural Crust')}
-        ${card('d2s-c-bookmark','/product/salmon-bookmark','shop-c-bookmark','Salmon Bookmark','Salmon Bookmark','Natural Crust')}
+        ${card('d2s-c-purse','/product/salmon-purse','shop-c-purse','Salmon Purse','Salmon Purse','Natural Crust','$700.00')}
+        ${card('d2s-c-bookmark','/product/salmon-bookmark','shop-c-bookmark','Salmon Bookmark','Salmon Bookmark','Natural Crust','$32.00')}
         ${card('d2s-c-tote','/product/algae-tote','shop-c-tote','Algae Tote','Algae Tote','Natural','$150.00')}
       </section>
     </div>`;
@@ -69,7 +69,7 @@ window.WRMDesktop = (() => {
 
   /* Salmon Purse@2x / Bookmark@2x / Algae Tote@2x.png. Copy is verbatim from the mockups. */
   const PRODUCTS = {
-    'salmon-purse': {name:'Salmon Purse', photos:[
+    'salmon-purse': {name:'Salmon Purse', price:'$700.00', photos:[
         ['pd-purse-1','Salmon Purse, front, in natural crust salmon leather'],
         ['pd-purse-3','Salmon leather grain, close'],['pd-purse-4','Corner of the Salmon Purse on a blue backdrop'],['pd-purse-5','Salmon Purse carried in a car']],
       blocks:[['Natural Crust'],
@@ -79,7 +79,7 @@ window.WRMDesktop = (() => {
         ['Dimensions','Height: 6” | 15.2 cm','Width: 7” | 17.8 cm','Depth: 1.5” | 3.8 cm','Strap Drop: 5.25” | 13.3 cm'],
         ['Material & Care','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>']],
       more:'<p class="d2p-more">Learn more about fish leather <a href="/about-materials/fish-leather" data-link><em>here</em></a></p>'},
-    'salmon-bookmark': {name:'Salmon Bookmark', photos:[
+    'salmon-bookmark': {name:'Salmon Bookmark', price:'$32.00', photos:[
         ['pd-bm-1','Salmon Bookmark lining with its WITH RAW MATERIALS label on an open book'],['pd-bm-2','Salmon Bookmark, salmon leather front and lining'],
         ['pd-bm-3','Strips of tanned salmon skin'],['bookmark-texture.mp4','Salmon leather bookmark strips arranged on woven fabric']],
       blocks:[['Natural Crust'],
@@ -118,6 +118,7 @@ window.WRMDesktop = (() => {
         <div class="d2p-copy">
           ${productCopy(p.blocks, id)}
           ${p.more}
+          <p class="d2p-ship">We currently ship within the U.S. only. Shipping is complimentary on all orders this season.</p>
           <button class="d2p-add" data-add disabled>Add to cart</button>
         </div>
       </div>
@@ -215,12 +216,12 @@ window.WRMDesktop = (() => {
     const data = window.WRMData || {};
     const flat = groups => (groups || []).flatMap(([, qa]) => qa);
     const noDash = s => String(s).replace(/\s*—\s*/g, ', '); /* desktop FAQ: no em-dashes */
-    const sections = [['Shipping', data.M2_FAQ || []], ['Fish Leather', flat(data.M2_MATERIAL_FAQ?.fish)], ['Algae', flat(data.M2_MATERIAL_FAQ?.algae)]];
+    const sections = [['Shipping & Returns', data.M2_FAQ || []], ['Fish Leather', flat(data.M2_MATERIAL_FAQ?.fish)], ['Algae', flat(data.M2_MATERIAL_FAQ?.algae)]];
     const section = ([title, qa], s) => `<section class="d2-faq-section" data-faq-section aria-labelledby="d2faq-h${s}">
         <h2 class="d2-faq-h" id="d2faq-h${s}">${esc(title)}</h2>
         <div class="d2-acc">${qa.map(([q,a], i)=>`<div class="d2-acc-item">
           <button class="d2-acc-q" data-acc aria-expanded="false" aria-controls="d2faq-${s}-${i}"><span>${esc(noDash(q))}</span><span class="d2-chev" aria-hidden="true"></span></button>
-          <div class="d2-acc-a" id="d2faq-${s}-${i}" hidden><p>${esc(noDash(a))}</p></div>
+          <div class="d2-acc-a" id="d2faq-${s}-${i}" hidden>${noDash(a).split('\n').map(x=>`<p>${esc(x)}</p>`).join('')}</div>
         </div>`).join('')}</div>
       </section>`;
     /* Shipping on top; Fish Leather (left) and Algae (right) side by side */
@@ -233,7 +234,7 @@ window.WRMDesktop = (() => {
 
   function render(path){
     if(path==='/') return home();
-    if(path==='/shop') return shop();
+    if(path==='/shop' || /^\/shop\/ocean-season(\/(fish-leather|algae))?$/.test(path)) return shop(); /* old beige category pages retired on desktop */
     const pd = path.match(/^\/product\/(salmon-purse|salmon-bookmark|algae-tote)$/); if(pd) return product(pd[1]);
     if(path==='/about-materials') return materials();
     if(path==='/about-materials/fish-leather') return materialStory(true);

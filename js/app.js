@@ -7,7 +7,7 @@
 /* ---------- Data ---------- */
 const PRODUCTS = {
   'salmon-purse': {
-    id:'salmon-purse', name:'Salmon Purse', variant:'Crust', price:0, year:2026,
+    id:'salmon-purse', name:'Salmon Purse', variant:'Crust', price:700, year:2026,
     category:'Fish Leather', season:'Ocean Season',
     images:['/img/purse-light.jpg','/img/purse-dark.jpg'],
     desc:'An evening purse that fits your essentials. Classy with a slight flirt. Made with ocean-caught fish leather that is up to 9 times stronger than a cow hide. Leather has a feel of a soft suede.',
@@ -18,7 +18,7 @@ const PRODUCTS = {
     care:'Treat like any other leather products. Avoid direct sunlight.'
   },
   'salmon-bookmark': {
-    id:'salmon-bookmark', name:'Salmon Bookmark', variant:'Crust', price:0, year:2026,
+    id:'salmon-bookmark', name:'Salmon Bookmark', variant:'Crust', price:32, year:2026,
     category:'Fish Leather', season:'Ocean Season',
     images:['/img/bookmark-blue.jpg','/img/bookmark-detail.jpg'],
     desc:'A small piece of fish leather for your everyday reading. Made with leftover pieces from making the purses. The lining is horse hair, classically used for suiting.',
@@ -29,7 +29,7 @@ const PRODUCTS = {
     care:'Treat like any other leather products. Avoid direct sunlight.'
   },
   'algae-tote': {
-    id:'algae-tote', name:'Algae Tote', variant:'Natural', price:150, soon:true,
+    id:'algae-tote', name:'Algae Tote', variant:'Natural', price:150,
     category:'Algae', season:'Ocean Season', images:['/img/algae-tote.jpg'],
     desc:'A translucent tote made from seaweed-based algae film. Still finding its shape.'
   }
@@ -59,7 +59,7 @@ const FAQ = [
 
 /* Mobile v2 (Drive redesign) copy, verbatim from Purse@2x / Bookmark@2x / Algae_Tote@2x.png. */
 const M2_PRODUCT = {
-  'salmon-purse': { variant:'Natural Crust', price:'$', images:['/img/m2-pd-purse.jpg','/img/purse-dark.jpg'],
+  'salmon-purse': { variant:'Natural Crust', price:'$700.00', images:['/img/m2-pd-purse.jpg','/img/purse-dark.jpg'],
     alt:'Salmon Purse in natural crust salmon leather',
     blocks:[
       ['Your classic evening purse made with ocean-caught salmon leather. Fits your essentials. Pleated sides, lined with Korean hemp, finished with invisible magnet closure.'],
@@ -68,7 +68,7 @@ const M2_PRODUCT = {
       ['Dimensions','Height: 6” | 15.2 cm','Width: 7” | 17.8 cm','Depth: 1.5” | 3.8 cm','Strap Drop: 5.25” | 13.3 cm'],
       ['Material & Care','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>']
     ]},
-  'salmon-bookmark': { variant:'Natural Crust', price:'$', images:['/img/m2-pd-bookmark.jpg','/img/bookmark-texture.mp4'],
+  'salmon-bookmark': { variant:'Natural Crust', price:'$32.00', images:['/img/m2-pd-bookmark.jpg','/img/bookmark-texture.mp4'],
     alt:'Salmon Bookmark, salmon leather front and horsehair lining',
     blocks:[
       ['A small piece of fish leather for your everyday reading. Made with leftover pieces from making the purses. Lined with horse hair classically used for suiting.'],
@@ -125,7 +125,7 @@ const M2_MATERIAL_FAQ = {
 };
 
 /* Edit Notes (9/7): FAQ keeps shipping only. */
-const M2_FAQ = [['Shipping and returns','Pieces ship within 3–5 business days. Unused items may be returned within 14 days of delivery. Write to hello@withrawmaterials.com.']];
+const M2_FAQ = [['Shipping','Shipping is complimentary on all U.S. orders. We don’t ship internationally at this time. Orders ship within 1-3 business days. Purses and totes ship with tracking, which we’ll send by email once your order is on its way. Bookmarks travel by standard mail without tracking.\nIf you order a bookmark together with a purse or tote, everything goes in one tracked package, so the no-tracking note only applies when the bookmark is ordered on its own.'],['Returns','Each WRM piece is made from material with a specific origin, and no two are the same. Every salmon leather hide has its own scale pattern, tone and markings. Algae varies in texture and color from sheet to sheet. The purse you receive will be its own piece, not an exact copy of the one in the photos, and those differences are part of what you’re buying.\nWe know these are materials you haven’t held before. If your piece isn’t right for you, email hello@withrawmaterials.com within 14 days of delivery to start a return. The piece must be unused and sent back in its original packaging and dust bag. Once we’ve received and checked it, we’ll refund your original payment method. Return shipping is paid by the customer.']];
 
 /* Desktop v2 (js/desktop.js) reuses the same FAQ data. */
 window.WRMData = { M2_FAQ, M2_MATERIAL_FAQ };
@@ -301,7 +301,7 @@ function genericProduct(p){
 async function hydrateShop(){
   let products;
   try{ products = (await api('/api/products')).products; }catch(e){ return; }
-  if(!/^\/shop\/?$/.test(location.pathname)) return;
+  if(!/^\/shop(\/ocean-season(\/(fish-leather|algae))?)?\/?$/.test(location.pathname)) return;
   const designed = new Set(Object.keys(PRODUCTS));
   const byHandle = Object.fromEntries(products.map(p=>[p.handle,p]));
   app.querySelectorAll('a[href^="/product/"] [data-card-price]').forEach(el=>{
@@ -455,12 +455,12 @@ const pages = {
   },
 
   homeDesktop(){
-    document.title = 'WRM — Ocean season coming soon';
+    document.title = 'WRM — Ocean season launching 11.11.26';
     return `
 <section class="hero" id="top">
   <div class="hero-card">
     <div class="logo-wrap reveal"><img src="/img/wrm-logo-dark.png" alt="WRM — With Raw Materials"></div>
-    <h1 class="headline reveal d2">Ocean season <span class="italic">coming</span> <span class="soft">soon.</span></h1>
+    <h1 class="headline reveal d2">Ocean season <span class="italic">launching</span><br><span class="soft">11.11.26, 10am PST</span></h1>
     <form class="notify reveal d3" data-newsletter="landing">
       <input type="email" required placeholder="Your email" autocomplete="email" aria-label="Email">
       <button type="submit"><span data-label>Notify me</span> <span class="arr">→</span></button>
@@ -541,8 +541,8 @@ const pages = {
     return `<section class="m2s${only?` m2s-${only}`:''}" aria-label="${label}">
       <h1 class="m2-sr">${label}</h1>
       <img class="m2s-ocean" src="/img/illustration-ocean.png" alt="">
-      ${only==='algae' ? '' : item('m2s-purse','/product/salmon-purse','/img/m2-shop-purse.jpg','Salmon Purse','Natural Crust','$0')}
-      ${only==='algae' ? '' : item('m2s-bookmark','/product/salmon-bookmark','/img/m2-shop-bookmark.jpg','Salmon Bookmark','Natural Crust','$0')}
+      ${only==='algae' ? '' : item('m2s-purse','/product/salmon-purse','/img/m2-shop-purse.jpg','Salmon Purse','Natural Crust','$700.00')}
+      ${only==='algae' ? '' : item('m2s-bookmark','/product/salmon-bookmark','/img/m2-shop-bookmark.jpg','Salmon Bookmark','Natural Crust','$32.00')}
       ${only==='fish' ? '' : item('m2s-tote','/product/algae-tote','/img/m2-shop-tote.jpg','Algae Tote','Natural','$150.00')}
     </section>`;
   },
@@ -636,6 +636,7 @@ const pages = {
         <p class="m2p-variant">${esc(m.variant)}</p>
         ${this.mProductCopy(m.blocks, p.id)}
         ${m.more||''}
+        <p class="m2p-ship">We currently ship within the U.S. only. Shipping is complimentary on all orders this season.</p>
         <button class="m2p-add" data-add disabled>Add to cart</button>
       </div>
     </section>`;
@@ -802,12 +803,12 @@ const pages = {
     document.title = 'FAQ — WRM';
     if(isMobile()){
       const flat = groups => groups.flatMap(([, qa]) => qa);
-      const sections = [['Shipping', M2_FAQ], ['Fish Leather', flat(M2_MATERIAL_FAQ.fish)], ['Algae', flat(M2_MATERIAL_FAQ.algae)]];
+      const sections = [['Shipping & Returns', M2_FAQ], ['Fish Leather', flat(M2_MATERIAL_FAQ.fish)], ['Algae', flat(M2_MATERIAL_FAQ.algae)]];
       return `<section class="m2f"><h1 class="m2f-title">FAQ</h1>${sections.map(([title, qa], s)=>`
         <section class="m2f-section" data-faq-section aria-labelledby="m2faq-h${s}"><h2 class="m2f-h" id="m2faq-h${s}">${esc(title)}</h2>
         <div class="m2-acc">${qa.map(([q,a], i)=>`<div class="m2-acc-item">
           <button class="m2-acc-q" data-acc aria-expanded="false" aria-controls="m2faq-${s}-${i}"><span>${esc(q)}</span><span class="chev" aria-hidden="true">&gt;</span></button>
-          <div class="m2-acc-a" id="m2faq-${s}-${i}" hidden><p>${esc(a)}</p></div>
+          <div class="m2-acc-a" id="m2faq-${s}-${i}" hidden>${a.split('\n').map(x=>`<p>${esc(x)}</p>`).join('')}</div>
         </div>`).join('')}</div></section>`).join('')}</section>`;
     }
     return `<section class="pg editorial"><div class="ed-page">
@@ -873,11 +874,11 @@ adminLock.addEventListener('submit', async e => {
 drawAdminLock();
 
 function landing(){
-  document.title = 'WRM — Ocean season coming soon';
+  document.title = 'WRM — Ocean season launching 11.11.26';
   return `<section class="hero landing-hero">
   <div class="hero-card">
     <div class="logo-wrap reveal"><img src="/img/wrm-logo-dark.png" alt="WRM — With Raw Materials"></div>
-    <h1 class="headline reveal d2">Ocean season <span class="italic">coming</span> <span class="soft">soon.</span></h1>
+    <h1 class="headline reveal d2">Ocean season <span class="italic">launching</span><br><span class="soft">11.11.26, 10am PST</span></h1>
     <form class="notify reveal d3" data-newsletter="landing">
       <input type="email" required placeholder="Your email" autocomplete="email" aria-label="Email">
       <button type="submit"><span data-label>Notify me</span> <span class="arr">→</span></button>
@@ -904,7 +905,7 @@ function render(path, y=0){
   app.innerHTML = `<div class="page">${html ?? pages.notFound()}</div>`;
   const pm = path.match(/^\/product\/([\w-]+)\/?$/);
   if(pm) hydrateProduct(pm[1]);
-  if(/^\/shop\/?$/.test(path)) hydrateShop();
+  if(/^\/shop(\/ocean-season(\/(fish-leather|algae))?)?\/?$/.test(path)) hydrateShop();
   const isHome = path === '/';
 
   const isProductDetail = /^\/product\//.test(path);
