@@ -972,6 +972,8 @@ document.addEventListener('submit', e => {
   if(f.matches('[data-waitlist-form]')){ e.preventDefault(); joinWaitlist(f); }
   if(f.id==='footForm'){ e.preventDefault(); subscribe(f,'footer'); f.querySelector('input').value=''; }
 });
+/* Header items: after a mouse/tap click, drop focus so a later keypress can't draw a focus box around them. */
+nav.addEventListener('click', e=>{ if(e.detail>0) e.target.closest('a,button')?.blur(); });
 menuBtn.addEventListener('click', ()=> menu.getAttribute('aria-hidden')==='false' ? closeMenu() : openMenu());
 $('#cartBtn').addEventListener('click', openCart);
 $('#cartClose').addEventListener('click', closeCart);

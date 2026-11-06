@@ -42,6 +42,10 @@ a{color:inherit}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
 input{font:inherit;color:inherit}
 :focus-visible{outline:1.5px solid var(--ink);outline-offset:3px}
+/* Header never shows the box outline; keyboard focus gets a quiet underline / logo fade instead. */
+#nav :focus,#nav :focus-visible{outline:none}
+#nav a:focus-visible,#nav button:focus-visible{text-decoration:underline;text-underline-offset:.25em}
+#nav .nav-logo:focus-visible{opacity:.6}
 .arr{display:inline-block;transition:transform .25s ease}
 a:hover .arr,button:hover .arr{transform:translateX(3px)}
 
