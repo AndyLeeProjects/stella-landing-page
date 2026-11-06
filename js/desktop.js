@@ -79,7 +79,7 @@ window.WRMDesktop = (() => {
         ['Dimensions','Height: 6” | 15.2 cm','Width: 7” | 17.8 cm','Depth: 1.5” | 3.8 cm','Strap Drop: 5.25” | 13.3 cm'],
         ['Material & Care','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>'],
         ['Shipping & Returns','Shipping is complimentary on all U.S. orders. Orders ship within 1-3 business days. We don’t ship internationally at this time.','<span class="pd-more-info">For more detail, click <a class="pd-faq-link" href="/faq" data-link>here</a>.</span>']],
-      more:'<p class="d2p-more">Learn more about fish leather <a href="/about-materials/fish-leather" data-link><em>here</em></a></p>'},
+      more:''},
     'salmon-bookmark': {name:'Salmon Bookmark', price:'$32.00', photos:[
         ['pd-bm-1','Salmon Bookmark lining with its WITH RAW MATERIALS label on an open book'],['pd-bm-2','Salmon Bookmark, salmon leather front and lining'],
         ['pd-bm-3','Strips of tanned salmon skin'],['bookmark-texture.mp4','Salmon leather bookmark strips arranged on woven fabric']],
@@ -90,7 +90,7 @@ window.WRMDesktop = (() => {
         ['Dimensions','Height: 6.5” | 16.5 cm','Width: 2” | 5.1 cm'],
         ['Material & Care','Exterior: 100% Ocean-Caught Alaskan Sockeye Salmon','Lining: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>'],
         ['Shipping & Returns','Shipping is complimentary on all U.S. orders. Orders ship within 1-3 business days. We don’t ship internationally at this time.','<span class="pd-more-info">For more detail, click <a class="pd-faq-link" href="/faq" data-link>here</a>.</span>']],
-      more:'<p class="d2p-more">Learn more about fish leather <a href="/about-materials/fish-leather" data-link><em>here</em></a></p>'},
+      more:''},
     'algae-tote': {name:'Algae Tote', price:'$150.00', soon:true, photos:[
         ['pd-tote-1','Algae Tote, translucent seaweed-based sheet, backlit'],['pd-tote-2','Algae Tote in natural, lit from the side']],
       blocks:[['Natural'],
