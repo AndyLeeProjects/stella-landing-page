@@ -156,7 +156,6 @@
   .d2p-acc-q,.d2p-acc-a{font:inherit}
   .d2p-salmon-purse .d2p-copy .d2p-more,.d2p-algae-tote .d2p-copy .d2p-more{margin-top:1.25vw}
   .d2p-salmon-bookmark .d2p-copy p:nth-child(4){margin-top:1.25vw}
-  .d2p-copy .d2p-ship{margin:1.25vw 0 0;color:#555}  /* US-only + complimentary shipping note */
   .d2p-add{display:flex;align-items:center;justify-content:center;width:100%;height:max(36px,2.5vw);margin-top:1.25vw;padding:0;border:1px solid #000;border-radius:0;background:#000;color:#fff;font:inherit;text-decoration:none;opacity:1;cursor:pointer}
   .d2p-add:disabled{opacity:1}
   .d2p-add.is-waitlist{background:#fff;color:#000}
