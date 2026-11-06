@@ -154,6 +154,8 @@
   .d2p-copy a:hover{text-decoration:underline}
   .d2p-acc{max-width:none;margin:1.6667vw 0 1.25vw}
   .d2p-acc-q,.d2p-acc-a{font:inherit}
+  .d2p-acc .d2p-acc-a{font-size:.9em;line-height:1.5;color:#6b6b6b}  /* drop-down body: a size smaller + grey, under the black row titles */
+  .d2p-acc .d2p-acc-a a{color:inherit}
   .d2p-salmon-purse .d2p-copy .d2p-more,.d2p-algae-tote .d2p-copy .d2p-more{margin-top:1.25vw}
   .d2p-salmon-bookmark .d2p-copy p:nth-child(4){margin-top:1.25vw}
   .d2p-add{display:flex;align-items:center;justify-content:center;width:100%;height:max(36px,2.5vw);margin-top:1.25vw;padding:0;border:1px solid #000;border-radius:0;background:#000;color:#fff;font:inherit;text-decoration:none;opacity:1;cursor:pointer}
