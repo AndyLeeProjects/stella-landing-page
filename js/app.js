@@ -72,7 +72,7 @@ const M2_PRODUCT = {
     alt:'Salmon Bookmark, salmon leather front and horsehair lining',
     blocks:[
       ['A small piece of fish leather for your everyday reading. Made with leftover pieces from making the purses. Lined with horse hair classically used for suiting.'],
-      ['Please note the textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical. Leather is processed and tanned by <a class="pd-inline-link" href="/about-materials/fish-leather" data-link>7 Leagues Leather</a>.'],
+      ['Please note the textures and colors of the bookmarks vary piece to piece. Each skin is unique and no two pieces are identical. Leather is processed and tanned by <a class="pd-inline-link" href="/about-materials/fish-leather" data-link>7 Leagues Leather</a>.'],
       ['Product Detail','Made in San Francisco'],
       ['Dimensions','Height: 6.5” | 16.5 cm','Width: 2” | 5.1 cm'],
       ['Material & Care','Leather: Ocean-caught Alaskan Sockeye Salmon','Lining: Horsehair','Treat like any other leather products.','Avoid direct sunlight.','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>']

@@ -84,7 +84,7 @@ window.WRMDesktop = (() => {
         ['pd-bm-3','Strips of tanned salmon skin'],['bookmark-texture.mp4','Salmon leather bookmark strips arranged on woven fabric']],
       blocks:[['Natural Crust'],
         ['A small piece of fish leather for your everyday reading.','Lined with horse hair classically used for suiting.'],
-        ['Textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical. Leather is processed and tanned by <a class="pd-inline-link" href="/about-materials/fish-leather" data-link>7 Leagues Leather</a>.'],
+        ['Textures and colors of the bookmarks vary piece to piece. Each skin is unique and no two pieces are identical. Leather is processed and tanned by <a class="pd-inline-link" href="/about-materials/fish-leather" data-link>7 Leagues Leather</a>.'],
         ['Product Detail','Made in San Francisco'],
         ['Dimensions','Height: 6.5” | 16.5 cm','Width: 2” | 5.1 cm'],
         ['Material & Care','Exterior: 100% Ocean-Caught Alaskan Sockeye Salmon','Lining: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>']],
