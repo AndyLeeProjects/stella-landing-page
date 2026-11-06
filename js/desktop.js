@@ -78,7 +78,7 @@ window.WRMDesktop = (() => {
         ['Product Detail','Made in San Francisco'],
         ['Dimensions','Height: 6” | 15.2 cm','Width: 7” | 17.8 cm','Depth: 1.5” | 3.8 cm','Strap Drop: 5.25” | 13.3 cm'],
         ['Material & Care','Exterior Body: 100% Ocean-Caught Alaskan Sockeye Salmon','Interior: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>'],
-        ['Shipping & Returns','Shipping is complimentary on all U.S. orders. Orders ship within 1-3 business days. We don’t ship internationally at this time.']],
+        ['Shipping & Returns','Shipping is complimentary on all U.S. orders. Orders ship within 1-3 business days. We don’t ship internationally at this time.','<span class="pd-more-info">For more detail, click <a class="pd-faq-link" href="/faq" data-link>here</a>.</span>']],
       more:'<p class="d2p-more">Learn more about fish leather <a href="/about-materials/fish-leather" data-link><em>here</em></a></p>'},
     'salmon-bookmark': {name:'Salmon Bookmark', price:'$32.00', photos:[
         ['pd-bm-1','Salmon Bookmark lining with its WITH RAW MATERIALS label on an open book'],['pd-bm-2','Salmon Bookmark, salmon leather front and lining'],
@@ -89,7 +89,7 @@ window.WRMDesktop = (() => {
         ['Product Detail','Made in San Francisco'],
         ['Dimensions','Height: 6.5” | 16.5 cm','Width: 2” | 5.1 cm'],
         ['Material & Care','Exterior: 100% Ocean-Caught Alaskan Sockeye Salmon','Lining: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>'],
-        ['Shipping & Returns','Shipping is complimentary on all U.S. orders. Orders ship within 1-3 business days. We don’t ship internationally at this time.']],
+        ['Shipping & Returns','Shipping is complimentary on all U.S. orders. Orders ship within 1-3 business days. We don’t ship internationally at this time.','<span class="pd-more-info">For more detail, click <a class="pd-faq-link" href="/faq" data-link>here</a>.</span>']],
       more:'<p class="d2p-more">Learn more about fish leather <a href="/about-materials/fish-leather" data-link><em>here</em></a></p>'},
     'algae-tote': {name:'Algae Tote', price:'$150.00', soon:true, photos:[
         ['pd-tote-1','Algae Tote, translucent seaweed-based sheet, backlit'],['pd-tote-2','Algae Tote in natural, lit from the side']],
@@ -99,7 +99,7 @@ window.WRMDesktop = (() => {
         ['Product Detail','Manufactured in San Francisco'],
         ['Dimensions','Height: 12” | 30.5 cm','Top Width: 18” | 45.7 cm','Bottom Width: 14” | 35.6 cm','Bottom Depth: 4.75” | 12.1 cm','Strap Drop: 13” | 33 cm'],
         ['Material & Care','Exterior Body: 100% compostable algae-based sheet','Avoid moisture and direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>'],
-        ['Shipping & Returns','Shipping is complimentary on all U.S. orders. Orders ship within 1-3 business days. We don’t ship internationally at this time.']],
+        ['Shipping & Returns','Shipping is complimentary on all U.S. orders. Orders ship within 1-3 business days. We don’t ship internationally at this time.','<span class="pd-more-info">For more detail, click <a class="pd-faq-link" href="/faq" data-link>here</a>.</span>']],
       more:''}
   };
   const detailTitles = new Set(['Product Detail','Dimensions','Material & Care','Shipping & Returns']);
@@ -117,9 +117,9 @@ window.WRMDesktop = (() => {
     return `<div class="d2-page d2-product d2p-${id}" data-product="${id}">
       <div class="d2p-gallery">${p.photos.map(([n,alt],i)=>productMedia(n, alt, i===0, `d2p-ph d2p-ph${i+1}`)).join('')}</div>
       <div class="d2p-info">
-        <div class="d2p-head"><h1>${p.name}</h1><span class="d2p-price" data-price>${p.price || '$0.00'}</span></div>
+        <div class="d2p-head"><div class="d2p-title"><h1>${p.name}</h1><p class="d2p-variant">${p.blocks[0][0]}</p></div><span class="d2p-price" data-price>${p.price || '$0.00'}</span></div>
         <div class="d2p-copy">
-          ${productCopy(p.blocks, id)}
+          ${productCopy(p.blocks.slice(1), id)}
           ${p.more}
           <button class="d2p-add" data-add disabled>Add to cart</button>
         </div>
