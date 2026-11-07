@@ -54,7 +54,7 @@ const FAQ = [
   ['What is algae film?','A compostable, seaweed-based material made by Sway in San Francisco. Kelp grows up to two feet a day without fresh water, land or fertiliser. We are using it first for packaging, and exploring it for the Algae Tote.'],
   ['How do I care for fish leather?','Treat it like any other leather. Keep it away from direct sunlight and heat, and let it dry naturally if it gets wet. It will develop a patina over time.'],
   ['Where are things made?','Everything is made in small batches, by hand, in San Francisco.'],
-  ['Shipping and returns','Pieces ship within 3–5 business days. Unused items may be returned within 14 days of delivery. Write to hello@withrawmaterials.com.']
+  ['Shipping and returns','Orders ship within 1-3 business days. For returns, write to hello@withrawmaterials.com.']
 ];
 
 /* Mobile v2 (Drive redesign) copy, verbatim from Purse@2x / Bookmark@2x / Algae_Tote@2x.png. */
