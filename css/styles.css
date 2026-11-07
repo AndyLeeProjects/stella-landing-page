@@ -31,6 +31,13 @@ body{
   color:var(--ink); font-family:var(--body); font-weight:400; line-height:1.45;
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; overflow-x:hidden;
 }
+/* Full-screen film before the existing landing page. It plays once and naturally holds its final frame. */
+body.intro-active{overflow:hidden}
+.site-intro{position:fixed;inset:0;z-index:2147483647;display:block;width:100vw;height:100dvh;margin:0;padding:0;border:0;border-radius:0;background:#e8dfcc;cursor:pointer;overflow:hidden;appearance:none}
+.site-intro[hidden]{display:none}
+.site-intro video{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.site-intro:focus,.site-intro:focus-visible{outline:0}
+
 body.landing,body.landing *,body.world-page,body.world-page *{cursor:url('/img/cursor-shell.png') 28 32,auto!important}
 /* grain + vignette (from live site) */
 body::before{content:"";position:fixed;inset:0 0 env(safe-area-inset-bottom,0) 0;pointer-events:none;z-index:100;opacity:.14;mix-blend-mode:multiply;

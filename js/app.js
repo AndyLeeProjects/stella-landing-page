@@ -139,6 +139,24 @@ const $ = (s, r=document) => r.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money = n => '$' + Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
 const app = $('#app'), nav = $('#nav'), foot = $('#foot');
+
+/* ---------- Full-screen intro film ---------- */
+const INTRO_KEY = 'wrm-intro-entered';
+const siteIntro = $('#siteIntro'), siteIntroVideo = $('#siteIntroVideo');
+const hasEnteredIntro = () => { try{ return sessionStorage.getItem(INTRO_KEY) === '1'; }catch(e){ return false; } };
+function enterSite(){
+  try{ sessionStorage.setItem(INTRO_KEY, '1'); }catch(e){}
+  siteIntroVideo?.pause();
+  siteIntro?.setAttribute('hidden','');
+  document.body.classList.remove('intro-active');
+}
+if(hasEnteredIntro()) enterSite();
+else {
+  /* Muted + playsinline allows autoplay on desktop and mobile. No loop: the last frame remains visible. */
+  siteIntroVideo?.play().catch(()=>{});
+  siteIntro?.addEventListener('click', enterSite, {once:true});
+}
+
 const isMobile = () => window.matchMedia('(max-width:760px)').matches;
 
 function toast(msg){
