@@ -695,7 +695,7 @@ const pages = {
   materials(){
     document.title = 'Materials — WRM';
     if(isMobile()) return `<section class="mh-original ma-original" aria-label="Materials">
-      <img class="mh-original-art" src="/img/mobile-materials-original.png" width="1564" height="4718" alt="Materials: Fish Leather and Algae. Stay updated with WRM’s material explorations." fetchpriority="high">
+      <img class="mh-original-art" src="/img/mobile-materials-original.webp" width="1564" height="4718" alt="Materials: Fish Leather and Algae. Stay updated with WRM’s material explorations." fetchpriority="high">
       <button class="mh-original-hit" data-home-menu aria-label="Open menu" aria-controls="menu" style="left:2.237852%;top:0.847817%;width:10.869565%;height:4.027130%"></button>
 <a class="mh-original-hit" href="/" data-link aria-label="WRM home" style="left:43.158568%;top:0.847817%;width:14.066496%;height:4.027130%"></a>
 <button class="mh-original-hit" data-home-cart aria-label="Open cart" aria-controls="cart" style="left:86.956522%;top:0.847817%;width:10.869565%;height:4.027130%"></button>
