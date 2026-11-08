@@ -144,13 +144,29 @@ const app = $('#app'), nav = $('#nav'), foot = $('#foot');
 const INTRO_KEY = 'wrm-intro-entered';
 const siteIntro = $('#siteIntro'), siteIntroVideo = $('#siteIntroVideo');
 const hasEnteredIntro = () => { try{ return sessionStorage.getItem(INTRO_KEY) === '1'; }catch(e){ return false; } };
-function enterSite(){
-  try{ sessionStorage.setItem(INTRO_KEY, '1'); }catch(e){}
+const introVisible = () => !!siteIntro && !siteIntro.hasAttribute('hidden');
+function hideIntro(){
   siteIntroVideo?.pause();
   siteIntro?.setAttribute('hidden','');
   document.body.classList.remove('intro-active');
 }
-if(hasEnteredIntro()) enterSite();
+/* Clicking the film enters the site as a new history entry, so the browser Back button
+   from the page after it returns to the film (held on its final frame). */
+function enterSite(){
+  try{ sessionStorage.setItem(INTRO_KEY, '1'); }catch(e){}
+  hideIntro();
+  history.replaceState({path:location.pathname, intro:true}, '');
+  history.pushState({path:location.pathname, y:0}, '', location.pathname);
+}
+function showIntro(){
+  if(!siteIntro) return;
+  siteIntro.removeAttribute('hidden');
+  document.body.classList.add('intro-active');
+  if(siteIntroVideo && !siteIntroVideo.ended) siteIntroVideo.play().catch(()=>{});
+  siteIntro.addEventListener('click', enterSite, {once:true});
+}
+if(history.state?.intro) showIntro(); /* reloaded while on the film entry */
+else if(hasEnteredIntro()) hideIntro();
 else {
   /* Muted + playsinline allows autoplay on desktop and mobile. No loop: the last frame remains visible. */
   siteIntroVideo?.play().catch(()=>{});
@@ -961,7 +977,11 @@ function render(path, y=0){
 }
 function go(path, push=true){ if(push){ history.replaceState({path:location.pathname, y:scrollY},''); history.pushState({path},'',path);} render(path); }
 if('scrollRestoration' in history) history.scrollRestoration='manual';
-window.addEventListener('popstate', e => render(e.state?.path || location.pathname, e.state?.y||0));
+window.addEventListener('popstate', e => {
+  if(e.state?.intro){ closeMenu(); closeCart(); showIntro(); return; }
+  if(introVisible()) hideIntro(); /* Forward from the film */
+  render(e.state?.path || location.pathname, e.state?.y||0);
+});
 
 /* ---------- Events ---------- */
 document.addEventListener('click', e => {

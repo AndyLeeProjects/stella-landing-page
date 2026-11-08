@@ -683,6 +683,8 @@ h1 .soft{font-style:italic;color:var(--muted)}
     font:400 calc(19.3*var(--u))/calc(50*var(--u)) var(--m-sans);text-align:right}
   body.m2 #foot .foot-links a,body.m2 #menu .menu-footer .foot-links a{display:block;height:calc(50*var(--u));line-height:calc(27*var(--u));margin:0;padding:0;border:0}
   body.m2 #foot .foot-links a:first-child{display:none} /* footer shows Contact + FAQ only */
+  body.m2 #foot .foot-links a.foot-ig,body.m2 #menu .menu-footer .foot-links a.foot-ig{display:flex;align-items:center;justify-content:flex-end}
+  body.m2 .foot-ig svg{display:block;width:calc(30*var(--u));height:calc(30*var(--u))}
   body.m2 #foot .foot-mark,body.m2 #menu .menu-footer .foot-mark{position:absolute;left:calc(184.1*var(--u));top:calc(167.8*var(--u));width:calc(381.7*var(--u));max-width:none;height:auto;margin:0;transform:none;mix-blend-mode:multiply}
 
   /* ---- Menu (MENU@2x / MENU_1@2x): flat #c6c3a1 panel sampled from the artboard ----
@@ -832,7 +834,6 @@ h1 .soft{font-style:italic;color:var(--muted)}
   /* ---- Mobile material essays: editorial rhythm matching desktop (Option C). Hero, title, tiles untouched. ---- */
   body.m2 .m2m-body.m2m-essay-c{padding:calc(80*var(--u)) calc(48*var(--u)) 0;font:400 calc(34*var(--u))/1.68 "Source Serif 4",Georgia,serif}
   body.m2 .m2m-essay-c>p{margin:0 0 1.7em}
-  body.m2 .m2m-essay-c>p.m2c-lead{font-size:calc(38*var(--u));line-height:1.55}
   body.m2 .m2m-essay-c>p.m2c-lead::first-letter{float:left;font:400 calc(118*var(--u))/.74 Newsreader,"Source Serif 4",serif;padding:calc(14*var(--u)) calc(12*var(--u)) 0 0}
   body.m2 .m2m-essay-c .m2c-quote{margin:calc(110*var(--u)) 0;padding:0}
   body.m2 .m2m-essay-c .m2c-quote p{margin:0;font:italic 400 calc(54*var(--u))/1.2 Newsreader,"Source Serif 4",serif}
