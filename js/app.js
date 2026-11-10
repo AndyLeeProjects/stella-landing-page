@@ -29,7 +29,7 @@ const PRODUCTS = {
     care:'Treat like any other leather products. Avoid direct sunlight.'
   },
   'algae-tote': {
-    id:'algae-tote', name:'Algae Tote', variant:'Natural', price:150,
+    id:'algae-tote', name:'Algae Tote', variant:'Natural', price:165,
     category:'Algae', season:'Ocean Season', images:['/img/algae-tote.jpg'],
     desc:'A translucent tote made from seaweed-based algae film. Still finding its shape.'
   }
@@ -79,7 +79,7 @@ const M2_PRODUCT = {
       ['Material & Care','Leather: Ocean-caught Alaskan Sockeye Salmon','Lining: Horsehair','Treat like any other leather products.','Avoid direct sunlight.','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>'],
       ['Shipping & Returns','Shipping is complimentary on all U.S. orders. Orders ship within 1-3 business days. We don’t ship internationally at this time.','<span class="pd-more-info">For more detail, click <a class="pd-faq-link" href="/faq" data-link>here</a>.</span>']
     ]},
-  'algae-tote': { variant:'Natural', price:'$150.00', images:['/img/m2-pd-tote.jpg'],
+  'algae-tote': { variant:'Natural', price:'$165.00', images:['/img/m2-pd-tote.jpg'],
     alt:'Algae Tote, translucent seaweed-based sheet',
     blocks:[
       ['Your classic everyday tote made with algae. The seaweed is dehydrated and processed into a powder form, which then formulated and turned into sheets by <a class="pd-inline-link" href="/about-materials/algae" data-link>Sway</a> (learn more about Sway in our <a class="pd-inline-link" href="/about-materials/algae" data-link>materials page</a>).'],
@@ -579,7 +579,7 @@ const pages = {
       <img class="m2s-ocean" src="/img/illustration-ocean.png" alt="">
       ${only==='algae' ? '' : item('m2s-purse','/product/salmon-purse','/img/m2-shop-purse.jpg','Salmon Purse','Natural Crust','$700.00')}
       ${only==='algae' ? '' : item('m2s-bookmark','/product/salmon-bookmark','/img/m2-shop-bookmark.jpg','Salmon Bookmark','Natural Crust','$32.00')}
-      ${only==='fish' ? '' : item('m2s-tote','/product/algae-tote','/img/m2-shop-tote.jpg','Algae Tote','Natural','$150.00')}
+      ${only==='fish' ? '' : item('m2s-tote','/product/algae-tote','/img/m2-shop-tote.jpg','Algae Tote','Natural','$165.00')}
     </section>`;
   },
 

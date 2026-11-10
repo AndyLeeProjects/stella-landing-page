@@ -62,7 +62,7 @@ window.WRMDesktop = (() => {
         <h2 class="d2-collection-title" id="d2s-coll">The Collection</h2>
         ${card('d2s-c-purse','/product/salmon-purse','shop-c-purse','Salmon Purse','Salmon Purse','Natural Crust','$700.00')}
         ${card('d2s-c-bookmark','/product/salmon-bookmark','shop-c-bookmark','Salmon Bookmark','Salmon Bookmark','Natural Crust','$32.00')}
-        ${card('d2s-c-tote','/product/algae-tote','shop-c-tote','Algae Tote','Algae Tote','Natural','$150.00')}
+        ${card('d2s-c-tote','/product/algae-tote','shop-c-tote','Algae Tote','Algae Tote','Natural','$165.00')}
       </section>
     </div>`;
   }
@@ -91,7 +91,7 @@ window.WRMDesktop = (() => {
         ['Material & Care','Exterior: 100% Ocean-Caught Alaskan Sockeye Salmon','Lining: 100% Korean Hemp fabric','Treat like any other leather products, and see a specialist for cleaning. Avoid direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>'],
         ['Shipping & Returns','Shipping is complimentary on all U.S. orders. Orders ship within 1-3 business days. We don’t ship internationally at this time.','<span class="pd-more-info">For more detail, click <a class="pd-faq-link" href="/faq" data-link>here</a>.</span>']],
       more:''},
-    'algae-tote': {name:'Algae Tote', price:'$150.00', soon:true, photos:[
+    'algae-tote': {name:'Algae Tote', price:'$165.00', soon:true, photos:[
         ['pd-tote-1','Algae Tote, translucent seaweed-based sheet, backlit'],['pd-tote-2','Algae Tote in natural, lit from the side']],
       blocks:[['Natural'],
         ['Your classic everyday tote made with algae. The seaweed is dehydrated and processed into a powder form, which then formulated and turned into sheets by <a class="pd-inline-link" href="/about-materials/algae" data-link>Sway</a> (learn more about Sway in our <a class="pd-inline-link" href="/about-materials/algae" data-link>materials page</a>).'],
