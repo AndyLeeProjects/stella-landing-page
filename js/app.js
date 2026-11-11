@@ -897,7 +897,7 @@ const adminLock = document.createElement('div');
 adminLock.className = 'admin-lock';
 document.body.appendChild(adminLock);
 function drawAdminLock(){
-  adminLock.hidden = isLaunched(); /* the lock is only needed before launch */
+  adminLock.hidden = true;
   const open = isUnlocked();
   adminLock.innerHTML = `<button class="admin-lock-btn" type="button" aria-label="${open?'Lock site (show landing page)':'Admin access'}">${LOCK_SVG(open)}</button>
     ${open?'':`<form class="admin-lock-form" hidden><input type="password" autocomplete="current-password" placeholder="Password" aria-label="Admin password"><button type="submit">Enter</button></form>`}`;
@@ -907,21 +907,23 @@ adminLock.addEventListener('click', e => {
   if(isUnlocked()){ localStorage.removeItem(ADMIN_KEY); drawAdminLock(); render(location.pathname); return; }
   const f = adminLock.querySelector('form'); f.hidden = !f.hidden; if(!f.hidden) f.querySelector('input').focus();
 });
-adminLock.addEventListener('submit', async e => {
-  e.preventDefault();
-  const input = e.target.querySelector('input');
+/* Corner lock retired (Stella, 11.11): the password now goes in the countdown's bottom field. */
+adminLock.hidden = true;
+/* Countdown password field (wrm2026): countdown -> enter film -> full site. */
+async function tryGatePassword(form){
+  const input = form.querySelector('input');
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(input.value));
   const hex = [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
   if(hex === ADMIN_HASH){
-    localStorage.setItem(ADMIN_KEY, hex); drawAdminLock(); render(location.pathname);
-    /* Password holders: countdown -> enter film -> full site. */
+    localStorage.setItem(ADMIN_KEY, hex); render(location.pathname);
     try{ sessionStorage.removeItem(INTRO_KEY); }catch(e){}
     if(siteIntroVideo){ try{ siteIntroVideo.currentTime = 0; }catch(e){} }
     showIntro();
+  } else {
+    input.value = ''; input.placeholder = 'Wrong password';
+    form.classList.remove('shake'); void form.offsetWidth; form.classList.add('shake');
   }
-  else { input.value=''; input.placeholder='Wrong password'; adminLock.classList.remove('shake'); void adminLock.offsetWidth; adminLock.classList.add('shake'); }
-});
-drawAdminLock();
+}
 
 /* Countdown landing (Stella's option A): small logo top middle, clock centre, signup bottom middle. */
 let countdownTimer = null;
@@ -959,11 +961,10 @@ function landing(){
     </div>
     <p class="cd-date">11.11.26 &middot; 10am PST</p>
   </div>
-  <form class="cd-signup" data-newsletter="landing">
-    <p>Be the first to know when we open.</p>
+  <form class="cd-signup" data-gate-password>
     <div class="cd-field">
-      <input type="email" required placeholder="Your email" autocomplete="email" aria-label="Email">
-      <button type="submit"><span data-label>Notify me</span> <span class="arr">→</span></button>
+      <input type="password" required placeholder="Password" autocomplete="current-password" aria-label="Password">
+      <button type="submit">Enter <span class="arr">→</span></button>
     </div>
   </form>
 </section>`;
@@ -1054,6 +1055,7 @@ document.addEventListener('keydown', e => {
 });
 document.addEventListener('submit', e => {
   const f = e.target;
+  if(f.matches('[data-gate-password]')){ e.preventDefault(); tryGatePassword(f); return; }
   if(f.matches('[data-newsletter]')){ e.preventDefault(); subscribe(f, f.dataset.newsletter); }
   if(f.matches('[data-waitlist-form]')){ e.preventDefault(); joinWaitlist(f); }
   if(f.id==='footForm'){ e.preventDefault(); subscribe(f,'footer'); f.querySelector('input').value=''; }
