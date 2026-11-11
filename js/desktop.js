@@ -102,7 +102,7 @@ window.WRMDesktop = (() => {
         ['You can expect a waxed canvas-like hand feel. The waxiness will disappear with wear. Please note the textures and colors of the bags vary piece to piece.'],
         ['Product Detail','Manufactured in San Francisco'],
         ['Dimensions','Height: 12” | 30.5 cm','Top Width: 18” | 45.7 cm','Bottom Width: 14” | 35.6 cm','Bottom Depth: 4.75” | 12.1 cm','Strap Drop: 13” | 33 cm'],
-        ['Material & Care','Exterior Body: 100% compostable algae-based sheet','Avoid moisture and direct sunlight','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>'],
+        ['Material & Care','Exterior Body: 100% compostable algae-based sheet','Avoid moisture and direct sunlight','Weight Capacity: Holds up to a 16-inch laptop and a water bottle.','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>'],
         ['Shipping & Returns','Shipping is complimentary on all U.S. orders. Orders ship within 1-3 business days. We don’t ship internationally at this time.','<span class="pd-more-info">For more detail, click <a class="pd-faq-link" href="/faq" data-link>here</a>.</span>']],
       more:''}
   };
