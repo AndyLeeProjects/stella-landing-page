@@ -37,6 +37,14 @@ body.intro-active{overflow:hidden}
 .site-intro[hidden]{display:none}
 .site-intro video{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 .site-intro:focus,.site-intro:focus-visible{outline:0}
+/* Phones: vertical cut of the film. Size to the LARGE viewport (lvh) so it runs under Safari's
+   status bar and bottom toolbar instead of stopping short of them, and tint whatever chrome
+   shows through with the film's own paper tone rather than the site beige. */
+@media (max-width:760px){
+  .site-intro{inset:auto;top:0;left:0;width:100vw;height:100vh;height:100lvh;min-height:100%;background:#c1b1a3}
+  html:has(body.intro-active){background:#c1b1a3!important}
+  body.intro-active{background:#c1b1a3!important}
+}
 
 body.shell-cursor,body.shell-cursor *:not(.cart):not(.cart *):not(.scrim){cursor:url('/img/cursor-shell.png') 28 32,auto!important}
 /* grain + vignette (from live site) */

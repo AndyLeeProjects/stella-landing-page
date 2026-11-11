@@ -28,10 +28,12 @@
 <body class="intro-active shell-cursor">
 <button class="site-intro" id="siteIntro" type="button" aria-label="Enter WRM">
   <video id="siteIntroVideo" autoplay muted playsinline preload="auto" poster="/img/wrm-intro-poster.jpg">
+    <source src="/img/wrm-intro-mobile.mp4" type="video/mp4" media="(max-width:760px)">
     <source src="/img/wrm-intro.mp4" type="video/mp4">
   </video>
 </button>
 <script>/* Before 11.11.26 10am PST the countdown is the landing page: hide the film before first paint (unless unlocked). */
+(function(){try{if(matchMedia('(max-width:760px)').matches)document.getElementById('siteIntroVideo').poster='/img/wrm-intro-poster-mobile.jpg';}catch(e){}})();
 (function(){try{var open=Date.now()>=Date.UTC(2026,10,11,18,0,0)||localStorage.getItem('wrm-admin-unlocked')==='2504d0ac9df6c61a24511608889e47c745e57a249078e6269bf1284f89c3867f';
 if(!open){var i=document.getElementById('siteIntro');i.setAttribute('hidden','');i.querySelector('video').removeAttribute('autoplay');document.body.classList.remove('intro-active');}}catch(e){}})();</script>
 
