@@ -916,9 +916,23 @@ html:has(body.landing){background:#E8DFC8!important}
 body.landing{background:#E8DFC8 url("/img/texture.jpg") repeat!important;background-size:900px 900px!important;background-blend-mode:multiply!important;color:var(--ink)}
 body.landing{--paper:#E8DFC8}
 body.landing::before,body.landing::after{display:block}
-@media (max-width:760px){
-  body.landing .logo-wrap{height:38vh}
-}
+/* Countdown landing (option A) */
+body.landing .page{animation:none}
+.cd{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;text-align:center;color:#1C1A17}
+.cd-logo{display:block;height:clamp(54px,8vh,84px);width:auto;margin:clamp(28px,4.5vh,48px) auto 0}
+.cd-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 20px}
+.cd-kicker{margin:0 0 clamp(18px,3vh,32px);font:italic 400 clamp(18px,2vw,26px)/1.2 var(--display);color:#3A352E}
+.cd-clock{display:flex;align-items:flex-start;gap:clamp(10px,2.4vw,40px);font:400 clamp(64px,13vw,200px)/.9 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.cd-sep{color:#1C1A17}
+.cd-unit{display:flex;flex-direction:column;align-items:center}
+.cd-unit small{margin-top:14px;font:400 10px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:#6E6458}
+.cd-date{margin:clamp(20px,3.5vh,40px) 0 0;font:italic 400 clamp(16px,1.5vw,20px) var(--editorial);color:#6E6458}
+.cd-signup{width:min(420px,calc(100% - 40px));margin:0 auto clamp(32px,6vh,64px)}
+.cd-signup p{margin:0 0 12px;font:italic 400 15px var(--editorial);color:#6E6458}
+.cd-field{display:flex;border-bottom:1px solid #1C1A17}
+.cd-field input{flex:1;min-width:0;border:0;border-radius:0;background:transparent;padding:12px 4px;font:16px var(--editorial);outline:none;color:inherit}
+.cd-field input::placeholder{color:#6E6458;font-style:italic}
+.cd-field button{border:0;background:none;padding:0 4px 0 16px;font:400 10.5px var(--mono);letter-spacing:.18em;text-transform:uppercase;cursor:pointer;color:inherit;white-space:nowrap}
 
 /* ---------- Shopify storefront states (js/app.js hydrateProduct / renderCart) ---------- */
 [data-add]:disabled{opacity:.45;cursor:default;text-decoration:none}

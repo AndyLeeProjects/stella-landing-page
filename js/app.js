@@ -908,18 +908,39 @@ adminLock.addEventListener('submit', async e => {
 });
 drawAdminLock();
 
+/* Countdown landing (Stella's option A): small logo top middle, clock centre, signup bottom middle. */
+const LAUNCH_AT = Date.UTC(2026, 10, 11, 18, 0, 0); /* 11.11.26, 10:00 PST */
+let countdownTimer = null;
+function tickCountdown(){
+  const el = document.querySelector('.cd-clock'); if(!el){ clearInterval(countdownTimer); countdownTimer = null; return; }
+  let s = Math.max(0, Math.floor((LAUNCH_AT - Date.now()) / 1000));
+  const h = Math.floor(s / 3600); s %= 3600; const m = Math.floor(s / 60); s %= 60;
+  const pad = n => String(n).padStart(2, '0');
+  el.querySelector('[data-u="h"]').textContent = pad(h);
+  el.querySelector('[data-u="m"]').textContent = pad(m);
+  el.querySelector('[data-u="s"]').textContent = pad(s);
+}
+function startCountdown(){ clearInterval(countdownTimer); tickCountdown(); countdownTimer = setInterval(tickCountdown, 1000); }
 function landing(){
   document.title = 'WRM — Ocean season launching 11.11.26';
-  return `<section class="hero landing-hero">
-  <div class="hero-card">
-    <div class="logo-wrap reveal"><img src="/img/wrm-logo-dark.png" alt="WRM — With Raw Materials"></div>
-    <h1 class="headline reveal d2">Ocean season <span class="italic">launching</span><br><span class="soft">11.11.26, 10am PST</span></h1>
-    <form class="notify reveal d3" data-newsletter="landing">
+  return `<section class="cd">
+  <img class="cd-logo" src="/img/wrm-logo-dark.png" alt="WRM — With Raw Materials">
+  <div class="cd-main">
+    <p class="cd-kicker">Ocean season opens in</p>
+    <div class="cd-clock" role="timer" aria-label="Time until launch">
+      <div class="cd-unit"><span data-u="h">00</span><small>Hours</small></div><span class="cd-sep" aria-hidden="true">:</span>
+      <div class="cd-unit"><span data-u="m">00</span><small>Minutes</small></div><span class="cd-sep" aria-hidden="true">:</span>
+      <div class="cd-unit"><span data-u="s">00</span><small>Seconds</small></div>
+    </div>
+    <p class="cd-date">11.11.26 &middot; 10am PST</p>
+  </div>
+  <form class="cd-signup" data-newsletter="landing">
+    <p>Be the first to know when we open.</p>
+    <div class="cd-field">
       <input type="email" required placeholder="Your email" autocomplete="email" aria-label="Email">
       <button type="submit"><span data-label>Notify me</span> <span class="arr">→</span></button>
-    </form>
-  </div>
-  <span class="scroll-hint reveal d4">Chapter I</span>
+    </div>
+  </form>
 </section>`;
 }
 
@@ -932,6 +953,7 @@ function render(path, y=0){
   if(gated){
     document.body.classList.remove('m2','d2','m2-light','mobile-materials-original');
     app.innerHTML = `<div class="page">${landing()}</div>`;
+    startCountdown();
     window.scrollTo({top:0, behavior:'instant'});
     return;
   }
