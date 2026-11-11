@@ -897,9 +897,15 @@ const routes = [
    unlock the full site per browser via the faint lock in the corner. This is a
    soft client-side curtain (only a SHA-256 of the password ships), not real
    access control: anyone reading the JS can still reach the page code. */
-const ADMIN_HASH = '2504d0ac9df6c61a24511608889e47c745e57a249078e6269bf1284f89c3867f';
+/* Entry password: wrm2026 until 11.11.26 8:58am PST, then PRONOUNCEDWORM (Stella). After the
+   switch, browsers unlocked with the old password see the countdown again and need the new one. */
+const PW_SWITCH_AT = Date.UTC(2026, 10, 11, 16, 58, 0); /* 8:58am PST */
+const pwSwitched = () => Date.now() >= PW_SWITCH_AT;
+const OLD_HASH = '2504d0ac9df6c61a24511608889e47c745e57a249078e6269bf1284f89c3867f'; /* wrm2026 */
+const NEW_HASH = 'e8193ed054c53874a059497be4ce843853275bfc618b11c734d3243974b916d0'; /* PRONOUNCEDWORM */
+const gateHash = () => pwSwitched() ? NEW_HASH : OLD_HASH;
 const ADMIN_KEY = 'wrm-admin-unlocked';
-const isUnlocked = () => { try{ return localStorage.getItem(ADMIN_KEY) === ADMIN_HASH; }catch(e){ return false; } };
+const isUnlocked = () => { try{ return localStorage.getItem(ADMIN_KEY) === gateHash(); }catch(e){ return false; } };
 const LAUNCH_AT = Date.UTC(2026, 10, 11, 18, 0, 0); /* 11.11.26, 10:00 PST */
 const isLaunched = () => Date.now() >= LAUNCH_AT;
 const siteOpen = () => isLaunched() || isUnlocked();
@@ -923,9 +929,11 @@ adminLock.hidden = true;
 /* Countdown password field (wrm2026): countdown -> enter film -> full site. */
 async function tryGatePassword(form){
   const input = form.querySelector('input');
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(input.value));
+  /* New password is accepted in any letter case (phone keyboards capitalise the first letter). */
+  const typed = pwSwitched() ? input.value.trim().toUpperCase() : input.value;
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(typed));
   const hex = [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
-  if(hex === ADMIN_HASH){
+  if(hex === gateHash()){
     localStorage.setItem(ADMIN_KEY, hex); render(location.pathname);
     try{ sessionStorage.removeItem(INTRO_KEY); }catch(e){}
     if(siteIntroVideo){ try{ siteIntroVideo.currentTime = 0; }catch(e){} }

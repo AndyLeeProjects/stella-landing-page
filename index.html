@@ -34,7 +34,7 @@
 </button>
 <script>/* Before 11.11.26 10am PST the countdown is the landing page: hide the film before first paint (unless unlocked). */
 (function(){try{if(matchMedia('(max-width:760px)').matches)document.getElementById('siteIntroVideo').poster='/img/wrm-intro-poster-mobile.jpg';}catch(e){}})();
-(function(){try{var open=Date.now()>=Date.UTC(2026,10,11,18,0,0)||localStorage.getItem('wrm-admin-unlocked')==='2504d0ac9df6c61a24511608889e47c745e57a249078e6269bf1284f89c3867f';
+(function(){try{var open=Date.now()>=Date.UTC(2026,10,11,18,0,0)||localStorage.getItem('wrm-admin-unlocked')===(Date.now()>=Date.UTC(2026,10,11,16,58,0)?'e8193ed054c53874a059497be4ce843853275bfc618b11c734d3243974b916d0':'2504d0ac9df6c61a24511608889e47c745e57a249078e6269bf1284f89c3867f');
 if(!open){var i=document.getElementById('siteIntro');i.setAttribute('hidden','');i.querySelector('video').removeAttribute('autoplay');document.body.classList.remove('intro-active');}}catch(e){}})();</script>
 
 <header class="nav" id="nav">
