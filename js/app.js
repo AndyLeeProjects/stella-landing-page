@@ -165,12 +165,17 @@ function showIntro(){
   if(siteIntroVideo && !siteIntroVideo.ended) siteIntroVideo.play().catch(()=>{});
   siteIntro.addEventListener('click', enterSite, {once:true});
 }
-if(history.state?.intro) showIntro(); /* reloaded while on the film entry */
-else if(hasEnteredIntro()) hideIntro();
-else {
-  /* Muted + playsinline allows autoplay on desktop and mobile. No loop: the last frame remains visible. */
-  siteIntroVideo?.play().catch(()=>{});
-  siteIntro?.addEventListener('click', enterSite, {once:true});
+/* Before launch the countdown is the landing page (no film). From 11.11.26 10am PST, or once
+   unlocked with the corner lock, the film is the landing page. Decided in initIntro() at Init. */
+function initIntro(){
+  if(!siteOpen()){ hideIntro(); return; }
+  if(history.state?.intro) showIntro(); /* reloaded while on the film entry */
+  else if(hasEnteredIntro()) hideIntro();
+  else {
+    /* Muted + playsinline allows autoplay on desktop and mobile. No loop: the last frame remains visible. */
+    siteIntroVideo?.play().catch(()=>{});
+    siteIntro?.addEventListener('click', enterSite, {once:true});
+  }
 }
 
 const isMobile = () => window.matchMedia('(max-width:760px)').matches;
@@ -884,11 +889,15 @@ const routes = [
 const ADMIN_HASH = '2504d0ac9df6c61a24511608889e47c745e57a249078e6269bf1284f89c3867f';
 const ADMIN_KEY = 'wrm-admin-unlocked';
 const isUnlocked = () => { try{ return localStorage.getItem(ADMIN_KEY) === ADMIN_HASH; }catch(e){ return false; } };
+const LAUNCH_AT = Date.UTC(2026, 10, 11, 18, 0, 0); /* 11.11.26, 10:00 PST */
+const isLaunched = () => Date.now() >= LAUNCH_AT;
+const siteOpen = () => isLaunched() || isUnlocked();
 const LOCK_SVG = open => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="${open?'M8 11V7.5a4 4 0 0 1 7.6-1.7':'M8 11V7.5a4 4 0 0 1 8 0V11'}"/></svg>`;
 const adminLock = document.createElement('div');
 adminLock.className = 'admin-lock';
 document.body.appendChild(adminLock);
 function drawAdminLock(){
+  adminLock.hidden = isLaunched(); /* the lock is only needed before launch */
   const open = isUnlocked();
   adminLock.innerHTML = `<button class="admin-lock-btn" type="button" aria-label="${open?'Lock site (show landing page)':'Admin access'}">${LOCK_SVG(open)}</button>
     ${open?'':`<form class="admin-lock-form" hidden><input type="password" autocomplete="current-password" placeholder="Password" aria-label="Admin password"><button type="submit">Enter</button></form>`}`;
@@ -903,16 +912,26 @@ adminLock.addEventListener('submit', async e => {
   const input = e.target.querySelector('input');
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(input.value));
   const hex = [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
-  if(hex === ADMIN_HASH){ localStorage.setItem(ADMIN_KEY, hex); drawAdminLock(); render(location.pathname); }
+  if(hex === ADMIN_HASH){ localStorage.setItem(ADMIN_KEY, hex); drawAdminLock(); render(location.pathname); } /* straight past the countdown into the site */
   else { input.value=''; input.placeholder='Wrong password'; adminLock.classList.remove('shake'); void adminLock.offsetWidth; adminLock.classList.add('shake'); }
 });
 drawAdminLock();
 
 /* Countdown landing (Stella's option A): small logo top middle, clock centre, signup bottom middle. */
-const LAUNCH_AT = Date.UTC(2026, 10, 11, 18, 0, 0); /* 11.11.26, 10:00 PST */
 let countdownTimer = null;
+/* At 10am PST the countdown disappears: the film plays, then the full site. */
+function onLaunch(){
+  clearInterval(countdownTimer); countdownTimer = null;
+  drawAdminLock();
+  if(!document.body.classList.contains('landing')) return; /* already viewing the site */
+  try{ sessionStorage.removeItem(INTRO_KEY); }catch(e){}
+  render(location.pathname);
+  if(siteIntroVideo){ try{ siteIntroVideo.currentTime = 0; }catch(e){} }
+  showIntro();
+}
 function tickCountdown(){
   const el = document.querySelector('.cd-clock'); if(!el){ clearInterval(countdownTimer); countdownTimer = null; return; }
+  if(isLaunched()){ onLaunch(); return; }
   let s = Math.max(0, Math.floor((LAUNCH_AT - Date.now()) / 1000));
   const h = Math.floor(s / 3600); s %= 3600; const m = Math.floor(s / 60); s %= 60;
   const pad = n => String(n).padStart(2, '0');
@@ -947,7 +966,7 @@ function landing(){
 let io;
 function render(path, y=0){
   closeMenu(); closeCart();
-  const gated = !isUnlocked();
+  const gated = !siteOpen();
   document.body.classList.toggle('landing', gated);
   document.body.classList.toggle('world-page', !gated && path.replace(/\/$/,'') === '/wrm-world');
   if(gated){
@@ -1067,6 +1086,8 @@ window.matchMedia('(max-width:760px)').addEventListener('change', ()=>{
 });
 
 /* ---------- Init ---------- */
+initIntro();
+if(!isLaunched()) setTimeout(()=>{ if(isLaunched()) onLaunch(); }, LAUNCH_AT - Date.now() + 250);
 buildMenu();
 render(location.pathname);
 loadCart();
