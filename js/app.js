@@ -283,12 +283,16 @@ function setAddButton(btn, p, v){
   btn.dataset.name = p.title;
   btn.classList.remove('is-waitlist'); btn.removeAttribute('data-waitlist');
   btn.parentElement.querySelector('.waitlist-form,.waitlist-done')?.remove();
+  btn.parentElement.querySelectorAll('.sold-out-label').forEach(el=>el.remove());
   if(!v){ btn.disabled = true; btn.removeAttribute('data-variant'); btn.textContent = 'Coming soon'; return; }
   if(!v.availableForSale){
     /* Sold out: same box, white, opens an email field that goes to the Product Waitlist sheet. */
     btn.removeAttribute('data-variant'); btn.disabled = false;
     btn.classList.add('is-waitlist'); btn.dataset.waitlist = WAITLIST_NAMES[p.handle] || p.title;
-    btn.textContent = 'Join the waitlist'; return;
+    btn.textContent = 'Join the waitlist';
+    /* "SOLD OUT" in bold above the button, same width as the button so it centres on it. */
+    btn.insertAdjacentHTML('beforebegin', '<p class="sold-out-label" role="status">SOLD OUT</p>');
+    return;
   }
   btn.dataset.variant = v.id;
   btn.disabled = false;

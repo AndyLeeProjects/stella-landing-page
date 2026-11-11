@@ -809,6 +809,8 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body.m2 .m2p-acc .m2p-acc-a{font-size:.9em;line-height:1.5;color:#6b6b6b}  /* drop-down body: a size smaller + grey */
   body.m2 .m2p-acc .m2p-acc-a a{color:inherit}
   body.m2 .m2p-add.is-waitlist{background:#fff;color:#000}
+  body.m2 .m2p-body .sold-out-label{width:calc(100% + 64*var(--u));margin:calc(30*var(--u)) 0 0 calc(-32*var(--u));text-align:center;font-weight:700;letter-spacing:.06em}
+  body.m2 .m2p-body .sold-out-label + .m2p-add{margin-top:calc(12*var(--u))}
   body.m2 .m2p-body .waitlist-form{display:flex;flex-direction:column;gap:calc(12*var(--u));width:calc(100% + 64*var(--u));margin:calc(12*var(--u)) 0 0 calc(-32*var(--u))}
   body.m2 .m2p-body .waitlist-form input{width:100%;height:calc(72*var(--u));min-height:44px;padding:0 calc(20*var(--u));border:1px solid #000;border-radius:0;background:#fff;color:#000;font:inherit;font-size:16px;outline:none}
   body.m2 .m2p-body .waitlist-form .m2p-add{width:100%;margin:0}
