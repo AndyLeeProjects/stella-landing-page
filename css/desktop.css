@@ -250,7 +250,7 @@
   .d2-story-algae::after{height:6.9444vw}
 
   /* ---- WRM World (WRM WORLD@2x.png) ---- */
-  .d2-world{height:330.3472vw;background:var(--d2-paper);background-size:auto,69.4444vw auto}
+  .d2-world{height:497.3003vw;background:var(--d2-paper);background-size:auto,69.4444vw auto}
   .d2w-paper{position:absolute;background:var(--d2-paper-mid);background-size:auto,69.4444vw auto}
   .d2w-paper-strip{left:42.7083vw;top:0;width:7.5694vw;height:62.1528vw}
   .d2w-paper-left{left:0;top:64.0278vw;width:50.2778vw;height:62.5vw}
@@ -274,6 +274,18 @@
   .d2w-c6{left:72.3611vw;top:182.8472vw}
   .d2w-c7{left:1.4583vw;top:269.3056vw}
   .d2w-c8{left:54.7917vw;top:269.3056vw}
-  .d2w-learn{left:2.4306vw;top:288.6806vw;width:50.5556vw;height:31.5972vw}
-  .d2w-back{left:55.4167vw;top:288.6806vw;width:42.2222vw;height:31.5972vw}
+  .d2w-end{position:absolute;left:0;top:288.6806vw;width:100vw;height:166.9531vw}
+  /* WRM World ending (Stella's web layout, two 1280px artboards: 1073 + 1064 tall) */
+  .dwe-white{position:absolute;left:0;top:95.5469vw;width:100%;bottom:0;background:#fff}
+  .dwe-i{position:absolute;display:block;height:auto;max-width:none}
+  .dwe-beads{left:2.9688vw;top:20.8594vw;width:30.3906vw;z-index:3}
+  .dwe-stair{left:45.0000vw;top:8.7500vw;width:47.6562vw;z-index:1}
+  .dwe-pearl{left:35.5469vw;top:26.8750vw;width:20.9375vw;z-index:2}
+  .dwe-shoes{left:6.3281vw;top:97.1094vw;width:27.5000vw;z-index:1}
+  .dwe-portrait{left:3.2812vw;top:120.8594vw;width:24.5312vw;z-index:1}
+  .dwe-tote{left:29.5312vw;top:108.9844vw;width:21.2500vw;z-index:3}
+  .dwe-garment{left:44.1406vw;top:92.9688vw;width:41.7188vw;z-index:2}
+  .dwe-knit{left:79.0625vw;top:103.9844vw;width:18.8281vw;z-index:3}
+  .d2w-learn{left:2.4306vw;top:455.6337vw;width:50.5556vw;height:31.5972vw}
+  .d2w-back{left:55.4167vw;top:455.6337vw;width:42.2222vw;height:31.5972vw}
 }

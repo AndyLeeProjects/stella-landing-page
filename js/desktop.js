@@ -207,6 +207,17 @@ window.WRMDesktop = (() => {
       ${photo('world-wire','Crochet algae yarn purse with wool handle, a shoe study with a material note, a sticky-note sketch and an Alexander Calder wire sculpture',false,'d2w-ph d2w-wire')}
       ${cap('d2w-c7 d2w-light','07. Crochet algae yarn purse with wool handle')}
       ${cap('d2w-c8 d2w-light','08. Alexander Calder')}
+      <div class="d2w-end" aria-label="WRM World references">
+        <div class="dwe-white"></div>
+        <img class="dwe-i dwe-beads" src="/img/world2/weave-beads.jpg" alt="Leather panel woven with black cord and beads, hung from a rod" loading="lazy">
+        <img class="dwe-i dwe-stair" src="/img/world2/stair.jpg" alt="Engraving of a panelled stair hall with a scalloped arch" loading="lazy">
+        <img class="dwe-i dwe-pearl" src="/img/world2/weave-pearl.jpg" alt="Woven salmon leather panel with a pearl, on dark red" loading="lazy">
+        <img class="dwe-i dwe-shoes" src="/img/world2/shoes-flat.png" alt="Pair of black Korean shoes" loading="lazy">
+        <img class="dwe-i dwe-portrait" src="/img/world2/portrait-book.jpg" alt="Book open to an 18th-century Korean portrait in a white robe" loading="lazy">
+        <img class="dwe-i dwe-tote" src="/img/world2/tote-quilted-upright.png" alt="Translucent quilted tote with black handles" loading="lazy">
+        <img class="dwe-i dwe-garment" src="/img/world2/garment-plate.jpg" alt="Joseon court costume plate, 1829" loading="lazy">
+        <img class="dwe-i dwe-knit" src="/img/world2/bag-knit.png" alt="Black knotted bag with an ivory bow" loading="lazy">
+      </div>
       <a class="d2-panel d2w-learn" href="/about-materials" data-link data-tone="light">${photo('world-learn','')}<span class="d2-box">Learn more about the materials</span></a>
       <a class="d2-panel d2w-back" href="/shop" data-link data-tone="light">${photo('world-back','')}<span class="d2-box">Back to Ocean Season</span></a>
     </div>`;

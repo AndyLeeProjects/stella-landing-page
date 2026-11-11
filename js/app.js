@@ -835,6 +835,16 @@ const pages = {
       ${pic('m2w-sticky','m2-world-sticky.jpg','Sticky note with a handbag sketch')}
       ${cap('m2w-c5 m2w-light','05. Crochet algae yarn purse')}
       ${cap('m2w-c6 m2w-light','06. Alexander Calder')}
+      <div class="m2w-end" aria-label="WRM World references">
+        <img class="mwe-i mwe-beads" src="/img/world2/weave-beads.jpg" alt="Leather panel woven with black cord and beads, hung from a rod" loading="lazy">
+        <img class="mwe-i mwe-stair" src="/img/world2/stair.jpg" alt="Engraving of a panelled stair hall with a scalloped arch" loading="lazy">
+        <img class="mwe-i mwe-pearl" src="/img/world2/weave-pearl.jpg" alt="Woven salmon leather panel with a pearl, on dark red" loading="lazy">
+        <img class="mwe-i mwe-garment" src="/img/world2/garment-plate.jpg" alt="Joseon court costume plate, 1829" loading="lazy">
+        <img class="mwe-i mwe-knit" src="/img/world2/bag-knit.png" alt="Black knotted bag with an ivory bow" loading="lazy">
+        <img class="mwe-i mwe-shoes" src="/img/world2/shoes-flat.png" alt="Pair of black Korean shoes" loading="lazy">
+        <img class="mwe-i mwe-portrait" src="/img/world2/portrait-book.jpg" alt="Book open to an 18th-century Korean portrait in a white robe" loading="lazy">
+        <img class="mwe-i mwe-tote" src="/img/world2/tote-quilted-upright.png" alt="Translucent quilted tote with black handles" loading="lazy">
+      </div>
       <a class="m2w-learn" href="/about-materials" data-link><img src="/img/m2-world-tex-fish.jpg" alt=""><img src="/img/m2-world-tex-algae.jpg" alt=""><span class="m2-box-btn">Learn more about the materials</span></a>
     </section>`;
   },

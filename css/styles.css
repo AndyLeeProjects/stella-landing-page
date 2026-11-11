@@ -871,7 +871,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body.m2 .m2f .m2-acc-q{height:auto;min-height:calc(86*var(--u));padding:calc(24*var(--u)) calc(40*var(--u)) calc(24*var(--u)) 0;line-height:1.3}
 
   /* ---- WRM World (WRM_WORLD@2x.png 751 × 3882) ---- */
-  body.m2 .m2w{position:relative;height:calc(3637*var(--u));background:var(--paper-mid);background-size:auto,calc(1000*var(--u)) auto;overflow:hidden}
+  body.m2 .m2w{position:relative;height:calc(5127.33*var(--u));background:var(--paper-mid);background-size:auto,calc(1000*var(--u)) auto;overflow:hidden}
   body.m2 .m2w-pc{position:absolute;display:block;max-width:none;object-fit:cover}
   body.m2 .m2w-top{left:0;top:0;width:calc(751*var(--u));height:calc(834.5*var(--u))}
   body.m2 .m2w-yarn{left:calc(62*var(--u));top:calc(957*var(--u));width:calc(243*var(--u));height:calc(242*var(--u))}
@@ -891,7 +891,18 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body.m2 .m2w-c4{left:calc(36*var(--u));top:calc(2603*var(--u))}
   body.m2 .m2w-c5{left:calc(8*var(--u));top:calc(3202*var(--u))}
   body.m2 .m2w-c6{left:calc(415*var(--u));top:calc(3200*var(--u))}
-  body.m2 .m2w-learn{position:absolute;left:0;top:calc(3362*var(--u));width:100%;height:calc(229*var(--u));display:flex;line-height:0}
+  body.m2 .m2w-end{position:absolute;left:0;top:calc(3362*var(--u));width:100%;height:calc(1490.33*var(--u))}
+  /* WRM World ending, mobile (Stella's two mobile artboards 749×800 + 1124×1030, scaled to 751u) */
+  body.m2 .mwe-i{position:absolute;display:block;height:auto;max-width:none}
+  body.m2 .mwe-beads{left:calc(40.11*var(--u));top:calc(286.76*var(--u));width:calc(238.64*var(--u));z-index:3}
+  body.m2 .mwe-stair{left:calc(258.69*var(--u));top:calc(126.34*var(--u));width:calc(430.15*var(--u));z-index:1}
+  body.m2 .mwe-pearl{left:calc(301.80*var(--u));top:calc(325.87*var(--u));width:calc(165.44*var(--u));z-index:2}
+  body.m2 .mwe-garment{left:calc(42.76*var(--u));top:calc(835.54*var(--u));width:calc(406.23*var(--u));z-index:1}
+  body.m2 .mwe-knit{left:calc(193.76*var(--u));top:calc(992.56*var(--u));width:calc(137.64*var(--u));z-index:2}
+  body.m2 .mwe-shoes{left:calc(511.13*var(--u));top:calc(842.23*var(--u));width:calc(192.43*var(--u));z-index:1}
+  body.m2 .mwe-portrait{left:calc(489.75*var(--u));top:calc(1056.03*var(--u));width:calc(173.72*var(--u));z-index:1}
+  body.m2 .mwe-tote{left:calc(541.20*var(--u));top:calc(1134.87*var(--u));width:calc(165.03*var(--u));z-index:2}
+  body.m2 .m2w-learn{position:absolute;left:0;top:calc(4852.33*var(--u));width:100%;height:calc(229*var(--u));display:flex;line-height:0}
   body.m2 .m2w-learn img{height:100%;object-fit:cover;width:calc(380*var(--u))}
   body.m2 .m2w-learn img+img{width:calc(371*var(--u))}
   body.m2 .m2w-learn .m2-box-btn{position:absolute;left:calc(207*var(--u));top:calc(91*var(--u));width:calc(352*var(--u));height:calc(41*var(--u));font-size:calc(17.8*var(--u));white-space:nowrap}
@@ -965,3 +976,4 @@ body.landing .page{animation:none}
 .pd-more-info a.pd-faq-link,body.m2 .m2p-body .pd-more-info a.pd-faq-link{font-weight:700;text-decoration:underline;text-underline-offset:.15em;color:inherit}
 /* Algae Tote copy: "Sway" + "materials page" link to the algae story, underlined (desktop + mobile) */
 .pd-inline-link,body.m2 .m2p-body a.pd-inline-link,body.d2 .d2p-copy a.pd-inline-link{color:inherit;text-decoration:underline;text-underline-offset:.15em;white-space:nowrap}
+
