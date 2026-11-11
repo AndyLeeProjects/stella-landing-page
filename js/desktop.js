@@ -208,7 +208,6 @@ window.WRMDesktop = (() => {
       ${cap('d2w-c7 d2w-light','07. Crochet algae yarn purse with wool handle')}
       ${cap('d2w-c8 d2w-light','08. Alexander Calder')}
       <div class="d2w-end" aria-label="WRM World references">
-        <div class="dwe-white"></div>
         <img class="dwe-i dwe-beads" src="/img/world2/weave-beads.jpg" alt="Leather panel woven with black cord and beads, hung from a rod" loading="lazy">
         <img class="dwe-i dwe-stair" src="/img/world2/stair.jpg" alt="Engraving of a panelled stair hall with a scalloped arch" loading="lazy">
         <img class="dwe-i dwe-pearl" src="/img/world2/weave-pearl.jpg" alt="Woven salmon leather panel with a pearl, on dark red" loading="lazy">
