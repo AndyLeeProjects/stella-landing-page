@@ -101,7 +101,7 @@ const M2_MATERIAL_FAQ = {
       ['Is it waterproof, and can it get wet?','Not by nature. We recommend keeping it dry and away from prolonged moisture. If you get caught in the rain, this is not the bag to use as cover. If it does get wet, allow it to air dry away from direct heat.']]],
     ['Living With It', [
       ['How do I clean and care for it?','Wipe with a soft, dry cloth. Avoid water and household cleaning products. You may use wax to buff the area afterwards. No regular conditioning is required. Store it in a cool, dry place, away from direct sunlight, ideally in its dust bag.'],
-      ['What does it smell like?','Properly tanned leather carries zero to barely any scent of fish.'],
+      ['What does it smell like?','Properly tanned leather carries zero to barely any scent of fish. However, you may notice a hint of smell depending on your sensitivity.'],
       ['Will my pet eat it?','We’ve tested it around friends’ dogs and cats, and a few were curious enough to lick it. As with any fine leather good, we recommend keeping it out of reach of pets.']]],
     ['Origin & Sourcing', [
       ['Where does the salmon skin come from?','The tannery works closely with a sushi restaurant group to collect the skins. The restaurant uses ocean-caught Alaskan salmon and serves the fillet, and the tannery takes the skin that would otherwise be discarded. It is a byproduct of the restaurant industry. No fish is farmed for the leather.'],
