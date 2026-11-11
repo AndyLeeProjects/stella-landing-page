@@ -912,7 +912,13 @@ adminLock.addEventListener('submit', async e => {
   const input = e.target.querySelector('input');
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(input.value));
   const hex = [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
-  if(hex === ADMIN_HASH){ localStorage.setItem(ADMIN_KEY, hex); drawAdminLock(); render(location.pathname); } /* straight past the countdown into the site */
+  if(hex === ADMIN_HASH){
+    localStorage.setItem(ADMIN_KEY, hex); drawAdminLock(); render(location.pathname);
+    /* Password holders: countdown -> enter film -> full site. */
+    try{ sessionStorage.removeItem(INTRO_KEY); }catch(e){}
+    if(siteIntroVideo){ try{ siteIntroVideo.currentTime = 0; }catch(e){} }
+    showIntro();
+  }
   else { input.value=''; input.placeholder='Wrong password'; adminLock.classList.remove('shake'); void adminLock.offsetWidth; adminLock.classList.add('shake'); }
 });
 drawAdminLock();
