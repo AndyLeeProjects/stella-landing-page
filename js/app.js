@@ -845,6 +845,7 @@ const pages = {
         <img class="mwe-i mwe-portrait" src="/img/world2/portrait-book.jpg" alt="Book open to an 18th-century Korean portrait in a white robe" loading="lazy">
         <img class="mwe-i mwe-tote" src="/img/world2/tote-quilted-upright.png" alt="Translucent quilted tote with black handles" loading="lazy">
       </div>
+      <video class="m2w-film" src="/img/world-moodboard.mp4" aria-label="Pan across the WRM studio mood board: samples, weavings, photographs and a salmon leather bag" autoplay muted loop playsinline preload="metadata"></video>
       <a class="m2w-learn" href="/about-materials" data-link><img src="/img/m2-world-tex-fish.jpg" alt=""><img src="/img/m2-world-tex-algae.jpg" alt=""><span class="m2-box-btn">Learn more about the materials</span></a>
     </section>`;
   },
