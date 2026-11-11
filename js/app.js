@@ -482,7 +482,7 @@ const pages = {
       <div class="m2h-gallery">
         <img src="/img/m2-home-gallery.jpg" alt="The Salmon Purse on display at the WRM launch" loading="lazy">
         <div class="m2h-gallery-txt">
-          <p>WRM is a world mapped by where its materials begin</p>
+          <p>WRM (pronounced worm),<br>is a world mapped by where its materials begin</p>
           <p>For the brand’s first collection, we turned to the ocean for<br>two materials: fish leather and algae.</p>
           <p>Fish leather carries centuries of craft,<br>algae points to what materials can become.</p>
         </div>

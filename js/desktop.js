@@ -21,7 +21,7 @@ window.WRMDesktop = (() => {
         ${photo('home-hero','Salmon Purse in natural crust salmon leather',true)}
         ${ocean('d2h-ocean')}
         <h1 class="d2h-chapter">Chapter I<span class="d2-sr"> Ocean</span></h1>
-        <p class="d2h-lede">WRM (pronounced werm, stands for with raw materials)<br>is a world mapped by where its materials begin</p>
+        <p class="d2h-lede">WRM (pronounced worm),<br>is a world mapped by where its materials begin</p>
         <p class="d2h-credit">Photos by Sahra Jajarmikhayat</p>
       </section>
       <section class="d2h-collection" aria-labelledby="d2h-coll">
