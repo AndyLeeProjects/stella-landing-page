@@ -501,7 +501,7 @@ const pages = {
 <section class="hero" id="top">
   <div class="hero-card">
     <div class="logo-wrap reveal"><img src="/img/wrm-logo-dark.png" alt="WRM — With Raw Materials"></div>
-    <h1 class="headline reveal d2">Ocean season <span class="italic">launching</span><br><span class="soft">11.11.26, 10am PST</span></h1>
+    <h1 class="headline reveal d2">Ocean season <span class="italic">launching</span><br><span class="soft">11.11.26, 10am PST / 1pm EST</span></h1>
     <form class="notify reveal d3" data-newsletter="landing">
       <input type="email" required placeholder="Your email" autocomplete="email" aria-label="Email">
       <button type="submit"><span data-label>Notify me</span> <span class="arr">→</span></button>
@@ -959,7 +959,7 @@ function landing(){
       <div class="cd-unit"><span data-u="m">00</span><small>Minutes</small></div><span class="cd-sep" aria-hidden="true">:</span>
       <div class="cd-unit"><span data-u="s">00</span><small>Seconds</small></div>
     </div>
-    <p class="cd-date">11.11.26 &middot; 10am PST</p>
+    <p class="cd-date">11.11.26 &middot; 10am PST / 1pm EST</p>
   </div>
   <form class="cd-signup" data-gate-password>
     <div class="cd-field">
