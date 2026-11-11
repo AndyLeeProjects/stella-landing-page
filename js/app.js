@@ -496,7 +496,7 @@ const pages = {
   },
 
   homeDesktop(){
-    document.title = 'WRM — Ocean season launching 11.11.26';
+    document.title = 'WRM — With Raw Materials';
     return `
 <section class="hero" id="top">
   <div class="hero-card">
