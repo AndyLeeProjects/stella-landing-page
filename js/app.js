@@ -145,10 +145,23 @@ const INTRO_KEY = 'wrm-intro-entered';
 const siteIntro = $('#siteIntro'), siteIntroVideo = $('#siteIntroVideo');
 const hasEnteredIntro = () => { try{ return sessionStorage.getItem(INTRO_KEY) === '1'; }catch(e){ return false; } };
 const introVisible = () => !!siteIntro && !siteIntro.hasAttribute('hidden');
+/* Phones: park the page 120px into the oversized film so it runs under Safari's bars (see css),
+   and swallow every swipe while the film shows so the page can't scroll or bounce. */
+const INTRO_PARK = 120;
+const blockIntroScroll = e => { if(introVisible()) e.preventDefault(); };
+document.addEventListener('touchmove', blockIntroScroll, {passive:false});
+window.addEventListener('scroll', ()=>{ if(introVisible() && window.matchMedia('(max-width:760px)').matches && window.scrollY !== INTRO_PARK) window.scrollTo(0, INTRO_PARK); }, {passive:true});
+function parkIntro(){
+  if(!window.matchMedia('(max-width:760px)').matches) return;
+  window.scrollTo(0, INTRO_PARK);
+  requestAnimationFrame(()=>window.scrollTo(0, INTRO_PARK));
+}
 function hideIntro(){
+  const wasVisible = introVisible();
   siteIntroVideo?.pause();
   siteIntro?.setAttribute('hidden','');
   document.body.classList.remove('intro-active');
+  if(wasVisible) window.scrollTo(0,0);
 }
 /* Clicking the film enters the site as a new history entry, so the browser Back button
    from the page after it returns to the film (held on its final frame). */
@@ -162,6 +175,7 @@ function showIntro(){
   if(!siteIntro) return;
   siteIntro.removeAttribute('hidden');
   document.body.classList.add('intro-active');
+  window.scrollTo(0,0); parkIntro();
   if(siteIntroVideo && !siteIntroVideo.ended) siteIntroVideo.play().catch(()=>{});
   siteIntro.addEventListener('click', enterSite, {once:true});
 }
@@ -173,6 +187,7 @@ function initIntro(){
   else if(hasEnteredIntro()) hideIntro();
   else {
     /* Muted + playsinline allows autoplay on desktop and mobile. No loop: the last frame remains visible. */
+    parkIntro();
     siteIntroVideo?.play().catch(()=>{});
     siteIntro?.addEventListener('click', enterSite, {once:true});
   }

@@ -41,9 +41,14 @@ body.intro-active{overflow:hidden}
    status bar and bottom toolbar instead of stopping short of them, and tint whatever chrome
    shows through with the film's own paper tone rather than the site beige. */
 @media (max-width:760px){
-  .site-intro{inset:auto;top:0;left:0;width:100vw;height:100vh;height:100lvh;min-height:100%;background:#c1b1a3}
-  html:has(body.intro-active){background:#c1b1a3!important}
-  body.intro-active{background:#c1b1a3!important}
+  /* iOS Safari only draws page content under its status bar and toolbar when the page is scrolled;
+     a position:fixed layer gets flat tinted bars instead. So on phones the film is ordinary content
+     240px taller than the large viewport, the page is parked 120px down (initIntro), and all
+     scrolling is locked while it shows. Everything else is hidden so nothing renders underneath. */
+  .site-intro{position:absolute;inset:auto;top:0;left:0;width:100%;height:calc(100lvh + 240px);background:#c1b1a3;touch-action:none}
+  html:has(body.intro-active){background:#c1b1a3!important;overflow:hidden;overscroll-behavior:none}
+  body.intro-active{background:#c1b1a3!important;height:calc(100lvh + 240px);overflow:hidden;overscroll-behavior:none}
+  body.intro-active > :not(.site-intro){visibility:hidden}
 }
 
 body.shell-cursor,body.shell-cursor *:not(.cart):not(.cart *):not(.scrim){cursor:url('/img/cursor-shell.png') 28 32,auto!important}
