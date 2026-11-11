@@ -184,10 +184,12 @@
   .d2p-salmon-bookmark .d2p-ph4{height:88.4722vw}
   .d2p-salmon-bookmark .d2p-info{margin-top:69.4792vw}
   .d2p-salmon-bookmark .d2p-head{padding-bottom:0.9028vw}
-  .d2p-algae-tote{height:119.9306vw}
+  .d2p-algae-tote{height:276.3366vw}  /* + worn photo (3:4 = 67.037vw) + algae sheet film (800×1422 = 89.369vw) */
   .d2p-algae-tote .d2p-gallery{width:50.2778vw}
   .d2p-algae-tote .d2p-ph1{height:82.9167vw}
   .d2p-algae-tote .d2p-ph2{height:37.0139vw}
+  .d2p-algae-tote .d2p-ph3{height:67.037vw}
+  .d2p-algae-tote .d2p-ph4{height:89.369vw}
   .d2p-algae-tote .d2p-info{margin-top:calc(19.3056vw - 20px)}
   .d2p-algae-tote .d2p-head{padding-bottom:2.5vw}
 

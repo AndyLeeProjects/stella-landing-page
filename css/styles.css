@@ -771,7 +771,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body.m2 .m2p-gallery::-webkit-scrollbar{display:none}
   body.m2 .m2p-slide{flex:0 0 100%;height:100%;overflow:hidden;scroll-snap-align:start;position:relative}
   body.m2 .m2p-slide img,body.m2 .m2p-slide video{display:block;width:100%;height:100%;object-fit:cover}
-  body.m2 .m2p-slide+.m2p-slide img,body.m2 .m2p-slide+.m2p-slide video{object-fit:contain;background:#fff}
+  body.m2 .m2p-slide:not(.m2p-first) img,body.m2 .m2p-slide:not(.m2p-first) video{object-fit:contain;background:#fff}
   body.m2 .m2p-body{padding:0 0 calc(105*var(--u)) calc(71*var(--u));width:calc(684*var(--u));font:400 calc(21.9*var(--u))/calc(30*var(--u)) var(--m-sans);color:#111}
   body.m2 .m2p-head{position:relative;height:calc(87*var(--u));border-bottom:calc(1*var(--u)) solid #6e6e6e;margin-right:calc(7*var(--u))}
   body.m2 .m2p-name{position:absolute;left:0;top:calc(45*var(--u));margin:0;font:700 calc(24.6*var(--u))/1 var(--m-serif-up);font-variation-settings:'opsz' 12;letter-spacing:0}
@@ -782,7 +782,7 @@ h1 .soft{font-style:italic;color:var(--muted)}
   body.m2 .m2p-body a{color:inherit;text-decoration:none}
   body.m2 .m2p-add{display:flex;align-items:center;justify-content:center;width:calc(100% + 64*var(--u));height:calc(72*var(--u));min-height:44px;margin:calc(30*var(--u)) 0 0 calc(-32*var(--u));padding:0;border:1px solid #000;border-radius:0;background:#000;color:#fff;font:inherit;text-decoration:none;opacity:1}
   body.m2 .m2p-salmon-bookmark .m2p-gallery{height:calc(1009*var(--u))}
-  body.m2 .m2p-salmon-bookmark .m2p-slide:first-child img{position:absolute;left:calc(66*var(--u));top:calc(140*var(--u));width:calc(624*var(--u));height:calc(723*var(--u))}
+  body.m2 .m2p-salmon-bookmark .m2p-first img{position:absolute;left:calc(66*var(--u));top:calc(140*var(--u));width:calc(624*var(--u));height:calc(723*var(--u))}
   body.m2 .m2p-salmon-bookmark .m2p-body p:nth-of-type(6){margin-top:calc(60*var(--u))} /* Bookmark@2x: extra blank line before Material */
   body.m2 .m2p-salmon-bookmark .m2p-body{padding-bottom:calc(59*var(--u))}
   body.m2 .m2p-algae-tote{padding-top:0}

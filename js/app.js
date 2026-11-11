@@ -79,7 +79,7 @@ const M2_PRODUCT = {
       ['Material & Care','Leather: Ocean-caught Alaskan Sockeye Salmon','Lining: Horsehair','Treat like any other leather products.','Avoid direct sunlight.','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>'],
       ['Shipping & Returns','Shipping is complimentary on all U.S. orders. Orders ship within 1-3 business days. We don’t ship internationally at this time.','<span class="pd-more-info">For more detail, click <a class="pd-faq-link" href="/faq" data-link>here</a>.</span>']
     ]},
-  'algae-tote': { variant:'Natural', price:'$165.00', images:['/img/m2-pd-tote.jpg'],
+  'algae-tote': { variant:'Natural', price:'$165.00', images:['/img/m2-pd-tote.jpg','/img/d2-pd-tote-3.jpg','/img/algae-sheet.mp4'],
     alt:'Algae Tote, translucent seaweed-based sheet',
     blocks:[
       ['Your classic everyday tote made with algae. The seaweed is dehydrated and processed into a powder form, which then formulated and turned into sheets by <a class="pd-inline-link" href="/about-materials/algae" data-link>Sway</a> (learn more about Sway in our <a class="pd-inline-link" href="/about-materials/algae" data-link>materials page</a>).'],
@@ -668,7 +668,7 @@ const pages = {
     const m = M2_PRODUCT[p.id];
     return `<section class="m2p m2p-${p.id}" data-product="${p.id}">
       <div class="m2p-gallery" id="pdStrip" aria-label="${esc(p.name)} photos">
-        ${m.images.map((src,i)=>`<div class="m2p-slide">${src.endsWith('.mp4')
+        ${m.images.map((src,i)=>`<div class="m2p-slide${i?'':' m2p-first'}" data-i="${i}">${src.endsWith('.mp4')
           ? `<video src="${src}" aria-label="${esc(p.name+' — detail animation')}" autoplay muted loop playsinline preload="metadata"></video>`
           : `<img src="${src}" alt="${esc(i?p.name+' — detail':m.alt)}"${i?' loading="lazy"':' fetchpriority="high"'}>`}</div>`).join('')}
       </div>
@@ -1027,6 +1027,7 @@ function render(path, y=0){
   io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.12});
   app.querySelectorAll('.observe').forEach(el=>io.observe(el));
   const strip = $('#pdStrip');
+  if(strip && strip.classList.contains('m2p-gallery')) loopGallery(strip);
 
   if(strip && $('#pdN')) strip.addEventListener('scroll', ()=>{
     const i = Math.round(strip.scrollLeft / strip.clientWidth);
@@ -1034,6 +1035,23 @@ function render(path, y=0){
   }, {passive:true});
   window.scrollTo({top:y, behavior:'instant'});
   onScroll();
+}
+/* Mobile product galleries loop: swiping past the last photo lands on the first, and back
+   from the first lands on the last. A copy of the last slide sits before the first and a copy
+   of the first after the last; when a swipe settles on a copy, jump silently to the real one. */
+function loopGallery(strip){
+  const real = [...strip.children]; if(real.length < 2) return;
+  const copy = el => { const c = el.cloneNode(true); c.classList.add('m2p-clone'); c.setAttribute('aria-hidden','true');
+    c.querySelectorAll('img').forEach(i=>{ i.removeAttribute('fetchpriority'); i.loading='eager'; }); return c; };
+  strip.prepend(copy(real[real.length-1])); strip.append(copy(real[0]));
+  const n = real.length, w = () => strip.clientWidth;
+  const jump = i => { strip.style.scrollSnapType='none'; strip.scrollLeft = i * w(); void strip.offsetWidth; strip.style.scrollSnapType=''; };
+  requestAnimationFrame(()=>jump(1));
+  let t;
+  const settle = () => { const i = Math.round(strip.scrollLeft / w()); if(i === 0) jump(n); else if(i === n + 1) jump(1); };
+  strip.addEventListener('scroll', ()=>{ clearTimeout(t); t = setTimeout(settle, 140); }, {passive:true});
+  if('onscrollend' in window) strip.addEventListener('scrollend', ()=>{ clearTimeout(t); settle(); });
+  addEventListener('resize', ()=>{ if(strip.isConnected){ const i = Math.round(strip.scrollLeft / w()); jump(Math.min(Math.max(i,1),n)); } }, {passive:true});
 }
 function go(path, push=true){ if(push){ history.replaceState({path:location.pathname, y:scrollY},''); history.pushState({path},'',path);} render(path); }
 if('scrollRestoration' in history) history.scrollRestoration='manual';
