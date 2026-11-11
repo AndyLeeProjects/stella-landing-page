@@ -59,7 +59,7 @@ const FAQ = [
 
 /* Mobile v2 (Drive redesign) copy, verbatim from Purse@2x / Bookmark@2x / Algae_Tote@2x.png. */
 const M2_PRODUCT = {
-  'salmon-purse': { variant:'Natural Crust', price:'$700.00', images:['/img/m2-pd-purse.jpg','/img/purse-dark.jpg','/img/d2-pd-purse-6.jpg','/img/d2-pd-purse-7.jpg'],
+  'salmon-purse': { variant:'Natural Crust', price:'$700.00', images:['/img/m2-pd-purse.jpg','/img/purse-dark.jpg','/img/d2-pd-purse-6.jpg','/img/d2-pd-purse-7.jpg','/img/purse-unwrap.mp4'],
     alt:'Salmon Purse in natural crust salmon leather',
     blocks:[
       ['Your classic evening purse made with ocean-caught salmon leather. Fits your essentials. Pleated sides, lined with Korean hemp, finished with invisible magnet closure.'],

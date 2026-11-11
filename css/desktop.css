@@ -169,12 +169,13 @@
   .d2p-copy .waitlist-form .d2p-add{margin-top:0}
   .d2p-copy .waitlist-done{margin:0.8333vw 0 0}
   /* Photo 2 of the artboard (three-quarter view on white) has no source photograph yet. */
-  .d2p-salmon-purse{height:364.0972vw}  /* + two 3:4 interior photos (66.6667vw each) */
+  .d2p-salmon-purse{height:452.9722vw}  /* + two 3:4 interior photos (66.6667vw each) + unwrap film (800×1422 at 50vw = 88.875vw) */
   .d2p-salmon-purse .d2p-ph1{height:65.4861vw}
   .d2p-salmon-purse .d2p-ph2{height:37.4306vw;margin-top:0.0694vw}
   .d2p-salmon-purse .d2p-ph3{height:66.9444vw}
   .d2p-salmon-purse .d2p-ph4{height:60.8333vw}
   .d2p-salmon-purse .d2p-ph5,.d2p-salmon-purse .d2p-ph6{height:66.6667vw}
+  .d2p-salmon-purse .d2p-ph7{height:88.875vw}
   .d2p-salmon-bookmark{height:269.7569vw}
   .d2p-salmon-bookmark .d2p-gallery{width:49.7917vw}
   .d2p-salmon-bookmark .d2p-ph1{position:absolute;left:0;top:0;width:100vw;height:57.1875vw}  /* matches Stella's 1280x732 crop exactly */

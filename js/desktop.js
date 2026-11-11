@@ -72,7 +72,8 @@ window.WRMDesktop = (() => {
     'salmon-purse': {name:'Salmon Purse', price:'$700.00', photos:[
         ['pd-purse-1','Salmon Purse, front, in natural crust salmon leather'],
         ['pd-purse-3','Salmon leather grain, close'],['pd-purse-4','Corner of the Salmon Purse on a blue backdrop'],['pd-purse-5','Salmon Purse carried in a car'],
-        ['pd-purse-6','Inside the Salmon Purse: hemp lining and With Raw Materials label'],['pd-purse-7','Salmon Purse interior, hand-numbered wrm 1/15']],
+        ['pd-purse-6','Inside the Salmon Purse: hemp lining and With Raw Materials label'],['pd-purse-7','Salmon Purse interior, hand-numbered wrm 1/15'],
+        ['purse-unwrap.mp4','Unwrapping the Salmon Purse from its translucent wrap']],
       blocks:[['Natural Crust'],
         ['Your classic evening purse made with ocean-caught salmon leather. Fits your essentials. Pleated sides, lined with Korean hemp, finished with invisible magnet closure.'],
         ['Please note the textures and colors of the bags vary piece to piece. Each skin is unique and no two pieces are identical. Leather is processed and tanned by <a class="pd-inline-link" href="/about-materials/fish-leather" data-link>7 Leagues Leather</a>.'],
