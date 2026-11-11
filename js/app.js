@@ -79,7 +79,7 @@ const M2_PRODUCT = {
       ['Material & Care','Leather: Ocean-caught Alaskan Sockeye Salmon','Lining: Horsehair','Treat like any other leather products.','Avoid direct sunlight.','<span class="pd-more-info">For more information, please visit our <a class="pd-faq-link" href="/faq" data-link>FAQ</a> page.</span>'],
       ['Shipping & Returns','Shipping is complimentary on all U.S. orders. Orders ship within 1-3 business days. We don’t ship internationally at this time.','<span class="pd-more-info">For more detail, click <a class="pd-faq-link" href="/faq" data-link>here</a>.</span>']
     ]},
-  'algae-tote': { variant:'Natural', price:'$165.00', images:['/img/m2-pd-tote.jpg','/img/d2-pd-tote-3.jpg','/img/algae-sheet.mp4'],
+  'algae-tote': { variant:'Natural', price:'$165.00', images:['/img/m2-pd-tote.jpg','/img/m2-pd-tote-2.jpg','/img/d2-pd-tote-3.jpg','/img/algae-sheet.mp4'],
     alt:'Algae Tote, translucent seaweed-based sheet',
     blocks:[
       ['Your classic everyday tote made with algae. The seaweed is dehydrated and processed into a powder form, which then formulated and turned into sheets by <a class="pd-inline-link" href="/about-materials/algae" data-link>Sway</a> (learn more about Sway in our <a class="pd-inline-link" href="/about-materials/algae" data-link>materials page</a>).'],
