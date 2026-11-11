@@ -986,6 +986,8 @@ function render(path, y=0){
   const gated = !siteOpen();
   document.body.classList.toggle('landing', gated);
   document.body.classList.toggle('world-page', !gated && path.replace(/\/$/,'') === '/wrm-world');
+  /* Shell cursor everywhere except the shop pages (shop, Ocean Season lists, products). Checkout is on Shopify. */
+  document.body.classList.toggle('shell-cursor', gated || !/^\/(shop|product)(\/|$)/.test(path));
   if(gated){
     document.body.classList.remove('m2','d2','m2-light','mobile-materials-original');
     app.innerHTML = `<div class="page">${landing()}</div>`;
